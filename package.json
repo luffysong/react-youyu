@@ -1,0 +1,8 @@
+{
+  "name": "ReactSSR",
+  "version": "1.0.0",
+  "description": "React server side render",
+  "main": "index.js",
+  "author": "sweeetcc <sweeetcc@gmail.com>",
+  "license": "MIT"
+}
