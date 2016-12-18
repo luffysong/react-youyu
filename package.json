@@ -4,5 +4,12 @@
   "description": "React server side render",
   "main": "index.js",
   "author": "sweeetcc <sweeetcc@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "koa": "next",
+    "pug": "^2.0.0-beta6"
+  }
 }
