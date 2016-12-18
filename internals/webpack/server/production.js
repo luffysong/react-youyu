@@ -10,10 +10,6 @@ _.mergeWith(defaultConfig, {
 });
 
 productionConfig.plugins.push(
-  new webpack.LoaderOptionsPlugin({
-    minimize: true,
-    debug: false,
-  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       warnings: false,

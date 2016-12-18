@@ -7,7 +7,7 @@ developmentConfig.plugins.push(
     'process.env.SECRET_KEY': `"${crypto.randomBytes(8).toString('hex')}"`,
   }),
   new webpack.NoErrorsPlugin(),
-  new webpack.NamedModulesPlugin(),
+  new webpack.NamedModulesPlugin()
 );
 
 module.exports = developmentConfig;

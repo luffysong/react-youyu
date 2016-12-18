@@ -14,6 +14,7 @@
     "babel-loader": "6.2.7",
     "babel-plugin-module-resolver": "^2.4.0",
     "babel-preset-react-app": "^2.0.1",
+    "babel-preset-stage-2": "^6.18.0",
     "better-npm-run": "^0.0.13",
     "bunyan": "^1.8.5",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
@@ -57,6 +58,7 @@
     "webpack-dev-server": "1.16.2",
     "webpack-isomorphic-tools": "^2.6.5",
     "webpack-manifest-plugin": "1.1.0",
+    "webpack-node-externals": "^1.5.4",
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
@@ -90,7 +92,10 @@
   "scripts": {
     "start:client": "better-npm-run start:client",
     "build:client": "better-npm-run build:client",
-    "test:client": "better-npm-run test:client"
+    "test:client": "better-npm-run test:client",
+    "start:server": "better-npm-run start:server",
+    "build:server": "better-npm-run build:server",
+    "preview:server": "better-npm-run preview:server"
   },
   "betterScripts": {
     "start:client": {
@@ -139,10 +144,12 @@
     },
     "preview:server": {
       "command": "gulp server:build && node run.js",
-      "NODE_ENV": "production",
-      "PORT": 8800,
-      "SERVER_RENDER": true,
-      "SECRET_KEY": "secret"
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 8800,
+        "SERVER_RENDER": true,
+        "SECRET_KEY": "secret"
+      }
     }
   },
   "jest": {
