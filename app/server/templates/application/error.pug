@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    title= status
+    meta(name="description" content="")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    style(type="text/css")
+      body {
+         padding: 50px 80px;
+         font: 14px "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+         margin: 0;
+         padding: 10px 0;
+      }
+
+      h1 {
+         font-size: 2em;
+      }
+
+      h2 {
+         font-size: 1.2em;
+         font-weight: 200;
+         color: #aaa;
+      }
+
+      pre {
+         font-size: .8em;
+      }
+  body
+    h1 Error
+    pre
+      code= error
+      code= stack
