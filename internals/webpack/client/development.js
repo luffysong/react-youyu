@@ -1,9 +1,11 @@
 /**
  * External dependencies
  */
+const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
@@ -108,7 +110,13 @@ module.exports = {
     new webpack.DefinePlugin(env),
     new webpack.HotModuleReplacementPlugin(),
     new CaseSensitivePathsPlugin(),
-    new WatchMissingNodeModulesPlugin(paths.appNodeModules)
+    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+    new StyleLintPlugin({
+      configFile: path.join(__dirname, '../../../.stylelintrc'),
+      context: paths.clientSrc,
+      files: ['**/*.css', '**/*.less'],
+      failOnError: false,
+    }),
   ],
   node: {
     fs: 'empty',
