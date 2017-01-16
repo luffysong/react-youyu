@@ -2,13 +2,14 @@
  * External dependencies
  */
 import React from 'react';
-import { Router, Route, browserHistory, createMemoryHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { Router, Route, IndexRoute, browserHistory, createMemoryHistory } from 'react-router';
 
 /**
  * Internal dependencies
  */
 import Home from '../containers/Home';
+import Layout from '../containers/Layout';
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
@@ -22,7 +23,9 @@ export const getServerHistory = (store, url) =>
 
 export const getRoutes = (history) => (
   <Router history={history}>
-    <Route path="/" component={Home} />
+    <Route path="/" component={Layout}>
+      <IndexRoute component={Home} />
+    </Route>
   </Router>
 );
 
