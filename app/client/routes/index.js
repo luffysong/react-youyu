@@ -3,12 +3,11 @@
  */
 import React from 'react';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, Route, IndexRoute, browserHistory, createMemoryHistory } from 'react-router';
+import { Router, browserHistory, createMemoryHistory } from 'react-router';
 
 /**
  * Internal dependencies
  */
-import Home from '../containers/Home';
 import Layout from '../containers/Layout';
 
 export const getClientHistory = (store) =>
@@ -21,11 +20,30 @@ export const getServerHistory = (store, url) =>
     selectLocationState: (state) => state.router,
   });
 
+const loadModule = (cb, componentModule) => {
+  cb(null, componentModule.default);
+};
+
+const rootRoute = {
+  component: Layout,
+  childRoutes: [{
+    path: '/',
+    getComponent(nextState, cb) {
+      require.ensure([], (require) => {
+        loadModule(cb, require('../containers/Home'));
+      });
+    },
+  }, {
+    path: '/project',
+    getComponent(nextState, cb) {
+      require.ensure([], (require) => {
+        loadModule(cb, require('../containers/Project'));
+      });
+    },
+  }],
+};
+
 export const getRoutes = (history) => (
-  <Router history={history}>
-    <Route path="/" component={Layout}>
-      <IndexRoute component={Home} />
-    </Route>
-  </Router>
+  <Router history={history} routes={rootRoute} />
 );
 

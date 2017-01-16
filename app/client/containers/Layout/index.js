@@ -15,7 +15,7 @@ class Layout extends Component {
     return (
       <div>
         <ProptypeBox width="100%" height="70px">Header</ProptypeBox>
-        {children}
+        {React.Children.toArray(children)}
         <ProptypeBox width="100%" height="220px" bg="#484b53" extraStyle={{color: '#dbdcde'}}>Footer</ProptypeBox>
         <ProptypeBox width="100%" height="37px" bg="#393c42" extraStyle={{color: '#9e9e9f'}}>Copyright</ProptypeBox>
       </div>
@@ -24,7 +24,7 @@ class Layout extends Component {
 }
 
 React.propTypes = {
-  children: React.PropTypes.element,
+  children: React.PropTypes.node,
 };
 
 export default Layout;
