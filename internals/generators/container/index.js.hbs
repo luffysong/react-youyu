@@ -22,11 +22,10 @@ import './style.less';
 import makeSelect{{properCase name}} from './selectors';
 {{/if}}
 
-
 export class {{ properCase name }} extends {{{ component }}} {
   render() {
     return (
-      <div>
+      <div className="{{dashCase name}}">
       {{#if wantHeaders}}
         <Helmet
           title="{{properCase name}}"

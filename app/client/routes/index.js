@@ -40,6 +40,14 @@ const rootRoute = function(store) {
           });
         },
       }, {
+      path: '/class',
+      name: 'class',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../containers/Class'));
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
