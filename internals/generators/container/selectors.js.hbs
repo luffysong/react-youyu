@@ -11,7 +11,7 @@ import { createSelector } from 'reselect';
  * Internal dependencies
  */
 
-const select{{ properCase name }}Domain = () => (state) => state.get('{{ camelCase name }}');
+const select{{ properCase name }}Domain = () => (state) => state.{{ camelCase name }};
 
 const makeSelect{{ properCase name }} = () => createSelector(
   select{{ properCase name }}Domain(),

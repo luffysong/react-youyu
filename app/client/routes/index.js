@@ -74,6 +74,24 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/quote',
+      name: 'quote',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Quote',
+          '../containers/Quote/reducer',
+          '../containers/Quote/sagas',
+        ], (require) => {
+          const component = require('../containers/Quote');
+          const reducer = require('../containers/Quote/reducer').default;
+          const sagas = require('../containers/Quote/sagas').default;
+
+          injectReducer('quote', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
