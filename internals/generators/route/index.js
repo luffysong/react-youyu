@@ -1,13 +1,21 @@
 /**
  * Route Generator
  */
+
+/**
+ * External dependencies
+ */
 const fs = require('fs');
 const path = require('path');
+
+/**
+ * Internal dependencies
+ */
 const componentExists = require('../utils/componentExists');
 
 function reducerExists(comp) {
   try {
-    fs.accessSync(path.join(__dirname, `../../../app/containers/${comp}/reducer.js`), fs.F_OK);
+    fs.accessSync(path.join(__dirname, `../../../app/client/containers/${comp}/reducer.js`), fs.F_OK);
     return true;
   } catch (e) {
     return false;
@@ -16,7 +24,7 @@ function reducerExists(comp) {
 
 function sagasExists(comp) {
   try {
-    fs.accessSync(path.join(__dirname, `../../../app/containers/${comp}/sagas.js`), fs.F_OK);
+    fs.accessSync(path.join(__dirname, `../../../app/client/containers/${comp}/sagas.js`), fs.F_OK);
     return true;
   } catch (e) {
     return false;
@@ -24,7 +32,6 @@ function sagasExists(comp) {
 }
 
 function trimTemplateFile(template) {
-  // Loads the template file and trims the whitespace and then returns the content as a string.
   return fs.readFileSync(path.join(__dirname, `./${template}`), 'utf8').replace(/\s*$/, '');
 }
 
@@ -55,22 +62,20 @@ module.exports = {
     },
   }],
 
-  // Add the route to the routes.js file above the error route
-  // TODO smarter route adding
   actions: (data) => {
     const actions = [];
     if (reducerExists(data.component)) {
-      data.useSagas = sagasExists(data.component); // eslint-disable-line no-param-reassign
+      data.useSagas = sagasExists(data.component);
       actions.push({
         type: 'modify',
-        path: '../../app/routes.js',
+        path: '../../app/client/routes/index.js',
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
         template: trimTemplateFile('routeWithReducer.hbs'),
       });
     } else {
       actions.push({
         type: 'modify',
-        path: '../../app/routes.js',
+        path: '../../app/client/routes/index.js',
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
         template: trimTemplateFile('route.hbs'),
       });

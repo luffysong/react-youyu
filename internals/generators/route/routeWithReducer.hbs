@@ -2,22 +2,18 @@
       path: '{{ path }}',
       name: '{{ camelCase component }}',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/{{ properCase component }}/reducer'),
+        require.ensure([], (require) => {
+          const reducer = require('../containers/{{ properCase component }}/reducer').default,
+          const component = require('../containers/{{ properCase component }}').default,
           {{#if useSagas}}
-          import('containers/{{ properCase component }}/sagas'),
+          const sagas = require('../containers/{{ properCase component }}/sagas').default,
           {{/if}}
-          import('containers/{{ properCase component }}'),
-        ]);
 
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer,{{#if useSagas}} sagas,{{/if}} component]) => {
-          injectReducer('{{ camelCase component }}', reducer.default);
+          injectReducer('{{ camelCase component }}', reducer);
           {{#if useSagas}}
-          injectSagas(sagas.default);
+          injectSagas(sagas);
           {{/if}}
-          renderRoute(component);
+          loadModule(cb, component);
         });
 
         importModules.catch(errorLoading);

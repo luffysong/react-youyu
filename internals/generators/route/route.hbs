@@ -1,9 +1,9 @@
  {
       path: '{{ path }}',
       name: '{{ camelCase component }}',
-      getComponent(location, cb) {
-        import('{{{directory (properCase component)}}}')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../{{{directory (properCase component)}}}'));
+        });
       },
     },$1

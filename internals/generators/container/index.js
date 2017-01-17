@@ -46,6 +46,10 @@ module.exports = {
       path: '../../app/client/containers/{{properCase name}}/index.js',
       templateFile: './container/index.js.hbs',
       abortOnFail: true,
+    }, {
+      type: 'add',
+      path: '../../app/client/components/{{properCase name}}/style.less',
+      abortOnFail: true,
     }];
 
     if (data.wantActionsAndReducer) {

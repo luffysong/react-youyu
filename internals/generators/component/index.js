@@ -55,6 +55,10 @@ module.exports = {
       path: '../../app/client/components/{{properCase name}}/index.js',
       templateFile: componentTemplate,
       abortOnFail: true,
+    }, {
+      type: 'add',
+      path: '../../app/client/components/{{properCase name}}/style.less',
+      abortOnFail: true,
     }];
 
     return actions;
