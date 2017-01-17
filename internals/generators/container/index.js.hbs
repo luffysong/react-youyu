@@ -12,10 +12,13 @@ import Helmet from 'react-helmet';
 {{/if}}
 {{#if wantActionsAndReducer}}
 import { createStructuredSelector } from 'reselect';
+{{/if}}
 
 /**
  * Internal dependencies
  */
+import './style.less';
+{{#if wantActionsAndReducer}}
 import makeSelect{{properCase name}} from './selectors';
 {{/if}}
 
