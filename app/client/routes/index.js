@@ -164,6 +164,42 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/help/list',
+      name: 'helpList',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/HelpList',
+          '../containers/HelpList/reducer',
+          '../containers/HelpList/sagas',
+        ], (require) => {
+          const component = require('../containers/HelpList');
+          const reducer = require('../containers/HelpList/reducer').default;
+          const sagas = require('../containers/HelpList/sagas').default;
+
+          injectReducer('helpList', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
+      path: '/help/detail',
+      name: 'helpDetail',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/HelpDetail',
+          '../containers/HelpDetail/reducer',
+          '../containers/HelpDetail/sagas',
+        ], (require) => {
+          const component = require('../containers/HelpDetail');
+          const reducer = require('../containers/HelpDetail/reducer').default;
+          const sagas = require('../containers/HelpDetail/sagas').default;
+
+          injectReducer('helpDetail', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
