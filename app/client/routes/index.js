@@ -146,6 +146,24 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/uc/orderMgmt',
+      name: 'orderMgmt',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/OrderMgmt',
+          '../containers/OrderMgmt/reducer',
+          '../containers/OrderMgmt/sagas',
+        ], (require) => {
+          const component = require('../containers/OrderMgmt');
+          const reducer = require('../containers/OrderMgmt/reducer').default;
+          const sagas = require('../containers/OrderMgmt/sagas').default;
+
+          injectReducer('orderMgmt', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
