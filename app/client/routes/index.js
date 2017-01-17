@@ -92,6 +92,24 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/accept',
+      name: 'accept',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Accept',
+          '../containers/Accept/reducer',
+          '../containers/Accept/sagas',
+        ], (require) => {
+          const component = require('../containers/Accept');
+          const reducer = require('../containers/Accept/reducer').default;
+          const sagas = require('../containers/Accept/sagas').default;
+
+          injectReducer('accept', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
