@@ -126,6 +126,24 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
+      indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial') },
+      childRoutes: [{
+        path: 'initial',
+        name: 'initialQuote',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Quote/Initial'));
+          });
+        },
+      }, {
+        path: 'rights',
+        name: 'rightsQuote',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Quote/Rights'));
+          });
+        },
+      }],
     }, {
       path: '/accept',
       name: 'accept',

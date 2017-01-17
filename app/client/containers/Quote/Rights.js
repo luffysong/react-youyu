@@ -1,5 +1,5 @@
 /**
- * Quote
+ * Rights
  */
 
 /**
@@ -16,28 +16,24 @@ import { createStructuredSelector } from 'reselect';
 import './style.less';
 import makeSelectQuote from './selectors';
 
-export class Quote extends PureComponent {
+export class Rights extends PureComponent {
   render() {
-    const { children } = this.props;
-
     return (
       <div className="quote-container">
         <Helmet
-          title="Quote"
+          title="Rights"
           meta={[
-            { name: 'description', content: 'Description of Quote' },
+            { name: 'description', content: 'Description of Rights' },
           ]}
         />
-        Quote
-        {children}
+        Rights
       </div>
     );
   }
 }
 
-Quote.propTypes = {
+Rights.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -50,4 +46,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quote);
+export default connect(mapStateToProps, mapDispatchToProps)(Rights);
