@@ -1,5 +1,5 @@
 /**
- * Project
+ * QA
  */
 
 /**
@@ -16,28 +16,24 @@ import { createStructuredSelector } from 'reselect';
 import './style.less';
 import makeSelectProject from './selectors';
 
-export class Project extends PureComponent {
+export class QA extends PureComponent {
   render() {
-    const { children } = this.props;
-
     return (
       <div className="project-container">
         <Helmet
-          title="Project"
+          title="QA"
           meta={[
-            { name: 'description', content: 'Description of Project' },
+            { name: 'description', content: 'Description of QA' },
           ]}
         />
-        Project
-        {children}
+        QA
       </div>
     );
   }
 }
 
-Project.propTypes = {
+QA.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -50,4 +46,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Project);
+export default connect(mapStateToProps, mapDispatchToProps)(QA);

@@ -82,6 +82,32 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
+      indexRoute: { onEnter: (nextState, replace) => replace('/project/quoting') },
+      childRoutes: [{
+        path: 'quoting',
+        name: 'projectQuoting',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Project/Quoting'));
+          });
+        },
+      }, {
+        path: 'detail',
+        name: 'projectDetail',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Project/Detail'));
+          });
+        },
+      }, {
+        path: 'qa',
+        name: 'projectQA',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Project/QA'));
+          });
+        },
+      }],
     }, {
       path: '/quote',
       name: 'quote',
@@ -240,6 +266,24 @@ const rootRoute = function(store) {
           const sagas = require('../containers/NewsDetail/sagas').default;
 
           injectReducer('newsDetail', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
+      path: '/register',
+      name: 'register',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Register',
+          '../containers/Register/reducer',
+          '../containers/Register/sagas',
+        ], (require) => {
+          const component = require('../containers/Register');
+          const reducer = require('../containers/Register/reducer').default;
+          const sagas = require('../containers/Register/sagas').default;
+
+          injectReducer('register', reducer);
           injectSagas(sagas);
           loadModule(cb, component);
         });
