@@ -3403,6 +3403,10 @@ image-size@~0.5.0:
   version "0.5.0"
   resolved "http://registry.npm.taobao.org/image-size/download/image-size-0.5.0.tgz#be7aed1c37b5ac3d9ba1d66a24b4c47ff8397651"
 
+immutable:
+  version "3.8.1"
+  resolved "http://registry.npm.taobao.org/immutable/download/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
+
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "http://registry.npm.taobao.org/imurmurhash/download/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -6234,6 +6238,10 @@ redux-logger:
   dependencies:
     deep-diff "0.3.4"
 
+redux-saga:
+  version "0.14.3"
+  resolved "http://registry.npm.taobao.org/redux-saga/download/redux-saga-0.14.3.tgz#28cd2c5b49cf780a1de25875765724150c630513"
+
 redux-thunk:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.1.0.tgz#c724bfee75dbe352da2e3ba9bc14302badd89a98"
@@ -6393,6 +6401,10 @@ require-uncached@^1.0.2:
 requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+reselect:
+  version "2.5.4"
+  resolved "http://registry.npm.taobao.org/reselect/download/reselect-2.5.4.tgz#b7d23fdf00b83fa7ad0279546f8dbbbd765c7047"
 
 resolve-dir@^0.1.0:
   version "0.1.1"

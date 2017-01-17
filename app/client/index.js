@@ -15,7 +15,7 @@ import App from './containers/App';
 
 const store = configureStore(window.prerenderData);
 const history = getClientHistory(store);
-const routes = getRoutes(history);
+const routes = getRoutes(history, store);
 
 ReactDOM.render(
   <App store={store} routes={routes} />,

@@ -3,10 +3,10 @@
       name: '{{ camelCase component }}',
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
-          const reducer = require('../containers/{{ properCase component }}/reducer').default,
-          const component = require('../containers/{{ properCase component }}').default,
+          const reducer = require('../containers/{{ properCase component }}/reducer').default;
+          const component = require('../containers/{{ properCase component }}').default;
           {{#if useSagas}}
-          const sagas = require('../containers/{{ properCase component }}/sagas').default,
+          const sagas = require('../containers/{{ properCase component }}/sagas').default;
           {{/if}}
 
           injectReducer('{{ camelCase component }}', reducer);
@@ -15,7 +15,5 @@
           {{/if}}
           loadModule(cb, component);
         });
-
-        importModules.catch(errorLoading);
       },
     },$1
