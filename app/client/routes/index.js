@@ -200,6 +200,42 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/news/list',
+      name: 'newsList',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/NewsList',
+          '../containers/NewsList/reducer',
+          '../containers/NewsList/sagas',
+        ], (require) => {
+          const component = require('../containers/NewsList');
+          const reducer = require('../containers/NewsList/reducer').default;
+          const sagas = require('../containers/NewsList/sagas').default;
+
+          injectReducer('newsList', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
+      path: '/news/detail',
+      name: 'newsDetail',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/NewsDetail',
+          '../containers/NewsDetail/reducer',
+          '../containers/NewsDetail/sagas',
+        ], (require) => {
+          const component = require('../containers/NewsDetail');
+          const reducer = require('../containers/NewsDetail/reducer').default;
+          const sagas = require('../containers/NewsDetail/sagas').default;
+
+          injectReducer('newsDetail', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
