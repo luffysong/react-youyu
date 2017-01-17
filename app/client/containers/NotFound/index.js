@@ -18,7 +18,7 @@ import './style.less';
 export class NotFound extends PureComponent {
   render() {
     return (
-      <div>
+      <div className="not-found-container">
         <Helmet
           title="NotFound"
           meta={[

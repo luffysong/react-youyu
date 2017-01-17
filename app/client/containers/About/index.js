@@ -1,5 +1,5 @@
 /**
- * Class
+ * About
  */
 
 /**
@@ -14,25 +14,26 @@ import Helmet from 'react-helmet';
  */
 import './style.less';
 
-export class Class extends PureComponent {
+export class About extends PureComponent {
   render() {
     return (
-      <div className="class-container">
+      <div className="about-container">
         <Helmet
-          title="Class"
+          title="About"
           meta={[
-            { name: 'description', content: 'Description of Class' },
+            { name: 'description', content: 'Description of About' },
           ]}
         />
-        Class
+        About
       </div>
     );
   }
 }
 
-Class.propTypes = {
+About.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
+
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -40,4 +41,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Class);
+export default connect(null, mapDispatchToProps)(About);

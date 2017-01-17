@@ -1,5 +1,5 @@
 /**
- * Demo reducer
+ * Project reducer
  */
 
 /**
@@ -16,7 +16,7 @@ import {
 
 const initialState = fromJS({});
 
-function demoReducer(state = initialState, action) {
+function projectReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -25,4 +25,4 @@ function demoReducer(state = initialState, action) {
   }
 }
 
-export default demoReducer;
+export default projectReducer;

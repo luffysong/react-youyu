@@ -1,5 +1,5 @@
 /**
- * Demo
+ * Project
  */
 
 /**
@@ -14,31 +14,30 @@ import { createStructuredSelector } from 'reselect';
  * Internal dependencies
  */
 import './style.less';
-import makeSelectDemo from './selectors';
+import makeSelectProject from './selectors';
 
-
-export class Demo extends PureComponent {
+export class Project extends PureComponent {
   render() {
     return (
-      <div>
+      <div className="project-container">
         <Helmet
-          title="Demo"
+          title="Project"
           meta={[
-            { name: 'description', content: 'Description of Demo' },
+            { name: 'description', content: 'Description of Project' },
           ]}
         />
-        Demo
+        Project
       </div>
     );
   }
 }
 
-Demo.propTypes = {
+Project.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  Demo: makeSelectDemo(),
+  Project: makeSelectProject(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -47,4 +46,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Demo);
+export default connect(mapStateToProps, mapDispatchToProps)(Project);

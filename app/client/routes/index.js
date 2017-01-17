@@ -48,6 +48,32 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/about',
+      name: 'about',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../containers/About'));
+        });
+      },
+    }, {
+      path: '/project',
+      name: 'project',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Project',
+          '../containers/Project/reducer',
+          '../containers/Project/sagas',
+        ], (require) => {
+          const component = require('../containers/Project');
+          const reducer = require('../containers/Project/reducer').default;
+          const sagas = require('../containers/Project/sagas').default;
+
+          injectReducer('project', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {

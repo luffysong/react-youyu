@@ -2,9 +2,15 @@
       path: '{{ path }}',
       name: '{{ camelCase component }}',
       getComponent(nextState, cb) {
-        require.ensure([], (require) => {
+        require.ensure([
+          '../containers/{{ properCase component }}',
+          '../containers/{{ properCase component }}/reducer',
+          {{#if useSagas}}
+          '../containers/{{ properCase component }}/sagas',
+          {{/if}}
+        ], (require) => {
+          const component = require('../containers/{{ properCase component }}');
           const reducer = require('../containers/{{ properCase component }}/reducer').default;
-          const component = require('../containers/{{ properCase component }}').default;
           {{#if useSagas}}
           const sagas = require('../containers/{{ properCase component }}/sagas').default;
           {{/if}}

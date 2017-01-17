@@ -1,5 +1,5 @@
 /**
- * Demo actions
+ * Project actions
  */
 
 /**
