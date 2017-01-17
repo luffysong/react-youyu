@@ -66,6 +66,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "debug": "^2.4.5",
     "immutable": "^3.8.1",
     "koa": "next",

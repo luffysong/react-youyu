@@ -13,6 +13,7 @@ import React from 'react';
 import './style.less';
 import Logo from './Logo';
 import Menu from './Menu';
+import RightMenu from './RightMenu';
 
 function Header() {
   return (
@@ -20,6 +21,7 @@ function Header() {
       <section className="header-inner">
         <Logo className="header-logo" />
         <Menu className="header-menu" />
+        <RightMenu className="header-right-menu" />
       </section>
     </header>
   );
