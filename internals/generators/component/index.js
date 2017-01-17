@@ -58,6 +58,7 @@ module.exports = {
     }, {
       type: 'add',
       path: '../../app/client/components/{{properCase name}}/style.less',
+      templateFile: './component/style.less.hbs',
       abortOnFail: true,
     }];
 

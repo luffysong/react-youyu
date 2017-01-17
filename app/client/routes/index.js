@@ -26,21 +26,33 @@ const loadModule = (cb, componentModule) => {
 
 const rootRoute = {
   component: Layout,
-  childRoutes: [{
-    path: '/',
-    getComponent(nextState, cb) {
-      require.ensure([], (require) => {
-        loadModule(cb, require('../containers/Home'));
-      });
+  childRoutes: [
+    {
+      path: '/',
+      name: 'home',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../containers/Home'));
+        });
+      },
+    }, {
+      path: '/project',
+      name: 'project',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../containers/Project'));
+        });
+      },
+    }, {
+      path: '*',
+      name: 'notfound',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../containers/NotFound'));
+        });
+      },
     },
-  }, {
-    path: '/project',
-    getComponent(nextState, cb) {
-      require.ensure([], (require) => {
-        loadModule(cb, require('../containers/Project'));
-      });
-    },
-  }],
+  ],
 };
 
 export const getRoutes = (history) => (
