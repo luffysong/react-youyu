@@ -30,16 +30,25 @@ const rootRoute = function(store) {
 
   return {
     component: Layout,
-    childRoutes: [
-      {
-        path: '/',
-        name: 'home',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/Home'));
-          });
-        },
-      }, {
+    childRoutes: [{
+      path: '/',
+      name: 'home',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Home',
+          '../containers/Home/reducer',
+          '../containers/Home/sagas',
+        ], (require) => {
+          const component = require('../containers/Home');
+          const reducer = require('../containers/Home/reducer').default;
+          const sagas = require('../containers/Home/sagas').default;
+
+          injectReducer('home', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
       path: '/class',
       name: 'class',
       getComponent(nextState, cb) {
@@ -236,15 +245,14 @@ const rootRoute = function(store) {
         });
       },
     }, {
-        path: '*',
-        name: 'notfound',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/NotFound'));
-          });
-        },
+      path: '*',
+      name: 'notfound',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../containers/NotFound'));
+        });
       },
-    ],
+    }],
   };
 };
 
