@@ -11,12 +11,13 @@ import React from 'react';
  * Internal dependencies
  */
 import './style.less';
+import CopyRight from './CopyRight';
 
 function Footer() {
   return (
-    <div className="footer-component">
-      Footer
-    </div>
+    <footer className="footer-component">
+      <CopyRight />
+    </footer>
   );
 }
 

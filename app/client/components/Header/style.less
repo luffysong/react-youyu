@@ -3,7 +3,29 @@
  */
 
 @import '../../styles/colors';
+@import '../../styles/variables';
 
 .header-component {
-  background-color: blue;
+  height: @headerHeight;
+  background-color: @headerBg;
+
+  .header-inner {
+    position: relative;
+    width: @containerWidth;
+    height: @headerHeight;
+    margin: 0 auto;
+  }
+
+  .header-logo {
+    position: absolute;
+    top: 12rem / 20;
+    left: 0;
+    width: 140rem / 20;
+    height: 47rem / 20;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

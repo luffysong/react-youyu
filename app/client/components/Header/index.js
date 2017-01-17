@@ -11,12 +11,15 @@ import React from 'react';
  * Internal dependencies
  */
 import './style.less';
+import Logo from './Logo';
 
 function Header() {
   return (
-    <div className="header-component">
-      Header
-    </div>
+    <header className="header-component">
+      <section className="header-inner">
+        <Logo className="header-logo" />
+      </section>
+    </header>
   );
 }
 

@@ -3,7 +3,23 @@
  */
 
 @import '../../styles/colors';
+@import '../../styles/variables';
 
 .footer-component {
-  background-color: blue;
+  position: relative;
+  height: @footerHeight;
+  background-color: @headerBg;
+
+  .copy-right {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: @copyRightHeight;
+    line-height: @copyRightHeight;
+    background-color: @copyRightBg;
+    text-align: center;
+    font-size: 12rem / 20;
+    color: @copyRightColor;
+  }
 }
