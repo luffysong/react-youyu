@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 /**
  * Internal dependencies
  */
-import ProptypeBox from '../../components/ProptypeBox';
+import PrototypeBox from '../../components/PrototypeBox';
 
 class Layout extends Component {
   render() {
@@ -14,10 +14,10 @@ class Layout extends Component {
 
     return (
       <div>
-        <ProptypeBox width="100%" height="70px">Header</ProptypeBox>
+        <PrototypeBox width="100%" height="70px">Header</PrototypeBox>
         {React.Children.toArray(children)}
-        <ProptypeBox width="100%" height="220px" bg="#484b53" extraStyle={{color: '#dbdcde'}}>Footer</ProptypeBox>
-        <ProptypeBox width="100%" height="37px" bg="#393c42" extraStyle={{color: '#9e9e9f'}}>Copyright</ProptypeBox>
+        <PrototypeBox width="100%" height="220px" bg="#484b53" extraStyle={{color: '#dbdcde'}}>Footer</PrototypeBox>
+        <PrototypeBox width="100%" height="37px" bg="#393c42" extraStyle={{color: '#9e9e9f'}}>Copyright</PrototypeBox>
       </div>
     );
   }

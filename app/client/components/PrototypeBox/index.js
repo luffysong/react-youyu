@@ -8,7 +8,7 @@ import React, { Component } from 'react';
  */
 import './style.less';
 
-class ProptypeBox extends Component {
+class PrototypeBox extends Component {
   render() {
     const { width, height, bg, children, extraStyle } = this.props;
     const styles = {
@@ -35,4 +35,4 @@ React.propTypes = {
   extraStyle: React.PropTypes.object,
 };
 
-export default ProptypeBox;
+export default PrototypeBox;
