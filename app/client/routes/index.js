@@ -110,6 +110,42 @@ const rootRoute = function(store) {
         });
       },
     }, {
+      path: '/uc/initialMgmt',
+      name: 'initialMgmt',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/InitialMgmt',
+          '../containers/InitialMgmt/reducer',
+          '../containers/InitialMgmt/sagas',
+        ], (require) => {
+          const component = require('../containers/InitialMgmt');
+          const reducer = require('../containers/InitialMgmt/reducer').default;
+          const sagas = require('../containers/InitialMgmt/sagas').default;
+
+          injectReducer('initialMgmt', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
+      path: '/uc/rightsMgmt',
+      name: 'rightsMgmt',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/RightsMgmt',
+          '../containers/RightsMgmt/reducer',
+          '../containers/RightsMgmt/sagas',
+        ], (require) => {
+          const component = require('../containers/RightsMgmt');
+          const reducer = require('../containers/RightsMgmt/reducer').default;
+          const sagas = require('../containers/RightsMgmt/sagas').default;
+
+          injectReducer('rightsMgmt', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+    }, {
         path: '*',
         name: 'notfound',
         getComponent(nextState, cb) {
