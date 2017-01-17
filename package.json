@@ -47,6 +47,7 @@
     "less-loader": "^2.2.3",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
+    "plop": "^1.7.3",
     "postcss-loader": "1.0.0",
     "promise": "7.1.1",
     "react-dev-utils": "^0.4.2",
@@ -84,6 +85,7 @@
     "pug": "^2.0.0-beta6",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-helmet": "^3.3.1",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
@@ -98,7 +100,8 @@
     "test:client": "better-npm-run test:client",
     "start:server": "better-npm-run start:server",
     "build:server": "better-npm-run build:server",
-    "preview:server": "better-npm-run preview:server"
+    "preview:server": "better-npm-run preview:server",
+    "generate": "plop --plopfile internals/generators/index.js"
   },
   "betterScripts": {
     "start:client": {

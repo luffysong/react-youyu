@@ -1,0 +1,61 @@
+/**
+ * {{properCase name }}
+ */
+
+/**
+ * External dependencies
+ */
+import React, { PropTypes, {{{ component }}} } from 'react';
+import { connect } from 'react-redux';
+{{#if wantHeaders}}
+import Helmet from 'react-helmet';
+{{/if}}
+{{#if wantActionsAndReducer}}
+import { createStructuredSelector } from 'reselect';
+
+/**
+ * Internal dependencies
+ */
+import makeSelect{{properCase name}} from './selectors';
+{{/if}}
+
+
+export class {{ properCase name }} extends {{{ component }}} {
+  render() {
+    return (
+      <div>
+      {{#if wantHeaders}}
+        <Helmet
+          title="{{properCase name}}"
+          meta={{curly true}}[
+            {{curly true}} name: 'description', content: 'Description of {{properCase name}}' {{curly}},
+          ]{{curly}}
+        />
+      {{/if}}
+        {{ properCase name }}
+      </div>
+    );
+  }
+}
+
+{{ properCase name }}.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+{{#if wantActionsAndReducer}}
+const mapStateToProps = createStructuredSelector({
+  {{name}}: makeSelect{{properCase name}}(),
+});
+{{/if}}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+{{#if wantActionsAndReducer}}
+export default connect(mapStateToProps, mapDispatchToProps)({{ properCase name }});
+{{else}}
+export default connect(null, mapDispatchToProps)({{ properCase name }});
+{{/if}}
