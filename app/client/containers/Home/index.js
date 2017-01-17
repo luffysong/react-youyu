@@ -22,7 +22,7 @@ export class Home extends PureComponent {
     return (
       <div className="home-container">
         <Helmet
-          title="Home"
+          title="首页"
           meta={[
             { name: 'description', content: 'Description of Home' },
           ]}

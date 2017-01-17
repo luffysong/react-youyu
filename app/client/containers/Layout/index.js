@@ -2,11 +2,13 @@
  * External dependencies
  */
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 
 /**
  * Internal dependencies
  */
-import PrototypeBox from '../../components/PrototypeBox';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 class Layout extends Component {
   render() {
@@ -14,10 +16,16 @@ class Layout extends Component {
 
     return (
       <div>
-        <PrototypeBox width="100%" height="70px">Header</PrototypeBox>
+        <Helmet
+          titleTemplate="%s - 有娱"
+          defaultTitle="有娱"
+          meta={[
+            { name: 'description', content: '有娱' },
+          ]}
+        />
+        <Header />
         {React.Children.toArray(children)}
-        <PrototypeBox width="100%" height="220px" bg="#484b53" extraStyle={{color: '#dbdcde'}}>Footer</PrototypeBox>
-        <PrototypeBox width="100%" height="37px" bg="#393c42" extraStyle={{color: '#9e9e9f'}}>Copyright</PrototypeBox>
+        <Footer />
       </div>
     );
   }
