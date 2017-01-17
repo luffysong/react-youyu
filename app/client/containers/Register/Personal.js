@@ -1,5 +1,5 @@
 /**
- * Register
+ * Personal Register
  */
 
 /**
@@ -16,28 +16,24 @@ import { createStructuredSelector } from 'reselect';
 import './style.less';
 import makeSelectRegister from './selectors';
 
-export class Register extends PureComponent {
+export class Personal extends PureComponent {
   render() {
-    const { children } = this.props;
-
     return (
       <div className="register-container">
         <Helmet
-          title="Register"
+          title="Personal"
           meta={[
-            { name: 'description', content: 'Description of Register' },
+            { name: 'description', content: 'Description of Personal' },
           ]}
         />
-        Register
-        {children}
+        Personal
       </div>
     );
   }
 }
 
-Register.propTypes = {
+Personal.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -50,4 +46,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Personal);

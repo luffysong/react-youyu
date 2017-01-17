@@ -306,6 +306,24 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
+      indexRoute: { onEnter: (nextState, replace) => replace('/register/personal') },
+      childRoutes: [{
+        path: 'personal',
+        name: 'personalRegister',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Register/Personal'));
+          });
+        },
+      }, {
+        path: 'company',
+        name: 'companyRegister',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Register/Company'));
+          });
+        },
+      }],
     }, {
       path: '*',
       name: 'notfound',
