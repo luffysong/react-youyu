@@ -7,6 +7,7 @@
  */
 import React, { PureComponent } from 'react';
 import Slider from 'react-slick';
+import classnames from 'classnames';
 
 /**
  * Internal dependencies
@@ -15,6 +16,8 @@ import './style.less';
 
 class Slick extends PureComponent {
   render() {
+    const { className } = this.props;
+
     const settings = {
       dots: true,
       infinite: true,
@@ -26,8 +29,13 @@ class Slick extends PureComponent {
       autoplaySpeed: 3000,
     };
 
+    const classes = classnames([
+      'slick-component',
+      className,
+    ]);
+
     return (
-      <Slider {...settings} className="slick-component">
+      <Slider {...settings} className={classes}>
         <div className="slick-item">
           1
         </div>
@@ -46,7 +54,7 @@ class Slick extends PureComponent {
 }
 
 Slick.propTypes = {
-
+  className: React.PropTypes.string.isRequired,
 };
 
 export default Slick;

@@ -3,7 +3,22 @@
  */
 
 @import '../../styles/colors';
+@import '../../styles/variables';
 
 .home-container {
-  color: #2d2f33;
+  .slick-wrapper {
+    position: relative;
+    height: @slickHeight;
+
+    .home-slick {
+      height: @slickHeight;
+      background-color: @dark;
+    }
+
+    .home-announcements {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
 }
