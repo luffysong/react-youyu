@@ -37,7 +37,7 @@ export class Home extends PureComponent {
         <PrototypeBox width="100%" height="590px">转让中的项目</PrototypeBox>
         <HomeIntro className="home-rights-intro" type="rights" />
         <HomeIntro className="home-youyu-intro" type="youyu" />
-        <PrototypeBox width="100%" height="320px" bg="#f5f5f5" extraStyle={{color: '#2d2f33'}}>战略合作伙伴</PrototypeBox>
+        <HomeIntro className="home-partners-intro" type="partners" />
       </div>
     );
   }
