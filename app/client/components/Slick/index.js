@@ -36,16 +36,16 @@ class Slick extends PureComponent {
 
     return (
       <Slider {...settings} className={classes}>
-        <div className="slick-item">
+        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/1.jpg')})`}}>
           1
         </div>
-        <div className="slick-item">
+        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/2.jpg')})`}}>
           2
         </div>
-        <div className="slick-item">
+        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/3.jpg')})`}}>
           3
         </div>
-        <div className="slick-item">
+        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/4.jpg')})`}}>
           4
         </div>
       </Slider>

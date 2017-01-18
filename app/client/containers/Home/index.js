@@ -18,7 +18,7 @@ import makeSelectHome from './selectors';
 import Slick from '../../components/Slick';
 import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
-import PrototypeBox from '../../components/PrototypeBox';
+import ProjectCarousel from '../../components/ProjectCarousel';
 
 export class Home extends PureComponent {
   render() {
@@ -34,7 +34,7 @@ export class Home extends PureComponent {
           <Slick className="home-slick" />
           <Announcements className="home-announcements" />
         </div>
-        <PrototypeBox width="100%" height="590px">转让中的项目</PrototypeBox>
+        <ProjectCarousel className="home-project-carousel" />
         <HomeIntro className="home-rights-intro" type="rights" />
         <HomeIntro className="home-youyu-intro" type="youyu" />
         <HomeIntro className="home-partners-intro" type="partners" />

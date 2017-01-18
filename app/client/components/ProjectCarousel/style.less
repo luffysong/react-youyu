@@ -1,0 +1,128 @@
+/**
+ * component ProjectCarousel styles
+ */
+
+@import '../../styles/colors';
+
+.project-carousel-component {
+  position: relative;
+  height: 590rem / 20;
+  background: url('./imgs/pic_bg_index.svg') no-repeat center top;
+  background-size: cover;
+  overflow: hidden;
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .carousel-title {
+    position: relative;
+    margin: (59rem / 20) 0 (37rem / 20);
+    color: @white;
+    font-size: 18rem / 20;
+    text-align: center;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    height: 322rem / 20;
+
+    .carousel-item {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 880rem / 20;
+      height: 322rem / 20;
+      padding: (14rem / 20) (15rem / 20);
+      transform: translateX(-50%);
+      box-shadow: 0 (4rem / 20) (6rem / 20) 0 rgba(0, 0, 0, 0.4);
+      background-color: rgba(72, 72, 83, 0.5057);
+    }
+
+    .cover {
+      float: left;
+      margin-right: 60rem / 20;
+      width: 210rem / 20;
+      height: 294rem / 20;
+      background: @dark url('./imgs/cover.jpg') no-repeat center;
+      background-size: cover;
+    }
+
+    .info {
+      float: left;
+      width: 508rem / 20;
+      height: 294rem / 20;
+    }
+
+    .info-title {
+      font-size: 18rem / 20;
+      line-height: 18rem / 20;
+      color: @white;
+      font-weight: 600;
+      margin-top: 15rem / 20;
+      margin-bottom: 30rem / 20;
+    }
+
+    .base-info {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &-item {
+        width: 166rem / 20;
+        background-color: rgba(158, 158, 159, 0.2);
+        color: @fontLighter;
+        font-size: 14rem / 20;
+        text-align: center;
+
+        .name {
+          color: @brandColor;
+          font-size: 18rem / 20;
+          padding: (10rem / 20) 0;
+        }
+
+        .desc {
+          background-color: rgba(158, 158, 159, 0.1);
+          padding: (6rem / 20) 0;
+        }
+      }
+    }
+
+    .transfer-info {
+      width: 100%;
+      color: @fontLighter;
+      font-size: 14rem / 20;
+      line-height: 24rem / 20;
+      margin-top: 27rem / 20;
+
+      tr {
+        border-bottom: (1rem / 20) solid @LIGHT-GRAY-1;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      .font-white {
+        color: @white;
+      }
+    }
+  }
+
+  .more-link {
+    display: block;
+    color: @brandColor;
+    font-size: 14rem / 20;
+    text-decoration: none;
+    margin-top: 20rem / 20;
+  }
+}
