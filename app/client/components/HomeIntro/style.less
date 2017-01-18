@@ -51,4 +51,32 @@
       }
     }
   }
+
+  .btn-quick-register {
+    position: relative;
+    display: block;
+    width: 212rem / 20;
+    height: 62rem / 20;
+    margin: (20rem / 20) auto 0;
+    text-decoration: none;
+    color: @brandColor;
+    font-size: 16rem / 20;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      line-height: 58rem / 20;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      span {
+        color: @white;
+      }
+    }
+  }
 }
