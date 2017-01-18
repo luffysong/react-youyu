@@ -219,7 +219,7 @@ const rootRoute = function(store) {
     }, {
       path: '/help',
       name: 'help',
-      indexRoute: { onEnter: (nextState, replace) => replace('/news/list') },
+      indexRoute: { onEnter: (nextState, replace) => replace('/help/list') },
       childRoutes: [{
         path: '/help/list',
         name: 'helpList',
