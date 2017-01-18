@@ -217,77 +217,87 @@ const rootRoute = function(store) {
         });
       },
     }, {
-      path: '/help/list',
-      name: 'helpList',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/HelpList',
-          '../containers/HelpList/reducer',
-          '../containers/HelpList/sagas',
-        ], (require) => {
-          const component = require('../containers/HelpList');
-          const reducer = require('../containers/HelpList/reducer').default;
-          const sagas = require('../containers/HelpList/sagas').default;
+      path: '/help',
+      name: 'help',
+      indexRoute: { onEnter: (nextState, replace) => replace('/news/list') },
+      childRoutes: [{
+        path: '/help/list',
+        name: 'helpList',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/HelpList',
+            '../containers/HelpList/reducer',
+            '../containers/HelpList/sagas',
+          ], (require) => {
+            const component = require('../containers/HelpList');
+            const reducer = require('../containers/HelpList/reducer').default;
+            const sagas = require('../containers/HelpList/sagas').default;
 
-          injectReducer('helpList', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
+            injectReducer('helpList', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }, {
+        path: '/help/detail',
+        name: 'helpDetail',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/HelpDetail',
+            '../containers/HelpDetail/reducer',
+            '../containers/HelpDetail/sagas',
+          ], (require) => {
+            const component = require('../containers/HelpDetail');
+            const reducer = require('../containers/HelpDetail/reducer').default;
+            const sagas = require('../containers/HelpDetail/sagas').default;
+
+            injectReducer('helpDetail', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }],
     }, {
-      path: '/help/detail',
-      name: 'helpDetail',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/HelpDetail',
-          '../containers/HelpDetail/reducer',
-          '../containers/HelpDetail/sagas',
-        ], (require) => {
-          const component = require('../containers/HelpDetail');
-          const reducer = require('../containers/HelpDetail/reducer').default;
-          const sagas = require('../containers/HelpDetail/sagas').default;
+      path: '/news',
+      name: 'news',
+      indexRoute: { onEnter: (nextState, replace) => replace('/news/list') },
+      childRoutes: [{
+        path: '/news/list',
+        name: 'newsList',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/NewsList',
+            '../containers/NewsList/reducer',
+            '../containers/NewsList/sagas',
+          ], (require) => {
+            const component = require('../containers/NewsList');
+            const reducer = require('../containers/NewsList/reducer').default;
+            const sagas = require('../containers/NewsList/sagas').default;
 
-          injectReducer('helpDetail', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
-    }, {
-      path: '/news/list',
-      name: 'newsList',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/NewsList',
-          '../containers/NewsList/reducer',
-          '../containers/NewsList/sagas',
-        ], (require) => {
-          const component = require('../containers/NewsList');
-          const reducer = require('../containers/NewsList/reducer').default;
-          const sagas = require('../containers/NewsList/sagas').default;
+            injectReducer('newsList', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }, {
+        path: '/news/detail',
+        name: 'newsDetail',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/NewsDetail',
+            '../containers/NewsDetail/reducer',
+            '../containers/NewsDetail/sagas',
+          ], (require) => {
+            const component = require('../containers/NewsDetail');
+            const reducer = require('../containers/NewsDetail/reducer').default;
+            const sagas = require('../containers/NewsDetail/sagas').default;
 
-          injectReducer('newsList', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
-    }, {
-      path: '/news/detail',
-      name: 'newsDetail',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/NewsDetail',
-          '../containers/NewsDetail/reducer',
-          '../containers/NewsDetail/sagas',
-        ], (require) => {
-          const component = require('../containers/NewsDetail');
-          const reducer = require('../containers/NewsDetail/reducer').default;
-          const sagas = require('../containers/NewsDetail/sagas').default;
-
-          injectReducer('newsDetail', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
+            injectReducer('newsDetail', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }],
     }, {
       path: '/register',
       name: 'register',
