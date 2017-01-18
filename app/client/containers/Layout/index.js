@@ -7,6 +7,7 @@ import Helmet from 'react-helmet';
 /**
  * Internal dependencies
  */
+import './style.less';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
@@ -15,7 +16,7 @@ class Layout extends Component {
     const { children } = this.props;
 
     return (
-      <div>
+      <div className="layout-container">
         <Helmet
           titleTemplate="%s - 有娱"
           defaultTitle="有娱"
