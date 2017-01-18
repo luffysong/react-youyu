@@ -157,8 +157,7 @@ module.exports = {
         screw_ie8: true
       }
     }),
-    new ExtractTextPlugin({
-      filename: 'static/css/[name].[contenthash:8].css',
+    new ExtractTextPlugin('static/css/[name].[contenthash:8].css', {
       allChunks: true,
     }),
     new ManifestPlugin({
