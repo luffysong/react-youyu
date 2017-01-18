@@ -1,0 +1,57 @@
+/**
+ * component Slick styles
+ */
+
+/**
+ * External dependencies
+ */
+@import '~slick-carousel/slick/slick.less';
+@import '~slick-carousel/slick/slick-theme.less';
+
+/**
+ * Internal dependencies
+ */
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.slick-component {
+  position: relative;
+  height: @slickHeight;
+  background-color: @dark;
+
+  .slick-item {
+    color: @white;
+    line-height: @slickHeight;
+    text-align: center;
+  }
+
+  .slick-dots {
+    position: absolute;
+    bottom: 68rem / 20;
+    height: 2rem / 20;
+    line-height: 2rem / 20;
+
+    li {
+      height: 2rem / 20;
+      width: 16rem / 20;
+      background-color: @slickDotBg;
+      line-height: 2rem / 20;
+      vertical-align: middle;
+
+      button {
+        height: 2rem / 20;
+        width: 16rem / 20;
+        overflow: hidden;
+        color: transparent;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      &.slick-active {
+        background-color: @brandColor;
+      }
+    }
+  }
+}
