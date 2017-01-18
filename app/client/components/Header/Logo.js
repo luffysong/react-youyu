@@ -6,6 +6,7 @@
  * External dependencies
  */
 import React from 'react';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -13,9 +14,9 @@ import React from 'react';
 
 function Logo(props) {
   return (
-    <div className={props.className}>
+    <Link className={props.className} to="/">
       <img src={require('./imgs/logo.svg')} alt="有娱投资" />
-    </div>
+    </Link>
   );
 }
 
