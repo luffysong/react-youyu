@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_advantage_index</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="index" transform="translate(-504.000000, -1600.000000)">
+            <g id="Group">
+                <g id="为什么选择有娱" transform="translate(0.000000, 1458.000000)">
+                    <g id="ICON" transform="translate(120.000000, 142.000000)">
+                        <circle id="Oval-Copy" fill="#F5F5F5" cx="444" cy="60" r="60"></circle>
+                        <g id="Page-1" transform="translate(419.000000, 33.000000)" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M44.5759059,43.1267765 L27.0474353,15.6281382 C26.5137882,14.7906206 24.9909647,14.7906206 24.4573176,15.6281382 L6.92884706,43.1267765" id="Stroke-1" fill="#ECECEC"></path>
+                            <polyline id="Stroke-3" points="14.7133176 29.488586 10.9327344 26.6240234 0.178828125 43.1591797"></polyline>
+                            <polyline id="Stroke-5" points="34.7624605 27.3638846 39.2516284 24 53.3133496 43.0004883"></polyline>
+                            <path d="M24.92,15.3722353 L24.92,0" id="Stroke-7"></path>
+                            <polyline id="Stroke-11" points="18.7730824 26.4926118 21.8432 29.9100235 25.7453176 25.5664941 29.6615529 29.9100235 32.7316706 26.4926118"></polyline>
+                            <path d="M0.38,43.1267765 L53.38,43.1267765" id="Stroke-13"></path>
+                            <polygon id="Path-2" fill="#FFD800" points="24.92 0 37 5.93564125 24.92 10.8031175"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

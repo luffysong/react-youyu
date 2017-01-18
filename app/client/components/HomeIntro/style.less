@@ -1,0 +1,54 @@
+/**
+ * component HomeIntro styles
+ */
+
+@import '../../styles/colors';
+@import '../../styles/variables';
+
+.home-intro-component {
+  .intro-inner {
+    width: @containerWidth;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .intro-title {
+    font-size: 20rem / 20;
+    color: @fontDark;
+    text-align: center;
+    margin: (60rem / 20) 0 (57rem / 20) 0;
+  }
+
+  .intro-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .intro-item {
+      width: 243rem / 20;
+      text-align: center;
+
+      img {
+        width: 120rem / 20;
+        height: 120rem / 20;
+        margin-bottom: 24rem / 20;
+      }
+
+      .title {
+        font-size: 16rem / 20;
+        color: @fontLight;
+        margin-bottom: 16rem / 20;
+      }
+
+      .intro {
+        font-size: 14rem / 20;
+        color: @fontLighter;
+        line-height: 24rem / 20;
+      }
+    }
+  }
+}
