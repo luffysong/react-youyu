@@ -15,18 +15,19 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectProject from './selectors';
+import Pagination from '../../components/Pagination';
 
 export class Quoting extends PureComponent {
   render() {
     return (
-      <div className="project-container">
+      <div className="project-container-quoting-tab">
         <Helmet
           title="转让中的份额"
           meta={[
             { name: 'description', content: 'Description of Quoting' },
           ]}
         />
-        Quoting
+        <Pagination />
       </div>
     );
   }
