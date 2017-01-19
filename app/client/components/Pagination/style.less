@@ -1,0 +1,48 @@
+/**
+ * component Pagination styles
+ */
+
+@import '../../styles/colors';
+
+.pagination-component {
+  background-color: @white;
+
+  .pagination {
+    &-container {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 16rem / 20;
+      line-height: 16rem / 20;
+
+      li {
+        display: inline-block;
+        min-width: 34rem / 20;
+        height: 34rem / 20;
+        line-height: 34rem / 20;
+        background-color: @paginationBg;
+        border-radius: 4rem / 20;
+        vertical-align: middle;
+        margin: 0 (10.3rem / 20);
+        text-align: center;
+
+        &.selected {
+          background-color: @paginationSelectBg;
+
+          a {
+            color: @white;
+          }
+        }
+
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0 (9.3rem / 20);
+          text-align: center;
+          color: @fontDark;
+        }
+      }
+    }
+  }
+}
