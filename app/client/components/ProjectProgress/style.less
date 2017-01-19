@@ -5,5 +5,65 @@
 @import '../../styles/colors';
 
 .project-progress-component {
-  background-color: blue;
+  position: relative;
+  border-left: (1rem / 20) solid @projectProgressBorder;
+
+  .project-progress-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &-item {
+      position: relative;
+      padding-left: 24rem / 20;
+      margin-bottom: 22rem / 20;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+        content: ' ';
+        display: block;
+        width: 6rem / 20;
+        height: 6rem / 20;
+        border-radius: 1rem / 20;
+        background-color: @brandColor;
+        z-index: 1;
+      }
+
+      &:first-child,
+      &:last-child {
+        &::after {
+          content: ' ';
+          display: block;
+          position: absolute;
+          width: 1rem / 20;
+          height: 50%;
+          background-color: @white;
+          top: 0;
+          left: -1rem / 20;
+          z-index: 0;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          top: auto;
+          bottom: 0;
+        }
+      }
+
+      &-time {
+        font-size: 14rem / 20;
+        color: @fontLightest;
+      }
+
+      &-title {
+        font-size: 14rem / 20;
+        line-height: 28rem / 20;
+        color: @fontLight;
+      }
+    }
+  }
 }
