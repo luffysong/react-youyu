@@ -19,14 +19,14 @@ import makeSelectProject from './selectors';
 export class Detail extends PureComponent {
   render() {
     return (
-      <div className="project-container">
+      <div className="project-container-detail-tab">
         <Helmet
           title="Detail"
           meta={[
             { name: 'description', content: 'Description of Detail' },
           ]}
         />
-        Detail
+        <img src={require('./imgs/cover.jpg')} alt="项目详情" />
       </div>
     );
   }
