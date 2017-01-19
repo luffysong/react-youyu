@@ -1,3 +1,5 @@
+@import './variables';
+
 html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -23,6 +25,17 @@ body {
 }
 
 .clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.container {
+  width: @containerWidth;
+  margin: 0 auto;
+
   &::after {
     display: block;
     content: "";

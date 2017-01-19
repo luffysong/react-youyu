@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="35px" viewBox="0 0 33 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_confirm_progress</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="项目详情页_出让中的份额" transform="translate(-569.000000, -510.000000)" stroke="#2D2F33" stroke-width="1.5">
+            <g id="progress" transform="translate(0.000000, 481.000000)">
+                <g id="Group-13" transform="translate(569.000000, 25.000000)">
+                    <g id="icon_confirm" transform="translate(1.000000, 5.000000)">
+                        <g id="Group-9">
+                            <g id="Group-5" transform="translate(0.000000, 0.090775)">
+                                <g id="Group-8" transform="translate(0.000000, -0.000000)">
+                                    <polyline id="Stroke-1" fill="#F3F3F5" points="8.71186968 0.333475676 24.5308742 0.333475676 24.5308742 30.9990017 0.000412669683 30.9990017 0.000412669683 9.28749231"></polyline>
+                                    <polygon id="Stroke-3" fill="#ECECEC" points="0.000412669683 8.72744657 8.59769774 8.72744657 8.59769774 0.333475676"></polygon>
+                                    <polygon id="Stroke-6" points="16.8497158 12.0566827 13.8523584 12.0566827 10.8563765 12.0566827 13.8523584 12.0566827"></polygon>
+                                    <polygon id="Stroke-7" points="16.8510914 17.0979674 12.2649557 17.0979674 7.68019548 17.0979674 12.2649557 17.0979674"></polygon>
+                                    <polygon id="Stroke-8" points="13.852771 22.139252 10.7660018 22.139252 7.68060814 22.139252 10.7660018 22.139252"></polygon>
+                                </g>
+                            </g>
+                            <g id="Group-7" transform="translate(17.882353, 19.812189)">
+                                <path d="M13.3444024,6.64352183 C13.3444024,10.1737297 10.413234,13.03558 6.79630556,13.03558 C3.18180463,13.03558 0.250636146,10.1737297 0.250636146,6.64352183 C0.250636146,3.11331393 3.18180463,0.251463617 6.79630556,0.251463617 C10.413234,0.251463617 13.3444024,3.11331393 13.3444024,6.64352183 Z" id="Stroke-11" fill="#FFFFFF"></path>
+                                <polyline id="Stroke-15" points="4.23896726 6.3306736 6.15788129 8.20539293 9.35607133 5.08165073"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
