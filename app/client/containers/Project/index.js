@@ -17,8 +17,7 @@ import './style.less';
 import makeSelectProject from './selectors';
 import ProjectBanner from '../../components/ProjectBanner';
 import PayFlowBar from '../../components/PayFlowBar';
-import ProjectNotice from '../../components/ProjectNotice';
-import ProjectProgress from '../../components/ProjectProgress';
+import Panel from '../../components/Panel';
 
 export class Project extends PureComponent {
   render() {
@@ -34,10 +33,14 @@ export class Project extends PureComponent {
         />
         <ProjectBanner />
         <PayFlowBar />
-        <div className="container">
-          {children}
-          <ProjectNotice />
-          <ProjectProgress />
+        <div className="container project-wrapper">
+          <div className="project-container-left">
+            {children}
+          </div>
+          <div className="project-container-right">
+            <Panel />
+            <Panel />
+          </div>
         </div>
       </div>
     );

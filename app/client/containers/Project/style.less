@@ -5,5 +5,21 @@
 @import '../../styles/colors';
 
 .project-container {
-  background-color: #fff;
+  background-color: @projectBg;
+
+  .project-wrapper {
+    padding-top: 90rem / 20;
+  }
+
+  &-left {
+    float: left;
+    width: 840rem / 20;
+    background-color: @white;
+  }
+
+  &-right {
+    float: right;
+    width: 330rem / 20;
+    background-color: @white;
+  }
 }
