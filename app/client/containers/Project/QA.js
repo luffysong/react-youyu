@@ -21,7 +21,7 @@ export class QA extends PureComponent {
     return (
       <div className="project-container">
         <Helmet
-          title="QA"
+          title="常见问题"
           meta={[
             { name: 'description', content: 'Description of QA' },
           ]}

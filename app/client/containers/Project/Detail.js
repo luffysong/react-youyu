@@ -21,7 +21,7 @@ export class Detail extends PureComponent {
     return (
       <div className="project-container-detail-tab">
         <Helmet
-          title="Detail"
+          title="项目详情"
           meta={[
             { name: 'description', content: 'Description of Detail' },
           ]}
