@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="8px" viewBox="0 0 14 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_state_tag</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.6,7.93333333 L9.6,5.99703014 C9.6,5.45303631 9.15621992,5 8.60878944,5 L0.991210556,5 C0.450151777,5 0,5.4463856 0,5.99703014 L0,12.0029699 C0,12.5469637 0.443780082,13 0.991210556,13 L8.60878944,13 C9.14984822,13 9.6,12.5536144 9.6,12.0029699 L9.6,10.0666667 L14,13 L14,5 L9.6,7.93333333 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="14" height="8" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目详情页_出让中的份额" transform="translate(-640.000000, -134.000000)" stroke="#FFD800" stroke-width="2">
+            <g id="proj_info" transform="translate(0.000000, 70.000000)">
+                <g id="progress" transform="translate(640.000000, 59.000000)">
+                    <use id="Combined-Shape" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

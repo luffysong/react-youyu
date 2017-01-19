@@ -11,9 +11,25 @@ import React, { PureComponent } from 'react';
  * Internal dependencies
  */
 import './style.less';
+import ProjectInfoBar from '../ProjectInfoBar';
 
 class ProjectCarousel extends PureComponent {
   render() {
+    const data = [
+      {
+        name: '制片方',
+        value: '华纳',
+      },
+      {
+        name: '转让份额',
+        value: '10%',
+      },
+      {
+        name: '挂牌标的',
+        value: '8',
+      },
+    ];
+
     return (
       <div className="project-carousel-component">
         <div className="carousel-title">转让中的项目</div>
@@ -24,20 +40,7 @@ class ProjectCarousel extends PureComponent {
               <div className="info-title">
                 神奇动物在哪里
               </div>
-              <ul className="base-info">
-                <li className="base-info-item">
-                  <div className="name">华纳</div>
-                  <div className="desc">制片方</div>
-                </li>
-                <li className="base-info-item">
-                  <div className="name">10%</div>
-                  <div className="desc">转让份额</div>
-                </li>
-                <li className="base-info-item">
-                  <div className="name">8</div>
-                  <div className="desc">挂牌标的</div>
-                </li>
-              </ul>
+              <ProjectInfoBar data={data} />
               <table className="transfer-info">
                 <tbody>
                   <tr className="transfer-info-item">

@@ -5,5 +5,82 @@
 @import '../../styles/colors';
 
 .project-banner-component {
-  background-color: blue;
+  height: 411rem / 20;
+  background: @projectBannerBg url('./imgs/bg_projinfo@2x.png') no-repeat center top;
+  background-size: cover;
+
+  .project-banner {
+    &-info {
+      position: relative;
+      width: 840rem / 20;
+      height: 100%;
+      margin: 0 auto;
+      padding: (57rem / 20) 0 (57rem / 20);
+    }
+
+    &-cover {
+      float: left;
+      width: 212rem / 20;
+      height: 296rem / 20;
+      background: @dark no-repeat center top;
+      background-size: cover;
+    }
+
+    &-detail {
+      float: right;
+      height: 100%;
+      width: (840rem - (212rem + 58rem)) / 20;
+
+      &-title-wrapper {
+        line-height: 18rem / 20;
+        margin-bottom: 24rem / 20;
+      }
+
+      &-title {
+        display: inline-block;
+        margin: 0;
+        font-size: 18rem / 20;
+        color: @white;
+        margin-right: 19rem / 20;
+      }
+
+      &-state-tag {
+        display: inline-block;
+        height: 18rem / 20;
+        line-height: 18rem / 20;
+        color: @brandColor;
+        font-size: 12rem / 20;
+        vertical-align: middle;
+      }
+
+      &-info {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 14rem / 20;
+        color: @projectBannerFont;
+
+        li {
+          margin-bottom: 8rem / 20;
+        }
+      }
+
+      &-info-bar {
+        margin-top: 24rem / 20;
+      }
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    width: 14rem / 20;
+    height: 8rem / 20;
+    vertical-align: middle;
+    margin-right: 6rem / 20;
+
+    &-shooting {
+      margin-top: -1rem / 20;
+      background: url('./imgs/icon_state_tag.svg') no-repeat center;
+    }
+  }
 }
