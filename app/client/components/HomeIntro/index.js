@@ -103,16 +103,16 @@ function renderPartners() {
       <h3 className="intro-title">战略合作伙伴</h3>
       <ul className="intro-items">
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_tianjinsuo.svg')} alt="天金所" />
+          <img className="partner" src={require('./imgs/partners/pic_partner_tianjinsuo@2x.png')} alt="天金所" />
         </li>
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_pusi.svg')} alt="普思资本" />
+          <img className="partner" src={require('./imgs/partners/pic_partner_pusi@2x.png')} alt="普思资本" />
         </li>
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_mayi.svg')} alt="蚂蚁金服" />
+          <img className="partner" src={require('./imgs/partners/pic_partner_mayi@2x.png')} alt="蚂蚁金服" />
         </li>
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_xinpianchang.svg')} alt="新片场" />
+          <img className="partner" src={require('./imgs/partners/pic_partner_xinpianchang@2x.png')} alt="新片场" />
         </li>
       </ul>
     </div>

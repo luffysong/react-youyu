@@ -15,6 +15,8 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectProject from './selectors';
+import ProjectBanner from '../../components/ProjectBanner';
+import PayFlowBar from '../../components/PayFlowBar';
 
 export class Project extends PureComponent {
   render() {
@@ -23,12 +25,13 @@ export class Project extends PureComponent {
     return (
       <div className="project-container">
         <Helmet
-          title="Project"
+          title="项目详情"
           meta={[
             { name: 'description', content: 'Description of Project' },
           ]}
         />
-        Project
+        <ProjectBanner />
+        <PayFlowBar />
         {children}
       </div>
     );

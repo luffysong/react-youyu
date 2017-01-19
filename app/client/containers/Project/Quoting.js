@@ -21,7 +21,7 @@ export class Quoting extends PureComponent {
     return (
       <div className="project-container">
         <Helmet
-          title="Quoting"
+          title="转让中的份额"
           meta={[
             { name: 'description', content: 'Description of Quoting' },
           ]}
