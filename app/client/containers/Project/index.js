@@ -19,7 +19,7 @@ import ProjectBanner from '../../components/ProjectBanner';
 import PayFlowBar from '../../components/PayFlowBar';
 import Panel from '../../components/Panel';
 import ProjectProgres from '../../components/ProjectProgress';
-import TabGroup from '../../components/TabGroup';
+import ProjectNav from '../../components/ProjectNav';
 import Pagination from '../../components/Pagination';
 
 export class Project extends PureComponent {
@@ -38,8 +38,7 @@ export class Project extends PureComponent {
         <PayFlowBar />
         <div className="container project-wrapper">
           <div className="project-container-left">
-            <TabGroup>
-            </TabGroup>
+            <ProjectNav />
             {children}
             <Pagination />
           </div>

@@ -1,0 +1,28 @@
+/**
+ * component ProjectNav styles
+ */
+
+@import '../../styles/colors';
+
+.project-nav-component {
+  background-color: @projectBg;
+
+  .project-nav-tab {
+    font-size: 18rem / 20;
+    line-height: 24rem / 20;
+    text-decoration: none;
+    background-color: @darkBg;
+    color: @white;
+    padding: (15rem / 20) (96rem / 20);
+    margin-right: 2rem / 20;
+    border-top-left-radius: 4rem / 20;
+    border-top-right-radius: 4rem / 20;
+
+    &.active {
+      padding-top: 23rem / 20;
+      color: @fontDark;
+      background-color: @white;
+      margin-right: 0;
+    }
+  }
+}
