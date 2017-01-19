@@ -18,6 +18,7 @@ import makeSelectProject from './selectors';
 import ProjectBanner from '../../components/ProjectBanner';
 import PayFlowBar from '../../components/PayFlowBar';
 import Panel from '../../components/Panel';
+import ProjectProgres from '../../components/ProjectProgress';
 
 export class Project extends PureComponent {
   render() {
@@ -38,8 +39,18 @@ export class Project extends PureComponent {
             {children}
           </div>
           <div className="project-container-right">
-            <Panel />
-            <Panel />
+            <Panel title="重要公告"
+              icon={require('./imgs/icon_inpor_notice_leftbar.svg')}
+              className="project-container-notice-panel"
+            >
+              影片将于2017年1月1日在全国各大影院上线，首映会将在北京万达影城举行。
+            </Panel>
+            <Panel title="项目进展"
+              icon={require('./imgs/icon_proj_leftbar.svg')}
+              className="project-container-progress-panel"
+            >
+              <ProjectProgres />
+            </Panel>
           </div>
         </div>
       </div>

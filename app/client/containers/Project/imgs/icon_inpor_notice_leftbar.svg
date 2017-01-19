@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="17px" viewBox="0 0 16 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_inpor notice_leftbar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="16" height="17" rx="2"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="17" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="项目详情页_出让中的份额" transform="translate(-1106.000000, -752.000000)">
+            <g id="重要公告" transform="translate(991.000000, 722.000000)">
+                <g id="Group-18" transform="translate(115.000000, 26.000000)">
+                    <g id="icon_inpor-notice" transform="translate(0.000000, 4.000000)">
+                        <use id="Rectangle-14" stroke="#484B53" mask="url(#mask-2)" stroke-width="4" fill="#ECECEC" xlink:href="#path-1"></use>
+                        <path d="M7.55555556,10.2894737 L12.8888889,10.2894737" id="Line" stroke="#484B53" stroke-linecap="round"></path>
+                        <path d="M9.33333333,7.60526316 L12.8888889,7.60526316" id="Line-Copy-8" stroke="#484B53" stroke-linecap="round"></path>
+                        <rect id="Rectangle-15" fill="#484B53" x="2.66666667" y="3.57894737" width="4.44444444" height="4.47368421" rx="1"></rect>
+                        <path d="M4.88888889,12.9736842 L12.9381201,12.9736842" id="Line" stroke="#484B53" stroke-linecap="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
