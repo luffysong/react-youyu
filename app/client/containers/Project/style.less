@@ -32,6 +32,7 @@
     margin-bottom: 66rem / 20;
   }
 
+  &-qa-tab,
   &-quoting-tab {
     padding-top: 70rem / 20;
     padding-bottom: 90rem / 20;
@@ -47,6 +48,51 @@
       max-width: 100%;
       display: block;
       margin: 0 auto;
+    }
+  }
+
+  &-qa-tab {
+    padding-left: 63rem / 20;
+    padding-right: 63rem / 20;
+
+    &-item {
+      &-q {
+        font-size: 16rem / 20;
+        color: @fontDark;
+        margin-bottom: 16rem / 20;
+        font-weight: bold;
+      }
+
+      &-a {
+        font-size: 16rem / 20;
+        color: @fontLighter;
+        line-height: 28rem / 20;
+        margin-bottom: 48rem / 20;
+
+        span {
+          color: @fontDark;
+        }
+      }
+    }
+
+    &-split {
+      width: 100%;
+      border: (1rem / 20) solid @border;
+    }
+
+    &-intro {
+      div.intro-inner {
+        width: 100%;
+
+        .intro-items {
+          flex-wrap: wrap;
+
+          .intro-item {
+            width: 284rem / 20;
+            margin-bottom: 41rem / 20;
+          }
+        }
+      }
     }
   }
 }
