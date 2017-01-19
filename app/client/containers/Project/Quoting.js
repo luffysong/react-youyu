@@ -16,6 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import './style.less';
 import makeSelectProject from './selectors';
 import Pagination from '../../components/Pagination';
+import QuotingList from '../../components/QuotingList';
 
 export class Quoting extends PureComponent {
   render() {
@@ -27,6 +28,7 @@ export class Quoting extends PureComponent {
             { name: 'description', content: 'Description of Quoting' },
           ]}
         />
+        <QuotingList />
         <Pagination />
       </div>
     );
