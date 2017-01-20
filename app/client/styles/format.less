@@ -1,0 +1,108 @@
+@import './colors';
+
+.article-format {
+  font-size: 16rem / 20;
+  line-height: 28rem / 20;
+  color: @fontDark;
+
+  h2,
+  h1 {
+    font-size: 16px;
+    margin: 30px 0 14px;
+  }
+
+  h3 {
+    font-size: 15px;
+    margin: 40px 0 14px;
+    position: relative;
+    padding-left: 14px;
+    line-height: 23px;
+
+    &::before {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      width: 4px;
+      background: @brandColor;
+      display: block;
+      content: ' ';
+    }
+  }
+
+  p {
+    margin-bottom: 26px;
+
+    a {
+      color: @fontLight;
+      border-style: solid;
+      border-width: 0 0 1px;
+      border-color: @fontLight;
+      padding: 0 0 1px;
+    }
+
+    a:hover {
+      color: @brandColorDark;
+      border-color: @brandColorDark;
+    }
+  }
+
+  ol,
+  ul {
+    padding: 0 0 0 20px;
+    margin-bottom: 22px;
+
+    li {
+      margin-bottom: 6px;
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: square;
+    }
+  }
+
+  img,
+  iframe {
+    display: block;
+    max-width: 100%;
+  }
+
+  blockquote {
+    padding: 6px 0 6px 55px;
+    position: relative;
+    margin: 30px 0;
+    color: @fontLight;
+    border: 0;
+
+    &::before {
+      display: block;
+      width: 23px;
+      height: 17px;
+      background: url('https://pic.36krcnd.com/avatar/201610/09084833/pvg7ixf711zmv9bk.png') no-repeat 0 0;
+      background-size: contain;
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 15px;
+    }
+  }
+
+  blockquote p {
+    margin-bottom: 0;
+    padding: 6px 10px;
+  }
+
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  em,
+  i {
+    font-style: normal;
+    color: @fontLight;
+  }
+}
