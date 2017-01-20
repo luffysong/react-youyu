@@ -28,7 +28,6 @@ export class Register extends PureComponent {
             { name: 'description', content: 'Description of Register' },
           ]}
         />
-        Register
         {children}
       </div>
     );

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="132px" height="132px" viewBox="0 0 132 132" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_signup_business</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="66" cy="64" r="60"></circle>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.282352941   0 0 0 0 0.294117647   0 0 0 0 0.325490196  0 0 0 0.601222826 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M25.2695312,43 L20.0088836,43 C18.3471231,43 17,41.6659433 17,39.9934141 L17,3.00658591 C17,1.34609436 18.3389342,0 19.9926339,0 L41.0073661,0 C42.6601521,0 44,1.33405674 44,3.00658591 L44,39.9934141 C44,41.6539056 42.6545524,43 41.0029287,43 L35.7897949,43.0458984" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="27" height="43.0458984" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="0" y="11" width="20" height="32" rx="3"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="20" height="32" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="开户-企业or个人" transform="translate(-446.000000, -257.000000)">
+            <g id="Group">
+                <g id="天金所开户">
+                    <g id="Group-7" transform="translate(446.000000, 257.000000)">
+                        <g id="Oval">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#484B53" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <g id="Group-4" transform="translate(44.000000, 39.000000)" stroke="#FFD800">
+                            <path d="M26,21.5 L35,21.5" id="Line" stroke-width="3" stroke-linecap="round"></path>
+                            <path d="M9,30.5 L13.9316406,30.5" id="Line-Copy-2" stroke-width="3" stroke-linecap="round"></path>
+                            <path d="M26,12.5 L35,12.5" id="Line-Copy" stroke-width="3" stroke-linecap="round"></path>
+                            <path d="M9,22.5 L13.9316406,22.5" id="Line-Copy-3" stroke-width="3" stroke-linecap="round"></path>
+                            <use id="Rectangle-9" mask="url(#mask-4)" stroke-width="6" xlink:href="#path-3"></use>
+                            <polyline id="Rectangle-2" stroke-width="3" points="26 43 26 30 26 30 35 30 35 43"></polyline>
+                            <use id="Rectangle-9-Copy" mask="url(#mask-6)" stroke-width="6" xlink:href="#path-5"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

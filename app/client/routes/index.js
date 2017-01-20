@@ -316,8 +316,16 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
-      indexRoute: { onEnter: (nextState, replace) => replace('/register/personal') },
+      indexRoute: { onEnter: (nextState, replace) => replace('/register/choose') },
       childRoutes: [{
+        path: 'choose',
+        name: 'chooseRegister',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Register/Choose'));
+          });
+        },
+      }, {
         path: 'personal',
         name: 'personalRegister',
         getComponent(nextState, cb) {

@@ -5,10 +5,91 @@
 @import '../../styles/colors';
 
 .register-container {
-  color: #2d2f33;
-  min-height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  background-color: @lightBg;
+
+  &-choose {
+    padding-top: 63rem / 20;
+
+    &-title {
+      font-size: 20rem / 20;
+      line-height: 26rem / 20;
+      color: @fontDark;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 0 (13rem / 20);
+    }
+
+    &-sub-title {
+      text-align: center;
+      font-size: 16rem / 20;
+      color: @fontLight;
+      line-height: 21rem / 20;
+    }
+
+    &-area {
+      display: flex;
+      margin-top: 49rem / 20;
+      margin-bottom: 72rem / 20;
+    }
+
+    &-item {
+      display: block;
+      width: 50%;
+      text-align: center;
+      text-decoration: none;
+      padding: (15rem / 20) 0;
+
+      &:hover {
+        box-shadow: 0 0 38px rgba(0, 0, 0, 0.08) inset;
+        transition: all 0.15s ease;
+      }
+
+      img {
+        display: block;
+        width: 132rem / 20;
+        height: 132rem / 20;
+        margin: 0 auto (13rem / 20);
+      }
+
+      &-title {
+        font-size: 18rem / 20;
+        color: @fontLight;
+        line-height: 24rem / 20;
+        margin-bottom: 32rem / 20;
+      }
+
+      &-needs {
+        font-size: 16rem / 20;
+        line-height: 19rem / 20;
+        color: @fontLighter;
+
+        span {
+          color: @fontLight;
+        }
+      }
+    }
+
+    &-desc {
+      height: 300rem / 20;
+      padding-top: 60rem / 20;
+      padding-bottom: 73rem / 20;
+      background-color: @LIGHT-GRAY-5;
+
+      &-title {
+        color: @fontLight;
+        font-size: 16rem / 20;
+        line-height: 21rem / 20;
+        text-align: center;
+        margin-bottom: 31rem / 20;
+      }
+
+      p {
+        margin: 0 auto;
+        max-width: 679rem / 20;
+        font-size: 14rem / 20;
+        line-height: 23rem / 20;
+        color: @fontLighter;
+      }
+    }
+  }
 }
