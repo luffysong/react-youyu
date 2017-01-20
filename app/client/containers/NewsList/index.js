@@ -15,6 +15,8 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectNewsList from './selectors';
+import NewsItem from '../../components/NewsItem';
+import Pagination from '../../components/Pagination';
 
 export class NewsList extends PureComponent {
   render() {
@@ -26,7 +28,14 @@ export class NewsList extends PureComponent {
             { name: 'description', content: 'Description of NewsList' },
           ]}
         />
-        NewsList
+        <div className="container news-list-wrapper">
+          <div className="news-list-list">
+            {
+              Array(10).fill(0).map((item, index) => <NewsItem key={`news-item-${index}`} />)
+            }
+          </div>
+          <Pagination className="news-list-pagination" />
+        </div>
       </div>
     );
   }

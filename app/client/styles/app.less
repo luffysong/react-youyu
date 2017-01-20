@@ -15,13 +15,30 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
+html {
   font-size: 125%;
 }
 
 body {
+  font-size: 14rem / 20;
   background-color: #f2f3f5;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .clearfix {

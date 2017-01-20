@@ -1,0 +1,64 @@
+/**
+ * component NewsItem styles
+ */
+
+@import '../../styles/colors';
+
+.news-item-component {
+  display: block;
+  padding: (34rem / 20) (54rem / 20);
+  border-bottom: (1rem / 20) solid @border;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .news-item {
+    &-title-wrapper {
+      display: flex;
+      width: 100%;
+      line-height: 21rem / 20;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    &-title {
+      position: relative;
+      display: block;
+      padding-left: (16rem + 6rem) / 20;
+      font-size: 16rem / 20;
+      color: @fontDark;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &::before {
+        content: ' ';
+        display: block;
+        background-color: @brandColor;
+        width: 6rem / 20;
+        height: 6rem / 20;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    &-time {
+      min-width: 120rem / 20;
+      font-size: 14rem / 20;
+      color: @fontLightest;
+      text-align: right;
+    }
+
+    &-desc {
+      font-size: 14rem / 20;
+      padding-left: (16rem + 6rem) / 20;
+      line-height: 28rem / 20;
+      color: @fontLight;
+    }
+  }
+}
