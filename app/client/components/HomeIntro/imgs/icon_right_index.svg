@@ -11,23 +11,25 @@
             <g id="Group">
                 <g id="为什么选择有娱" transform="translate(0.000000, 1458.000000)">
                     <g id="ICON" transform="translate(120.000000, 142.000000)">
-                        <circle id="Oval" fill="#F5F5F5" cx="122" cy="60" r="60"></circle>
-                        <g id="Page-1" transform="translate(93.000000, 32.000000)">
-                            <polygon id="Stroke-1" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="49.21875 44.53125 24.21875 44.53125 25.78125 39.84375 47.65625 39.84375"></polygon>
-                            <path d="M44.53125,39.84375 L28.90625,39.84375 L28.90625,37.5 C28.90625,36.6375 29.60625,35.9375 30.46875,35.9375 L42.96875,35.9375 C43.83125,35.9375 44.53125,36.6375 44.53125,37.5 L44.53125,39.84375 Z" id="Stroke-3" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <polygon id="Stroke-5" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFD800" points="41.634375 17.9519531 31.915625 23.1566406 24.3742187 9.46679688 34.09375 4.26289063"></polygon>
-                            <polygon id="Stroke-7" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFD800" points="35.4820313 3.5190625 22.9859375 10.2104687 21.4773438 7.47296875 33.9734375 0.7815625"></polygon>
-                            <polygon id="Stroke-9" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFD800" points="44.53125 19.94625 32.0351562 26.6376562 30.5265625 23.9001562 43.0226562 17.20875"></polygon>
-                            <path d="M29.2763281,18.3650781 L4.28335938,31.7471094 C3.13257813,32.3635156 1.69351563,31.9432031 1.06929688,30.8096094 C0.444296875,29.6752344 0.870859375,28.2564844 2.02007813,27.6408594 L27.0138281,14.2580469 L29.2763281,18.3650781 Z" id="Stroke-11" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#ECECEC"></path>
-                            <path d="M8.96304688,23.9235156 L11.2255469,28.0297656" id="Stroke-13" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M39.6896875,12.7891406 L38.9951563,13.1610156 L36.7334375,9.05398438 L37.4271875,8.68210938 C38.5771875,8.06648438 40.01625,8.48601563 40.64125,9.62039063 C41.26625,10.7547656 40.8404688,12.1727344 39.6896875,12.7891406 Z" id="Stroke-15" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M34.3330469,11.2251563 L36.2182031,14.6478125" id="Stroke-17" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path id="Stroke-19" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <mask id="mask-2" fill="white">
-                                <use xlink:href="#path-1"></use>
-                            </mask>
-                            <g id="Clip-22"></g>
-                            <polygon id="Stroke-21" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="24.21875 49.21875 49.21875 49.21875 49.21875 44.53125 24.21875 44.53125"></polygon>
+                        <g id="Group-10" transform="translate(62.000000, 0.000000)">
+                            <circle id="Oval" fill="#F5F5F5" cx="60" cy="60" r="60"></circle>
+                            <g id="Page-1" transform="translate(31.000000, 32.000000)">
+                                <polygon id="Stroke-1" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="49.21875 44.53125 24.21875 44.53125 25.78125 39.84375 47.65625 39.84375"></polygon>
+                                <path d="M44.53125,39.84375 L28.90625,39.84375 L28.90625,37.5 C28.90625,36.6375 29.60625,35.9375 30.46875,35.9375 L42.96875,35.9375 C43.83125,35.9375 44.53125,36.6375 44.53125,37.5 L44.53125,39.84375 Z" id="Stroke-3" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <polygon id="Stroke-5" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFD800" points="41.634375 17.9519531 31.915625 23.1566406 24.3742187 9.46679688 34.09375 4.26289063"></polygon>
+                                <polygon id="Stroke-7" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFD800" points="35.4820313 3.5190625 22.9859375 10.2104687 21.4773438 7.47296875 33.9734375 0.7815625"></polygon>
+                                <polygon id="Stroke-9" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFD800" points="44.53125 19.94625 32.0351562 26.6376562 30.5265625 23.9001562 43.0226562 17.20875"></polygon>
+                                <path d="M29.2763281,18.3650781 L4.28335938,31.7471094 C3.13257813,32.3635156 1.69351563,31.9432031 1.06929688,30.8096094 C0.444296875,29.6752344 0.870859375,28.2564844 2.02007813,27.6408594 L27.0138281,14.2580469 L29.2763281,18.3650781 Z" id="Stroke-11" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#ECECEC"></path>
+                                <path d="M8.96304688,23.9235156 L11.2255469,28.0297656" id="Stroke-13" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M39.6896875,12.7891406 L38.9951563,13.1610156 L36.7334375,9.05398438 L37.4271875,8.68210938 C38.5771875,8.06648438 40.01625,8.48601563 40.64125,9.62039063 C41.26625,10.7547656 40.8404688,12.1727344 39.6896875,12.7891406 Z" id="Stroke-15" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M34.3330469,11.2251563 L36.2182031,14.6478125" id="Stroke-17" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path id="Stroke-19" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="Clip-22"></g>
+                                <polygon id="Stroke-21" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="24.21875 49.21875 49.21875 49.21875 49.21875 44.53125 24.21875 44.53125"></polygon>
+                            </g>
                         </g>
                     </g>
                 </g>

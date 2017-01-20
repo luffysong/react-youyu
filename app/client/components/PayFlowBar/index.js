@@ -20,7 +20,7 @@ function PayFlowBar() {
           认购流程：
         </div>
         <div className="pay-flow-bar-progress progress-1">
-          <img src={require('./imgs/icon_safe_progress.png')} alt="支付保证金" />
+          <img src={require('./imgs/icon_safe_progress.svg')} alt="支付保证金" />
           <div className="pay-flow-bar-progress-wrapper">
             <div className="pay-flow-bar-progress-name">
               支付保证金

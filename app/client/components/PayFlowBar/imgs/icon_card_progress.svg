@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="38px" height="35px" viewBox="0 0 38 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="38px" height="36px" viewBox="0 0 38 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
     <title>icon_card_progress</title>
     <desc>Created with Sketch.</desc>
@@ -10,10 +10,10 @@
         </mask>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="项目详情页_出让中的份额" transform="translate(-841.000000, -515.000000)">
+        <g id="项目详情页_出让中的份额" transform="translate(-841.000000, -505.000000)">
             <g id="progress" transform="translate(0.000000, 481.000000)">
-                <g id="Group-16" transform="translate(841.000000, 25.000000)">
-                    <g id="icon_card" transform="translate(1.000000, 10.000000)">
+                <g id="Group-16" transform="translate(841.000000, 24.000000)">
+                    <g id="icon_card" transform="translate(1.000000, 11.000000)">
                         <polygon id="Stroke-1" stroke="#2D2F33" stroke-width="1.5" stroke-linejoin="round" fill="#F3F3F5" points="0.72 24 35.28 24 35.28 0 0.72 0"></polygon>
                         <use id="Rectangle-10" stroke="#2D2F33" mask="url(#mask-2)" stroke-width="3" fill="#ECECEC" xlink:href="#path-1"></use>
                         <path d="M22.68,18 L31.248,18" id="Stroke-6" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
