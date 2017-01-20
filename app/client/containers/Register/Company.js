@@ -1,5 +1,5 @@
 /**
- * Company Register
+ * Register - Company
  */
 
 /**
@@ -19,14 +19,9 @@ import makeSelectRegister from './selectors';
 export class Company extends PureComponent {
   render() {
     return (
-      <div className="register-container">
-        <Helmet
-          title="Company"
-          meta={[
-            { name: 'description', content: 'Description of Company' },
-          ]}
-        />
-        Company
+      <div className="register-container-company">
+        <Helmet title="企业开户" />
+        <h4 className="register-container-company-title">企业注册</h4>
       </div>
     );
   }

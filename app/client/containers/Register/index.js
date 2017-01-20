@@ -23,7 +23,7 @@ export class Register extends PureComponent {
     return (
       <div className="register-container">
         <Helmet
-          title="Register"
+          title="开户"
           meta={[
             { name: 'description', content: 'Description of Register' },
           ]}

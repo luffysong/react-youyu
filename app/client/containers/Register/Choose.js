@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import Helmet from 'react-helmet';
 
 /**
  * Internal dependencies
@@ -15,6 +16,7 @@ import { Link } from 'react-router';
 function Choose() {
   return (
     <div className="register-container-choose">
+      <Helmet title="开户选择" />
       <h4 className="register-container-choose-title">天金所开户</h4>
       <div className="register-container-choose-sub-title">请先选择开户类型</div>
       <div className="register-container-choose-area">

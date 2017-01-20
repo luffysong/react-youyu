@@ -1,77 +1,72 @@
-// 颜色常量
-@GOLD-YELLOW: #ffd800;
-@LIGHT-BLACK-1: #2d2f33;
-@DARK-GRAY-1: #484b53;
-@DARK-GRAY-2: #393c42;
-@DARK-GRAY-3: #92979e;
-@LIGHT-GRAY-1: #9e9e9f;
-@LIGHT-GRAY-2: #d4d4d4;
-@LIGHT-GRAY-3: #dbdcde;
-@LIGHT-GRAY-4: #f5f5f5;
-@LIGHT-GRAY-5: #ececec;
+/**
+ * 颜色常量
+ */
 
-// 品牌色
-@brandColor: @GOLD-YELLOW;
-
-@darkBg: @DARK-GRAY-1;
-@lightBg: @LIGHT-GRAY-4;
-@border: @LIGHT-GRAY-5;
-
-// Header && Footer
-@headerBg: @DARK-GRAY-1;
-@headerOptColor: @LIGHT-GRAY-2;
-@footerColor: @LIGHT-GRAY-3;
-@copyRightBg: @DARK-GRAY-2;
-@copyRightColor: @LIGHT-GRAY-1;
-
-// Panel
-@panelBorder: @DARK-GRAY-3;
-@panelTitleBorder: @LIGHT-GRAY-5;
-
-// Project Progress
-@projectProgressBorder: @LIGHT-GRAY-5;
-
-// Pagination
-@paginationBg: @LIGHT-GRAY-5;
-@paginationSelectBg: @DARK-GRAY-1;
-
-// 白色
-@white: #fff;
+// 黄色
+@GOLD-YELLOW-1: #ffd800;
+@GOLD-YELLOW-2: #fdc200;
 
 // 黑色
-@dark: #000;
+@BLACK: #000;
+@DARK-BLACK: #2d2f33; // 主标题、重要文字等元素用色
+@LIGHT-BLACK-1: #484b53; // 标题、主要文字等元素用色
+@LIGHT-BLACK-2: #393c42;
 
-// 按钮颜色
-@buttonBg: @DARK-GRAY-1;
+// 灰色
+@DARK-GRAY-1: #92979e; // 次要文字、描述性/提示性文字等元素用色
+@LIGHT-GRAY-1: #d4d4d4; // 占位字符、新闻列表时间等元素用色
+@LIGHT-GRAY-2: #ececec; // 空间底色、分割线等用色
+@LIGHT-GRAY-3: #f3f3f5; // 内页背景色、某些空间等元素用色
+
+// 白色
+@WHITE: #fff;
+
+/**
+ * 颜色应用
+ */
+
+// 白色
+@white: @WHITE;
+
+// 黑色
+@black: @BLACK;
+
+// 品牌色
+@brandColor: @GOLD-YELLOW-1;
+@brandColorDark: @GOLD-YELLOW-2;
+
+// 背景色
+@darkBg: @LIGHT-BLACK-1;
+@mediumBg: @LIGHT-GRAY-2;
+@lightBg: @LIGHT-GRAY-3;
+
+// 字体色
+@fontDark: @DARK-BLACK;
+@fontLight: @LIGHT-BLACK-1;
+@fontLighter: @DARK-GRAY-1;
+@fontLightest: @LIGHT-GRAY-1;
+
+// 边框色
+@border: @LIGHT-GRAY-2;
+
+/**
+ * 页面、组件用色
+ */
+
+// Header && Footer
+@footerColor: @LIGHT-GRAY-2;
+@copyRightBg: @LIGHT-BLACK-2;
+
+// Panel
+@panelBorder: @DARK-GRAY-1;
+
+// Pagination
+@paginationBg: @LIGHT-GRAY-2;
+@paginationSelectBg: @LIGHT-BLACK-1;
+
+// Button
+@buttonBg: @LIGHT-BLACK-1;
 @buttonColor: @brandColor;
 
-/**
- * 首页
- */
-// 轮播图点
+// 首页 - 轮播图点
 @slickDotBg: @LIGHT-GRAY-1;
-
-// 公告
-@announcementColor: @DARK-GRAY-3;
-
-// 首页背景 1
-@homeBgGray: @LIGHT-GRAY-4;
-@homeBgGrayLight: @LIGHT-GRAY-5;
-
-// 字体颜色
-@fontDark: @LIGHT-BLACK-1;
-@fontLight: @DARK-GRAY-1;
-@fontLighter: @DARK-GRAY-3;
-@fontLightest: @LIGHT-GRAY-2;
-
-/**
- * 项目详情页
- */
-@projectBannerBg: @DARK-GRAY-1;
-@projectBannerFont: @DARK-GRAY-3;
-@projectByFlowBg: @LIGHT-GRAY-5;
-@projectBg: @LIGHT-GRAY-4;
-
-/**
- * 开户页面
- */
