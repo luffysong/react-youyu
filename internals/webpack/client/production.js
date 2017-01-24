@@ -17,7 +17,6 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('.
 const paths = require('../../config/paths');
 const getClientEnvironment = require('../../config/env');
 
-
 function ensureSlash(path, needsSlash) {
   const hasSlash = path.endsWith('/');
   if (hasSlash && !needsSlash) {
