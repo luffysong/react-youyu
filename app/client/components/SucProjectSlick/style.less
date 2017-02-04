@@ -1,0 +1,87 @@
+/**
+ * component SucProjectSlick styles
+ */
+
+/**
+ * Internal dependencies
+ */
+@import '../../styles/colors';
+
+/**
+ * External dependencies
+ */
+@import '~slick-carousel/slick/slick.less';
+@import '~slick-carousel/slick/slick-theme.less';
+
+.suc-project-slick-component {
+  width: 994px;
+  margin: 0 auto;
+  padding: 20px 0;
+
+  .slick-list {
+    overflow: visible;
+  }
+
+  .slick-slide {
+    opacity: 0;
+    z-index: -1;
+    transition: all 1s ease;
+
+    &.slick-active {
+      opacity: 1;
+      z-index: 1;
+      transition: all 1s ease;
+    }
+  }
+
+  .slick-arrow {
+    width: 32px;
+    height: 60px;
+    z-index: 100;
+
+    &::before {
+      display: none;
+    }
+
+    &.slick-next {
+      right: -55px;
+      background: url('./imgs/btn_arrow_right_new.svg') no-repeat center;
+    }
+
+    &.slick-prev {
+      left: -55px;
+      background: url('./imgs/btn_arrow_left_new.svg') no-repeat center;
+    }
+  }
+
+  .slick-item {
+    width: 346px;
+    height: 450px;
+    background: @WHITE;
+    margin: 0 auto;
+    padding: 43.3px 36.2px 0;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.09);
+
+    &-avatar {
+      height: 106px;
+      width: 106px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: @mediumBg;
+      margin-bottom: 27.7px;
+    }
+
+    &-title {
+      text-align: center;
+      font-size: 18px;
+      color: @fontDark;
+      margin-bottom: 12px;
+    }
+
+    &-desc {
+      font-size: 14px;
+      color: @fontLighter;
+      line-height: 28px;
+    }
+  }
+}

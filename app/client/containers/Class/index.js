@@ -14,6 +14,7 @@ import Helmet from 'react-helmet';
  */
 import './style.less';
 import ReasonsBar from './ReasonsBar';
+import SucProjectSlick from '../../components/SucProjectSlick';
 
 export class Class extends PureComponent {
   render() {
@@ -48,6 +49,7 @@ export class Class extends PureComponent {
         </section>
         <section className="class-section-4">
           <h2 className="class-section-4-title class-section-title">成功投资案例</h2>
+          <SucProjectSlick />
         </section>
       </div>
     );
