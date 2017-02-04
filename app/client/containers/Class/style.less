@@ -92,6 +92,112 @@
         margin: 81px 0 47px;
       }
     }
+
+    // Section 5
+    &-5 {
+      background-color: @darkBg;
+      height: 553px;
+      overflow: hidden;
+
+      &-intro {
+        width: 1028px;
+        margin: 0 auto;
+
+        .intro-inner {
+          width: 100%;
+        }
+
+        .intro-title {
+          font-size: 28px;
+          color: @WHITE;
+          margin: 72px 0 80px;
+        }
+
+        .intro-items .intro-item {
+          width: 202px;
+
+          img {
+            margin-bottom: 44px;
+          }
+
+          .title {
+            color: @WHITE;
+            font-size: 18px;
+            margin-bottom: 15px;
+          }
+
+          .intro {
+            color: @fontLighter;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: left;
+          }
+        }
+
+        .btn-quick-register {
+          display: none;
+        }
+      }
+    }
+
+    // Section 6
+    &-6 {
+      width: 940px;
+      margin: 0 auto;
+      padding-bottom: 113.7px;
+
+      &-title {
+        margin: 76px 0 91px;
+      }
+
+      &-progress {
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        &-arrow {
+          width: 12.5px;
+          height: 25.1px;
+        }
+
+        img {
+          height: 54px;
+          margin-right: 24px;
+        }
+
+        &-name {
+          font-size: 18px;
+          color: @fontLight;
+          margin-bottom: 10.3px;
+        }
+
+        &-desc {
+          font-size: 14px;
+          color: @fontLighter;
+        }
+
+        &.progress-1 {
+          img {
+            width: 59px;
+          }
+        }
+
+        &.progress-2 {
+          img {
+            width: 51px;
+          }
+        }
+
+        &.progress-3 {
+          img {
+            width: 56px;
+            margin-top: -10px;
+          }
+        }
+      }
+    }
   }
 }
 

@@ -37,42 +37,42 @@ class SucProjectSlick extends PureComponent {
       <Slider {...settings} className={classes}>
         <div>
           <div className="slick-item">
-            <div className="slick-item-avatar"></div>
+            <div className="slick-item-avatar" style={{backgroundImage: `url('https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p1793720172.jpg')`}}></div>
             <div className="slick-item-title">《人再囧途之泰囧》</div>
             <div className="slick-item-desc">由光线传媒投资(投资比例达90%)的电影《人再囧途之泰囧》以制作加宣发总计近7000万的成本获得12亿票房，创造了中国电影史票房神话。其中，某电影出品人以400万投资额获得7000万回报书写投资奇迹。</div>
           </div>
         </div>
         <div>
           <div className="slick-item">
-            <div className="slick-item-avatar"></div>
+            <div className="slick-item-avatar" style={{backgroundImage: `url('https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p1793720172.jpg')`}}></div>
             <div className="slick-item-title">《人再囧途之泰囧》</div>
             <div className="slick-item-desc">由光线传媒投资(投资比例达90%)的电影《人再囧途之泰囧》以制作加宣发总计近7000万的成本获得12亿票房，创造了中国电影史票房神话。其中，某电影出品人以400万投资额获得7000万回报书写投资奇迹。</div>
           </div>
         </div>
         <div>
           <div className="slick-item">
-            <div className="slick-item-avatar"></div>
+            <div className="slick-item-avatar" style={{backgroundImage: `url('https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p1793720172.jpg')`}}></div>
             <div className="slick-item-title">《人再囧途之泰囧》</div>
             <div className="slick-item-desc">由光线传媒投资(投资比例达90%)的电影《人再囧途之泰囧》以制作加宣发总计近7000万的成本获得12亿票房，创造了中国电影史票房神话。其中，某电影出品人以400万投资额获得7000万回报书写投资奇迹。</div>
           </div>
         </div>
         <div>
           <div className="slick-item">
-            <div className="slick-item-avatar"></div>
+            <div className="slick-item-avatar" style={{backgroundImage: `url('https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p1793720172.jpg')`}}></div>
             <div className="slick-item-title">《人再囧途之泰囧》</div>
             <div className="slick-item-desc">由光线传媒投资(投资比例达90%)的电影《人再囧途之泰囧》以制作加宣发总计近7000万的成本获得12亿票房，创造了中国电影史票房神话。其中，某电影出品人以400万投资额获得7000万回报书写投资奇迹。</div>
           </div>
         </div>
         <div>
           <div className="slick-item">
-            <div className="slick-item-avatar"></div>
+            <div className="slick-item-avatar" style={{backgroundImage: `url('https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p1793720172.jpg')`}}></div>
             <div className="slick-item-title">《人再囧途之泰囧》</div>
             <div className="slick-item-desc">由光线传媒投资(投资比例达90%)的电影《人再囧途之泰囧》以制作加宣发总计近7000万的成本获得12亿票房，创造了中国电影史票房神话。其中，某电影出品人以400万投资额获得7000万回报书写投资奇迹。</div>
           </div>
         </div>
         <div>
           <div className="slick-item">
-            <div className="slick-item-avatar"></div>
+            <div className="slick-item-avatar" style={{backgroundImage: `url('https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p1793720172.jpg')`}}></div>
             <div className="slick-item-title">《人再囧途之泰囧》</div>
             <div className="slick-item-desc">由光线传媒投资(投资比例达90%)的电影《人再囧途之泰囧》以制作加宣发总计近7000万的成本获得12亿票房，创造了中国电影史票房神话。其中，某电影出品人以400万投资额获得7000万回报书写投资奇迹。</div>
           </div>

@@ -15,6 +15,7 @@ import Helmet from 'react-helmet';
 import './style.less';
 import ReasonsBar from './ReasonsBar';
 import SucProjectSlick from '../../components/SucProjectSlick';
+import HomeIntro from '../../components/HomeIntro';
 
 export class Class extends PureComponent {
   render() {
@@ -50,6 +51,49 @@ export class Class extends PureComponent {
         <section className="class-section-4">
           <h2 className="class-section-4-title class-section-title">成功投资案例</h2>
           <SucProjectSlick />
+        </section>
+        <section className="class-section-5">
+          <HomeIntro className="class-section-5-intro" type="youyu" />
+        </section>
+        <section className="class-section-6">
+          <h1 className="class-section-6-title class-section-title">怎么在有娱上投资</h1>
+          <div className="class-section-6-progress">
+            <div className="class-section-6-progress progress-1">
+              <img src={require('./imgs/icon_safe.svg')} alt="支付保证金" />
+              <div className="class-section-6-progress-wrapper">
+                <div className="class-section-6-progress-name">
+                  支付保证金
+                </div>
+                <div className="class-section-6-progress-desc">
+                  转让价格的 1%
+                </div>
+              </div>
+            </div>
+            <img className="class-section-6-progress-arrow" src={require('./imgs/icon_arrow_progress.svg')} alt="" />
+            <div className="class-section-6-progress progress-2">
+              <img src={require('./imgs/icon_confirm.svg')} alt="转让方确定认购意向" />
+              <div className="class-section-6-progress-wrapper">
+                <div className="class-section-6-progress-name">
+                  转让方确定认购意向
+                </div>
+                <div className="class-section-6-progress-desc">
+                  与转让方洽谈达成一致
+                </div>
+              </div>
+            </div>
+            <img className="class-section-6-progress-arrow" src={require('./imgs/icon_arrow_progress.svg')} alt="" />
+            <div className="class-section-6-progress progress-3">
+              <img src={require('./imgs/icon_card.svg')} alt="支付尾款" />
+              <div className="class-section-6-progress-wrapper">
+                <div className="class-section-6-progress-name">
+                  支付尾款
+                </div>
+                <div className="class-section-6-progress-desc">
+                  快捷的权限变更
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     );
