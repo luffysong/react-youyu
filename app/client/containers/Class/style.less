@@ -95,7 +95,8 @@
 
     // Section 5
     &-5 {
-      background-color: @darkBg;
+      background: @darkBg url('./imgs/pic_new@2x.png') repeat-x center;
+      background-size: cover;
       height: 553px;
       overflow: hidden;
 
@@ -142,9 +143,14 @@
 
     // Section 6
     &-6 {
-      width: 940px;
-      margin: 0 auto;
-      padding-bottom: 113.7px;
+      background-color: @WHITE;
+      overflow: hidden;
+
+      &-inner {
+        width: 940px;
+        margin: 0 auto;
+        padding-bottom: 113.7px;
+      }
 
       &-title {
         margin: 76px 0 91px;
@@ -196,6 +202,57 @@
             margin-top: -10px;
           }
         }
+      }
+    }
+
+    // Section 7
+    &-7 {
+      background-color: @lightBg;
+
+      &-title {
+        margin: 51px 0 64px;
+      }
+
+      &-ways {
+        width: 346px + 327px + 232px;
+        margin: 0 auto;
+      }
+
+      &-way-1 {
+        width: 346px;
+        margin-right: 232px;
+      }
+
+      &-way-2 {
+        width: 327px;
+      }
+
+      &-intro {
+        font-size: 14px;
+        color: @fontLighter;
+        line-height: 28px;
+        text-align: center;
+        width: 889px;
+        margin: 45px auto 93px;
+      }
+    }
+
+    // Section 8
+    &-8 {
+      padding-bottom: 91px;
+      background-color: @WHITE;
+      overflow: hidden;
+
+      &-title {
+        margin: 68px 0 45px;
+      }
+
+      &-intro {
+        width: 1028px;
+        margin: 0 auto;
+        font-size: 16px;
+        color: @fontLighter;
+        line-height: 28px;
       }
     }
   }
