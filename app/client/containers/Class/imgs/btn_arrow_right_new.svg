@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="60px" viewBox="0 0 32 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_arrow_right_new</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="新人指南" transform="translate(-1252.000000, -1996.000000)" stroke="#ECECEC" stroke-width="4">
+            <g id="成功案例" transform="translate(156.000000, 1757.000000)">
+                <path d="M1098.20024,269 L1098,268.796196 L1098.34482,268.445238 L1124.96553,241.350957 L1125.31035,241 L1126,241.701915 L1125.65518,242.052872 L1099.17905,269 L1125.65518,295.947128 L1126,296.298085 L1125.31035,297 L1124.96553,296.649043 L1098.34482,269.554762 L1098,269.203804 L1098.20024,269 Z" id="btn_arrow_left" transform="translate(1112.000000, 269.000000) scale(-1, 1) translate(-1112.000000, -269.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

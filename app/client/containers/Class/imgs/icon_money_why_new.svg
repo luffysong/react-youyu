@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="58px" viewBox="0 0 64 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_money_why_new</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="新人指南" transform="translate(-546.000000, -878.000000)">
+            <g id="为什么投资可转让.." transform="translate(206.000000, 766.000000)">
+                <g id="ICON" transform="translate(0.000000, 105.000000)">
+                    <g id="icon_index" transform="translate(289.333333, 7.000000)">
+                        <g id="Group-2">
+                            <g id="icon_money_why_new" transform="translate(51.000000, 2.000000)">
+                                <path d="M35,55.8 C19.6713889,55.8 7.2,43.3301556 7.2,28 C7.2,12.6698444 19.6713889,0.2 35,0.2 C50.3286111,0.2 62.8,12.6698444 62.8,28 C62.8,43.3301556 50.3286111,55.8 35,55.8 Z" id="Stroke-1" fill="#FFD800"></path>
+                                <path d="M28,55.8 C12.6713889,55.8 0.2,43.3301556 0.2,28 C0.2,12.6698444 12.6713889,0.2 28,0.2 C43.3286111,0.2 55.8,12.6698444 55.8,28 C55.8,43.3301556 43.3286111,55.8 28,55.8 Z" id="Stroke-1" fill="#FFFFFF"></path>
+                                <path d="M29,43.6 C20.3983333,43.6 13.4,36.6025333 13.4,28 C13.4,19.3974667 20.3983333,12.4 29,12.4 C37.6016667,12.4 44.6,19.3974667 44.6,28 C44.6,36.6025333 37.6016667,43.6 29,43.6 Z" id="Stroke-1" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F3F3F5"></path>
+                                <path d="M35.5321533,20.78058 C34.73742,18.8687133 32.9026867,17.6545133 30.8486867,17.5999133 C30.1076867,17.5808467 29.3640867,17.5999133 28.62222,17.5999133 C27.4504867,17.5999133 26.2813533,17.5340467 25.17722,18.0107133 C23.2956867,18.8219133 22.0667533,20.76238 22.0667533,22.7999133 C22.0450867,24.9908467 23.5010867,27.0448467 25.5767533,27.74078 C26.6661533,28.1065133 27.8647533,27.9999133 29.0000867,27.9999133 C30.08342,27.9999133 31.2421533,27.8933133 32.28822,28.2131133 C34.44622,28.8752467 35.93342,30.9526467 35.93342,33.1999133 C35.9524867,35.2383133 34.6897533,37.17878 32.8229533,37.9891133 C31.7196867,38.46838 30.54882,38.3999133 29.3770867,38.3999133 C28.6360867,38.3999133 27.89162,38.4198467 27.1514867,38.3999133 C25.0974867,38.34618 23.2618867,37.1311133 22.46802,35.2192467" id="Stroke-3" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M29,15.8666667 L29,40.1333333" id="Stroke-5" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <polygon id="Stroke-7" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="46.9109667 3.73333333 49.7995667 12.4 41.1329 9.5114"></polygon>
+                                <polygon id="Stroke-9" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="46.9109667 3.73333333 49.7995667 12.4 41.1329 9.5114"></polygon>
+                                <polygon id="Stroke-11" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#D8D8D8" points="46.9109667 3.73333333 49.7995667 12.4 41.1329 9.5114"></polygon>
+                                <polygon id="Stroke-13" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#D8D8D8" points="11.9557 53.1333333 9.0671 44.4666667 17.7337667 47.3552667"></polygon>
+                                <path d="M43.9241733,6.72350667 C43.1961733,6.21217333 42.45084,5.73464 41.67084,5.30130667 C37.92684,3.19617333 33.6021733,2.00017333 29.0001733,2.00017333 C21.8241733,2.00017333 15.3241733,4.91217333 10.6181733,9.61817333 C5.91217333,14.3241733 3.00017333,20.8241733 3.00017333,28.0001733 C3.00017333,32.66284 4.23084,37.0481733 6.39750667,40.83464" id="Stroke-15" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.116,49.9696533 C15.87,50.4471867 16.6586667,50.8891867 17.4646667,51.2956533 C20.94,53.0289867 24.8573333,53.9996533 29,53.9996533 C36.176,53.9996533 42.676,51.0876533 47.382,46.3816533 C52.088,41.67652 55,35.17652 55,27.9996533 C55,23.6238533 53.9166667,19.4889867 51.9926667,15.86632" id="Stroke-17" stroke="#484B53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

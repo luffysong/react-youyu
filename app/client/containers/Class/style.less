@@ -5,10 +5,116 @@
 @import '../../styles/colors';
 
 .class-container {
-  color: #2d2f33;
-  height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  .class-section {
+    &-title {
+      font-size: 28px;
+      color: @fontDark;
+      text-align: center;
+    }
+
+    // Section 1
+    &-1 {
+      height: 339px;
+      text-align: center;
+      background: @darkBg url('./imgs/pic_1_new@2x.png') no-repeat center;
+      background-size: cover;
+      overflow: hidden;
+
+      &-title {
+        color: @brandColor;
+        margin: 85px 0 34px;
+      }
+
+      &-desc {
+        width: 896px;
+        margin: 0 auto;
+        font-size: 14px;
+        color: @LIGHT-GRAY-1;
+        line-height: 28px;
+      }
+    }
+
+    // Section 2
+    &-2 {
+      text-align: center;
+      overflow: hidden;
+      background-color: @WHITE;
+
+      &-title {
+        margin: 93px 0 38px;
+
+        &.title-2 {
+          margin: 133px 0 75px;
+        }
+      }
+
+      &-desc {
+        width: 1013px;
+        margin: 0 auto;
+        font-size: 14px;
+        color: @fontLighter;
+        line-height: 28px;
+      }
+    }
+
+    // Section 3
+    &-3 {
+      overflow: hidden;
+      height: 511px;
+      background: @WHITE url('./imgs/bg_who_new@2x.png') repeat-x center;
+      text-align: center;
+      background-size: contain;
+
+      &-title {
+        margin: 64px 0 25px;
+      }
+
+      &-desc {
+        font-size: 14px;
+        color: @fontLighter;
+        line-height: 28px;
+        margin-bottom: 71px;
+      }
+
+      &-img {
+        width: 799px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+// ReasonsBar component
+.reasons-bar-component {
+  .reasons-bar {
+    list-style: none;
+    width: 1028px;
+    margin: 0 auto;
+    padding: 0 0 111px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-item {
+      text-align: center;
+      width: 160px;
+
+      &-icon {
+        margin-bottom: 42px;
+      }
+
+      &-title {
+        font-size: 18px;
+        color: @fontLight;
+        margin-bottom: 18px;
+      }
+
+      &-desc {
+        font-size: 14px;
+        color: @fontLighter;
+        line-height: 24px;
+        text-align: left;
+      }
+    }
+  }
 }
