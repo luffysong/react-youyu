@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="87px" height="87px" viewBox="0 0 87 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_ourproduct_about</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="关于我们" transform="translate(-431.000000, -448.000000)" stroke-width="2">
+            <g id="Group-4" transform="translate(379.000000, 448.000000)">
+                <g id="Group-2">
+                    <g id="icon_ourproduct" transform="translate(53.500000, 1.000000)">
+                        <circle id="Oval" stroke="#484B53" fill="#F3F3F5" cx="42.25" cy="42.75" r="42"></circle>
+                        <g id="Page-1" transform="translate(18.250000, 19.750000)" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon id="Stroke-1" stroke="#484B53" points="13.5483871 5.73712824 24 0 34.4516129 5.73712824 34.4516129 17.2113847 24 22.948513 13.5483871 17.2113847"></polygon>
+                            <path d="M24,22.948513 L24,11.4742565" id="Stroke-3" stroke="#484B53"></path>
+                            <polyline id="Stroke-4" stroke="#484B53" points="34.4516129 5.73712824 24 11.4742565 13.5483871 5.73712824"></polyline>
+                            <g id="Group-17" transform="translate(0.000000, 22.183563)" stroke="#484B53">
+                                <polygon id="Stroke-5" points="27.0967742 5.73712824 37.5483871 0 48 5.73712824 48 17.2113847 37.5483871 22.948513 27.0967742 17.2113847"></polygon>
+                                <path d="M37.5483871,22.948513 L37.5483871,11.4742565" id="Stroke-7"></path>
+                                <polyline id="Stroke-9" points="48 5.73712824 37.5483871 11.4742565 27.0967742 5.73712824"></polyline>
+                                <polygon id="Stroke-11" points="0 5.73712824 10.4516129 0 20.9032258 5.73712824 20.9032258 17.2113847 10.4516129 22.948513 0 17.2113847"></polygon>
+                                <path d="M10.4516129,22.948513 L10.4516129,11.4742565" id="Stroke-13"></path>
+                                <polyline id="Stroke-15" points="20.9032258 5.73712824 10.4516129 11.4742565 0 5.73712824"></polyline>
+                            </g>
+                            <path id="Stroke-18" stroke="#FDC200"></path>
+                            <path id="Stroke-19" stroke="#FDC200"></path>
+                            <path id="Stroke-20" stroke="#FDC200"></path>
+                            <path id="Stroke-21" stroke="#FDC200"></path>
+                            <path id="Stroke-22" stroke="#FDC200"></path>
+                            <path id="Stroke-23" stroke="#FDC200"></path>
+                            <path id="Stroke-24" stroke="#FDC200"></path>
+                            <path id="Stroke-25" stroke="#FDC200"></path>
+                            <path id="Stroke-26" stroke="#FDC200"></path>
+                            <path id="Stroke-27" stroke="#FDC200"></path>
+                            <path id="Stroke-28" stroke="#FDC200"></path>
+                            <path id="Stroke-29" stroke="#FDC200"></path>
+                            <path id="Stroke-30" stroke="#FDC200"></path>
+                            <path id="Stroke-31" stroke="#FDC200"></path>
+                            <path id="Stroke-32" stroke="#FDC200"></path>
+                            <path id="Stroke-33" stroke="#FDC200"></path>
+                            <path id="Stroke-34" stroke="#FDC200"></path>
+                            <path id="Stroke-35" stroke="#FDC200"></path>
+                            <path id="Stroke-36" stroke="#FDC200"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
