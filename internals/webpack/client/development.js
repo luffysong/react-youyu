@@ -3,6 +3,7 @@
  */
 const path = require('path');
 const webpack = require('webpack');
+const pxtorem = require('postcss-pxtorem');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -96,6 +97,11 @@ module.exports = {
           'Firefox ESR',
           'not ie < 9',
         ]
+      }),
+      pxtorem({
+        propList: ['*'],
+        rootValue: 20,
+        replace: true,
       }),
     ];
   },
