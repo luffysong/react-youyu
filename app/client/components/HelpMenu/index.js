@@ -1,5 +1,5 @@
 /**
- * HelpListMenu
+ * HelpMenu
  */
 
 /**
@@ -13,30 +13,30 @@ import { Link } from 'react-router';
  */
 import './style.less';
 
-function HelpListMenu() {
+function HelpMenu() {
   return (
-    <ul className="help-list-menu-component">
-      <li className="help-list-menu-component-item">
+    <ul className="help-menu-component">
+      <li className="help-menu-component-item">
         <Link to="/help/list" activeClassName="active">了解影视收益权投资</Link>
       </li>
-      <li className="help-list-menu-component-item">
+      <li className="help-menu-component-item">
         <Link to="/help/detail" activeClassName="active">投资规则</Link>
       </li>
-      <li className="help-list-menu-component-item">
+      <li className="help-menu-component-item">
         <Link to="/help/detail" activeClassName="active">会员制度</Link>
       </li>
-      <li className="help-list-menu-component-item">
+      <li className="help-menu-component-item">
         <Link to="/help/detail" activeClassName="active">保证金规则</Link>
       </li>
-      <li className="help-list-menu-component-item">
+      <li className="help-menu-component-item">
         <Link to="/help/detail" activeClassName="active">支付问题</Link>
       </li>
     </ul>
   );
 }
 
-HelpListMenu.propTypes = {
+HelpMenu.propTypes = {
 
 };
 
-export default HelpListMenu;
+export default HelpMenu;

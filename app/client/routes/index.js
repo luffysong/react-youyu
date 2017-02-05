@@ -219,6 +219,21 @@ const rootRoute = function(store) {
     }, {
       path: '/help',
       name: 'help',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Help',
+          '../containers/Help/reducer',
+          '../containers/Help/sagas',
+        ], (require) => {
+          const component = require('../containers/Help');
+          const reducer = require('../containers/Help/reducer').default;
+          const sagas = require('../containers/Help/sagas').default;
+
+          injectReducer('help', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
       indexRoute: { onEnter: (nextState, replace) => replace('/help/list') },
       childRoutes: [{
         path: '/help/list',

@@ -6,35 +6,10 @@
 @import '../../styles/variables';
 
 .help-list-container {
-  padding: 100px 0 116px;
+  position: relative;
 
-  .help-list-wrapper {
-    position: relative;
-    padding-left: @leftSideBarWidth;
-    background-color: @WHITE;
-    min-height: 726px;
-    border-radius: 6px;
-  }
-
-  .help-list-left-bar {
-    min-height: 726px;
-    text-align: center;
-
-    &-top {
-      height: 154px;
-      line-height: 154px;
-      font-size: 20px;
-      color: @WHITE;
-      background-color: #565961;
-    }
-  }
-
-  .help-list-pagination-wrapper {
+  .pagination-component {
     margin-top: 87px;
-    padding-left: @leftSideBarWidth;
-
-    .pagination-component {
-      background-color: @lightBg;
-    }
+    background-color: @lightBg;
   }
 }
