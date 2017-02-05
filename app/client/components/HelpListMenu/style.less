@@ -1,0 +1,27 @@
+/**
+ * component HelpListMenu styles
+ */
+
+@import '../../styles/colors';
+
+.help-list-menu-component {
+  padding-top: 28px;
+
+  &-item {
+    display: block;
+    margin-top: 48px;
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      font-size: 16px;
+      color: @WHITE;
+      line-height: 21px;
+
+      &.active {
+        color: @brandColor;
+      }
+    }
+  }
+}

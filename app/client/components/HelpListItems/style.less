@@ -1,0 +1,46 @@
+/**
+ * component HelpListItems styles
+ */
+
+@import '../../styles/colors';
+
+.help-list-items-component {
+  padding: 0 10px;
+
+  &-item {
+    position: relative;
+    height: 90px;
+    line-height: 90px;
+    border-bottom: 1px solid @border;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background-color: @lightBg;
+    }
+
+    &:last-child {
+      border: none;
+    }
+
+    &::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 54px;
+      transform: translateY(-50%);
+      height: 6px;
+      width: 6px;
+      background-color: @brandColor;
+    }
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      padding-left: 86px;
+      font-size: 16px;
+      color: @fontLight;
+    }
+  }
+}
