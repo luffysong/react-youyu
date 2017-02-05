@@ -1,5 +1,5 @@
 /**
- * Help
+ * Uc
  */
 
 /**
@@ -14,49 +14,38 @@ import { createStructuredSelector } from 'reselect';
  * Internal dependencies
  */
 import './style.less';
-import makeSelectHelp from './selectors';
+import makeSelectUc from './selectors';
 import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 
-export class Help extends PureComponent {
+export class Uc extends PureComponent {
   render() {
     const { children } = this.props;
     const sideMenuLinks = [
       {
-        link: '/help/list',
-        text: '了解影视收益权投资',
+        link: '/uc/orderMgmt',
+        text: '订单管理',
       },
       {
-        link: '/help/detail',
-        text: '投资规则',
+        link: '/uc/initialMgmt',
+        text: '初始份额管理',
       },
       {
-        link: '/help/detail',
-        text: '会员制度',
-      },
-      {
-        link: '/help/detail',
-        text: '保证金规则',
-      },
-      {
-        link: '/help/detail',
-        text: '支付问题',
+        link: '/uc/rightsMgmt',
+        text: '影视收益权管理',
       },
     ];
 
     return (
-      <div className="help-container">
+      <div className="uc-container">
         <Helmet
-          title="帮助中心"
+          title="用户中心"
           meta={[
-            { name: 'description', content: 'Description of Help' },
+            { name: 'description', content: 'Description of Uc' },
           ]}
         />
-        <div className="help-wrapper container">
-          <LeftSideBar className="help-left-bar">
-            <div className="help-left-bar-top">
-              常见问题
-            </div>
+        <div className="uc-wrapper container">
+          <LeftSideBar className="uc-left-bar">
             <LeftSideMenu links={sideMenuLinks} />
           </LeftSideBar>
           {children}
@@ -66,13 +55,13 @@ export class Help extends PureComponent {
   }
 }
 
-Help.propTypes = {
+Uc.propTypes = {
   dispatch: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  Help: makeSelectHelp(),
+  UC: makeSelectUc(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -81,4 +70,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Help);
+export default connect(mapStateToProps, mapDispatchToProps)(Uc);

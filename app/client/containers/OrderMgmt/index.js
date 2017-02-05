@@ -21,7 +21,7 @@ export class OrderMgmt extends PureComponent {
     return (
       <div className="order-mgmt-container">
         <Helmet
-          title="OrderMgmt"
+          title="订单管理"
           meta={[
             { name: 'description', content: 'Description of OrderMgmt' },
           ]}

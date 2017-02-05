@@ -163,60 +163,6 @@ const rootRoute = function(store) {
         });
       },
     }, {
-      path: '/uc/initialMgmt',
-      name: 'initialMgmt',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/InitialMgmt',
-          '../containers/InitialMgmt/reducer',
-          '../containers/InitialMgmt/sagas',
-        ], (require) => {
-          const component = require('../containers/InitialMgmt');
-          const reducer = require('../containers/InitialMgmt/reducer').default;
-          const sagas = require('../containers/InitialMgmt/sagas').default;
-
-          injectReducer('initialMgmt', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
-    }, {
-      path: '/uc/rightsMgmt',
-      name: 'rightsMgmt',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/RightsMgmt',
-          '../containers/RightsMgmt/reducer',
-          '../containers/RightsMgmt/sagas',
-        ], (require) => {
-          const component = require('../containers/RightsMgmt');
-          const reducer = require('../containers/RightsMgmt/reducer').default;
-          const sagas = require('../containers/RightsMgmt/sagas').default;
-
-          injectReducer('rightsMgmt', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
-    }, {
-      path: '/uc/orderMgmt',
-      name: 'orderMgmt',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/OrderMgmt',
-          '../containers/OrderMgmt/reducer',
-          '../containers/OrderMgmt/sagas',
-        ], (require) => {
-          const component = require('../containers/OrderMgmt');
-          const reducer = require('../containers/OrderMgmt/reducer').default;
-          const sagas = require('../containers/OrderMgmt/sagas').default;
-
-          injectReducer('orderMgmt', reducer);
-          injectSagas(sagas);
-          loadModule(cb, component);
-        });
-      },
-    }, {
       path: '/help',
       name: 'help',
       getComponent(nextState, cb) {
@@ -236,7 +182,7 @@ const rootRoute = function(store) {
       },
       indexRoute: { onEnter: (nextState, replace) => replace('/help/list') },
       childRoutes: [{
-        path: '/help/list',
+        path: 'list',
         name: 'helpList',
         getComponent(nextState, cb) {
           require.ensure([
@@ -254,7 +200,7 @@ const rootRoute = function(store) {
           });
         },
       }, {
-        path: '/help/detail',
+        path: 'detail',
         name: 'helpDetail',
         getComponent(nextState, cb) {
           require.ensure([
@@ -354,6 +300,80 @@ const rootRoute = function(store) {
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Register/Company'));
+          });
+        },
+      }],
+    }, {
+      path: '/uc',
+      name: 'uc',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Uc',
+          '../containers/Uc/reducer',
+          '../containers/Uc/sagas',
+        ], (require) => {
+          const component = require('../containers/Uc');
+          const reducer = require('../containers/Uc/reducer').default;
+          const sagas = require('../containers/Uc/sagas').default;
+
+          injectReducer('uc', reducer);
+          injectSagas(sagas);
+          loadModule(cb, component);
+        });
+      },
+      indexRoute: { onEnter: (nextState, replace) => replace('/uc/orderMgmt') },
+      childRoutes: [{
+        path: 'initialMgmt',
+        name: 'initialMgmt',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/InitialMgmt',
+            '../containers/InitialMgmt/reducer',
+            '../containers/InitialMgmt/sagas',
+          ], (require) => {
+            const component = require('../containers/InitialMgmt');
+            const reducer = require('../containers/InitialMgmt/reducer').default;
+            const sagas = require('../containers/InitialMgmt/sagas').default;
+
+            injectReducer('initialMgmt', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }, {
+        path: 'rightsMgmt',
+        name: 'rightsMgmt',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/RightsMgmt',
+            '../containers/RightsMgmt/reducer',
+            '../containers/RightsMgmt/sagas',
+          ], (require) => {
+            const component = require('../containers/RightsMgmt');
+            const reducer = require('../containers/RightsMgmt/reducer').default;
+            const sagas = require('../containers/RightsMgmt/sagas').default;
+
+            injectReducer('rightsMgmt', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }, {
+        path: 'orderMgmt',
+        name: 'orderMgmt',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/OrderMgmt',
+            '../containers/OrderMgmt/reducer',
+            '../containers/OrderMgmt/sagas',
+          ], (require) => {
+            const component = require('../containers/OrderMgmt');
+            const reducer = require('../containers/OrderMgmt/reducer').default;
+            const sagas = require('../containers/OrderMgmt/sagas').default;
+
+            injectReducer('orderMgmt', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
           });
         },
       }],
