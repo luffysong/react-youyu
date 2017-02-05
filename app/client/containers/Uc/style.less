@@ -18,4 +18,39 @@
     min-height: 1279px;
     text-align: center;
   }
+
+  &-userinfo {
+    &-avatar {
+      height: 96px;
+      width: 96px;
+      margin: 84px auto 37px;
+      border: 2px solid @border;
+      border-radius: 50%;
+      background: no-repeat center;
+      background-color: @DARK-BLACK;
+      background-size: cover;
+    }
+
+    &-name {
+      font-size: 18px;
+      color: @WHITE;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+  }
+
+  &-logout-btn {
+    display: block;
+    height: 60px;
+    margin-top: 100px;
+    line-height: 60px;
+    color: @WHITE;
+    background-color: #40434b;
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: @danger;
+      background-color: darken(#40434b, 5%);
+    }
+  }
 }

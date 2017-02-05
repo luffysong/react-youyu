@@ -19,6 +19,13 @@ import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 
 export class Uc extends PureComponent {
+  renderUser() {
+    return <div className="uc-container-userinfo">
+      <div className="uc-container-userinfo-avatar" style={{backgroundImage: `url()`}}></div>
+      <div className="uc-container-userinfo-name">李思思</div>
+    </div>;
+  }
+
   render() {
     const { children } = this.props;
     const sideMenuLinks = [
@@ -46,7 +53,9 @@ export class Uc extends PureComponent {
         />
         <div className="uc-wrapper container">
           <LeftSideBar className="uc-left-bar">
+            { this.renderUser() }
             <LeftSideMenu links={sideMenuLinks} />
+            <a href="" className="uc-container-logout-btn">退出登录</a>
           </LeftSideBar>
           {children}
         </div>
