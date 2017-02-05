@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_like_FAQ_pre</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M2.68429907,7.6081722 C1.72747825,7.75678024 1,8.58530794 1,9.58513054 L1,16.4917311 C1,17.5997776 1.89800774,18.4931526 3.00575642,18.4940516 L10.661986,18.5002649 C11.7715679,18.5011653 12.8957886,17.6392838 13.1770978,16.5752019 L15.0446127,9.51112851 C15.3274908,8.44111213 14.6616041,7.58443776 13.5608173,7.58443776 L7.50348135,7.58443776 L8.62513634,5.64167434 C9.20132501,4.64368628 8.85723735,3.37642179 7.86199002,2.80181548 C6.85980401,2.22320311 5.5948002,2.56703638 5.02102694,3.56084081 L2.68429907,7.6081722 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="14.1096834" height="15.9797055" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn" transform="translate(-147.000000, -292.000000)" stroke-width="2" stroke="#FFD800" fill="#FFD800">
+            <g id="查看更多项目-copy-2" transform="translate(125.000000, 279.000000)">
+                <g id="Group-21">
+                    <g id="Group" transform="translate(22.000000, 10.500000)">
+                        <use id="Combined-Shape" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

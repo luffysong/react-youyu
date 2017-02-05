@@ -5,10 +5,99 @@
 @import '../../styles/colors';
 
 .help-detail-container {
-  color: #2d2f33;
-  height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  padding: 28px 10px;
+  background-color: @WHITE;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  min-height: 726px;
+
+  &-top {
+    padding: 0 54px;
+    border-bottom: 1px solid @border;
+  }
+
+  &-back {
+    font-size: 14px;
+    color: @fontLighter;
+    margin-bottom: 36px;
+
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 9px;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      height: 20px;
+    }
+  }
+
+  &-qa {
+    font-size: 16px;
+    margin-bottom: 100px;
+
+    &-q {
+      line-height: 28px;
+      color: @fontDark;
+      margin-bottom: 26px;
+      position: relative;
+      padding-left: 35px;
+    }
+
+    &-a {
+      line-height: 28px;
+      color: @fontLighter;
+      position: relative;
+      padding-left: 35px;
+    }
+
+    &-letter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 28px;
+      line-height: 28px;
+      color: @fontDark;
+    }
+  }
+
+  &-operate {
+    text-align: center;
+    margin-bottom: 37px;
+
+    &-btn {
+      padding: 13px 22px;
+      color: @WHITE;
+
+      &.solved-btn {
+        margin-right: 108px;
+        color: @brandColor;
+      }
+    }
+  }
+
+  &-bottom {
+    padding: 0 54px;
+
+    h3 {
+      margin-bottom: 24px;
+      color: @fontLight;
+      font-size: 16px;
+      line-height: 21px;
+      margin-top: 38px;
+    }
+  }
+
+  &-related {
+    li a {
+      display: block;
+      font-size: 14px;
+      color: @fontLighter;
+      margin-bottom: 16px;
+      line-height: 19px;
+    }
+  }
 }
