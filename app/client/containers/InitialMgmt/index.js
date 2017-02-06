@@ -46,16 +46,11 @@ export class InitialMgmt extends PureComponent {
         />
         <div className="initial-mgmt-list">
           <UcNavTab links={navLinks} />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
+          {
+            Array(10).fill().map((_, index) => {
+              return <UcListItem type="initial" key={`initial-list-item-${index}`} />;
+            })
+          }
         </div>
         <Pagination className="initial-mgmt-pagination" />
       </div>

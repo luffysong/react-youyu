@@ -50,16 +50,11 @@ export class OrderMgmt extends PureComponent {
         />
         <div className="order-mgmt-list">
           <UcNavTab links={navLinks} />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
-          <UcListItem />
+          {
+            Array(10).fill().map((_, index) => {
+              return <UcListItem type="order" key={`order-list-item-${index}`} />;
+            })
+          }
         </div>
         <Pagination className="order-mgmt-pagination" />
       </div>
