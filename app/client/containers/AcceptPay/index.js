@@ -21,7 +21,7 @@ export class AcceptPay extends PureComponent {
     return (
       <div className="accept-pay-container">
         <Helmet
-          title="AcceptPay"
+          title="支付保证金"
           meta={[
             { name: 'description', content: 'Description of AcceptPay' },
           ]}
