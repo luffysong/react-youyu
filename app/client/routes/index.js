@@ -162,6 +162,44 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
+      indexRoute: { onEnter: (nextState, replace) => replace('/accept/confirm') },
+      childRoutes: [{
+        path: 'confirm',
+        name: 'acceptConfirm',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/AcceptConfirm',
+            '../containers/AcceptConfirm/reducer',
+            '../containers/AcceptConfirm/sagas',
+          ], (require) => {
+            const component = require('../containers/AcceptConfirm');
+            const reducer = require('../containers/AcceptConfirm/reducer').default;
+            const sagas = require('../containers/AcceptConfirm/sagas').default;
+
+            injectReducer('acceptConfirm', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }, {
+        path: 'pay',
+        name: 'acceptPay',
+        getComponent(nextState, cb) {
+          require.ensure([
+            '../containers/AcceptPay',
+            '../containers/AcceptPay/reducer',
+            '../containers/AcceptPay/sagas',
+          ], (require) => {
+            const component = require('../containers/AcceptPay');
+            const reducer = require('../containers/AcceptPay/reducer').default;
+            const sagas = require('../containers/AcceptPay/sagas').default;
+
+            injectReducer('acceptPay', reducer);
+            injectSagas(sagas);
+            loadModule(cb, component);
+          });
+        },
+      }],
     }, {
       path: '/help',
       name: 'help',
