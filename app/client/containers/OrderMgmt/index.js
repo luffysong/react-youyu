@@ -17,9 +17,29 @@ import './style.less';
 import makeSelectOrderMgmt from './selectors';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
+import UcNavTab from '../../components/UcNavTab';
 
 export class OrderMgmt extends PureComponent {
   render() {
+    const navLinks = [
+      {
+        link: '/uc/orderMgmt/1',
+        text: '待付款',
+      },
+      {
+        link: '/uc/orderMgmt/2',
+        text: '已完成',
+      },
+      {
+        link: '/uc/orderMgmt/3',
+        text: '已失效',
+      },
+      {
+        link: '/uc/orderMgmt/4',
+        text: '全部',
+      },
+    ];
+
     return (
       <div className="order-mgmt-container">
         <Helmet
@@ -29,6 +49,7 @@ export class OrderMgmt extends PureComponent {
           ]}
         />
         <div className="order-mgmt-list">
+          <UcNavTab links={navLinks} />
           <UcListItem />
           <UcListItem />
           <UcListItem />

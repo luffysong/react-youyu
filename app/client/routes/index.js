@@ -361,6 +361,10 @@ const rootRoute = function(store) {
       }, {
         path: 'orderMgmt',
         name: 'orderMgmt',
+        indexRoute: { onEnter: (nextState, replace) => replace('/uc/orderMgmt/1') },
+        childRoutes:[{
+          path: ':status',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/OrderMgmt',
