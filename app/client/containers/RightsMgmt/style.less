@@ -5,10 +5,16 @@
 @import '../../styles/colors';
 
 .rights-mgmt-container {
-  color: #2d2f33;
-  height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  overflow: hidden;
+
+  .rights-mgmt-list {
+    padding: 0 11px 36px;
+    border-radius: 6px;
+    background-color: @WHITE;
+  }
+
+  .rights-mgmt-pagination {
+    background-color: transparent;
+    margin-top: 65px;
+  }
 }

@@ -165,6 +165,42 @@ class UcListItem extends PureComponent {
           {this.renderMiddle(type, middleData)}
         </div>;
         break;
+      case 'rights':
+        topData = [
+          {
+            name: '份额号',
+            value: '0000001',
+          },
+          {
+            name: '挂牌时间',
+            value: '2016-10-11 16:55:50',
+          },
+        ];
+
+        middleData = [
+          {
+            name: '项目名称',
+            value: '神奇动物在哪里',
+          },
+          {
+            name: '制片方',
+            value: '华纳影业',
+          },
+          {
+            name: '转让份额',
+            value: '1%',
+          },
+          {
+            name: '转让价格',
+            value: '1,000,000,000元',
+          },
+        ];
+
+        tpl = <div>
+          {this.renderTop(topData)}
+          {this.renderMiddle(type, middleData)}
+        </div>;
+        break;
       default:
         tpl = null;
         break;
