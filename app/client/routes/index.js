@@ -325,6 +325,10 @@ const rootRoute = function(store) {
       childRoutes: [{
         path: 'initialMgmt',
         name: 'initialMgmt',
+        indexRoute: { onEnter: (nextState, replace) => replace('/uc/initialMgmt/1') },
+        childRoutes:[{
+          path: ':status',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/InitialMgmt',
@@ -343,6 +347,10 @@ const rootRoute = function(store) {
       }, {
         path: 'rightsMgmt',
         name: 'rightsMgmt',
+        indexRoute: { onEnter: (nextState, replace) => replace('/uc/rightsMgmt/1') },
+        childRoutes:[{
+          path: ':status',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/RightsMgmt',
