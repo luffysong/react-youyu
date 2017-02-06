@@ -21,7 +21,7 @@ export class AcceptConfirm extends PureComponent {
     return (
       <div className="accept-confirm-container">
         <Helmet
-          title="AcceptConfirm"
+          title="确认意向"
           meta={[
             { name: 'description', content: 'Description of AcceptConfirm' },
           ]}

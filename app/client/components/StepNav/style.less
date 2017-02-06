@@ -5,5 +5,47 @@
 @import '../../styles/colors';
 
 .step-nav-component {
-  background-color: blue;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 105px;
+  color: @fontLighter;
+  font-size: 16px;
+  margin-bottom: 87px;
+
+  .hide {
+    display: none;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+
+    &.highlight {
+      .step-nav-component-item-sign {
+        background-color: @darkBg;
+      }
+    }
+
+    a {
+      color: @fontLighter;
+      font-size: 16px;
+
+      &.active {
+        color: @fontDark;
+      }
+    }
+
+    &-sign {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: @LIGHT-GRAY-1;
+      line-height: 32px;
+      text-align: center;
+      font-size: 18px;
+      color: @WHITE;
+      margin-right: 14px;
+    }
+  }
 }
