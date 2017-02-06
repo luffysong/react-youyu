@@ -15,6 +15,8 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectOrderMgmt from './selectors';
+import UcListItem from '../../components/UcListItem';
+import Pagination from '../../components/Pagination';
 
 export class OrderMgmt extends PureComponent {
   render() {
@@ -26,7 +28,19 @@ export class OrderMgmt extends PureComponent {
             { name: 'description', content: 'Description of OrderMgmt' },
           ]}
         />
-        OrderMgmt
+        <div className="order-mgmt-list">
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+          <UcListItem />
+        </div>
+        <Pagination className="order-mgmt-pagination" />
       </div>
     );
   }
