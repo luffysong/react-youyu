@@ -5,10 +5,63 @@
 @import '../../styles/colors';
 
 .accept-pay-container {
-  color: #2d2f33;
-  min-height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  padding-top: 47px;
+  padding-bottom: 100px;
+
+  .accept-pay {
+    &-part {
+      position: relative;
+      background-color: @WHITE;
+
+      &-border {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &-top {
+      h2 {
+        font-size: 20px;
+        color: @fontDark;
+        font-weight: 600;
+        margin: 34px 0 23px;
+      }
+
+      margin-bottom: 25px;
+      padding: 40px 0 63px;
+      text-align: center;
+      color: @fontLighter;
+    }
+
+    &-bottom {
+      position: relative;
+      color: @fontLight;
+      padding: 13px 0 14px;
+
+      table {
+        margin: 0 auto;
+        overflow: hidden;
+
+        td {
+          font-size: 16px;
+          line-height: 21px;
+          padding: 15px 20px;
+          white-space: nowrap;
+        }
+      }
+
+      .column {
+        &-name {
+          text-align: right;
+        }
+
+        &-value {
+          font-weight: 600;
+          color: @fontDark;
+        }
+      }
+    }
+  }
 }
