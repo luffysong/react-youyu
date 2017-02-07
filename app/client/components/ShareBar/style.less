@@ -5,7 +5,43 @@
 @import '../../styles/colors';
 
 .share-bar-component {
-  background-color: blue;
-  font-size: 20px;
-  padding: 10px 20px;
+  border-top: 1px solid @border;
+  padding: 48px 0 0;
+
+  span {
+    display: inline-block;
+    font-size: 14px;
+    color: @fontLight;
+    line-height: 28px;
+    margin-right: 30px;
+    vertical-align: middle;
+  }
+
+  [class*=icon-] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-right: 30px;
+    background: @WHITE no-repeat center;
+    background-size: contain;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+
+  .icon-weixin {
+    background-image: url('./imgs/btn_share_weixin_nor.svg');
+
+    &:hover {
+      background-image: url('./imgs/btn_share_weixin_pre.svg');
+    }
+  }
+
+  .icon-weibo {
+    background-image: url('./imgs/btn_share_weibo_nor.svg');
+
+    &:hover {
+      background-image: url('./imgs/btn_share_weibo_pre.svg');
+    }
+  }
 }

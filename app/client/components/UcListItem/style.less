@@ -1,0 +1,147 @@
+/**
+ * component UcListItem styles
+ */
+
+@import '../../styles/colors';
+
+.uc-list-item-component {
+  margin-bottom: 24px;
+  background-color: @WHITE;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.07);
+  border-radius: 1px;
+
+  .uc-list-item {
+    &-top {
+      display: flex;
+      height: 44px;
+      line-height: 44px;
+      background-color: #e6e9eb;
+      border-radius: 1px;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      padding-left: 54px;
+
+      &-item {
+        margin-right: 50px;
+        font-size: 14px;
+        color: @fontLight;
+      }
+    }
+
+    &-middle {
+      margin: 0 54px;
+      border-bottom: 1px solid @border;
+      overflow: hidden;
+
+      &.no-border {
+        border: none;
+
+        .item-4 {
+          width: 95px + 43px;
+        }
+
+        .uc-list-item-button {
+          float: right;
+          margin-top: 33px;
+          padding: 13px 25.5px;
+          font-size: 16px;
+        }
+      }
+
+      &-item {
+        float: left;
+        padding: 28px 20px 20px 0;
+
+        &.item-1 {
+          width: 128px + 78.3px;
+        }
+
+        &.item-2 {
+          width: 64px + 78.4px;
+        }
+
+        &.item-3 {
+          width: 64px + 63.3px;
+        }
+
+        &.item-4 {
+          width: 64px + 43px;
+        }
+
+        &.item-5 {
+          width: 80px + 142px - 60px;
+        }
+
+        &-value {
+          font-size: 16px;
+          color: @fontDark;
+          font-weight: 600;
+          margin-bottom: 16px;
+          line-height: 21px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        &-name {
+          font-size: 14px;
+          color: @fontLighter;
+          line-height: 19px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    &-bottom {
+      position: relative;
+      padding: 10px 54px 14px;
+
+      &-split {
+        position: absolute;
+        left: 54px + (7px / 2);
+        top: 28px;
+        width: 1px;
+        height: 37px + 7px;
+        background-color: @border;
+      }
+
+      table {
+        tr {
+          position: relative;
+          height: 19px;
+          line-height: 19px;
+          margin-bottom: 20px;
+
+          .item-sign {
+            content: ' ';
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: @LIGHT-GRAY-1;
+
+            &.active {
+              background-color: @brandColor;
+            }
+          }
+
+          td {
+            position: relative;
+            color: @fontLight;
+            padding: 10px 79.5px 10px 0;
+            font-size: 14px;
+
+            &:first-child {
+              padding-right: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

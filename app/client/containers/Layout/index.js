@@ -18,10 +18,10 @@ class Layout extends Component {
     return (
       <div className="layout-container">
         <Helmet
-          titleTemplate="%s - 有娱"
-          defaultTitle="有娱"
+          titleTemplate="%s - 有娱投资"
+          defaultTitle="有娱投资"
           meta={[
-            { name: 'description', content: '有娱' },
+            { name: 'description', content: '有娱投资' },
           ]}
         />
         <Header />

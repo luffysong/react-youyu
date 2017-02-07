@@ -15,18 +15,48 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectOrderMgmt from './selectors';
+import UcListItem from '../../components/UcListItem';
+import Pagination from '../../components/Pagination';
+import UcNavTab from '../../components/UcNavTab';
 
 export class OrderMgmt extends PureComponent {
   render() {
+    const navLinks = [
+      {
+        link: '/uc/orderMgmt/1',
+        text: '待付款',
+      },
+      {
+        link: '/uc/orderMgmt/2',
+        text: '已完成',
+      },
+      {
+        link: '/uc/orderMgmt/3',
+        text: '已失效',
+      },
+      {
+        link: '/uc/orderMgmt/4',
+        text: '全部',
+      },
+    ];
+
     return (
       <div className="order-mgmt-container">
         <Helmet
-          title="OrderMgmt"
+          title="订单管理"
           meta={[
             { name: 'description', content: 'Description of OrderMgmt' },
           ]}
         />
-        OrderMgmt
+        <div className="order-mgmt-list">
+          <UcNavTab links={navLinks} />
+          {
+            Array(10).fill().map((_, index) => {
+              return <UcListItem type="order" key={`order-list-item-${index}`} />;
+            })
+          }
+        </div>
+        <Pagination className="order-mgmt-pagination" />
       </div>
     );
   }

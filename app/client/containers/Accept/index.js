@@ -15,18 +15,44 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectAccept from './selectors';
+import StepNav from '../../components/StepNav';
 
 export class Accept extends PureComponent {
   render() {
+    const { children } = this.props;
+    const steps = [
+      {
+        name: '确认意向',
+        link: '/accept/confirm',
+      },
+      {
+        name: '支付保证金',
+        link: '/accept/pay',
+      },
+      {
+        name: '与转达方达成意向',
+      },
+      {
+        name: '签署协议',
+      },
+      {
+        name: '支付尾款',
+      },
+    ];
+    const currentPath = this.props.location.pathname;
+
     return (
       <div className="accept-container">
         <Helmet
-          title="Accept"
+          title="摘牌"
           meta={[
             { name: 'description', content: 'Description of Accept' },
           ]}
         />
-        Accept
+        <div className="accept-wrapper container">
+          <StepNav steps={steps} currentPath={currentPath} />
+          {children}
+        </div>
       </div>
     );
   }
@@ -34,6 +60,7 @@ export class Accept extends PureComponent {
 
 Accept.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

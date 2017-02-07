@@ -15,18 +15,44 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectRightsMgmt from './selectors';
+import UcNavTab from '../../components/UcNavTab';
+import UcListItem from '../../components/UcListItem';
+import Pagination from '../../components/Pagination';
 
 export class RightsMgmt extends PureComponent {
   render() {
+    const navLinks = [
+      {
+        link: '/uc/rightsMgmt/1',
+        text: '持有中',
+      },
+      {
+        link: '/uc/rightsMgmt/2',
+        text: '转让中',
+      },
+      {
+        link: '/uc/rightsMgmt/3',
+        text: '已转让',
+      },
+    ];
+
     return (
       <div className="rights-mgmt-container">
         <Helmet
-          title="RightsMgmt"
+          title="影视收益权管理"
           meta={[
             { name: 'description', content: 'Description of RightsMgmt' },
           ]}
         />
-        RightsMgmt
+        <div className="rights-mgmt-list">
+          <UcNavTab links={navLinks} />
+          {
+            Array(10).fill().map((_, index) => {
+              return <UcListItem type="rights" key={`rights-list-item-${index}`} />;
+            })
+          }
+        </div>
+        <Pagination className="rights-mgmt-pagination" />
       </div>
     );
   }

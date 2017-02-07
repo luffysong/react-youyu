@@ -21,7 +21,9 @@ function ShareBar(props) {
   ]);
   return (
     <div className={classes}>
-      hello
+      <span>分享到</span>
+      <div className="icon-weixin"></div>
+      <div className="icon-weibo"></div>
     </div>
   );
 }

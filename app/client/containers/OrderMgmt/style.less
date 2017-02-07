@@ -5,10 +5,16 @@
 @import '../../styles/colors';
 
 .order-mgmt-container {
-  color: #2d2f33;
-  height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  overflow: hidden;
+
+  .order-mgmt-list {
+    padding: 0 11px 104px;
+    border-radius: 6px;
+    background-color: @WHITE;
+  }
+
+  .order-mgmt-pagination {
+    background-color: transparent;
+    margin-top: 65px;
+  }
 }

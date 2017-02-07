@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="15px" viewBox="0 0 8 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_back_FAQ</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="帮助中心_问题详情" transform="translate(-505.000000, -198.000000)" fill="#92979E">
+            <g id="Group-4" transform="translate(504.000000, 196.000000)">
+                <path d="M2.51180476,9.5 L8.30956566,3.7022391 C8.58955142,3.42225334 8.58543077,2.97600139 8.30764938,2.69822001 C8.02793136,2.41850198 7.58035334,2.41958067 7.30363029,2.69630372 L1.18023193,8.81970208 C0.99415125,9.00578276 0.933561325,9.26530378 0.995395726,9.5 C0.933561325,9.73469622 0.99415125,9.99421724 1.18023193,10.1802979 L7.30363029,16.3036963 C7.58035334,16.5804193 8.02793136,16.581498 8.30764938,16.30178 C8.58543077,16.0239986 8.58955142,15.5777467 8.30956566,15.2977609 L2.51180476,9.5 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
