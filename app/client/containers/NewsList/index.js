@@ -23,7 +23,7 @@ export class NewsList extends PureComponent {
     return (
       <div className="news-list-container">
         <Helmet
-          title="NewsList"
+          title="新闻公告"
           meta={[
             { name: 'description', content: 'Description of NewsList' },
           ]}

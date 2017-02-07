@@ -1,0 +1,62 @@
+/**
+ * component AcceptInfoBar styles
+ */
+
+@import '../../styles/colors';
+
+.accept-info-bar-component {
+  position: absolute;
+  top: -37px;
+  left: 20px;
+  width: 1160px;
+  padding: 36px 0 36px 104px;
+  background: @darkBg;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.17);
+  border-radius: 6px;
+  color: @WHITE;
+
+  .accept-info-bar {
+    &-title {
+      font-size: 18px;
+      color: @WHITE;
+      line-height: 24px;
+      margin: 0 0 18px;
+      font-weight: 600;
+    }
+
+    &-tip {
+      font-size: 14px;
+      color: @brandColor;
+      line-height: 28px;
+    }
+
+    &-info {
+      display: flex;
+      margin-top: 32.8px;
+
+      &-item {
+        margin-right: 66px;
+        text-align: center;
+
+        &-value {
+          font-size: 16px;
+          color: @WHITE;
+          line-height: 21px;
+          margin-bottom: 11.5px;
+        }
+
+        &-name {
+          font-size: 14px;
+          color: @fontLighter;
+          line-height: 19px;
+        }
+      }
+    }
+
+    &-pic {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
