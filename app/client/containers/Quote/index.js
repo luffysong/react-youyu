@@ -23,6 +23,12 @@ export class Quote extends PureComponent {
 
     return (
       <div className="quote-container">
+        <Helmet
+          title="挂牌"
+          meta={[
+            { name: 'description', content: 'Description of Quote' },
+          ]}
+        />
         <QuoteProgress progress={this.props.params.step} />
         <div>
           {children}
