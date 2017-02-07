@@ -126,23 +126,31 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
-      indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial/1') },
+      indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial') },
       childRoutes: [{
-        path: 'initial(/:step)',
+        path: 'initial',
         name: 'initialQuote',
+        childRoutes: [{
+          path: ':step',
+        }],
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Quote/Initial'));
           });
         },
+        indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial/1') },
       }, {
-        path: 'rights(/:step)',
+        path: 'rights',
         name: 'rightsQuote',
+        childRoutes: [{
+          path: ':step',
+        }],
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Quote/Rights'));
           });
         },
+        indexRoute: { onEnter: (nextState, replace) => replace('/quote/rights/1') },
       }],
     }, {
       path: '/accept',
