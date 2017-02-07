@@ -12,7 +12,6 @@ import 'react-input-range/lib/css/index.css';
 import { DateField } from 'react-date-picker';
 import { Link } from 'react-router';
 import 'react-date-picker/index.css';
-import StepOneForm from '../../components/stepOneForm';
 /**
  * Internal dependencies
  */
@@ -36,7 +35,6 @@ class QuoteStepOne extends PureComponent {
   render() {
     return (
       <div>
-        <StepOneForm />
         <div className="list-col">
           <div className="col-attr">
             项目名称 :
