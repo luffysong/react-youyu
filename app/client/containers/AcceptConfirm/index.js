@@ -15,6 +15,7 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectAcceptConfirm from './selectors';
+import AcceptInfoBar from '../../components/AcceptInfoBar';
 
 export class AcceptConfirm extends PureComponent {
   render() {
@@ -26,7 +27,7 @@ export class AcceptConfirm extends PureComponent {
             { name: 'description', content: 'Description of AcceptConfirm' },
           ]}
         />
-        AcceptConfirm
+        <AcceptInfoBar />
       </div>
     );
   }
