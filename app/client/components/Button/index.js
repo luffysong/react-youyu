@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -14,20 +15,29 @@ import classnames from 'classnames';
 import './style.less';
 
 function Button(props) {
+  const { to } = props;
   const classes = classnames([
     'button-component',
+    {
+      'button-component-width-link': to
+    },
     props.className,
   ]);
   return (
-    <a className={classes}>
-      {props.children}
-    </a>
+    <button className={classes}>
+      {
+        to
+        ? <Link to={to}>{props.children}</Link>
+        : props.children
+      }
+    </button>
   );
 }
 
 Button.propTypes = {
   children: React.PropTypes.node.isRequired,
   className: React.PropTypes.string,
+  to: React.PropTypes.string,
 };
 
 export default Button;

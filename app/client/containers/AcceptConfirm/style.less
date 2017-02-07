@@ -9,4 +9,135 @@
   padding-top: 191px;
   background-color: @WHITE;
   border-radius: 6px;
+
+  .accept-confirm {
+    &-table {
+      margin: 24px auto 37px;
+      font-size: 16px;
+      color: @fontLight;
+
+      td {
+        position: relative;
+        height: 16px;
+        line-height: 21px;
+        padding: 15px 20px;
+      }
+
+      textarea {
+        width: 322px;
+        border: 1px solid @border;
+        padding: 12px;
+        outline: none;
+      }
+
+      ::-webkit-input-placeholder {
+        color: @fontLightest;
+      }
+
+      :-moz-placeholder { /* Firefox 18- */
+        color: @fontLightest;
+      }
+
+      ::-moz-placeholder {  /* Firefox 19+ */
+        color: @fontLightest;
+      }
+
+      :-ms-input-placeholder {
+        color: @fontLightest;
+      }
+
+      label {
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        user-select: none;
+
+        &::before {
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          content: ' ';
+          width: 16px;
+          height: 16px;
+          white-space: nowrap;
+          background: @darkBg;
+          background: linear-gradient(to top, darken(@darkBg, 10%) 0%, @darkBg 100%);
+          cursor: pointer;
+        }
+
+        &::after {
+          position: absolute;
+          top: 7px;
+          left: 7px;
+          content: ' ';
+          width: 8px;
+          height: 8px;
+          background: @brandColorDark;
+          background: linear-gradient(to top, lighten(@brandColorDark, 10%) 0%, @brandColorDark 100%);
+          border-radius: 50%;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        &:hover::after {
+          opacity: 0.4;
+        }
+      }
+
+      input[type=checkbox] {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+
+        &:checked + label::after {
+          opacity: 1;
+        }
+      }
+
+      .color-orange {
+        font-weight: bold;
+        color: @brandColorDark;
+      }
+
+      .left-column-name-top {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+
+      .left-column {
+        text-align: right;
+      }
+    }
+
+    &-button {
+      margin-top: 37px;
+
+      a {
+        padding: 17px 60px;
+      }
+    }
+
+    &-desc {
+      width: 856px;
+      margin: 56px auto;
+      padding: 34px 64px 57px;
+      border-top: 1px solid @border;
+      text-align: center;
+
+      &-title {
+        font-size: 14px;
+        color: @fontLight;
+        line-height: 19px;
+        margin-bottom: 8px;
+      }
+
+      &-text {
+        font-size: 14px;
+        line-height: 28px;
+        color: @fontLighter;
+      }
+    }
+  }
 }
