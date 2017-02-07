@@ -1,0 +1,69 @@
+/**
+ * component ProjectNav styles
+ */
+
+@import '../../styles/colors';
+
+.quote-progress-component {
+  width: 1200px;
+  height: auto;
+  padding: 66px 0 47px;
+  margin: auto;
+
+  .progress-list {
+    list-style: none;
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+
+    li {
+      float: left;
+      height: 32px;
+      line-height: 32px;
+      margin-right: 81px;
+
+      &:last-of-type {
+        .list-logo {
+          display: none;
+        }
+      }
+
+      .list-point {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        border-radius: 50%;
+        background: @LIGHT-GRAY-1;
+        font-size: 18px;
+        color: #fff;
+        vertical-align: middle;
+      }
+
+      .list-text {
+        font-size: 16px;
+        color: #92979e;
+        margin-left: 14px;
+        vertical-align: middle;
+      }
+
+      .list-logo {
+        margin-left: 80px;
+      }
+
+      &.active {
+        .list-point {
+          background: @LIGHT-BLACK-1;
+        }
+
+        .list-text {
+          color: @LIGHT-BLACK-1;
+        }
+      }
+    }
+  }
+}

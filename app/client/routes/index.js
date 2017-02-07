@@ -126,9 +126,9 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
-      indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial') },
+      indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial/1') },
       childRoutes: [{
-        path: 'initial',
+        path: 'initial(/:step)',
         name: 'initialQuote',
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
@@ -136,7 +136,7 @@ const rootRoute = function(store) {
           });
         },
       }, {
-        path: 'rights',
+        path: 'rights(/:step)',
         name: 'rightsQuote',
         getComponent(nextState, cb) {
           require.ensure([], (require) => {

@@ -1,3 +1,4 @@
+
 /**
  * Quoting
  */
@@ -7,7 +8,6 @@
  */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 
 /**
@@ -22,12 +22,6 @@ export class Quoting extends PureComponent {
   render() {
     return (
       <div className="project-container-quoting-tab">
-        <Helmet
-          title="转让中的份额"
-          meta={[
-            { name: 'description', content: 'Description of Quoting' },
-          ]}
-        />
         <QuotingList />
         <Pagination />
       </div>

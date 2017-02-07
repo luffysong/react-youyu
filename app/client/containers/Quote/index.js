@@ -15,6 +15,7 @@ import { createStructuredSelector } from 'reselect';
  */
 import './style.less';
 import makeSelectQuote from './selectors';
+import QuoteProgress from '../../components/QuoteProgress';
 
 export class Quote extends PureComponent {
   render() {
@@ -22,14 +23,10 @@ export class Quote extends PureComponent {
 
     return (
       <div className="quote-container">
-        <Helmet
-          title="Quote"
-          meta={[
-            { name: 'description', content: 'Description of Quote' },
-          ]}
-        />
-        Quote
-        {children}
+        <QuoteProgress progress={this.props.params.step} />
+        <div>
+          {children}
+        </div>
       </div>
     );
   }

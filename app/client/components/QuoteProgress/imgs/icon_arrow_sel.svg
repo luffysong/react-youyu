@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="14px" viewBox="0 0 10 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_arrow_sel</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="挂牌_初始份额转让_设置转让份额及价格" transform="translate(-387.000000, -145.000000)" stroke="#484B53" fill="#484B53">
+            <g id="Group">
+                <g id="天金所开户">
+                    <g id="step" transform="translate(120.000000, 136.000000)">
+                        <path d="M273.983108,16.1858849 L268,11.3199958 L268,10.2264755 C268.3713,9.92450818 268.973295,9.92450818 269.344595,10.2264755 L275.542871,15.2673549 C275.623119,15.3326187 275.686024,15.4066463 275.731584,15.4856496 C275.828727,15.5227027 275.919752,15.573861 276,15.6391248 L276,16.7326451 L269.801724,21.7735245 C269.430424,22.0754918 268.828429,22.0754918 268.457129,21.7735245 C268.085829,21.4715572 268.085829,20.9819715 268.457129,20.6800042 L273.983108,16.1858849 Z" id="icon_arrow_sel"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

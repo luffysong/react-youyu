@@ -24,12 +24,6 @@ export class Home extends PureComponent {
   render() {
     return (
       <div className="home-container">
-        <Helmet
-          title="首页"
-          meta={[
-            { name: 'description', content: 'Description of Home' },
-          ]}
-        />
         <div className="slick-wrapper">
           <Slick className="home-slick" />
           <Announcements className="home-announcements" />

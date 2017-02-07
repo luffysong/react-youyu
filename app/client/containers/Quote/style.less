@@ -11,4 +11,257 @@
   line-height: 20rem;
   background-color: #ececec;
   text-align: center;
+  padding-bottom: 92px;
+}
+
+.quote-day-tooltip {
+  background-color: #f2f3f5 !important;
+  color: #92979e !important;
+  font-size: 12px !important;
+
+  &::after {
+    border-right-color: #f2f3f5 !important;
+  }
+}
+
+.quote-radio {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #d4d4d4;
+  vertical-align: middle;
+  margin-right: 10px;
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+  }
+
+  & + label {
+    vertical-align: middle;
+    font-size: 16px;
+    color: #484b53;
+  }
+
+  &.checked {
+    background: #484b53;
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: #ffd800;
+      border-radius: 50%;
+      margin: 4px;
+    }
+  }
+}
+
+.quote-initial-container {
+  width: 1200px;
+  margin: auto;
+  background-color: #fff;
+  padding: 66px 0 70px;
+
+  .list-col {
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 30px;
+    text-align: left;
+
+    &.service-price {
+      .quote-day-tooltip {
+        margin-left: 25px !important;
+      }
+    }
+
+    &.quote-initial {
+      .quote-day-tooltip {
+        line-height: 16px;
+        margin-left: 70px !important;
+      }
+    }
+
+    &.quote-days {
+      .quote-day-tooltip {
+        margin-left: 70px !important;
+      }
+    }
+
+    &.set-specify {
+      .quote-day-tooltip {
+        margin-left: 110px !important;
+      }
+    }
+
+    &.range-col {
+      margin-bottom: 50px;
+    }
+
+    .col-attr {
+      display: inline-block;
+      width: 435px;
+      text-align: right;
+      color: @LIGHT-BLACK-1;
+      margin-right: 40px;
+    }
+
+    .col-value {
+      display: inline-block;
+      text-align: left;
+      min-width: 350px;
+
+      &.quote-initial {
+        position: relative;
+        min-width: 312px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 38px;
+          height: 8px;
+          right: -36px;
+          top: 7px;
+          background-color: #d4d4d4;
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+
+        .max-initial {
+          position: absolute;
+          font-size: 12px;
+          color: #92979e;
+          bottom: -33px;
+          right: -45px;
+        }
+      }
+
+      label {
+        margin-right: 40px;
+      }
+
+      .date-tip {
+        margin-left: 20px;
+        font-size: 16px;
+        color: #484b53;
+      }
+
+      .price-input {
+        width: 184px;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #d4d4d4;
+        line-height: 38px;
+        font-size: 16px;
+        color: #484b53;
+        padding-left: 12px;
+        margin-right: 18px;
+
+        &.specify-input {
+          width: 230px;
+        }
+
+        &:active,
+        &:focus {
+          border-color: #484b53;
+        }
+      }
+
+      .finally-price {
+        display: inline-block;
+        color: #fdc200;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .next-btn {
+    display: block;
+    background: #ececec;
+    box-shadow: 0 -2px 6px 0 rgba(72, 74, 83, 0.2);
+    border-radius: 6px;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    margin: 70px auto 0;
+    font-size: 16px;
+    color: #92979e;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .suc-logo {
+    display: block;
+    width: 70px;
+    margin: 0 auto 18px;
+  }
+
+  .submit-suc {
+    font-size: 20px;
+    color: #2d2f33;
+    font-weight: 600;
+    margin-bottom: 52px;
+    line-height: 20px;
+  }
+
+  .suc-tip {
+    font-size: 14px;
+    color: #92979e;
+    line-height: 20px;
+    margin-bottom: 80px;
+  }
+
+  .input-range__slider {
+    width: 28px !important;
+    height: 28px !important;
+    margin-top: -18px !important;
+    margin-left: -14px !important;
+    position: relative;
+    background: #fdc200 !important;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.1) !important;
+    border: none !important;
+    z-index: 9;
+
+    &:active {
+      transform: none;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      background: url("./imgs/quoteBtn.svg") no-repeat center;
+      left: 25%;
+      top: 25%;
+      background-size: contain;
+    }
+  }
+
+  .input-range__track {
+    background-color: #ececec !important;
+    height: 8px !important;
+  }
+
+  .input-range__track--active {
+    background: #fdc200 !important;
+  }
+
+  .input-range__label-container {
+    font-size: 12px !important;
+    color: #92979e !important;
+    top: 5px !important;
+  }
+
+  .input-range__label--value .input-range__label-container {
+    color: #484b53 !important;
+    top: -8px !important;
+  }
 }
