@@ -6,17 +6,37 @@
 
 .button-component {
   display: inline-block;
-  background-color: @buttonBg;
+  background-color: @LIGHT-BLACK-1;
   color: @buttonColor;
   box-shadow: 0 -2px 4px 0 rgba(71, 74, 82, 0.26);
   border-radius: 6px;
-  padding: 13px 42px;
   font-size: 16px;
   line-height: 16px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   outline: none;
+
+  &:hover {
+    background-color: #585c65;
+  }
+
+  &:active {
+    background-color: #35383e;
+  }
+
+  &-normal {
+    padding: 13px 42px;
+  }
+
+  &-big {
+    padding: 17px 52px;
+  }
+
+  &-disabled {
+    color: @WHITE;
+    background-color: #d3d3d3;
+  }
 
   &-width-link {
     padding: 0;
@@ -27,6 +47,20 @@
       height: 100%;
       padding: 13px 42px;
       color: @buttonColor;
+    }
+  }
+
+  &-bordered {
+    border: 1px solid #484b53;
+    color: @LIGHT-BLACK-1;
+    background-color: @LIGHT-GRAY-3;
+
+    a {
+      color: @LIGHT-BLACK-1;
+    }
+
+    &:hover {
+      background-color: @LIGHT-GRAY-2;
     }
   }
 

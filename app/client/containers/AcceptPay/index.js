@@ -59,8 +59,8 @@ export class AcceptPay extends PureComponent {
                   <td className="column-value">神奇的动物在哪里保证金</td>
                 </tr>
               </tbody>
-              <img src={require('./imgs/pic_line_payment.svg')} alt="border" className="accept-pay-part-border"/>
             </table>
+            <img src={require('./imgs/pic_line_payment.svg')} alt="border" className="accept-pay-part-border"/>
           </div>
         </div>
       </div>
