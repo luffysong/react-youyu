@@ -42,8 +42,8 @@ export class Project extends PureComponent {
             <ReactCSSTransitionGroup
               component="div"
               transitionName="router-fade"
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={300}
             >
               {React.cloneElement(children, {
                 key: location.pathname
