@@ -2,8 +2,9 @@
  * External dependencies
  */
 import React from 'react';
+import { useScroll } from 'react-router-scroll';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, browserHistory, createMemoryHistory } from 'react-router';
+import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } from 'react-router';
 
 /**
  * Internal dependencies
@@ -448,6 +449,6 @@ const rootRoute = function(store) {
 };
 
 export const getRoutes = (history, store) => (
-  <Router history={history} routes={rootRoute(store)} />
+  <Router history={history} routes={rootRoute(store)} render={applyRouterMiddleware(useScroll())} />
 );
 
