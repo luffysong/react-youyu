@@ -17,6 +17,7 @@ import './style.less';
 import makeSelectUc from './selectors';
 import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
+import RouteTransition from '../../components/RouteTransition';
 
 export class Uc extends PureComponent {
   renderUser() {
@@ -57,7 +58,9 @@ export class Uc extends PureComponent {
             <LeftSideMenu links={sideMenuLinks} />
             <a href="" className="uc-container-logout-btn">退出登录</a>
           </LeftSideBar>
-          {children}
+          <RouteTransition>
+            {children}
+          </RouteTransition>
         </div>
       </div>
     );

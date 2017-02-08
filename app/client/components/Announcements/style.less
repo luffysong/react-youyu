@@ -8,9 +8,19 @@
 .announcements-component {
   width: 100%;
   height: 50px;
-  background-color: rgba(0, 0, 0, 0.6);
   color: @fontLighter;
   font-size: 14px;
+
+  &::before {
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
 
   .announcements-inner {
     position: relative;
@@ -26,7 +36,6 @@
     left: 0;
     transform: translateY(-50%);
     width: 23px;
-    background-color: rgba(0, 0, 0, 0.6);
   }
 
   .announcements-item {

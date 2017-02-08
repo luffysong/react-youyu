@@ -35,7 +35,7 @@ function QuotingList() {
               <div className="quoting-list-item-column-value">3天</div>
               <div className="quoting-list-item-column-name">剩余时间</div>
             </div>
-            <Button className="quoting-list-item-btn">认购</Button>
+            <Button className="quoting-list-item-btn" to="/accept">认购</Button>
           </div>
         )
       }

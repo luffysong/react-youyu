@@ -20,6 +20,7 @@ import PayFlowBar from '../../components/PayFlowBar';
 import Panel from '../../components/Panel';
 import ProjectProgres from '../../components/ProjectProgress';
 import ProjectNav from '../../components/ProjectNav';
+import RouteTransition from '../../components/RouteTransition';
 
 export class Project extends PureComponent {
   render() {
@@ -38,7 +39,9 @@ export class Project extends PureComponent {
         <div className="container project-wrapper">
           <div className="project-container-left">
             <ProjectNav />
-            {children}
+            <RouteTransition>
+              {children}
+            </RouteTransition>
           </div>
           <div className="project-container-right">
             <Panel title="重要公告"

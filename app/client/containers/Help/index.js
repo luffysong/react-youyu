@@ -17,6 +17,7 @@ import './style.less';
 import makeSelectHelp from './selectors';
 import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
+import RouteTransition from '../../components/RouteTransition';
 
 export class Help extends PureComponent {
   render() {
@@ -59,7 +60,9 @@ export class Help extends PureComponent {
             </div>
             <LeftSideMenu links={sideMenuLinks} />
           </LeftSideBar>
-          {children}
+          <RouteTransition>
+            {children}
+          </RouteTransition>
         </div>
       </div>
     );
