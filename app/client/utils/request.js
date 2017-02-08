@@ -22,10 +22,26 @@ function checkStatus(response) {
   throw error;
 }
 
+function checkError(response) {
+  if (response.code === 0) {
+    return response;
+  }
+
+  const error = new Error(response.code, response.msg);
+  error.code = response.code;
+  error.message = response.msg;
+  throw error;
+}
+
 export default function request(url, options) {
-  url = config.apiBase + url;
+  if (process.env.NODE_ENV === 'development') {
+    url = '/api/' + url;
+  } else {
+    url = config.apiBase + url;
+  }
 
   return fetch(url, options)
     .then(checkStatus)
-    .then(parseJSON);
+    .then(parseJSON)
+    .then(checkError);
 }

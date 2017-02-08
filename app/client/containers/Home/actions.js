@@ -9,12 +9,24 @@
 /**
  * Internal dependencies
  */
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as types from './constants';
 
-export function defaultAction() {
+export function loadProjects() {
   return {
-    type: DEFAULT_ACTION,
+    type: types.LOAD_PROJECTS,
+  };
+}
+
+export function loadProjectsSuc(data) {
+  return {
+    type: types.LOAD_PROJECTS_SUC,
+    data,
+  };
+}
+
+export function loadProjectsErr(error) {
+  return {
+    type: types.LOAD_PROJECTS_ERR,
+    error,
   };
 }

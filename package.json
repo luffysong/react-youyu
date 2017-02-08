@@ -344,5 +344,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "proxy": "http://%env%youyu.top"
 }

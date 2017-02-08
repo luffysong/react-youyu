@@ -19,8 +19,13 @@ import Slick from '../../components/Slick';
 import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
 import ProjectCarousel from '../../components/ProjectCarousel';
+import * as actions from './actions';
 
 export class Home extends PureComponent {
+  componentDidMount() {
+    this.props.loadProjects();
+  }
+
   render() {
     return (
       <div className="home-container">
@@ -54,6 +59,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadProjects: () => dispatch(actions.loadProjects()),
   };
 }
 

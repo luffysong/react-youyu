@@ -11,9 +11,6 @@ import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } fr
  */
 import Layout from '../containers/Layout';
 import { injectors } from '../store/reducers';
-import config from '../config';
-
-console.log(config.apiBase);
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
