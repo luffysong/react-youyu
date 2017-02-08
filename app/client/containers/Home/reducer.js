@@ -13,7 +13,7 @@ import { fromJS } from 'immutable';
 import * as types from './constants';
 
 const initialState = fromJS({
-  projectsLoading: false,
+  projectsLoading: true,
   projectsError: false,
   projectsData: false,
 });

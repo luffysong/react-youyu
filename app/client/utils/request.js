@@ -24,7 +24,7 @@ function checkStatus(response) {
 
 function checkError(response) {
   if (response.code === 0) {
-    return response;
+    return response.data;
   }
 
   const error = new Error(response.code, response.msg);
@@ -35,7 +35,7 @@ function checkError(response) {
 
 export default function request(url, options) {
   if (process.env.NODE_ENV === 'development') {
-    url = '/api/' + url;
+    url = '/api' + url;
   } else {
     url = config.apiBase + url;
   }

@@ -20,6 +20,7 @@ import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
 import ProjectCarousel from '../../components/ProjectCarousel';
 import * as actions from './actions';
+import * as selectors from './selectors';
 
 export class Home extends PureComponent {
   componentDidMount() {
@@ -27,6 +28,11 @@ export class Home extends PureComponent {
   }
 
   render() {
+    const {
+      projectsLoading,
+      projectsData,
+    } = this.props;
+
     return (
       <div className="home-container">
         <Helmet
@@ -39,7 +45,7 @@ export class Home extends PureComponent {
           <Slick className="home-slick" />
           <Announcements className="home-announcements" />
         </div>
-        <ProjectCarousel className="home-project-carousel" />
+        <ProjectCarousel className="home-project-carousel" loading={projectsLoading} data={projectsData} />
         <HomeIntro className="home-rights-intro" type="rights" />
         <HomeIntro className="home-youyu-intro" type="youyu" />
         <HomeIntro className="home-partners-intro" type="partners" />
@@ -54,6 +60,8 @@ Home.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   Home: makeSelectHome(),
+  projectsLoading: selectors.makeSelectProjectsLoading(),
+  projectsData: selectors.makeSelectProjectsData(),
 });
 
 function mapDispatchToProps(dispatch) {
