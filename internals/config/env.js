@@ -1,4 +1,4 @@
-const APP_ENV = /^APP_ENV_/i;
+const APP_ENV = /^(APP_ENV_|API_ENV)/i;
 
 function getClientEnvironment(publicUrl) {
   const processEnv = Object
