@@ -33,29 +33,18 @@
     position: relative;
     height: 322rem / 20;
 
-    .carousel-item {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 880rem / 20;
-      height: 322rem / 20;
-      padding: (14rem / 20) (15rem / 20);
-      transform: translateX(-50%);
-      box-shadow: 0 (4rem / 20) (6rem / 20) 0 rgba(0, 0, 0, 0.4);
-      background-color: rgba(72, 72, 83, 0.5057);
-    }
-
     .cover {
       float: left;
       margin-right: 60rem / 20;
       width: 210rem / 20;
-      height: 294rem / 20;
+      height: 100%;
       background: @black url('./imgs/cover.jpg') no-repeat center;
       background-size: cover;
     }
 
     .info {
-      float: left;
+      position: absolute;
+      left: 285px;
       width: 508rem / 20;
       height: 294rem / 20;
     }
