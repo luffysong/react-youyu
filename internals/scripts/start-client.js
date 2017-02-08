@@ -129,7 +129,7 @@ function addMiddleware(devServer) {
       console.log(chalk.red('Either remove "proxy" from package.json, or make it a string.'));
       process.exit(1);
     }
-    proxy = proxy.replace('%env%', process.env.APP_ENV === 'prod' ? '' : process.env.APP_ENV);
+    proxy = proxy.replace('%env%', process.env.API_ENV === 'prod' ? '' : (process.env.API_ENV + '.'));
     const mayProxy = /^(?!\/(index\.html$|.*\.hot-update\.json$|sockjs-node\/)).*$/;
     const hpm = httpProxyMiddleware(pathname => mayProxy.test(pathname), {
       target: proxy,

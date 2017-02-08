@@ -18,18 +18,25 @@ import IndexSlick from '../IndexSlick';
 class ProjectCarousel extends PureComponent {
 
   render() {
-    const data = [
+    const { loading, data } = this.props;
+
+    if (loading) {
+      return <h1>Loading</h1>;
+    }
+
+    const project = data[0];
+    const projectInfo = [
       {
         name: '制片方',
-        value: '华纳',
+        value: project.project.producer,
       },
       {
         name: '转让份额',
-        value: '10%',
+        value: project.project.transferable_ratio + '%',
       },
       {
-        name: '挂牌标的',
-        value: '8',
+        name: '项目阶段',
+        value: project.project.stage,
       },
     ];
 
@@ -44,9 +51,9 @@ class ProjectCarousel extends PureComponent {
                   <div className="cover"></div>
                   <div className="info">
                     <div className="info-title">
-                      神奇动物在哪里
+                      {project.project ? project.project.name : ''}
                     </div>
-                    <ProjectInfoBar data={data} />
+                    <ProjectInfoBar data={projectInfo} />
                     <table className="transfer-info">
                       <tbody>
                       <tr className="transfer-info-item">
@@ -106,7 +113,11 @@ class ProjectCarousel extends PureComponent {
 }
 
 ProjectCarousel.propTypes = {
-
+  loading: React.PropTypes.bool.isRequired,
+  data: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.array,
+  ]).isRequired,
 };
 
 export default ProjectCarousel;
