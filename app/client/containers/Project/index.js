@@ -20,7 +20,7 @@ import PayFlowBar from '../../components/PayFlowBar';
 import Panel from '../../components/Panel';
 import ProjectProgres from '../../components/ProjectProgress';
 import ProjectNav from '../../components/ProjectNav';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import RouteTransition from '../../components/RouteTransition';
 
 export class Project extends PureComponent {
   render() {
@@ -39,16 +39,9 @@ export class Project extends PureComponent {
         <div className="container project-wrapper">
           <div className="project-container-left">
             <ProjectNav />
-            <ReactCSSTransitionGroup
-              component="div"
-              transitionName="router-fade"
-              transitionEnterTimeout={300}
-              transitionLeaveTimeout={300}
-            >
-              {React.cloneElement(children, {
-                key: location.pathname
-              })}
-            </ReactCSSTransitionGroup>
+            <RouteTransition>
+              {children}
+            </RouteTransition>
           </div>
           <div className="project-container-right">
             <Panel title="重要公告"
