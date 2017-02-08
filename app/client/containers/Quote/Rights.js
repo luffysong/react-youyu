@@ -8,13 +8,6 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Link } from 'react-router';
-/*import Slider, { Range } from 'rc-slider';
-import 'rc-slider/assets/index.css';*/
-import ReactTooltip from 'react-tooltip';
-/*import 'icheck/skins/all.css'; // or single skin css
-import {Checkbox, Radio, RadioGroup} from 'react-icheck';*/
-import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 
 
@@ -28,9 +21,6 @@ import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
 
 export class Rights extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

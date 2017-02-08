@@ -8,12 +8,6 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Link } from 'react-router';
-import ReactTooltip from 'react-tooltip';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
-import { DateField } from 'react-date-picker';
-import 'react-date-picker/index.css';
 
 
 /**
@@ -26,11 +20,6 @@ import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
 
 export class Initial extends PureComponent {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     return (
       <div className="quote-initial-container">

@@ -6,8 +6,6 @@
  * External dependencies
  */
 import React, { PureComponent } from 'react';
-import Slider from 'react-slick';
-import classnames from 'classnames';
 import $ from 'jquery';
 
 /**
