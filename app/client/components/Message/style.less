@@ -1,0 +1,56 @@
+/**
+ * component Message styles
+ */
+
+@import '../../styles/colors';
+
+.message-component {
+  font-size: 14px;
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 16px;
+  left: 0;
+
+  &-notice {
+    width: auto;
+    vertical-align: middle;
+    position: absolute;
+    left: 50%;
+  }
+
+  &-notice-content {
+    position: relative;
+    right: 50%;
+    padding: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    display: block;
+  }
+
+  &-success {
+    padding: 8px 16px;
+    background-color: fade(#00a854, 80%);
+    border: 1px solid #00a854;
+  }
+
+  &-error {
+    padding: 8px 16px;
+    background-color: fade(#f04134, 80%);
+    border: 1px solid #f04134;
+  }
+
+  &-warning {
+    padding: 8px 16px;
+    background-color: fade(#ffbf00, 80%);
+    border: 1px solid #ffbf00;
+  }
+
+  &-info,
+  &-loading {
+    padding: 8px 16px;
+    background-color: fade(#108ee9, 80%);
+    border: 1px solid #108ee9;
+  }
+}

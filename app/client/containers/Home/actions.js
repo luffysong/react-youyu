@@ -17,10 +17,10 @@ export function loadProjects() {
     dispatch({
       type: types.LOAD_PROJECTS,
     });
-    return get('/movie/projects', {
-      page: 1,
-    }).then((data) => {
+    return get('/movie/projects').then(data => {
       dispatch(loadProjectsSuc(data));
+    }).catch(err => {
+      dispatch(loadProjectsErr(err));
     });
   };
 }

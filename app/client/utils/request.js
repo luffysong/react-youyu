@@ -11,6 +11,11 @@ console.log(jQuery);
  * Internal dependencies
  */
 import config from '../config';
+import message from '../components/Message';
+
+const showError = function (msg) {
+  message.error(msg);
+};
 
 function parseJSON(response) {
   return response.json();
@@ -30,6 +35,8 @@ function checkError(response) {
   if (response.code === 0) {
     return response.data;
   }
+
+  showError(response.msg);
 
   const error = new Error(response.code, response.msg);
   error.code = response.code;
@@ -51,7 +58,7 @@ export function get(url, params) {
   }
 
   return fetch(url, {
-    mode: 'cors',
+    method: 'GET',
     headers: {
       'Accept': 'application/json',
     },
