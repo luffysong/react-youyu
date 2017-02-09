@@ -64,11 +64,11 @@
     "webpack-dev-server": "1.16.2",
     "webpack-isomorphic-tools": "^2.6.5",
     "webpack-manifest-plugin": "1.1.0",
-    "webpack-node-externals": "^1.5.4",
-    "whatwg-fetch": "1.0.0"
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "axios": "^0.15.3",
     "classnames": "^2.2.5",
     "debug": "^2.4.5",
     "immutable": "^3.8.1",

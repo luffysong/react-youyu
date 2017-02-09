@@ -1,8 +1,7 @@
 /**
  * External dependencies
  */
-import 'whatwg-fetch';
-import $ from 'jquery';
+import axios from 'axios';
 import qs from 'query-string';
 import Cookie from 'js-cookie';
 
@@ -12,18 +11,21 @@ import Cookie from 'js-cookie';
 import config from '../config';
 import message from '../components/Message';
 
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/api' : config.apiBase;
+axios.defaults.headers.common['Z-BBS-X-XSRF-TOKEN'] = Cookie.get('Z-BBS-XSRF-TOKEN');
+axios.defaults.headers.common['Accept'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
 const showError = function (msg) {
   message.error(msg);
 };
 
-function parseJSON(response) {
-  return response.json();
-}
-
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response;
+    return response.data;
   }
+
+  showError('网络错误，请刷新后重试');
 
   const error = new Error(response.statusText);
   error.response = response;
@@ -44,11 +46,6 @@ function checkError(response) {
 }
 
 export function get(url, params) {
-  if (process.env.NODE_ENV === 'development') {
-    url = '/api' + url;
-  } else {
-    url = config.apiBase + url;
-  }
   console.info('GET: ', url);
 
   if(params) {
@@ -56,69 +53,21 @@ export function get(url, params) {
     url += `?${qs.stringify(params)}`;
   }
 
-  return fetch(url, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-    },
-    credentials: 'include',
-  }).then(checkStatus)
-    .then(parseJSON)
+  return axios.get(url)
+    .then(checkStatus)
     .then(checkError);
 }
 
-export function post(url, body, headers) {
-  if (process.env.NODE_ENV === 'development') {
-    url = '/api' + url;
-  } else {
-    url = config.apiBase + url;
-  }
+export function post(url, body) {
   console.info('POST: ', url);
 
   if (body) {
     console.info('Body: ', body)
-  }
-
-  if (headers) {
-    console.info('Headers: ', headers)
-  }
-
-  headers = {
-    ...headers,
-    'Z-BBS-X-XSRF-TOKEN': Cookie.get('Z-BBS-XSRF-TOKEN')
-  };
-
-  const defaultHeaders = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/x-www-form-urlencoded',
-  };
-
-  const postHeaders = {
-    ...defaultHeaders,
-    ...headers
-  };
-
-  return fetch(url, {
-    method: 'POST',
-    headers: postHeaders,
-    credentials: 'include',
-    body: $.param(body ? body : {})
-  })
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(checkError);
-}
-
-
-export default function request(url, options) {
-  if (process.env.NODE_ENV === 'development') {
-    url = '/api' + url;
   } else {
-    url = config.apiBase + url;
+    body = {};
   }
 
-  return fetch(url, options)
+  return axios.post(url, body)
     .then(checkStatus)
-    .then(parseJSON)
     .then(checkError);
 }
