@@ -20,6 +20,14 @@
 .move-motion(move-left, MoveLeft);
 .move-motion(move-right, MoveRight);
 
+.loading {
+  .loading();
+}
+
+.loading-dark {
+  .loading-dark();
+}
+
 @keyframes MoveDownIn {
   0% {
     transform-origin: 0 0;
@@ -130,4 +138,10 @@
     transform: translateY(-100%);
     opacity: 0;
   }
+}
+
+@keyframes loading-fade {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
 }

@@ -15,12 +15,12 @@ import './style.less';
 
 class IndexSlick extends PureComponent {
   componentDidMount() {
-
-    /*const classList = ['carousel-item-first', 'carousel-item', 'carousel-item-last'];
-    $(this.refs.child).children().each((index, item) => item.className = classList[index]);*/
     this.timer = window.setInterval(() => {
       let arr = [];
       const len = $(this.refs.child).children().length;
+      if (len < 3) {
+        return;
+      }
       $(this.refs.child).children().each((index, item) => arr.push(item.className));
       $(this.refs.child).children().each((index, item) => {
         var temp;
@@ -50,7 +50,6 @@ class IndexSlick extends PureComponent {
 }
 
 IndexSlick.propTypes = {
-  /*className: React.PropTypes.string.isRequired,*/
 };
 
 export default IndexSlick;
