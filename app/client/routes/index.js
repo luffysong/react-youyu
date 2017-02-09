@@ -38,14 +38,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Home',
           '../containers/Home/reducer',
-          '../containers/Home/sagas',
         ], (require) => {
           const component = require('../containers/Home');
           const reducer = require('../containers/Home/reducer').default;
-          const sagas = require('../containers/Home/sagas').default;
 
           injectReducer('home', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },

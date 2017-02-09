@@ -10,10 +10,18 @@
  * Internal dependencies
  */
 import * as types from './constants';
+import { get } from '../../utils/request';
 
 export function loadProjects() {
-  return {
-    type: types.LOAD_PROJECTS,
+  return (dispatch) => {
+    dispatch({
+      type: types.LOAD_PROJECTS,
+    });
+    return get('/movie/projects', {
+      page: 1,
+    }).then((data) => {
+      dispatch(loadProjectsSuc(data));
+    });
   };
 }
 

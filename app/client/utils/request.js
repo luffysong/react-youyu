@@ -2,6 +2,9 @@
  * External dependencies
  */
 import 'whatwg-fetch';
+import $ from 'jquery';
+import qs from 'query-string';
+import Cookie from 'js-cookie';
 
 /**
  * Internal dependencies
@@ -32,6 +35,73 @@ function checkError(response) {
   error.message = response.msg;
   throw error;
 }
+
+export function get(url, params) {
+  if (process.env.NODE_ENV === 'development') {
+    url = '/api' + url;
+  } else {
+    url = config.apiBase + url;
+  }
+  console.info('GET: ', url);
+
+  if(params) {
+    console.info('Params: ', params);
+    url += `?${qs.stringify(params)}`;
+  }
+
+  return fetch(url, {
+    mode: 'cors',
+    headers: {
+      'Accept': 'application/json',
+    },
+    credentials: 'include',
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(checkError);
+}
+
+export function post(url, body, headers) {
+  if (process.env.NODE_ENV === 'development') {
+    url = '/api' + url;
+  } else {
+    url = config.apiBase + url;
+  }
+  console.info('POST: ', url);
+
+  if (body) {
+    console.info('Body: ', body)
+  }
+
+  if (headers) {
+    console.info('Headers: ', headers)
+  }
+
+  headers = {
+    ...headers,
+    'Z-BBS-X-XSRF-TOKEN': Cookie.get('Z-BBS-XSRF-TOKEN')
+  };
+
+  const defaultHeaders = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded',
+  };
+
+  const postHeaders = {
+    ...defaultHeaders,
+    ...headers
+  };
+
+  return fetch(url, {
+    method: 'POST',
+    headers: postHeaders,
+    credentials: 'include',
+    body: $.param(body)
+  })
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(checkError);
+}
+
 
 export default function request(url, options) {
   if (process.env.NODE_ENV === 'development') {
