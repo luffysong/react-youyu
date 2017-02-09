@@ -2,9 +2,10 @@
  * External dependencies
  */
 import 'whatwg-fetch';
-import $ from 'jquery';
+import jQuery from 'jquery';
 import qs from 'query-string';
 import Cookie from 'js-cookie';
+console.log(jQuery);
 
 /**
  * Internal dependencies
@@ -95,7 +96,7 @@ export function post(url, body, headers) {
     method: 'POST',
     headers: postHeaders,
     credentials: 'include',
-    body: $.param(body)
+    body: jQuery.param(body)
   })
     .then(checkStatus)
     .then(parseJSON)

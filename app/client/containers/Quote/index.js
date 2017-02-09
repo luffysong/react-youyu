@@ -14,7 +14,7 @@ import { createStructuredSelector } from 'reselect';
  * Internal dependencies
  */
 import './style.less';
-import makeSelectQuote from './selectors';
+import * as selectors from './selectors';
 import QuoteProgress from '../../components/QuoteProgress';
 
 export class Quote extends PureComponent {
@@ -44,7 +44,7 @@ Quote.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  Quote: makeSelectQuote(),
+  Quote: selectors.makeSelectQuote(),
 });
 
 function mapDispatchToProps(dispatch) {

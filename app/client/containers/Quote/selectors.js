@@ -18,7 +18,24 @@ const makeSelectQuote = () => createSelector(
   (substate) => substate.toJS()
 );
 
-export default makeSelectQuote;
+const makeSelectQuoteLoading = () => createSelector(
+  selectQuoteDomain(),
+  (substate) => substate.get('quoteLoading')
+);
+
+const makeSelectQuoteData = () => createSelector(
+  selectQuoteDomain(),
+  (substate) => substate.get('quoteData')
+);
+
+const makeSelectQuoteError = () => createSelector(
+  selectQuoteDomain(),
+  (substate) => substate.get('quoteError')
+);
+
 export {
-  selectQuoteDomain,
+  makeSelectQuote,
+  makeSelectQuoteLoading,
+  makeSelectQuoteData,
+  makeSelectQuoteError,
 };

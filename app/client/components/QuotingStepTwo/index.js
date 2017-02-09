@@ -21,11 +21,27 @@ class QuoteStepTwo extends PureComponent {
     super(props);
 
     this.state = {
-      hideInfo: '0',
+      is_privacy: '0',
       specify: '0',
       dateBanned: '1',
+      transferee_cert_type: '1',
       price: 0
     };
+  }
+
+  submit(event) {
+    event.preventDefault();
+    const {is_privacy, transferee_cert_type, transferee_lock_period} = this.state;
+    this.props.data.is_privacy = is_privacy;
+    if (this.state.specify === '1') {
+      this.props.data.transferee_cert_type = transferee_cert_type;
+      this.props.data.transferee_cert_name = this.refs.transfereeName.value;
+      this.props.data.transferee_cert_number = this.refs.transfereeNumber.value;
+    }
+    if (this.state.dateBanned === '1') {
+      this.props.data.transferee_lock_period = transferee_lock_period;
+    }
+    this.props.submit(this.props.data);
   }
 
   selectSpecify(val, event) {
@@ -36,6 +52,15 @@ class QuoteStepTwo extends PureComponent {
 
   selectDate(dateString, { dateMoment, timestamp }) {
     console.log(dateString);
+    this.setState({
+      transferee_lock_period: dateString
+    });
+  }
+
+  setDays(event) {
+    this.setState({
+      listing_days: event.target.value
+    })
   }
 
   render() {
@@ -46,7 +71,7 @@ class QuoteStepTwo extends PureComponent {
             设置挂牌天数 :
           </div>
           <div className="col-value">
-            <input type="text" data-tip data-for="quoteDays" className="price-input" placeholder="建议30天" />
+            <input type="text" data-tip data-for="quoteDays" className="price-input" placeholder="建议30天" onChange={this.setDays.bind(this)}  />
             <ReactTooltip class='quote-day-tooltip' id='quoteDays' type='light' place="right" effect="solid">
               <span>请设置在2天至60天之间</span>
             </ReactTooltip>
@@ -58,14 +83,14 @@ class QuoteStepTwo extends PureComponent {
             隐藏个人信息 :
           </div>
           <div className="col-value">
-            <div className={this.state.hideInfo === '0' ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={this.state.hideInfo === '0'} name="info" onChange={this.selectSpecify.bind(this, 'hideInfo')} value="0" id="noHide" />
+            <div className={this.state.is_privacy === '0' ? 'quote-radio checked' : 'quote-radio'}>
+              <input type="radio" checked={this.state.is_privacy === '0'} name="info" onChange={this.selectSpecify.bind(this, 'is_privacy')} value="0" id="noHide" />
             </div>
             <label htmlFor="noHide">
               不隐藏
             </label>
-            <div className={this.state.hideInfo === '1' ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={this.state.hideInfo === '1'} name="info" onChange={this.selectSpecify.bind(this, 'hideInfo')} value="1" id="hide" />
+            <div className={this.state.is_privacy === '1' ? 'quote-radio checked' : 'quote-radio'}>
+              <input type="radio" checked={this.state.is_privacy === '1'} name="info" onChange={this.selectSpecify.bind(this, 'is_privacy')} value="1" id="hide" />
             </div>
             <label htmlFor="hide">
               隐藏
@@ -79,7 +104,6 @@ class QuoteStepTwo extends PureComponent {
           <div className="col-value">
             <div className={this.state.specify === '0' ? 'quote-radio checked' : 'quote-radio'}>
               <input type="radio" checked={this.state.specify === '0'} name="specify" onChange={this.selectSpecify.bind(this, 'specify')} value="0" id="noSpecify" />
-
             </div>
             <label htmlFor="noSpecify">
               不指定
@@ -100,10 +124,29 @@ class QuoteStepTwo extends PureComponent {
             <div>
               <div className="list-col">
                 <div className="col-attr">
+                  证件类型 :
+                </div>
+                <div className="col-value">
+                  <div className={this.state.transferee_cert_type === '1' ? 'quote-radio checked' : 'quote-radio'}>
+                    <input type="radio" checked={this.state.transferee_cert_type === '1'} name="transferee_cert_type" onChange={this.selectSpecify.bind(this, 'transferee_cert_type')} value="1" id="idCard" />
+                  </div>
+                  <label htmlFor="noHide">
+                    身份证
+                  </label>
+                  <div className={this.state.transferee_cert_type === '2' ? 'quote-radio checked' : 'quote-radio'}>
+                    <input type="radio" checked={this.state.transferee_cert_type === '2'} name="transferee_cert_type" onChange={this.selectSpecify.bind(this, 'transferee_cert_type')} value="2" id="companyCode" />
+                  </div>
+                  <label htmlFor="hide">
+                    企业信用代码
+                  </label>
+                </div>
+              </div>
+              <div className="list-col">
+                <div className="col-attr">
                   受让方名称 :
                 </div>
                 <div className="col-value">
-                  <input type="text" className="price-input specify-input" placeholder="真实姓名/组织机构名称" />
+                  <input type="text" className="price-input specify-input" placeholder="真实姓名/组织机构名称" ref="transfereeName" />
                 </div>
               </div>
               <div className="list-col">
@@ -111,7 +154,7 @@ class QuoteStepTwo extends PureComponent {
                   受让方证件号 :
                 </div>
                 <div className="col-value">
-                  <input type="text" className="price-input specify-input" placeholder="身份证号/统一社会信用代码" />
+                  <input type="text" className="price-input specify-input" placeholder="身份证号/统一社会信用代码" ref="transfereeNumber" />
                 </div>
               </div>
             </div> : null
@@ -149,7 +192,7 @@ class QuoteStepTwo extends PureComponent {
                 <div className="col-value">
                   <DateField
                     dateFormat="YYYY-MM-DD"
-                    onChange={this.selectDate}
+                    onChange={this.selectDate.bind(this)}
                   />
                   <span className="date-tip">前受让方不能转让此份额</span>
                 </div>
@@ -157,7 +200,7 @@ class QuoteStepTwo extends PureComponent {
             </div> : null
         }
 
-        <Link to="/quote/initial/3" activeClassName="active" className="next-btn">提交</Link>
+        <Link to={`/quote/initial/${this.props.id}/3`} activeClassName="active" className="next-btn" onClick={this.submit.bind(this)}>提交</Link>
       </div>
     );
   }

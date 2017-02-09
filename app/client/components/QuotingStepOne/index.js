@@ -31,13 +31,13 @@ class QuoteStepOne extends PureComponent {
   }
 
   nextStep(event) {
-    event.preventDefault();
     const {listing_quota, listing_price} = this.state;
-    console.log(listing_quota, listing_price);
+    this.props.data.listing_quota = listing_quota;
+    this.props.data.listing_price = listing_price,
+    console.log(this.props.data);
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className="list-col">
@@ -68,12 +68,18 @@ class QuoteStepOne extends PureComponent {
                   10%
                 </div>
               </div>
-              <div className="list-col range-col">
+              <div className="list-col range-col has-initial">
                 <div className="col-attr">
                   现持有原始份额 :
                 </div>
                 <div className="col-value">
                   8%
+                  <span className="pos-relative" data-tip data-for="unquotedInitial">
+                    (5%可转让份额 + 3%不可转让份额)
+                  </span>
+                  <ReactTooltip class='quote-day-tooltip' id='unquotedInitial' type='light' place="right" effect="solid">
+                    <section>转让份额不能超过原始份额的70%</section>
+                  </ReactTooltip>
                 </div>
               </div>
             </div> : null
@@ -95,7 +101,7 @@ class QuoteStepOne extends PureComponent {
           <div className="col-attr">
             可转让份额 :
           </div>
-          <div className="col-value quote-initial" data-tip data-for="quoteInitial">
+          <div className="col-value" data-tip data-for="quoteInitial">
             <InputRange
               maxValue={7}
               minValue={0.5}
@@ -103,11 +109,9 @@ class QuoteStepOne extends PureComponent {
               value={this.state.listing_quota}
               step={0.5}
               onChange={value => {this.setState({listing_quota: value})}} />
-            <div className="max-initial">8%</div>
           </div>
           <ReactTooltip class='quote-day-tooltip' id='quoteInitial' type='light' place="right" effect="solid">
-            <section>转让份额的最小单位是0.5%,</section>
-            <section>且不能超过原始份额的70%</section>
+            <section>转让份额的最小单位是0.5%</section>
           </ReactTooltip>
         </div>
         <div className="list-col">
