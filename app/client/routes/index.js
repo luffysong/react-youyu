@@ -63,24 +63,21 @@ const rootRoute = function(store) {
         });
       },
     }, {
-      path: '/project',
+      path: '/project/:id',
       name: 'project',
       getComponent(nextState, cb) {
         require.ensure([
           '../containers/Project',
           '../containers/Project/reducer',
-          '../containers/Project/sagas',
         ], (require) => {
           const component = require('../containers/Project');
           const reducer = require('../containers/Project/reducer').default;
-          const sagas = require('../containers/Project/sagas').default;
 
           injectReducer('project', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },
-      indexRoute: { onEnter: (nextState, replace) => replace('/project/quoting') },
+      indexRoute: { onEnter: (nextState, replace) => replace(`/project/${nextState.params.id}/quoting`) },
       childRoutes: [{
         path: 'quoting',
         name: 'projectQuoting',

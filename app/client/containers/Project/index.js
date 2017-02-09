@@ -8,23 +8,29 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectProject from './selectors';
 import ProjectBanner from '../../components/ProjectBanner';
 import PayFlowBar from '../../components/PayFlowBar';
 import Panel from '../../components/Panel';
 import ProjectProgres from '../../components/ProjectProgress';
 import ProjectNav from '../../components/ProjectNav';
 import RouteTransition from '../../components/RouteTransition';
+import * as actions from './actions';
 
 export class Project extends PureComponent {
+  componentDidMount() {
+    const { params } = this.props;
+    const projectId = params.id;
+
+    this.props.loadProject(projectId);
+  }
+
   render() {
-    const { children } = this.props;
+    const { children, params } = this.props;
 
     return (
       <div className="project-container">
@@ -38,7 +44,7 @@ export class Project extends PureComponent {
         <PayFlowBar />
         <div className="container project-wrapper">
           <div className="project-container-left">
-            <ProjectNav />
+            <ProjectNav id={params.id} />
             <RouteTransition>
               {children}
             </RouteTransition>
@@ -68,13 +74,19 @@ Project.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Project: makeSelectProject(),
-});
+function mapStateToProps(state) {
+  const project = state.project;
+
+  return {
+    projectLoading: project.get('projectLoading'),
+    projectData: project.get('projectData'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadProject: (id) => dispatch(actions.loadProject(id)),
   };
 }
 
