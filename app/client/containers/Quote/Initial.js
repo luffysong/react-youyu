@@ -29,9 +29,8 @@ export class Initial extends PureComponent {
   }
 
   submit(params) {
-    console.log(params);
-    console.log(this.props.initialQuote(params).then(data => console.log(data))
-      .catch(err => console.log(err)));
+    this.props.initialQuote(params).then(data => this.props.router.push(`/quote/initial/${this.props.params.id}/3`))
+      .catch(err => console.log(err));
   }
 
   render() {

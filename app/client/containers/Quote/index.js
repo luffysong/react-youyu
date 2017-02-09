@@ -8,13 +8,11 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import * as selectors from './selectors';
 import QuoteProgress from '../../components/QuoteProgress';
 
 export class Quote extends PureComponent {
@@ -43,9 +41,14 @@ Quote.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Quote: selectors.makeSelectQuote(),
-});
+function mapStateToProps(state) {
+  const quote = state.quote;
+
+  return {
+    quoteLoading: quote.get('quoteLoading'),
+    quoteData: quote.get('quoteData'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -54,3 +57,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quote);
+
+
+
+

@@ -15,10 +15,10 @@ import 'react-input-range/lib/css/index.css';
  * Internal dependencies
  */
 import './style.less';
-import makeSelectQuote from './selectors';
 import QuoteSuc from '../../components/QuotingSuc';
 import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
+import * as selectors from './selectors';
 
 export class Rights extends PureComponent {
 
@@ -44,7 +44,7 @@ Rights.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  Quote: makeSelectQuote(),
+  Quote: selectors.makeSelectQuote(),
 });
 
 function mapDispatchToProps(dispatch) {
