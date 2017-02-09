@@ -8,19 +8,16 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectHome from './selectors';
 import Slick from '../../components/Slick';
 import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
 import ProjectCarousel from '../../components/ProjectCarousel';
 import * as actions from './actions';
-import * as selectors from './selectors';
 
 export class Home extends PureComponent {
   componentDidMount() {
@@ -58,11 +55,15 @@ Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Home: makeSelectHome(),
-  projectsLoading: selectors.makeSelectProjectsLoading(),
-  projectsData: selectors.makeSelectProjectsData(),
-});
+
+function mapStateToProps(state) {
+  const home = state.home;
+
+  return {
+    projectsLoading: home.get('projectsLoading'),
+    projectsData: home.get('projectsData'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {

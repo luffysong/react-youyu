@@ -15,6 +15,7 @@ import { take } from 'lodash';
 import './style.less';
 import ProjectInfoBar from '../ProjectInfoBar';
 import IndexSlick from '../IndexSlick';
+import { numComma } from '../../utils/utils';
 
 class ProjectCarousel extends PureComponent {
   renderProjects(loading, projects) {
@@ -22,7 +23,9 @@ class ProjectCarousel extends PureComponent {
 
     if (loading) {
       return Array(3).fill().map((_, index) => {
-        return <div className={`${index} ${classList[index]} loading`} key={`project-item-${index}`}></div>;
+        return <div className={`${index} ${classList[index]} loading`} key={`project-item-${index}`}>
+          <div className="cover loading"></div>
+        </div>;
       });
     }
 
@@ -70,7 +73,7 @@ class ProjectCarousel extends PureComponent {
             return <tr className="transfer-info-item" key={`transfer-info-item-${index}`}>
               <td className="item-info">
                 <span>转让价格：</span>
-                <span className="font-white">￥{item.price}元</span>
+                <span className="font-white">￥{numComma(item.price)}元</span>
               </td>
               <td>
                 <span>转让份额：</span>
