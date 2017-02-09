@@ -20,14 +20,18 @@ import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
 
 export class Initial extends PureComponent {
+  constructor(props) {
+    super(props);
+
+  }
   render() {
     return (
       <div className="quote-initial-container">
         {
-          `${this.props.params.step}` === `1` ? <QuoteStepOne /> : ''
+          `${this.props.params.step}` === `1` ? <QuoteStepOne id={this.props.params.id} data={this.props.data} />  : ''
         }
         {
-          `${this.props.params.step}` === `2` ? <QuoteStepTwo /> : ''
+          `${this.props.params.step}` === `2` ? <QuoteStepTwo id={this.props.params.id} data={this.props.data} /> : ''
         }
         {
           `${this.props.params.step}` === `3` ? <QuoteSuc /> : ''

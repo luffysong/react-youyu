@@ -132,26 +132,32 @@ const rootRoute = function(store) {
         path: 'initial',
         name: 'initialQuote',
         childRoutes: [{
-          path: ':step',
+          path: ':id',
+          indexRoute: { onEnter: (nextState, replace) => replace(`/quote/initial/${nextState.params.id}/1`) },
+          childRoutes: [{
+            path: ':step',
+          }]
         }],
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Quote/Initial'));
           });
         },
-        indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial/1') },
       }, {
         path: 'rights',
         name: 'rightsQuote',
         childRoutes: [{
-          path: ':step',
+          path: ':id',
+          indexRoute: { onEnter: (nextState, replace) => replace(`/quote/rights/${nextState.params.id}/1`) },
+          childRoutes: [{
+            path: ':step',
+          }]
         }],
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Quote/Rights'));
           });
         },
-        indexRoute: { onEnter: (nextState, replace) => replace('/quote/rights/1') },
       }],
     }, {
       path: '/accept',

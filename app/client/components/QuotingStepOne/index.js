@@ -5,7 +5,7 @@
 /**
  * External dependencies
  */
-import React, {PureComponent} from 'react';
+import React, {PropTypes, PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
@@ -20,17 +20,24 @@ class QuoteStepOne extends PureComponent {
     super(props);
 
     this.state = {
-      value: 0.5
+      listing_quota: 0.5
     };
   }
 
   setPrice(event) {
     this.setState({
-      price: event.target.value / 100
+      listing_price: event.target.value
     });
   }
 
+  nextStep(event) {
+    event.preventDefault();
+    const {listing_quota, listing_price} = this.state;
+    console.log(listing_quota, listing_price);
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
         <div className="list-col">
@@ -93,9 +100,9 @@ class QuoteStepOne extends PureComponent {
               maxValue={7}
               minValue={0.5}
               formatLabel={value => `${value}%`}
-              value={this.state.value}
+              value={this.state.listing_quota}
               step={0.5}
-              onChange={value => {this.setState({value: value})}} />
+              onChange={value => {this.setState({listing_quota: value})}} />
             <div className="max-initial">8%</div>
           </div>
           <ReactTooltip class='quote-day-tooltip' id='quoteInitial' type='light' place="right" effect="solid">
@@ -117,17 +124,20 @@ class QuoteStepOne extends PureComponent {
             服务费 :
           </div>
           <div className="col-value">
-            转让价格 X 1%=<span className="finally-price" data-tip data-for="costIntro">{this.state.price}元</span>
+            转让价格 X 1%=<span className="finally-price" data-tip data-for="costIntro">{this.state.listing_price ? this.state.listing_price / 100 : 0}元</span>
             <ReactTooltip class='quote-day-tooltip' id='costIntro' type='light' place="right" effect="solid">
               <span>服务费将会在转让成功后扣除</span>
             </ReactTooltip>
           </div>
         </div>
-        <Link to="/quote/initial/2" activeClassName="active" className="next-btn">下一步</Link>
+        <Link to={`/quote/initial/${this.props.id}/2`} activeClassName="active" className="next-btn" onClick={this.nextStep.bind(this)}>下一步</Link>
       </div>
     );
   }
-
 }
+
+QuoteStepOne.propTypes = {
+  /*id: PropTypes.string.isRequired,*/
+};
 
 export default QuoteStepOne;

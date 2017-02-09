@@ -26,7 +26,7 @@ export class Rights extends PureComponent {
     return (
       <div className="quote-initial-container">
         {
-          `${this.props.params.step}` === `1` ? <QuoteStepOne display="rights"/> : ''
+          `${this.props.params.step}` === `1` ? <QuoteStepOne id={this.props.params.id} data={this.props.data} display="rights"/> : ''
         }
         {
           `${this.props.params.step}` === `2` ? <QuoteStepTwo display="rights" /> : ''
