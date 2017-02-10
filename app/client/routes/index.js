@@ -285,20 +285,17 @@ const rootRoute = function(store) {
           });
         },
       }, {
-        path: '/news/detail',
+        path: '/news/detail/:id',
         name: 'newsDetail',
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/NewsDetail',
             '../containers/NewsDetail/reducer',
-            '../containers/NewsDetail/sagas',
           ], (require) => {
             const component = require('../containers/NewsDetail');
             const reducer = require('../containers/NewsDetail/reducer').default;
-            const sagas = require('../containers/NewsDetail/sagas').default;
 
             injectReducer('newsDetail', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },

@@ -8,16 +8,20 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectNewsDetail from './selectors';
 import ShareBar from '../../components/ShareBar';
+import * as actions from './actions';
 
 export class NewsDetail extends PureComponent {
+  componentDidMount() {
+    const id = this.props.params.id ? this.props.params.id : 1;
+    this.props.loadNewsDetail(id);
+  }
+
   render() {
     return (
       <div className="news-detail-container">
@@ -50,13 +54,20 @@ NewsDetail.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  NewsDetail: makeSelectNewsDetail(),
-});
+function mapStateToProps(state, props) {
+  const newsDetail = state.newsDetail;
+  const id = props.params.id ? props.params.id : 1;
+
+  return {
+    newsDetailLoading: newsDetail.getIn(['newsDetailLoading', id]),
+    newsDetailData: newsDetail.getIn(['newsDetailData', id]),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadNewsDetail: (id) => dispatch(actions.loadNewsDetail(id))
   };
 }
 
