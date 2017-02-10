@@ -18,15 +18,20 @@ class CountDown extends Component {
     this.state = {
       remain: this.props.remain,
     };
+    this.timer = null;
   }
 
   componentDidMount() {
     this.count();
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
   count() {
-    const timer = setTimeout(() => {
-      clearTimeout(timer);
+    this.timer = setTimeout(() => {
+      clearTimeout(this.timer);
       this.setState({
         remain: this.state.remain - 1,
       }, () => this.count());
