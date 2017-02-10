@@ -75,7 +75,7 @@ function ProjectBanner(props) {
             <li>类型: {get(data, 'basic.type')}</li>
             <li>上映时间：{get(data, 'basic.release_date')}</li>
           </ul>
-          <ProjectInfoBar data={projectInfo}  className="project-banner-detail-info-bar" />
+          <ProjectInfoBar data={projectInfo} className="project-banner-detail-info-bar" />
         </div>
       </div>
     </div>

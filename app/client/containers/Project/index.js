@@ -8,6 +8,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -27,6 +28,26 @@ export class Project extends PureComponent {
     const projectId = params.id ? params.id : 0;
 
     this.props.loadProject(projectId);
+  }
+
+  renderNotice(loading, data) {
+    const notice = get(data, 'notice');
+    if (loading) {
+      return <Panel title="重要公告"
+          icon={require('./imgs/icon_inpor_notice_leftbar.svg')}
+          className="project-container-notice-panel loading"
+        >
+        </Panel>;
+    }
+    if (!notice) {
+      return null;
+    }
+    return <Panel title="重要公告"
+        icon={require('./imgs/icon_inpor_notice_leftbar.svg')}
+        className="project-container-notice-panel"
+      >
+        {notice}
+      </Panel>;
   }
 
   render() {
@@ -50,12 +71,7 @@ export class Project extends PureComponent {
             </RouteTransition>
           </div>
           <div className="project-container-right">
-            <Panel title="重要公告"
-              icon={require('./imgs/icon_inpor_notice_leftbar.svg')}
-              className="project-container-notice-panel"
-            >
-              影片将于2017年1月1日在全国各大影院上线，首映会将在北京万达影城举行。
-            </Panel>
+            {this.renderNotice(projectLoading, projectData)}
             <Panel title="项目进展"
               icon={require('./imgs/icon_proj_leftbar.svg')}
               className="project-container-progress-panel"
