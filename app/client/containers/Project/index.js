@@ -27,7 +27,18 @@ export class Project extends PureComponent {
     const { params } = this.props;
     const projectId = params.id ? params.id : 0;
 
-    this.props.loadProject(projectId);
+    if (!this.props.projectData) {
+      this.props.loadProject(projectId);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const oldId = prevProps.params.id;
+    const newId = this.props.params.id;
+
+    if (oldId !== newId) {
+      this.props.loadProject(newId);
+    }
   }
 
   renderNotice(loading, data) {

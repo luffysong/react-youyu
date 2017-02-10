@@ -4,6 +4,8 @@
   font-size: 16rem / 20;
   line-height: 28rem / 20;
   color: @fontDark;
+  word-break: break-all;
+  word-wrap: break-word;
 
   h2,
   h1 {
@@ -109,5 +111,25 @@
   i {
     font-style: normal;
     color: @fontLight;
+  }
+
+  pre {
+    display: block;
+    padding: 10px;
+    margin: 0 0 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: @fontDark;
+    background-color: @lightBg;
+    border: 1px solid @border;
+    border-radius: 4px;
+  }
+
+  pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
   }
 }
