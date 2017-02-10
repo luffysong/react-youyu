@@ -50,6 +50,26 @@ export class Project extends PureComponent {
       </Panel>;
   }
 
+  renderProgress(loading, data) {
+    const progress = get(data, 'progress');
+    if (loading) {
+      return <Panel title="项目进展"
+        icon={require('./imgs/icon_proj_leftbar.svg')}
+        className="project-container-progress-panel"
+      >
+      </Panel>
+    }
+    if (!progress || !progress.length) {
+      return null;
+    }
+    return <Panel title="项目进展"
+      icon={require('./imgs/icon_proj_leftbar.svg')}
+      className="project-container-progress-panel"
+    >
+      <ProjectProgres data={progress} />
+    </Panel>
+  }
+
   render() {
     const { children, params, projectData, projectLoading } = this.props;
 
@@ -72,12 +92,7 @@ export class Project extends PureComponent {
           </div>
           <div className="project-container-right">
             {this.renderNotice(projectLoading, projectData)}
-            <Panel title="项目进展"
-              icon={require('./imgs/icon_proj_leftbar.svg')}
-              className="project-container-progress-panel"
-            >
-              <ProjectProgres />
-            </Panel>
+            {this.renderProgress(projectLoading, projectData)}
           </div>
         </div>
       </div>

@@ -6,55 +6,40 @@
  * External dependencies
  */
 import React from 'react';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
 
-function ProjectProgress() {
+function ProjectProgress(props) {
+  const { data } = props;
+  if (!data || !data.length) {
+    return null;
+  }
   return (
     <div className="project-progress-component">
       <ul className="project-progress-list">
-        <li className="project-progress-list-item">
-          <div className="project-progress-list-item-time">
-            2017-01-12
-          </div>
-          <div className="project-progress-list-item-title">
-            将于2017年1月12日开机。
-          </div>
-        </li>
-        <li className="project-progress-list-item">
-          <div className="project-progress-list-item-time">
-            2017-12-26
-          </div>
-          <div className="project-progress-list-item-title">
-            2017年1月10日在北京正式开机。
-          </div>
-        </li>
-        <li className="project-progress-list-item">
-          <div className="project-progress-list-item-time">
-            2016-12-01
-          </div>
-          <div className="project-progress-list-item-title">
-            拍摄杀青，进入后期制作阶段。
-          </div>
-        </li>
-        <li className="project-progress-list-item">
-          <div className="project-progress-list-item-time">
-            2016-11-13
-          </div>
-          <div className="project-progress-list-item-title">
-            进入剪辑阶段。
-          </div>
-        </li>
+        {
+          data.map((item, index) => {
+            return <li className="project-progress-list-item" key={`project-progress-list-item-${index}`}>
+              <div className="project-progress-list-item-time">
+                {get(item, 'date')}
+              </div>
+              <div className="project-progress-list-item-title">
+                {get(item, 'content')}
+              </div>
+            </li>
+          })
+        }
       </ul>
     </div>
   );
 }
 
 ProjectProgress.propTypes = {
-
+  data: React.PropTypes.array,
 };
 
 export default ProjectProgress;
