@@ -22,7 +22,18 @@ import * as actions from './actions';
 export class NewsDetail extends PureComponent {
   componentDidMount() {
     const id = this.props.params.id ? this.props.params.id : 1;
-    this.props.loadNewsDetail(id);
+    if (!this.props.newsDetailData) {
+      this.props.loadNewsDetail(id);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const oldId = prevProps.params.id;
+    const newId = this.props.params.id;
+
+    if (oldId !== newId) {
+      this.props.loadNewsDetail(newId);
+    }
   }
 
   renderLoading() {
