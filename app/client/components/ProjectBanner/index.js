@@ -6,55 +6,76 @@
  * External dependencies
  */
 import React from 'react';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
 import ProjectInfoBar from '../ProjectInfoBar';
+import { numComma } from '../../utils/utils';
 
-function ProjectBanner() {
-  const data = [
+function projectBannerLoading() {
+  return(
+    <div className="project-banner-component loading">
+      <div className="project-banner-info clearfix">
+        <div className="project-banner-cover loading">
+        </div>
+        <div className="project-banner-detail loading">
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectBanner(props) {
+  const { loading, data } = props;
+
+  if(loading) {
+    return projectBannerLoading();
+  }
+
+  const projectInfo = [
     {
       name: '制片方',
-      value: '华纳影业',
+      value: get(data, 'basic.producer'),
     },
     {
       name: '转让方',
-      value: '3人',
+      value: get(data, 'listing') ? get(data, 'listing').length : 0,
     },
     {
       name: '合计转让份额',
-      value: '15%',
+      value: get(data, 'basic.transferable_ratio'),
     },
     {
       name: '转让总价',
-      value: '50,000,000元',
+      value: get(data, 'basic.transferable_value') ? numComma(get(data, 'basic.transferable_value'), false, true) : 0,
     },
   ];
 
   return (
     <div className="project-banner-component">
       <div className="project-banner-info clearfix">
-        <div className="project-banner-cover" style={{backgroundImage: `url(${require('./imgs/cover.jpg')})`}}>
+        <div className="project-banner-cover" style={{backgroundImage: `url(${get(data, 'basic.header_img')})`}}>
         </div>
         <div className="project-banner-detail">
           <div className="project-banner-detail-title-wrapper">
             <h3 className="project-banner-detail-title">
-              疯狂动物城
+              {get(data, 'basic.name')}
             </h3>
             <span className="project-banner-detail-state-tag">
-              <i className="icon icon-shooting"></i>拍摄制作期
+              <i className="icon icon-shooting"></i>{get(data, 'basic.stage')}
             </span>
           </div>
           <ul className="project-banner-detail-info">
-            <li>导演: 大卫·叶茨</li>
-            <li>编剧: J·K·罗琳</li>
-            <li>主演: 埃迪·雷德梅恩 / 凯瑟琳·沃特斯顿 / 丹·福勒 / 艾莉森·萨多尔 / 科林·法瑞尔</li>
-            <li>类型: 剧情 / 奇幻 / 冒险</li>
-            <li>上映时间：2016-11-23(中国大陆)</li>
+            <li>导演: {get(data, 'basic.director')}</li>
+            <li>编剧: {get(data, 'basic.scriptwriter')}</li>
+            <li>主演: {get(data, 'basic.protagonist')}</li>
+            <li>类型: {get(data, 'basic.type')}</li>
+            <li>上映时间：{get(data, 'basic.release_date')}</li>
           </ul>
-          <ProjectInfoBar data={data}  className="project-banner-detail-info-bar" />
+          <ProjectInfoBar data={projectInfo}  className="project-banner-detail-info-bar" />
         </div>
       </div>
     </div>
@@ -62,7 +83,16 @@ function ProjectBanner() {
 }
 
 ProjectBanner.propTypes = {
+  loading: React.PropTypes.bool,
+  data: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.object,
+  ]).isRequired,
+};
 
+ProjectBanner.defaultProps = {
+  loading: true,
+  data: false,
 };
 
 export default ProjectBanner;

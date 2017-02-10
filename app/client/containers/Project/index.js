@@ -24,13 +24,13 @@ import * as actions from './actions';
 export class Project extends PureComponent {
   componentDidMount() {
     const { params } = this.props;
-    const projectId = params.id;
+    const projectId = params.id ? params.id : 0;
 
     this.props.loadProject(projectId);
   }
 
   render() {
-    const { children, params } = this.props;
+    const { children, params, projectData, projectLoading } = this.props;
 
     return (
       <div className="project-container">
@@ -40,7 +40,7 @@ export class Project extends PureComponent {
             { name: 'description', content: 'Description of Project' },
           ]}
         />
-        <ProjectBanner />
+        <ProjectBanner data={projectData} loading={projectLoading} />
         <PayFlowBar />
         <div className="container project-wrapper">
           <div className="project-container-left">
@@ -74,12 +74,13 @@ Project.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   const project = state.project;
+  const id = props.params.id ? props.params.id : 0;
 
   return {
-    projectLoading: project.get('projectLoading'),
-    projectData: project.get('projectData'),
+    projectLoading: project.getIn(['projectLoading', id]),
+    projectData: project.getIn(['projectData', id]),
   };
 }
 

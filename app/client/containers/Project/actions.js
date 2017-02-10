@@ -20,23 +20,25 @@ export function loadProject(id) {
     });
 
     get(`/movie/project/${id}`).then(data => {
-      loadProjectSuc(data);
+      dispatch(loadProjectSuc(id, data));
     }).catch(err => {
-      loadProjectErr(err);
+      dispatch(loadProjectErr(id, err));
     });
   }
 }
 
-export function loadProjectErr(id) {
+export function loadProjectErr(id, err) {
   return {
     type: types.LOAD_PROJECT_ERR,
     id,
+    err,
   };
 }
 
-export function loadProjectSuc(id) {
+export function loadProjectSuc(id, data) {
   return {
     type: types.LOAD_PROJECT_SUC,
     id,
+    data,
   };
 }
