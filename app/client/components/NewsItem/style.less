@@ -13,6 +13,21 @@
     border-bottom: 0;
   }
 
+  &.loading {
+    .news-item {
+      &-title,
+      &-time,
+      &-desc {
+        color: transparent;
+        background-color: @mediumBg;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
   .news-item {
     &-title-wrapper {
       display: flex;

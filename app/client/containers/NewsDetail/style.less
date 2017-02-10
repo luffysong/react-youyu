@@ -5,34 +5,62 @@
 @import '../../styles/colors';
 
 .news-detail-container {
-  padding: (70rem / 20) 0 (81rem / 20);
+  padding: 70px 0 81px;
   background-color: @lightBg;
+
+  .news-detail-wrapper.loading {
+    .news-detail {
+      &-time,
+      &-content,
+      &-title {
+        color: transparent;
+        background-color: @mediumBg;
+      }
+
+      &-time {
+        width: 20%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &-title {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &-content {
+        margin-top: 40px;
+        height: 400px;
+      }
+    }
+  }
 
   .news-detail {
     &-wrapper {
-      padding: (70rem / 20) (189rem / 20) (60rem / 20);
+      padding: 70px 189px 60px;
       background-color: @white;
-      border-radius: 8rem / 20;
+      border-radius: 8px;
       overflow: hidden;
     }
 
     &-title {
-      font-size: 20rem / 20;
+      font-size: 20px;
       color: @fontDark;
       text-align: center;
-      line-height: 26rem / 20;
+      line-height: 26px;
     }
 
     &-time {
-      font-size: 14rem / 20;
+      font-size: 14px;
       color: @fontLighter;
       text-align: center;
-      line-height: 19rem / 20;
-      margin-top: 23rem / 20;
+      line-height: 19px;
+      margin-top: 23px;
     }
 
     &-split {
-      margin-top: 62rem / 20;
+      margin-top: 62px;
       height: 1px;
       background-color: @border;
     }

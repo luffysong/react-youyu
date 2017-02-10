@@ -8,13 +8,11 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectProject from './selectors';
 import HomeIntro from '../../components/HomeIntro';
 
 export class QA extends PureComponent {
@@ -62,9 +60,10 @@ QA.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Project: makeSelectProject(),
-});
+function mapStateToProps(state) {
+  return {
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {

@@ -9,12 +9,35 @@
 /**
  * Internal dependencies
  */
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as types from './constants';
+import { get } from '../../utils/request';
 
-export function defaultAction() {
+export function loadNewsDetail(id) {
+  return (dispatch) => {
+    dispatch({
+      type: types.LOAD_NEWS_DETAIL,
+      id,
+    });
+    return get(`/news/${id}`).then(data => {
+      dispatch(loadNewsDetailSuc(id, data));
+    }).catch(err => {
+      dispatch(loadNewsDetailErr(id, err));
+    });
+  }
+}
+
+export function loadNewsDetailSuc(id, data) {
   return {
-    type: DEFAULT_ACTION,
+    type: types.LOAD_NEWS_DETAIL_SUC,
+    id,
+    data,
+  };
+}
+
+export function loadNewsDetailErr(id, err) {
+  return {
+    type: types.LOAD_NEWS_DETAIL_ERR,
+    id,
+    err,
   };
 }

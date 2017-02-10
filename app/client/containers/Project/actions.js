@@ -9,12 +9,36 @@
 /**
  * Internal dependencies
  */
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as types from './constants';
+import { get } from '../../utils/request';
 
-export function defaultAction() {
+export function loadProject(id) {
+  return (dispatch) => {
+    dispatch({
+      type: types.LOAD_PROJECT,
+      id,
+    });
+
+    get(`/movie/project/${id}`).then(data => {
+      dispatch(loadProjectSuc(id, data));
+    }).catch(err => {
+      dispatch(loadProjectErr(id, err));
+    });
+  }
+}
+
+export function loadProjectErr(id, err) {
   return {
-    type: DEFAULT_ACTION,
+    type: types.LOAD_PROJECT_ERR,
+    id,
+    err,
+  };
+}
+
+export function loadProjectSuc(id, data) {
+  return {
+    type: types.LOAD_PROJECT_SUC,
+    id,
+    data,
   };
 }

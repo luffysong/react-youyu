@@ -8,6 +8,7 @@
  */
 import React, { PureComponent } from 'react';
 import { take } from 'lodash';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -16,6 +17,7 @@ import './style.less';
 import ProjectInfoBar from '../ProjectInfoBar';
 import IndexSlick from '../IndexSlick';
 import { numComma } from '../../utils/utils';
+// import Button from '../Button';
 
 class ProjectCarousel extends PureComponent {
   renderProjects(loading, projects) {
@@ -31,7 +33,7 @@ class ProjectCarousel extends PureComponent {
 
     const renderNum =  projects.length >= 3 ? 3 : 1;
 
-    return projects && projects.length && take(projects, renderNum).map((item, index) => {
+    return take(projects, renderNum).map((item, index) => {
       const projectInfo = [
         {
           name: '制片方',
@@ -47,11 +49,14 @@ class ProjectCarousel extends PureComponent {
         },
       ];
 
-      return <div className={`${renderNum === 1 ? 'carousel-item-one' : classList[index]}`} key={`project-item-${index}`}>
+      return <Link to={`/project/${item.project.id}`} className={`${renderNum === 1 ? 'carousel-item-one' : classList[index]}`} key={`project-item-${index}`}>
         <div className="cover" style={{ backgroundImage: `url(${item.project && item.project.list_img})`}}></div>
         <div className="info">
           <div className="info-title">
             {item.project ? item.project.name : ''}
+            <div className="info-title-tag">
+              {item.project ? item.project.stage : ''}
+            </div>
           </div>
           <ProjectInfoBar data={projectInfo} />
           { this.renderList(item.listing) }
@@ -61,7 +66,7 @@ class ProjectCarousel extends PureComponent {
             : null
           }
         </div>
-      </div>;
+      </Link>;
     })
   }
 
@@ -104,6 +109,7 @@ class ProjectCarousel extends PureComponent {
           <IndexSlick>
             { this.renderProjects(loading, data) }
           </IndexSlick>
+          {/*<Button size="big" to="/projects">查看更多项目</Button>*/}
         </div>
       </div>
     );
