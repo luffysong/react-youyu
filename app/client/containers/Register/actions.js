@@ -10,7 +10,7 @@
  * Internal dependencies
  */
 import * as types from './constants';
-import { get, post} from '../../utils/request';
+import { post } from '../../utils/request';
 
 export function orgRegister(params) {
   return (dispatch) => {

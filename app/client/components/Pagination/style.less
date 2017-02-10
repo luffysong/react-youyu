@@ -27,6 +27,27 @@
         margin: 0 (10.3rem / 20);
         text-align: center;
 
+        &.previous,
+        &.next {
+          padding: 0;
+          background: transparent;
+
+          img {
+            display: block;
+            cursor: pointer;
+          }
+
+          a {
+            padding: 0;
+          }
+        }
+
+        &.disabled {
+          img {
+            cursor: not-allowed;
+          }
+        }
+
         &.selected {
           background-color: @paginationSelectBg;
 

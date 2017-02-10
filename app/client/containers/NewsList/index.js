@@ -21,10 +21,28 @@ import * as actions from './actions';
 const pid = 2;
 
 export class NewsList extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.onPageChange = (page) => this.handlePageChange.call(this, page);
+  }
+
   componentDidMount() {
     const query = this.props.location.query;
     const page = query.page ? query.page : 1;
-    this.props.loadNewsList(pid, page);
+    if (!this.props.newsListData) {
+      this.props.loadNewsList(pid, page);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const query = this.props.location.query;
+    const page = query.page ? query.page : 1;
+    const prevQuery = prevProps.location.query;
+    const oldPage = prevQuery.page ? prevQuery.page : 1;
+
+    if (page !== oldPage && !this.props.newsListData) {
+      this.props.loadNewsList(pid, page);
+    }
   }
 
   renderLoading() {
@@ -37,8 +55,21 @@ export class NewsList extends PureComponent {
     });
   }
 
+  handlePageChange(page) {
+    this.props.router.push({
+      pathname: '/news/list',
+      query: {
+        page: parseInt(page.selected + 1, 10),
+      }
+    });
+  }
+
   render() {
     const { newsListLoading, newsListData } = this.props;
+    const pageInfo = {
+      currentPage: get(newsListData, 'current_page'),
+      lastPage: get(newsListData, 'last_page'),
+    };
 
     return (
       <div className="news-list-container">
@@ -56,7 +87,11 @@ export class NewsList extends PureComponent {
               : this.renderList(get(newsListData, 'data'))
             }
           </div>
-          <Pagination className="news-list-pagination" />
+          {
+            newsListLoading
+            ? null
+            : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="news-list-pagination" />
+          }
         </div>
       </div>
     );

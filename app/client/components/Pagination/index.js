@@ -15,8 +15,16 @@ import classnames from 'classnames';
 import './style.less';
 
 class Pagination extends PureComponent {
+  renderPrev() {
+    return <img src={require('./imgs/btn_pre_sheet.svg')} alt=""/>;
+  }
+
+  renderNext() {
+    return <img src={require('./imgs/btn_next_sheet.svg')} alt=""/>;
+  }
+
   render() {
-    const { className } = this.props;
+    const { className, onPageChange, pageInfo  } = this.props;
 
     const classes = classnames([
       'pagination-component',
@@ -26,6 +34,13 @@ class Pagination extends PureComponent {
     return (
       <div className={classes}>
         <ReactPaginate
+          pageCount={pageInfo.lastPage}
+          pageRangeDisplayed={0}
+          marginPagesDisplayed={4}
+          initialPage={parseInt(pageInfo.currentPage - 1, 10)}
+          previousLabel={this.renderPrev()}
+          nextLabel={this.renderNext()}
+          onPageChange={onPageChange}
           containerClassName="pagination-container"
         />
       </div>
@@ -35,6 +50,8 @@ class Pagination extends PureComponent {
 
 Pagination.propTypes = {
   className: React.PropTypes.string,
+  pageInfo: React.PropTypes.object,
+  onPageChange: React.PropTypes.func.isRequired,
 };
 
 export default Pagination;
