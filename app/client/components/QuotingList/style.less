@@ -5,38 +5,58 @@
 @import '../../styles/colors';
 
 .quoting-list-component {
-  margin-bottom: 50rem / 20;
+  margin-bottom: 50px;
 
   .quoting-list-item {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    font-size: 16rem / 20;
+    font-size: 16px;
     border-bottom: 1px solid @border;
     align-items: center;
-    padding: 0 (44.8rem / 20);
+    padding: 0 44.8px;
+
+    &.loading {
+      .quoting-list-item {
+        &-column {
+          &-name {
+            background-color: @mediumBg;
+            color: transparent;
+          }
+
+          &-value {
+            background-color: @mediumBg;
+            color: transparent;
+          }
+        }
+
+        &-btn {
+          color: transparent;
+        }
+      }
+    }
 
     &-column {
-      flex-basis: 146.9rem / 20;
+      flex-basis: 146.9px;
       text-align: center;
-      padding-top: 27rem / 20;
-      padding-bottom: 25rem / 20;
+      padding-top: 27px;
+      padding-bottom: 25px;
 
       &-name {
         color: @fontLighter;
-        font-size: 14rem / 20;
-        line-height: 19rem / 20;
+        font-size: 14px;
+        line-height: 19px;
       }
 
       &-value {
-        line-height: 21rem / 20;
+        line-height: 21px;
         color: @fontDark;
-        margin-bottom: 12rem / 20;
+        margin-bottom: 12px;
       }
     }
 
     &-btn {
-      margin-left: 44.8rem / 20;
+      margin-left: 40px;
     }
   }
 }

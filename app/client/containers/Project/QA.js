@@ -61,8 +61,6 @@ QA.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const project = state.project;
-
   return {
   };
 }
