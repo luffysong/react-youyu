@@ -23,7 +23,7 @@ class QuoteStepTwo extends PureComponent {
     this.state = {
       is_privacy: '0',
       specify: '0',
-      dateBanned: '1',
+      dateBanned: '0',
       transferee_cert_type: '1',
       price: 0
     };

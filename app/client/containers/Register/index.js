@@ -8,13 +8,11 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectRegister from './selectors';
 
 export class Register extends PureComponent {
   render() {
@@ -39,9 +37,9 @@ Register.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Register: makeSelectRegister(),
-});
+function mapStateToProps () {
+  return {};
+}
 
 function mapDispatchToProps(dispatch) {
   return {

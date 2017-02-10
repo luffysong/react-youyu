@@ -33,7 +33,7 @@ class QuoteStepOne extends PureComponent {
   nextStep(event) {
     const {listing_quota, listing_price} = this.state;
     this.props.data.listing_quota = listing_quota;
-    this.props.data.listing_price = listing_price,
+    this.props.data.listing_price = listing_price;
     console.log(this.props.data);
   }
 
@@ -45,57 +45,17 @@ class QuoteStepOne extends PureComponent {
             项目名称 :
           </div>
           <div className="col-value">
-            <b>神奇的动物在哪里</b>
+            <b>{this.props.source.project_name}</b>
           </div>
         </div>
-        <div className="list-col">
+        <div className="list-col range-col">
           <div className="col-attr">
             制片方 :
           </div>
           <div className="col-value">
-            华纳
+            {this.props.source.producer}
           </div>
         </div>
-
-        {
-          !this.props.display ?
-            <div>
-              <div className="list-col">
-                <div className="col-attr">
-                  原始份额 :
-                </div>
-                <div className="col-value">
-                  10%
-                </div>
-              </div>
-              <div className="list-col range-col has-initial">
-                <div className="col-attr">
-                  现持有原始份额 :
-                </div>
-                <div className="col-value">
-                  8%
-                  <span className="pos-relative" data-tip data-for="unquotedInitial">
-                    (5%可转让份额 + 3%不可转让份额)
-                  </span>
-                  <ReactTooltip class='quote-day-tooltip' id='unquotedInitial' type='light' place="right" effect="solid">
-                    <section>转让份额不能超过原始份额的70%</section>
-                  </ReactTooltip>
-                </div>
-              </div>
-            </div> : null
-        }
-
-        {
-          this.props.display === 'rights' ?
-            <div className="list-col range-col">
-              <div className="col-attr">
-                现持有份额 :
-              </div>
-              <div className="col-value">
-                8%
-              </div>
-            </div> : null
-        }
 
         <div className="list-col range-col quote-initial">
           <div className="col-attr">
@@ -103,7 +63,7 @@ class QuoteStepOne extends PureComponent {
           </div>
           <div className="col-value" data-tip data-for="quoteInitial">
             <InputRange
-              maxValue={7}
+              maxValue={this.props.source.tradable_quote * 100}
               minValue={0.5}
               formatLabel={value => `${value}%`}
               value={this.state.listing_quota}
@@ -128,20 +88,20 @@ class QuoteStepOne extends PureComponent {
             服务费 :
           </div>
           <div className="col-value">
-            转让价格 X 1%=<span className="finally-price" data-tip data-for="costIntro">{this.state.listing_price ? this.state.listing_price / 100 : 0}元</span>
+            转让价格 X {this.props.source.service_rate * 100}%=<span className="finally-price" data-tip data-for="costIntro">{this.state.listing_price ? (this.state.listing_price * this.props.source.service_rate).toFixed(2) : 0}元</span>
             <ReactTooltip class='quote-day-tooltip' id='costIntro' type='light' place="right" effect="solid">
               <span>服务费将会在转让成功后扣除</span>
             </ReactTooltip>
           </div>
         </div>
-        <Link to={`/quote/initial/${this.props.id}/2`} activeClassName="active" className="next-btn" onClick={this.nextStep.bind(this)}>下一步</Link>
+        <Link to={`/quote/${this.props.display === 'rights' ? 'rights' : 'initial'}/${this.props.id}/2`} activeClassName="active" className="next-btn" onClick={this.nextStep.bind(this)}>下一步</Link>
       </div>
     );
   }
 }
 
 QuoteStepOne.propTypes = {
-  /*id: PropTypes.string.isRequired,*/
+  id: PropTypes.string,
 };
 
 export default QuoteStepOne;

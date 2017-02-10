@@ -9,12 +9,30 @@
 /**
  * Internal dependencies
  */
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as types from './constants';
+import { get, post} from '../../utils/request';
 
-export function defaultAction() {
+export function orgRegister(params) {
+  return (dispatch) => {
+    dispatch({
+      type: types.ORG_REGISTER,
+    });
+    return post('/register/corporate', params).then((data) => {
+      dispatch(orgRegisterSuc(data));
+    });
+  };
+}
+
+export function orgRegisterSuc(data) {
   return {
-    type: DEFAULT_ACTION,
+    type: types.ORG_REGISTER_SUC,
+    data,
+  };
+}
+
+export function orgRegisterErr(error) {
+  return {
+    type: types.ORG_REGISTER_ERR,
+    error,
   };
 }

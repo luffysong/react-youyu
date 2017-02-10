@@ -113,14 +113,12 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Quote',
           '../containers/Quote/reducer',
-          '../containers/Quote/sagas',
         ], (require) => {
+
           const component = require('../containers/Quote');
           const reducer = require('../containers/Quote/reducer').default;
-          const sagas = require('../containers/Quote/sagas').default;
 
           injectReducer('quote', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },
@@ -316,14 +314,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Register',
           '../containers/Register/reducer',
-          '../containers/Register/sagas',
         ], (require) => {
           const component = require('../containers/Register');
           const reducer = require('../containers/Register/reducer').default;
-          const sagas = require('../containers/Register/sagas').default;
 
           injectReducer('register', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },

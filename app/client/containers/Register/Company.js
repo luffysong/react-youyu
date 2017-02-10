@@ -7,21 +7,20 @@
  */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectRegister from './selectors';
+import * as actions from './actions';
 
 export class Company extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      memberType: 'business',
+      memberType: '1',
       agree: true
     };
   }
@@ -38,6 +37,16 @@ export class Company extends PureComponent {
     });
   }
 
+  submit() {
+    this.props.orgRegister({
+       name: this.refs.orgName.value || '',
+       code: this.refs.orgCode.value || '',
+       license_pic: '',
+       type: this.state.memberType
+    }).then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="register-company-container">
@@ -47,7 +56,7 @@ export class Company extends PureComponent {
             企业全称
           </div>
           <div className="col-value">
-            <input type="text" className="price-input" />
+            <input type="text" className="price-input" ref='orgName' />
           </div>
         </div>
         <div className="list-col">
@@ -55,7 +64,7 @@ export class Company extends PureComponent {
             社会信用代码
           </div>
           <div className="col-value">
-            <input type="text" className="price-input" />
+            <input type="text" className="price-input" ref="orgCode" />
           </div>
         </div>
 
@@ -77,18 +86,18 @@ export class Company extends PureComponent {
           </div>
           <div className="col-value member-type">
             <section>
-              <div className={this.state.memberType === 'business' ? 'quote-radio checked' : 'quote-radio'}>
-                <input type="radio" checked={this.state.memberType === 'business'} name="memberType" onChange={this.selectType.bind(this)} value="business" id="business" />
+              <div className={this.state.memberType === '1' ? 'quote-radio checked' : 'quote-radio'}>
+                <input type="radio" checked={this.state.memberType === '1'} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
               </div>
               <label htmlFor="business">
                 交易会员(普通投资会员)
               </label>
             </section>
             <section>
-              <div className={this.state.memberType === 'composite' ? 'quote-radio checked' : 'quote-radio'}>
-                <input type="radio" checked={this.state.memberType === 'composite'} name="memberType" onChange={this.selectType.bind(this)} value="composite" id="composite" />
+              <div className={this.state.memberType === '2' ? 'quote-radio checked' : 'quote-radio'}>
+                <input type="radio" checked={this.state.memberType === '2'} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
               </div>
-              <label htmlFor="hide">
+              <label htmlFor="composite">
                 综合会员(持有影视初始份额的会员)
               </label>
             </section>
@@ -100,7 +109,7 @@ export class Company extends PureComponent {
           </div>
           <div className="col-value">
             <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={this.state.agree} name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+              <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
             </div>
             <label htmlFor="agree">
               同意《会员合同》《XXXX协议》
@@ -108,7 +117,7 @@ export class Company extends PureComponent {
           </div>
         </div>
 
-        <Link to="/quote/initial/2" activeClassName="active" className="next-btn">下一步</Link>
+        <Link to="" activeClassName="active" className={`next-btn ${this.state.agree ? '' : 'disabled'}`} onClick={this.submit.bind(this)}>下一步</Link>
       </div>
     );
   }
@@ -118,13 +127,20 @@ Company.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Register: makeSelectRegister(),
-});
+
+function mapStateToProps(state) {
+  const company = state.register;
+
+  return {
+    orgRegisterLoading: company.get('orgRegisterLoading'),
+    orgRegisterData: company.get('orgRegisterData'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    orgRegister: (params) => dispatch(actions.orgRegister(params)),
   };
 }
 

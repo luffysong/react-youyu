@@ -7,7 +7,6 @@
  */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 
 /**
@@ -18,26 +17,29 @@ import QuoteSuc from '../../components/QuotingSuc';
 import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
 import * as actions from './actions';
-import * as selectors from './selectors';
 
 export class Initial extends PureComponent {
   constructor(props) {
     super(props);
-    this.submitData = {
-      name: 1
-    };
+    this.submitData = {};
+    this.props.initialInfo(this.props.params.id);
   }
 
   submit(params) {
-    this.props.initialQuote(params).then(data => this.props.router.push(`/quote/initial/${this.props.params.id}/3`))
-      .catch(err => console.log(err));
+    this.props.initialQuote(params, function () {
+      this.props.router.push(`/quote/initial/${this.props.params.id}/3`);
+    }.bind(this));
   }
 
   render() {
+    const {initialInfoData} = this.props;
     return (
       <div className="quote-initial-container">
         {
-          `${this.props.params.step}` === `1` ? <QuoteStepOne id={this.props.params.id} data={this.submitData} />  : ''
+          console.log(this.props.initialInfoData)
+        }
+        {
+          `${this.props.params.step}` === `1` ? <QuoteStepOne id={this.props.params.id} data={this.submitData} source={initialInfoData} />  : ''
         }
         {
           `${this.props.params.step}` === `2` ? <QuoteStepTwo id={this.props.params.id} data={this.submitData} submit={this.submit.bind(this)} /> : ''
@@ -55,17 +57,22 @@ Initial.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
+function mapStateToProps(state) {
+  const quote = state.quote;
 
-const mapStateToProps = createStructuredSelector({
-  Quote: selectors.makeSelectQuote(),
-  quoteLoading: selectors.makeSelectQuoteLoading(),
-  quoteData: selectors.makeSelectQuoteData(),
-});
+  return {
+    initialQuoteLoading: quote.get('initialQuoteLoading'),
+    initialQuoteData: quote.get('initialQuoteData'),
+    initialInfoLoading: quote.get('initialInfoLoading'),
+    initialInfoData: quote.get('initialInfoData'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    initialQuote: (params) => dispatch(actions.initialQuote(params)),
+    initialQuote: (params, callback) => dispatch(actions.initialQuote(params, callback)),
+    initialInfo: (params) => dispatch(actions.initialInfo(params)),
   };
 }
 
