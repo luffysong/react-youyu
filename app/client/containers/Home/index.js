@@ -55,7 +55,6 @@ Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-
 function mapStateToProps(state) {
   const home = state.home;
 

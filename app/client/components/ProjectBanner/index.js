@@ -46,7 +46,7 @@ function ProjectBanner(props) {
     },
     {
       name: '合计转让份额',
-      value: get(data, 'basic.transferable_ratio'),
+      value: get(data, 'basic.transferable_ratio') + '%',
     },
     {
       name: '转让总价',

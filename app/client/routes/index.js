@@ -276,14 +276,11 @@ const rootRoute = function(store) {
           require.ensure([
             '../containers/NewsList',
             '../containers/NewsList/reducer',
-            '../containers/NewsList/sagas',
           ], (require) => {
             const component = require('../containers/NewsList');
             const reducer = require('../containers/NewsList/reducer').default;
-            const sagas = require('../containers/NewsList/sagas').default;
 
             injectReducer('newsList', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },

@@ -3,9 +3,16 @@
 .loading(@lighten-percentage: 10%) {
   animation: loading-fade 1.6s ease-in-out infinite;
   color: transparent;
+  user-select: none;
 
   &::after {
     content: '\00a0';
+  }
+
+  ::selection {
+    background-color: transparent;
+    color: transparent;
+    text-shadow: none;
   }
 }
 

@@ -8,18 +8,38 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectNewsList from './selectors';
 import NewsItem from '../../components/NewsItem';
 import Pagination from '../../components/Pagination';
+import * as actions from './actions';
+
+const pid = 2;
 
 export class NewsList extends PureComponent {
+  componentDidMount() {
+    const query = this.props.location.query;
+    const page = query.page ? query.page : 1;
+    this.props.loadNewsList(pid, page);
+  }
+
+  renderLoading() {
+    return Array(10).fill(0).map((item, index) => <NewsItem loading={true} key={`news-item-${index}`} />);
+  }
+
+  renderList(data) {
+    return data && data.length && data.map((item, index) => {
+      return <NewsItem loading={false} data={item} key={`news-item-${index}`} />;
+    });
+  }
+
   render() {
+    const { newsListLoading, newsListData } = this.props;
+
     return (
       <div className="news-list-container">
         <Helmet
@@ -31,7 +51,9 @@ export class NewsList extends PureComponent {
         <div className="container news-list-wrapper">
           <div className="news-list-list">
             {
-              Array(10).fill(0).map((item, index) => <NewsItem key={`news-item-${index}`} />)
+              newsListLoading
+              ? this.renderLoading()
+              : this.renderList(get(newsListData, 'data'))
             }
           </div>
           <Pagination className="news-list-pagination" />
@@ -45,13 +67,21 @@ NewsList.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  NewsList: makeSelectNewsList(),
-});
+function mapStateToProps(state, props) {
+  const newsList = state.newsList;
+  const query = props.location.query;
+  const page = query.page ? query.page : 1;
+
+  return {
+    newsListLoading: newsList.getIn(['newsListLoading', pid]),
+    newsListData: newsList.getIn(['newsListData', pid, page]),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadNewsList: (pid, page) => dispatch(actions.loadNewsList(pid, page))
   };
 }
 
