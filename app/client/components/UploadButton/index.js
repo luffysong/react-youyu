@@ -67,13 +67,12 @@ class UploadButton extends PureComponent {
       },
       params = {}
     } = props;
-    this.propsParmas = {
+    this.propsParams = {
       success,
       error,
       progress,
       params: _.extend(this.state.params, params),
     };
-    // console.log(this.propsParmas);
   }
 
   getToken(ev) {
@@ -100,11 +99,11 @@ class UploadButton extends PureComponent {
     return axios.post(action, fd, {
       onUploadProgress(data) {
         const progress = data.loaded*100/data.total;
-        s.propsParmas.progress(progress);
+        s.propsParams.progress(progress);
       },
     }).then((res) => {
       const url = `${uploadUrlParams.url}${res.data.url}`;
-      s.propsParmas.success(url);
+      s.propsParams.success(url);
     }, (...err) => {
       s.propsParams.error(err[0].response.data.message);
     });
