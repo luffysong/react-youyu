@@ -23,6 +23,40 @@ $ npm install -g gulp-cli
 
 ## 二、项目配置 Config
 
+### Nginx 配置：
+
+```
+server {
+        listen       80;
+        server_name  local.youyu.top;
+
+        location  / {
+                proxy_pass              http://127.0.0.1:8801;
+                proxy_redirect          off;
+                proxy_set_header        Host            $host;
+                proxy_set_header        X-Real-IP       $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location  /sockjs-node/ {
+                proxy_pass              http://127.0.0.1:8801;
+                proxy_http_version      1.1;
+                proxy_set_header        Upgrade $http_upgrade;
+                proxy_set_header        Connection "Upgrade";
+        }
+}
+```
+
+### Host 配置：
+
+```
+$ vim /etc/hosts
+```
+
+添加一行：
+
+127.0.0.1 local.youyu.top
+
 ## 三、项目开发 Development
 
 ### 1. 生成器

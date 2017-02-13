@@ -17,7 +17,7 @@ function RightMenu(props) {
   return (
     <div className={props.className}>
       <div className="button-wrapper">
-        <Button className="btn-quick-register">快速开户</Button>
+        <Button className="btn-quick-register" to="/register">快速开户</Button>
       </div>
       <div className="option-area">
         <a className="login-link" href="">登陆</a>
