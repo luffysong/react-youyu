@@ -1,8 +1,9 @@
 /**
  * External dependencies
  */
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
 
 /**
  * Internal dependencies
@@ -10,11 +11,19 @@ import Helmet from 'react-helmet';
 import './style.less';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import UserInfo from '../UserInfo';
+import * as actions from './actions';
 
 class Layout extends Component {
+  componentDidMount() {
+    const { userInfoData } = this.props;
+
+    if (!userInfoData) {
+      this.props.loadUserInfo();
+    }
+  }
+
   render() {
-    const { children } = this.props;
+    const { children, userInfoData, userInfoLoading } = this.props;
 
     return (
       <div className="layout-container">
@@ -25,9 +34,7 @@ class Layout extends Component {
             { name: 'description', content: '有娱投资' },
           ]}
         />
-        <Header>
-          <UserInfo />
-        </Header>
+        <Header data={userInfoData} loading={userInfoLoading} />
         {React.Children.toArray(children)}
         <Footer />
       </div>
@@ -35,8 +42,25 @@ class Layout extends Component {
   }
 }
 
-React.propTypes = {
-  children: React.PropTypes.node,
+Layout.propTypes = {
+  children: PropTypes.node,
+  dispatch: PropTypes.func.isRequired,
 };
 
-export default Layout;
+function mapStateToProps(state, props) {
+  const layout = state.layout;
+
+  return {
+    userInfoData: layout.getIn(['userInfo', 'data']),
+    userInfoLoading: layout.getIn(['userInfo', 'loading']),
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    loadUserInfo: () => dispatch(actions.loadUserInfo()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

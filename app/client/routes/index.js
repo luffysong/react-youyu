@@ -32,12 +32,12 @@ const rootRoute = function(store) {
     getComponent(nextState, cb) {
       require.ensure([
         '../containers/Layout',
-        '../containers/UserInfo/reducer',
+        '../containers/Layout/reducer',
       ], (require) => {
         const component = require('../containers/Layout');
-        const reducer = require('../containers/UserInfo/reducer').default;
+        const reducer = require('../containers/Layout/reducer').default;
 
-        injectReducer('userInfo', reducer);
+        injectReducer('layout', reducer);
         loadModule(cb, component);
       });
     },
