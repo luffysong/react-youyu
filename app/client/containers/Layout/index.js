@@ -10,6 +10,7 @@ import Helmet from 'react-helmet';
 import './style.less';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import UserInfo from '../UserInfo';
 
 class Layout extends Component {
   render() {
@@ -24,7 +25,9 @@ class Layout extends Component {
             { name: 'description', content: '有娱投资' },
           ]}
         />
-        <Header />
+        <Header>
+          <UserInfo />
+        </Header>
         {React.Children.toArray(children)}
         <Footer />
       </div>

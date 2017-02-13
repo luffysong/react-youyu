@@ -9,7 +9,6 @@ import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } fr
 /**
  * Internal dependencies
  */
-import Layout from '../containers/Layout';
 import { injectors } from '../store/reducers';
 
 export const getClientHistory = (store) =>
@@ -30,7 +29,18 @@ const rootRoute = function(store) {
   const { injectReducer, injectSagas } = injectors(store);
 
   return {
-    component: Layout,
+    getComponent(nextState, cb) {
+      require.ensure([
+        '../containers/Layout',
+        '../containers/UserInfo/reducer',
+      ], (require) => {
+        const component = require('../containers/Layout');
+        const reducer = require('../containers/UserInfo/reducer').default;
+
+        injectReducer('userInfo', reducer);
+        loadModule(cb, component);
+      });
+    },
     childRoutes: [{
       path: '/',
       name: 'home',
