@@ -6,7 +6,6 @@
  * External dependencies
  */
 import React from 'react';
-import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -20,6 +19,12 @@ function login(e) {
   location.href = `${config.apiBase}/passport/login?from=${backUrl}`;
 }
 
+function register(e) {
+  e.preventDefault();
+  const backUrl = encodeURIComponent(location.href);
+  location.href = `${config.apiBase}/passport/register?ok_url=${backUrl}`;
+}
+
 function RightMenu(props) {
   return (
     <div className={props.className}>
@@ -29,7 +34,7 @@ function RightMenu(props) {
       <div className="option-area">
         <a className="login-link" onClick={login}>登陆</a>
         <div className="split"></div>
-        <Link className="login-link" to="/register">注册</Link>
+        <a className="login-link" onClick={register}>注册</a>
       </div>
     </div>
   );
