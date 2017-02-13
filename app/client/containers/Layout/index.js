@@ -12,12 +12,13 @@ import './style.less';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import * as actions from './actions';
+import { isLogin } from '../../utils/user';
 
 class Layout extends Component {
   componentDidMount() {
     const { userInfoData } = this.props;
 
-    if (!userInfoData) {
+    if (isLogin() && !userInfoData) {
       this.props.loadUserInfo();
     }
   }
