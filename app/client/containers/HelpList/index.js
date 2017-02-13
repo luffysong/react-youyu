@@ -8,6 +8,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -18,6 +19,11 @@ import Pagination from '../../components/Pagination';
 import * as actions from './actions';
 
 export class HelpList extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.onPageChange = this.handlePageChange.bind(this);
+  }
+
   componentDidMount() {
     const columnId = this.props.params.id;
     const query = this.props.location.query;
@@ -27,8 +33,38 @@ export class HelpList extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const columnId = this.props.params.id;
+    const query = this.props.location.query;
+    const page = query.page ? query.page : 1;
+    const prevQuery = prevProps.location.query;
+    const oldPage = prevQuery.page ? prevQuery.page : 1;
+
+    if (page !== oldPage && !this.props.newsListData) {
+      this.props.loadList(columnId, page);
+    }
+  }
+
+  handlePageChange(page) {
+    const columnId = this.props.params.id;
+    if (!page || page.selected === undefined) {
+      return false;
+    }
+    this.props.router.push({
+      pathname: `/help/list/${columnId}`,
+      query: {
+        page: parseInt(page.selected + 1, 10),
+      }
+    });
+  }
+
   render() {
     const { listLoading, listData } = this.props;
+
+    const pageInfo = {
+      currentPage: get(listData, 'current_page'),
+      lastPage: get(listData, 'last_page'),
+    };
 
     return (
       <div className="help-list-container">
@@ -39,7 +75,11 @@ export class HelpList extends PureComponent {
           ]}
         />
         <HelpListItems loading={listLoading} data={listData} />
-        <Pagination />
+        {
+          listLoading
+          ? null
+          : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="help-list-pagination" />
+        }
       </div>
     );
   }

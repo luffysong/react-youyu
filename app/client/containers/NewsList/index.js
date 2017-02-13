@@ -23,7 +23,7 @@ const pid = 2;
 export class NewsList extends PureComponent {
   constructor(props) {
     super(props);
-    this.onPageChange = (page) => this.handlePageChange.call(this, page);
+    this.onPageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {

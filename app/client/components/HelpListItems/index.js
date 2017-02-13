@@ -44,7 +44,7 @@ HelpListItems.propTypes = {
   loading: React.PropTypes.bool.isRequired,
   data: React.PropTypes.oneOfType([
     React.PropTypes.bool,
-    React.PropTypes.array,
+    React.PropTypes.object,
   ]).isRequired,
 };
 
