@@ -46,7 +46,7 @@ class RightMenu extends PureComponent {
           ? <UserInfo loading={loading} data={data} />
           :
             <div className="option-area">
-              <a className="login-link" onClick={this.login}>登陆</a>
+              <a className="login-link" onClick={this.login}>登录</a>
               <div className="split"></div>
               <a className="login-link" onClick={this.register}>注册</a>
             </div>
