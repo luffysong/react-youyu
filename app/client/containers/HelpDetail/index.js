@@ -8,17 +8,32 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectHelpDetail from './selectors';
 import Button from '../../components/Button';
+import * as actions from './actions';
 
 export class HelpDetail extends PureComponent {
+  componentDidMount() {
+    if (!this.props.data) {
+      const id = this.props.params.id;
+      this.props.loadDetail(id);
+    }
+  }
+
+  componentDidUpdate(props) {
+    const oldId = props.params.id;
+    const newId = this.props.params.id;
+
+    if (oldId !== newId && !this.props.data) {
+      this.props.loadDetail(newId);
+    }
+  }
+
   render() {
     return (
       <div className="help-detail-container">
@@ -77,13 +92,21 @@ HelpDetail.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  HelpDetail: makeSelectHelpDetail(),
-});
+
+function mapStateToProps(state, props) {
+  const helpDetail = state.helpDetail;
+  const id = props.params.id;
+
+  return {
+    loading: helpDetail.getIn(['loading', id]),
+    data: helpDetail.getIn(['data', id]),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadDetail: (id) => dispatch(actions.loadNewsDetail(id)),
   };
 }
 
