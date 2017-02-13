@@ -12,6 +12,13 @@ import { Link } from 'react-router';
  * Internal dependencies
  */
 import Button from '../Button';
+import config from '../../config';
+
+function login(e) {
+  e.preventDefault();
+  const backUrl = encodeURIComponent(location.href);
+  location.href = `${config.apiBase}/passport/login?from=${backUrl}`;
+}
 
 function RightMenu(props) {
   return (
@@ -20,7 +27,7 @@ function RightMenu(props) {
         <Button className="btn-quick-register" to="/register">快速开户</Button>
       </div>
       <div className="option-area">
-        <a className="login-link" href="">登陆</a>
+        <a className="login-link" onClick={login}>登陆</a>
         <div className="split"></div>
         <Link className="login-link" to="/register">注册</Link>
       </div>
