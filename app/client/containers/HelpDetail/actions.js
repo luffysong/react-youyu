@@ -10,12 +10,20 @@
  * Internal dependencies
  */
 import * as types from './constants';
+import { get } from '../../utils/request';
 
 export function loadNewsDetail(id) {
-  return {
-    type: types.LOAD_NEWS_DETAIL,
-    id,
-  };
+  return dispatch => {
+    dispatch({
+      type: types.LOAD_NEWS_DETAIL,
+      id,
+    });
+    get(`/news/${id}`).then(data => {
+      dispatch(loadNewsDetailSuc(id, data.info));
+    }).catch(err => {
+      dispatch(loadNewsDetailErr(id, err));
+    });
+  }
 }
 
 export function loadNewsDetailSuc(id, data) {
