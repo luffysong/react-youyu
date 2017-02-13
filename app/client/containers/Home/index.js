@@ -18,6 +18,7 @@ import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
 import ProjectCarousel from '../../components/ProjectCarousel';
 import * as actions from './actions';
+import UploadButton from '../../components/UploadButton';
 
 export class Home extends PureComponent {
   componentDidMount() {

@@ -11,10 +11,10 @@ import Cookie from 'js-cookie';
 import config from '../config';
 import message from '../components/Message';
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/api' : config.apiBase;
-axios.defaults.headers.common['Z-BBS-X-XSRF-TOKEN'] = Cookie.get('Z-BBS-XSRF-TOKEN');
-axios.defaults.headers.common['Accept'] = 'application/json';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/api' : config.apiBase;
+// axios.defaults.headers.common['Z-BBS-X-XSRF-TOKEN'] = Cookie.get('Z-BBS-XSRF-TOKEN');
+// axios.defaults.headers.common['Accept'] = 'application/json';
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const showError = function (msg) {
   message.error(msg);
