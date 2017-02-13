@@ -11,11 +11,6 @@ import Cookie from 'js-cookie';
 import config from '../config';
 import message from '../components/Message';
 
-// axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/api' : config.apiBase;
-// axios.defaults.headers.common['Z-BBS-X-XSRF-TOKEN'] = Cookie.get('Z-BBS-XSRF-TOKEN');
-// axios.defaults.headers.common['Accept'] = 'application/json';
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 const showError = function (msg) {
   message.error(msg);
 };
@@ -46,6 +41,9 @@ function checkError(response) {
 }
 
 export function get(url, params) {
+  const urlPrefix = process.env.NODE_ENV === 'development' ? '/api' : config.apiBase;
+  url = urlPrefix + url;
+
   console.info('GET: ', url);
 
   if(params) {
@@ -53,12 +51,19 @@ export function get(url, params) {
     url += `?${qs.stringify(params)}`;
   }
 
-  return axios.get(url)
+  return axios.get(url, {
+    headers: {
+      Accept: 'application/json'
+    },
+  })
     .then(checkStatus)
     .then(checkError);
 }
 
 export function post(url, body) {
+  const urlPrefix = process.env.NODE_ENV === 'development' ? '/api' : config.apiBase;
+  url = urlPrefix + url;
+
   console.info('POST: ', url);
 
   if (body) {
@@ -67,7 +72,13 @@ export function post(url, body) {
     body = {};
   }
 
-  return axios.post(url, body)
+  return axios.post(url, body, {
+    headers: {
+      Accept: 'application/json',
+      'Z-BBS-X-XSRF-TOKEN': Cookie.get('Z-BBS-XSRF-TOKEN'),
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  })
     .then(checkStatus)
     .then(checkError);
 }
