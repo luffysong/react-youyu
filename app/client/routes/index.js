@@ -224,14 +224,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Help',
           '../containers/Help/reducer',
-          '../containers/Help/sagas',
         ], (require) => {
           const component = require('../containers/Help');
           const reducer = require('../containers/Help/reducer').default;
-          const sagas = require('../containers/Help/sagas').default;
 
           injectReducer('help', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },
@@ -239,18 +236,19 @@ const rootRoute = function(store) {
       childRoutes: [{
         path: 'list',
         name: 'helpList',
+        indexRoute: { onEnter: (nextState, replace) => replace(`/help/list/12`) },
+        childRoutes: [{
+          path: ':id',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/HelpList',
             '../containers/HelpList/reducer',
-            '../containers/HelpList/sagas',
           ], (require) => {
             const component = require('../containers/HelpList');
             const reducer = require('../containers/HelpList/reducer').default;
-            const sagas = require('../containers/HelpList/sagas').default;
 
             injectReducer('helpList', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },
