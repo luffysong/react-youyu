@@ -21,16 +21,18 @@ function Header(props) {
       <section className="header-inner">
         <Logo className="header-logo" />
         <Menu className="header-menu" />
-        <RightMenu className="header-right-menu">
-          {props.children}
-        </RightMenu>
+        <RightMenu className="header-right-menu" loading={props.loading} data={props.data} />
       </section>
     </header>
   );
 }
 
 Header.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  loading: React.PropTypes.bool.isRequired,
+  data: React.PropTypes.oneOfType([
+    React.PropTypes.bool.isRequired,
+    React.PropTypes.object.isRequired,
+  ]),
 };
 
 export default Header;

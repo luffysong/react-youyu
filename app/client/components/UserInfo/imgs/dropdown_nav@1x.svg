@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="156px" height="176px" viewBox="0 0 156 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdown_nav@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M70.3,11.9743875 L10.997387,11.9743875 C10.4398421,11.9743875 10,12.4192641 10,12.9680473 L10,160.399251 C10,160.937376 10.4465454,161.39291 10.997387,161.39291 L145.002613,161.39291 C145.560158,161.39291 146,160.948034 146,160.399251 L146,12.9680473 C146,12.4299222 145.553455,11.9743875 145.002613,11.9743875 L85.7,11.9743875 L78.7388216,5.67057542 C78.3292082,5.2996431 77.6692183,5.30106804 77.2611784,5.67057542 L70.3,11.9743875 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.68713202 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="index_已登录状态" transform="translate(-1187.000000, -57.000000)">
+            <g id="Group">
+                <g id="导航">
+                    <g id="登录-注册" transform="translate(1187.000000, 0.000000)">
+                        <g id="dropdown-_nav" transform="translate(0.000000, 57.000000)">
+                            <g id="Group-15">
+                                <g id="Combined-Shape">
+                                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                    <use fill="#484B53" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

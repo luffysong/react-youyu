@@ -32,12 +32,12 @@ const rootRoute = function(store) {
     getComponent(nextState, cb) {
       require.ensure([
         '../containers/Layout',
-        '../containers/UserInfo/reducer',
+        '../containers/Layout/reducer',
       ], (require) => {
         const component = require('../containers/Layout');
-        const reducer = require('../containers/UserInfo/reducer').default;
+        const reducer = require('../containers/Layout/reducer').default;
 
-        injectReducer('userInfo', reducer);
+        injectReducer('layout', reducer);
         loadModule(cb, component);
       });
     },
@@ -224,14 +224,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Help',
           '../containers/Help/reducer',
-          '../containers/Help/sagas',
         ], (require) => {
           const component = require('../containers/Help');
           const reducer = require('../containers/Help/reducer').default;
-          const sagas = require('../containers/Help/sagas').default;
 
           injectReducer('help', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },
@@ -239,18 +236,19 @@ const rootRoute = function(store) {
       childRoutes: [{
         path: 'list',
         name: 'helpList',
+        indexRoute: { onEnter: (nextState, replace) => replace(`/help/list/12`) },
+        childRoutes: [{
+          path: ':id',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/HelpList',
             '../containers/HelpList/reducer',
-            '../containers/HelpList/sagas',
           ], (require) => {
             const component = require('../containers/HelpList');
             const reducer = require('../containers/HelpList/reducer').default;
-            const sagas = require('../containers/HelpList/sagas').default;
 
             injectReducer('helpList', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },

@@ -9,12 +9,32 @@
 /**
  * Internal dependencies
  */
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as types from './constants';
+import { get } from '../../utils/request';
 
-export function defaultAction() {
+export function loadMenu() {
+  return dispatch => {
+    dispatch({
+      type: types.LOAD_HELP_MENU,
+    });
+    get(`/news-column?pid=11`).then(data => {
+      dispatch(loadMenuSuc(data));
+    }).catch(err => {
+      dispatch(loadMenuErr(err));
+    });
+  }
+}
+
+export function loadMenuSuc(data) {
   return {
-    type: DEFAULT_ACTION,
+    type: types.LOAD_HELP_MENU_SUC,
+    data,
+  };
+}
+
+export function loadMenuErr(err) {
+  return {
+    type: types.LOAD_HELP_MENU_SUC,
+    err,
   };
 }

@@ -6,11 +6,13 @@
  * External dependencies
  */
 import React, { PureComponent } from 'react';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import Button from '../Button';
+import UserInfo from '../UserInfo';
 import config from '../../config';
 import { isLogin } from '../../utils/user';
 
@@ -28,20 +30,23 @@ class RightMenu extends PureComponent {
   }
 
   render() {
-    const { className, children } = this.props;
+    const { className, loading, data } = this.props;
 
     return (
       <div className={className}>
-        <div className="button-wrapper">
-          <Button className="btn-quick-register" to="/register">快速开户</Button>
-        </div>
+        {
+          isLogin() && (loading || get(data, 'info.identity_type'))
+          ? null
+          : <div className="button-wrapper">
+              <Button className="btn-quick-register" to="/register">快速开户</Button>
+            </div>
+        }
         {
           isLogin()
-          ?
-            children
+          ? <UserInfo loading={loading} data={data} />
           :
             <div className="option-area">
-              <a className="login-link" onClick={this.login}>登陆</a>
+              <a className="login-link" onClick={this.login}>登录</a>
               <div className="split"></div>
               <a className="login-link" onClick={this.register}>注册</a>
             </div>
@@ -53,7 +58,11 @@ class RightMenu extends PureComponent {
 
 RightMenu.propTypes = {
   className: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node,
+  loading: React.PropTypes.bool.isRequired,
+  data: React.PropTypes.oneOfType([
+    React.PropTypes.bool.isRequired,
+    React.PropTypes.object.isRequired,
+  ]),
 };
 
 export default RightMenu;

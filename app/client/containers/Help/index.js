@@ -8,42 +8,25 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectHelp from './selectors';
 import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 import RouteTransition from '../../components/RouteTransition';
+import * as actions from './actions';
 
 export class Help extends PureComponent {
+  componentDidMount() {
+    if (!this.props.menuData) {
+      this.props.loadMenu();
+    }
+  }
+
   render() {
-    const { children } = this.props;
-    const sideMenuLinks = [
-      {
-        link: '/help/list',
-        text: '了解影视收益权投资',
-      },
-      {
-        link: '/help/detail',
-        text: '投资规则',
-      },
-      {
-        link: '/help/detail',
-        text: '会员制度',
-      },
-      {
-        link: '/help/detail',
-        text: '保证金规则',
-      },
-      {
-        link: '/help/detail',
-        text: '支付问题',
-      },
-    ];
+    const { children, menuLoading, menuData } = this.props;
 
     return (
       <div className="help-container">
@@ -58,7 +41,7 @@ export class Help extends PureComponent {
             <div className="help-left-bar-top">
               常见问题
             </div>
-            <LeftSideMenu links={sideMenuLinks} />
+            <LeftSideMenu loading={menuLoading} data={menuData} />
           </LeftSideBar>
           <RouteTransition>
             {children}
@@ -74,13 +57,19 @@ Help.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Help: makeSelectHelp(),
-});
+function mapStateToProps(state) {
+  const help = state.help;
+
+  return {
+    menuLoading: help.get('loading'),
+    menuData: help.get('data'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadMenu: () => dispatch(actions.loadMenu()),
   };
 }
 
