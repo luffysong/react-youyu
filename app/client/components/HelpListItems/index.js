@@ -7,45 +7,50 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
 
-function HelpListItems() {
+function HelpListItems(props) {
+  const { loading, data } = props;
+
+  if (loading) {
+    return <ul className="help-list-items-component">
+      {
+        Array(10).fill().map((_, index) => {
+          return <li className="help-list-items-component-item loading" key={`help-list-items-item-${index}`}></li>;
+        })
+      }
+    </ul>
+  }
+
   return (
     <ul className="help-list-items-component">
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
-      <li className="help-list-items-component-item">
-        <Link to="/help/detail">投资流程是什么样的？</Link>
-      </li>
+      {
+        get(data, 'data') && data.data.map((item, index) => {
+          return <li className="help-list-items-component-item" key={`help-list-items-item-${index}`}>
+            <Link to={`/help/detail/${item.id}`}>{item.title}</Link>
+          </li>
+        })
+      }
     </ul>
   );
 }
 
 HelpListItems.propTypes = {
+  loading: React.PropTypes.bool.isRequired,
+  data: React.PropTypes.oneOfType([
+    React.PropTypes.bool,
+    React.PropTypes.array,
+  ]).isRequired,
+};
 
+HelpListItems.defaultProps = {
+  loading: true,
+  data: false,
 };
 
 export default HelpListItems;

@@ -253,7 +253,7 @@ const rootRoute = function(store) {
           });
         },
       }, {
-        path: 'detail',
+        path: 'detail/:id',
         name: 'helpDetail',
         getComponent(nextState, cb) {
           require.ensure([
