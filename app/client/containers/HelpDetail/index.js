@@ -9,6 +9,7 @@ import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -16,6 +17,7 @@ import { Link } from 'react-router';
 import './style.less';
 import Button from '../../components/Button';
 import * as actions from './actions';
+import { removeInlineStyle } from '../../utils/utils';
 
 export class HelpDetail extends PureComponent {
   constructor(props) {
@@ -49,15 +51,28 @@ export class HelpDetail extends PureComponent {
     }
   }
 
+  createMarkup(html) {
+    if (!html) {
+      return {
+        __html: '',
+      };
+    }
+
+    return {
+      __html: removeInlineStyle(html),
+    };
+  }
+
   render() {
+    const { loading, data } = this.props;
+
+    if (loading) {
+      return <h1>Loading...</h1>;
+    }
+
     return (
       <div className="help-detail-container">
-        <Helmet
-          title="问题详情"
-          meta={[
-            { name: 'description', content: 'Description of HelpDetail' },
-          ]}
-        />
+        <Helmet title="问题详情" />
         <div className="help-detail-container-top">
           <div className="help-detail-container-back" onClick={this.back}>
             <img src={require('./imgs/btn_back_FAQ.svg')} alt="返回"/>
@@ -66,11 +81,11 @@ export class HelpDetail extends PureComponent {
           <div className="help-detail-container-qa">
             <div className="help-detail-container-qa-q">
               <span className="help-detail-container-qa-letter">Q:</span>
-              互联网非公开股权投资是不是涉及非法融资？
+              {get(data, 'title')}
             </div>
             <div className="help-detail-container-qa-a">
               <span className="help-detail-container-qa-letter">A:</span>
-              互联网非公开股权投资模式不是非法集资。根据《关于取缔非法金融机构和非法金融业务活动中有关问题的通知》规定，非法集资是指单位或者个人未依照法定程序经有关部门批准，以发行股票、债券、 彩票、投资基金证券或者其他债权凭证的方式向社会公众筹集资金。互联网非公开股权投资严格向经认证合格投资人披露融资项目信息，由合格投资人定向认购，投资人不超过200人且对象特定，符合《公司法》、《证券法》、中国证券业协会《私募股权众筹融资管理办法》（试行）（征求意见稿）和《场外证券业务备案管理办法》等相关法律法规的规定。
+              <div dangerouslySetInnerHTML={this.createMarkup(get(data, 'content'))}></div>
             </div>
           </div>
           <div className="help-detail-container-operate">
