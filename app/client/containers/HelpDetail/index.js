@@ -63,11 +63,58 @@ export class HelpDetail extends PureComponent {
     };
   }
 
+  renderRelated(data) {
+    if (!data || !data.lenght) {
+      return null;
+    }
+    return (
+      <div className="help-detail-container-bottom">
+        <h3>相关问题</h3>
+        <ul className="help-detail-container-related">
+          {
+            data && data.map((item, index) => {
+              return <li key={`list-item-${index}`}>
+                <Link to={`/help/detail/${item.id}`}>{item.title}</Link>
+              </li>
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
+
   render() {
     const { loading, data } = this.props;
 
     if (loading) {
-      return <h1>Loading...</h1>;
+      return (
+        <div className="help-detail-container">
+          <Helmet title="问题详情" />
+          <div className="help-detail-container-top">
+            <div className="help-detail-container-back" onClick={this.back}>
+              <img src={require('./imgs/btn_back_FAQ.svg')} alt="返回"/>
+              <span>返回</span>
+            </div>
+            <div className="help-detail-container-qa">
+              <div className="help-detail-container-qa-q loading">
+                <span className="help-detail-container-qa-letter">Q:</span>
+                这是一个问题？
+              </div>
+              <div className="help-detail-container-qa-a loading">
+                <span className="help-detail-container-qa-letter">A:</span>
+                人生若只如初见，
+                何事秋风悲画扇。
+                等闲变却故人心，
+                却道故人心易变。
+                骊山语罢清宵半，
+                泪雨霖铃终不怨。
+                何如薄幸锦衣郎，
+                比翼连枝当日愿。
+              </div>
+            </div>
+          </div>
+        </div>
+      );
     }
 
     return (
@@ -99,20 +146,7 @@ export class HelpDetail extends PureComponent {
             </Button>
           </div>
         </div>
-        <div className="help-detail-container-bottom">
-          <h3>相关问题</h3>
-          <ul className="help-detail-container-related">
-            <li>
-              <Link to="/">互联网非公开股权投资是不是涉及非法融资？</Link>
-            </li>
-            <li>
-              <Link to="/">互联网非公开股权投资是不是涉及非法融资？</Link>
-            </li>
-            <li>
-              <Link to="/">互联网非公开股权投资是不是涉及非法融资？</Link>
-            </li>
-          </ul>
-        </div>
+        {this.renderRelated(get(data, 'correlation_list'))}
       </div>
     );
   }
