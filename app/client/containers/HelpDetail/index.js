@@ -18,6 +18,11 @@ import Button from '../../components/Button';
 import * as actions from './actions';
 
 export class HelpDetail extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.back = this.handleBack.bind(this);
+  }
+
   componentDidMount() {
     if (!this.props.data) {
       const id = this.props.params.id;
@@ -34,6 +39,16 @@ export class HelpDetail extends PureComponent {
     }
   }
 
+  handleBack() {
+    if (history.length > 2) {
+      history.go(-1);
+    } else {
+      this.props.router.push({
+        pathname: '/help/list',
+      });
+    }
+  }
+
   render() {
     return (
       <div className="help-detail-container">
@@ -44,7 +59,7 @@ export class HelpDetail extends PureComponent {
           ]}
         />
         <div className="help-detail-container-top">
-          <div className="help-detail-container-back">
+          <div className="help-detail-container-back" onClick={this.back}>
             <img src={require('./imgs/btn_back_FAQ.svg')} alt="返回"/>
             <span>返回</span>
           </div>
