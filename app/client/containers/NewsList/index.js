@@ -56,6 +56,9 @@ export class NewsList extends PureComponent {
   }
 
   handlePageChange(page) {
+    if (!page || page.selected === undefined) {
+      return false;
+    }
     this.props.router.push({
       pathname: '/news/list',
       query: {

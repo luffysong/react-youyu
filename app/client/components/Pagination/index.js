@@ -26,6 +26,11 @@ class Pagination extends PureComponent {
   render() {
     const { className, onPageChange, pageInfo  } = this.props;
 
+    if (!onPageChange
+      || !(pageInfo && (pageInfo.currentPage !== undefined) && (pageInfo.lastPage !== undefined))) {
+      return null;
+    }
+
     const classes = classnames([
       'pagination-component',
       className,
