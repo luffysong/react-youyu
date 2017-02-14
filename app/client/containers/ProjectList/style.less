@@ -5,10 +5,17 @@
 @import '../../styles/colors';
 
 .project-list-container {
-  color: #2d2f33;
-  min-height: 20rem;
-  font-size: 2rem;
-  line-height: 20rem;
-  background-color: #ececec;
-  text-align: center;
+  padding-top: 42px;
+
+  .project-item-component {
+    height: 366px;
+    margin-bottom: 20px;
+    padding: 34px 87px;
+    border-radius: 4px;
+    background-color: @white;
+
+    .cover {
+      background-color: @darkBg;
+    }
+  }
 }

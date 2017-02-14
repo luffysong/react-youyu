@@ -2,4 +2,6 @@
  * ProjectList constants
  */
 
-export const DEFAULT_ACTION = 'ProjectList/DEFAULT_ACTION';
+export const LOAD_PROJECT_LIST = 'ProjectList/LOAD_PROJECT_LIST';
+export const LOAD_PROJECT_LIST_SUC = 'ProjectList/LOAD_PROJECT_LIST_SUC';
+export const LOAD_PROJECT_LIST_ERR = 'ProjectList/LOAD_PROJECT_LIST_ERR';
