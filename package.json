@@ -258,11 +258,111 @@
         "APP_ENV_RUNTIME": "client"
       }
     },
-    "build:client": {
+    "build:client:test01": {
       "command": "node internals/scripts/build-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "production",
+        "API_ENV": "test01",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test02": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test02",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test03": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test03",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test04": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test04",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test05": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test05",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test06": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test06",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test07": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test07",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test08": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test08",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test09": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test09",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test10": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test10",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test11": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test11",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client:test12": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "test12",
         "APP_ENV_RUNTIME": "client"
       }
     },
