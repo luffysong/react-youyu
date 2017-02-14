@@ -184,13 +184,10 @@ Company.propTypes = {
 
 function mapStateToProps(state) {
   const company = state.register;
-  const personal = state.personRegister;
 
   return {
     orgRegisterLoading: company.get('orgRegisterLoading'),
     orgRegisterData: company.get('orgRegisterData'),
-    personalRegisterLoading: personal.get('loading'),
-    personalRegisterData: personal.get('sucData'),
   };
 }
 
@@ -198,7 +195,6 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     orgRegister: (params) => dispatch(actions.orgRegister(params)),
-    personalRegister: (params) => dispatch(actions.personalRegister(params)),
   };
 }
 
