@@ -8,6 +8,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -17,10 +18,23 @@ import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
 import UcNavTab from '../../components/UcNavTab';
 import dict from '../../utils/dict.json';
+import * as actions from './actions';
 
 export class OrderMgmt extends PureComponent {
+  componentDidMount() {
+    const status = this.props.params.status;
+    const query = this.props.location.query;
+    const page = query.page ? query.page : 1;
+    if (!this.props.orderListData) {
+      this.props.getOrderList(status, page);
+    }
+  }
+
   render() {
-    console.log(dict.movie_order_status);
+    const ORDER_STATUS = get(dict, 'movie_order_status');
+
+    console.log(ORDER_STATUS);
+
     const navLinks = [
       {
         link: '/uc/orderMgmt/1',
@@ -66,16 +80,22 @@ OrderMgmt.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   const orderMgmt = state.orderMgmt;
+  const status = props.params.status;
+  const query = props.location.query;
+  const page = query.page ? query.page : 1;
 
   return {
+    orderListData: orderMgmt.getIn(['orderListData', status, page]),
+    orderListLoading: orderMgmt.getIn(['orderListLoading', status, page]),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    getOrderList: (status, page) => dispatch(actions.getOrderList(status, page)),
   };
 }
 
