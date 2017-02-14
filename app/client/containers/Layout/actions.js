@@ -20,7 +20,7 @@ export function loadUserInfo() {
     });
     get(`/user/${getUID()}`).then(data => {
       dispatch(loadUserInfoSuc(data));
-    }).catch(err => {
+    }, err => {
       dispatch(loadUserInfoErr(err));
     });
   }

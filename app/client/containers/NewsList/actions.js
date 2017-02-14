@@ -24,7 +24,7 @@ export function loadNewsList(pid, page) {
       per_page: 10,
     }).then(data => {
       dispatch(loadNewsListSuc(pid, page, data.info));
-    }).catch(err => {
+    }, err => {
       dispatch(loadNewsListErr(pid, err));
     });
   };

@@ -21,7 +21,7 @@ export function loadProject(id) {
 
     get(`/movie/project/${id}`).then(data => {
       dispatch(loadProjectSuc(id, data));
-    }).catch(err => {
+    }, err => {
       dispatch(loadProjectErr(id, err));
     });
   }
