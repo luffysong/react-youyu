@@ -14,6 +14,7 @@ import { Link } from 'react-router';
  * Internal dependencies
  */
 import './style.less';
+import { get } from 'lodash';
 
 class QuoteStepOne extends PureComponent {
   constructor(props) {
@@ -45,7 +46,7 @@ class QuoteStepOne extends PureComponent {
             项目名称 :
           </div>
           <div className="col-value">
-            <b>{this.props.source.project_name}</b>
+            <b>{get(this.props.source, 'project_name')}</b>
           </div>
         </div>
         <div className="list-col range-col">
@@ -53,7 +54,7 @@ class QuoteStepOne extends PureComponent {
             制片方 :
           </div>
           <div className="col-value">
-            {this.props.source.producer}
+            {get(this.props.source, 'producer')}
           </div>
         </div>
 
