@@ -20,6 +20,7 @@ export class Personal extends PureComponent {
     super(props);
     this.state = {
       memberType: '1',
+      qualification: '1',
       agree: true
     };
   }
@@ -27,6 +28,12 @@ export class Personal extends PureComponent {
   selectType(event) {
     this.setState({
       memberType: event.target.value
+    });
+  }
+  // 选择投资条件
+  selectQualification(event) {
+    this.setState({
+      qualification: event.target.value
     });
   }
 
@@ -123,26 +130,26 @@ export class Personal extends PureComponent {
             <div className="col-attr">
               投资条件
             </div>
-            <div className="col-value member-type">
+            <div className="col-value member-type qualification">
               <section>
-                <div className={this.state.memberType === '1' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.memberType === '1'} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
+                <div className={this.state.qualification === '1' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.qualification === '1'} name="qualification" onChange={this.selectQualification.bind(this)} value="1" />
                 </div>
                 <label htmlFor="business">
                   年收入超过50万元人民币
                 </label>
               </section>
               <section>
-                <div className={this.state.memberType === '2' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.memberType === '2'} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
+                <div className={this.state.qualification === '2' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.qualification === '2'} name="qualification" onChange={this.selectQualification.bind(this)} value="2" />
                 </div>
                 <label htmlFor="composite">
                   金融资产超过200万元人民币
                 </label>
               </section>
               <section>
-                <div className={this.state.memberType === '2' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.memberType === '2'} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
+                <div className={this.state.qualification === '3' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.qualification === '3'} name="qualification" onChange={this.selectQualification.bind(this)} value="3" />
                 </div>
                 <label htmlFor="composite">
                   具有三年以上的风险投资经验，或专业的文娱从业人员

@@ -20,6 +20,7 @@
     font-size: 14px;
     color: @fontLighter;
     margin-bottom: 36px;
+    cursor: pointer;
 
     img {
       display: inline-block;
@@ -44,6 +45,11 @@
       margin-bottom: 26px;
       position: relative;
       padding-left: 35px;
+
+      &.loading {
+        background-color: @mediumBg;
+        color: transparent;
+      }
     }
 
     &-a {
@@ -51,6 +57,12 @@
       color: @fontLighter;
       position: relative;
       padding-left: 35px;
+
+      &.loading {
+        background-color: @mediumBg;
+        color: transparent;
+        height: 300px;
+      }
     }
 
     &-letter {

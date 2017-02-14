@@ -15,7 +15,7 @@ import { Link } from 'react-router';
 import './style.less';
 
 function Button(props) {
-  const { to, disabled, size, bordered } = props;
+  const { to, disabled, size, bordered, onClick } = props;
   const classes = classnames([
     'button-component',
     {
@@ -27,7 +27,7 @@ function Button(props) {
     props.className,
   ]);
   return (
-    <button className={classes}>
+    <button className={classes} onClick={onClick}>
       {
         to
         ? <Link to={to}>{props.children}</Link>
@@ -44,6 +44,7 @@ Button.propTypes = {
   size: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   bordered: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -51,6 +52,7 @@ Button.defaultProps = {
   size: 'normal',
   disabled: false,
   bordered: false,
+  onClick: () => {}
 };
 
 export default Button;

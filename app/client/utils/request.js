@@ -72,7 +72,7 @@ export function post(url, body) {
     body = {};
   }
 
-  return axios.post(url, body, {
+  return axios.post(url, qs.stringify(body), {
     headers: {
       Accept: 'application/json',
       'Z-BBS-X-XSRF-TOKEN': Cookie.get('Z-BBS-XSRF-TOKEN'),

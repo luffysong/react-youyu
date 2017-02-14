@@ -251,20 +251,17 @@ const rootRoute = function(store) {
           });
         },
       }, {
-        path: 'detail',
+        path: 'detail/:id',
         name: 'helpDetail',
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/HelpDetail',
             '../containers/HelpDetail/reducer',
-            '../containers/HelpDetail/sagas',
           ], (require) => {
             const component = require('../containers/HelpDetail');
             const reducer = require('../containers/HelpDetail/reducer').default;
-            const sagas = require('../containers/HelpDetail/sagas').default;
 
             injectReducer('helpDetail', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },
@@ -352,14 +349,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Uc',
           '../containers/Uc/reducer',
-          '../containers/Uc/sagas',
         ], (require) => {
           const component = require('../containers/Uc');
           const reducer = require('../containers/Uc/reducer').default;
-          const sagas = require('../containers/Uc/sagas').default;
 
           injectReducer('uc', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },

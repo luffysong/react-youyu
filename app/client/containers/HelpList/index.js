@@ -8,18 +8,64 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectHelpList from './selectors';
 import HelpListItems from '../../components/HelpListItems';
 import Pagination from '../../components/Pagination';
+import * as actions from './actions';
 
 export class HelpList extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.onPageChange = this.handlePageChange.bind(this);
+  }
+
+  componentDidMount() {
+    const columnId = this.props.params.id;
+    const query = this.props.location.query;
+    const page = query.page ? query.page : 1;
+    if (!this.props.listData) {
+      this.props.loadList(columnId, page);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const columnId = this.props.params.id;
+    const query = this.props.location.query;
+    const page = query.page ? query.page : 1;
+    const prevQuery = prevProps.location.query;
+    const oldPage = prevQuery.page ? prevQuery.page : 1;
+
+    if (page !== oldPage && !this.props.newsListData) {
+      this.props.loadList(columnId, page);
+    }
+  }
+
+  handlePageChange(page) {
+    const columnId = this.props.params.id;
+    if (!page || page.selected === undefined) {
+      return false;
+    }
+    this.props.router.push({
+      pathname: `/help/list/${columnId}`,
+      query: {
+        page: parseInt(page.selected + 1, 10),
+      }
+    });
+  }
+
   render() {
+    const { listLoading, listData } = this.props;
+
+    const pageInfo = {
+      currentPage: get(listData, 'current_page'),
+      lastPage: get(listData, 'last_page'),
+    };
+
     return (
       <div className="help-list-container">
         <Helmet
@@ -28,8 +74,12 @@ export class HelpList extends PureComponent {
             { name: 'description', content: '帮助中心' },
           ]}
         />
-        <HelpListItems />
-        <Pagination />
+        <HelpListItems loading={listLoading} data={listData} />
+        {
+          listLoading
+          ? null
+          : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="help-list-pagination" />
+        }
       </div>
     );
   }
@@ -39,13 +89,22 @@ HelpList.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  HelpList: makeSelectHelpList(),
-});
+function mapStateToProps(state, props) {
+  const helpList = state.helpList;
+  const columnId = props.params.id;
+  const query = props.location.query;
+  const page = query.page ? query.page : 1;
+
+  return {
+    listLoading: helpList.getIn(['loading', columnId, page]),
+    listData: helpList.getIn(['data', columnId, page]),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    loadList: (columnId, page) => dispatch(actions.loadList(columnId, page)),
   };
 }
 
