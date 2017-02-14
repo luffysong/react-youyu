@@ -19,7 +19,7 @@ export function loadMenu() {
     });
     get(`/news-column?pid=11`).then(data => {
       dispatch(loadMenuSuc(data));
-    }).catch(err => {
+    }, err => {
       dispatch(loadMenuErr(err));
     });
   }

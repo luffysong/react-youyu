@@ -25,7 +25,7 @@ export function loadNewsDetail(id) {
     });
     get(`/news/${id}`).then(data => {
       dispatch(loadNewsDetailSuc(id, data.info));
-    }).catch(err => {
+    }, err => {
       dispatch(loadNewsDetailErr(id, err));
     });
   }
@@ -60,7 +60,7 @@ export function sendSolve(id, type) {
     }).then(data => {
       showSuccess('感谢您的反馈~');
       dispatch(sendSolveSuc(id, data));
-    }).catch(err => {
+    }, err => {
       dispatch(sendSolveErr(id, err));
     });
   }

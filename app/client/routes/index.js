@@ -311,8 +311,10 @@ const rootRoute = function(store) {
         ], (require) => {
           const component = require('../containers/Register');
           const reducer = require('../containers/Register/reducer').default;
+          const personreducer = require('../containers/Register/reducer').personRegisterReducer;
 
           injectReducer('register', reducer);
+          injectReducer('personRegister', personreducer);
           loadModule(cb, component);
         });
       },
@@ -422,6 +424,21 @@ const rootRoute = function(store) {
           });
         },
       }],
+    }, {
+      path: '/projects',
+      name: 'projectList',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/ProjectList',
+          '../containers/ProjectList/reducer',
+        ], (require) => {
+          const component = require('../containers/ProjectList');
+          const reducer = require('../containers/ProjectList/reducer').default;
+
+          injectReducer('projectList', reducer);
+          loadModule(cb, component);
+        });
+      },
     }, {
       path: '*',
       name: 'notfound',

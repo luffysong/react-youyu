@@ -20,7 +20,7 @@ export function loadNewsDetail(id) {
     });
     return get(`/news/${id}`).then(data => {
       dispatch(loadNewsDetailSuc(id, data));
-    }).catch(err => {
+    }, err => {
       dispatch(loadNewsDetailErr(id, err));
     });
   }

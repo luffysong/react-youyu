@@ -9,6 +9,9 @@ import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
+import * as actions from './actions';
+import message from '../../components/Message';
+import UploadBtn from  '../../components/UploadButton';
 
 /**
  * Internal dependencies
@@ -44,11 +47,13 @@ export class Personal extends PureComponent {
   }
 
   submit() {
-    this.props.orgRegister({
-      name: this.refs.orgName.value || '',
-      code: this.refs.orgCode.value || '',
-      license_pic: '',
-      type: this.state.memberType
+    this.props.personalRegister({
+      name: this.refs.name.value || '',
+      id_card_number: this.refs.id_card_number.value || '',
+      id_card_pic: '111',
+      business_card: '222',
+      type: this.state.memberType,
+      condition: this.state.qualification || '',
     }).then(data => console.log(data))
     .catch(err => console.log(err));
   }
@@ -69,7 +74,7 @@ export class Personal extends PureComponent {
               真实姓名
             </div>
             <div className="col-value">
-              <input type="text" className="price-input" ref='realName' />
+              <input type="text" className="price-input" ref='name' />
             </div>
           </div>
           <div className="list-col">
@@ -77,7 +82,7 @@ export class Personal extends PureComponent {
               身份证号
             </div>
             <div className="col-value">
-              <input type="text" className="price-input" ref="personID" />
+              <input type="text" className="price-input" ref="id_card_number" />
             </div>
           </div>
 
@@ -132,24 +137,24 @@ export class Personal extends PureComponent {
             </div>
             <div className="col-value member-type qualification">
               <section>
-                <div className={this.state.qualification === '1' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.qualification === '1'} name="qualification" onChange={this.selectQualification.bind(this)} value="1" />
+                <div className={this.state.qualification === '10' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.qualification === '10'} name="qualification" onChange={this.selectQualification.bind(this)} value="10" />
                 </div>
                 <label htmlFor="business">
                   年收入超过50万元人民币
                 </label>
               </section>
               <section>
-                <div className={this.state.qualification === '2' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.qualification === '2'} name="qualification" onChange={this.selectQualification.bind(this)} value="2" />
+                <div className={this.state.qualification === '20' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.qualification === '20'} name="qualification" onChange={this.selectQualification.bind(this)} value="20" />
                 </div>
                 <label htmlFor="composite">
                   金融资产超过200万元人民币
                 </label>
               </section>
               <section>
-                <div className={this.state.qualification === '3' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.qualification === '3'} name="qualification" onChange={this.selectQualification.bind(this)} value="3" />
+                <div className={this.state.qualification === '30' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.qualification === '30'} name="qualification" onChange={this.selectQualification.bind(this)} value="30" />
                 </div>
                 <label htmlFor="composite">
                   具有三年以上的风险投资经验，或专业的文娱从业人员
@@ -182,13 +187,18 @@ Personal.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const personal = state.personRegister;
+  return {
+    loading: personal.get('loading'),
+    sucData: personal.get('sucData'),
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    personalRegister: (params) => dispatch(actions.personalRegister(params)),
   };
 }
 

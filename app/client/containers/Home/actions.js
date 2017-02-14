@@ -19,7 +19,7 @@ export function loadProjects() {
     });
     return get('/movie/projects').then(data => {
       dispatch(loadProjectsSuc(data));
-    }).catch(err => {
+    }, err => {
       dispatch(loadProjectsErr(err));
     });
   };

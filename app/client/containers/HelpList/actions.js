@@ -25,7 +25,7 @@ export function loadList(columnId, page) {
       per_page: 10,
     }).then(data => {
       dispatch(loadListSuc(columnId, page, data.info));
-    }).catch(err => {
+    }, err => {
       dispatch(loadListErr(columnId, page, err));
     });
   };
