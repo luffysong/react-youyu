@@ -351,14 +351,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Uc',
           '../containers/Uc/reducer',
-          '../containers/Uc/sagas',
         ], (require) => {
           const component = require('../containers/Uc');
           const reducer = require('../containers/Uc/reducer').default;
-          const sagas = require('../containers/Uc/sagas').default;
 
           injectReducer('uc', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },

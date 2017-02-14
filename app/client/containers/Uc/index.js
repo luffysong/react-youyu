@@ -8,27 +8,36 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectUc from './selectors';
 import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 import RouteTransition from '../../components/RouteTransition';
+import config from '../../config';
 
 export class Uc extends PureComponent {
-  renderUser() {
+  renderUser(userInfo) {
+    const avatar = get(userInfo, 'info.base.avatar');
     return <div className="uc-container-userinfo">
-      <div className="uc-container-userinfo-avatar" style={{backgroundImage: `url()`}}></div>
-      <div className="uc-container-userinfo-name">李思思</div>
+      <div className="uc-container-userinfo-avatar"
+        style={{backgroundImage: `url(${avatar ? avatar : require('../../components/UserInfo/imgs/pic_avatar_nav@2x.png')})`}}>
+      </div>
+      <div className="uc-container-userinfo-name">{get(userInfo, 'info.base.name')}</div>
     </div>;
   }
 
+  logout(e) {
+    e.preventDefault();
+    const backUrl = encodeURIComponent(location.href);
+    location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
+  }
+
   render() {
-    const { children } = this.props;
+    const { children, userInfo } = this.props;
     const sideMenuLinks = [
       {
         link: '/uc/orderMgmt',
@@ -46,17 +55,12 @@ export class Uc extends PureComponent {
 
     return (
       <div className="uc-container">
-        <Helmet
-          title="用户中心"
-          meta={[
-            { name: 'description', content: 'Description of Uc' },
-          ]}
-        />
+        <Helmet title="用户中心" />
         <div className="uc-wrapper container">
           <LeftSideBar className="uc-left-bar">
-            { this.renderUser() }
+            { this.renderUser(userInfo) }
             <LeftSideMenu data={sideMenuLinks} type="uc" />
-            <a href="" className="uc-container-logout-btn">退出登录</a>
+            <a href="" onClick={this.logout} className="uc-container-logout-btn">退出登录</a>
           </LeftSideBar>
           <RouteTransition>
             {children}
@@ -72,9 +76,13 @@ Uc.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  UC: makeSelectUc(),
-});
+function mapStateToProps(state) {
+  const layout = state.layout;
+
+  return {
+    userInfo: layout.getIn(['userInfo', 'data']),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
