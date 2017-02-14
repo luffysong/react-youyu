@@ -36,10 +36,10 @@ class UserInfo extends PureComponent {
         <img className="user-info-avatar" src={avatarUrl ? avatarUrl : require('./imgs/pic_avatar_nav@2x.png')} alt="头像" />
         <ul className="user-info-menu">
           <li>
-            <Link to="">交易中</Link>
+            <Link activeClassName="active" to="/uc/rightsMgmt/2">交易中</Link>
           </li>
           <li>
-            <Link to="">持有中</Link>
+            <Link activeClassName="active" to="/uc/rightsMgmt/1">持有中</Link>
           </li>
           <li className="split"></li>
           <li className="logout">

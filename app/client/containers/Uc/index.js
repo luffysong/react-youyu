@@ -55,7 +55,7 @@ export class Uc extends PureComponent {
         <div className="uc-wrapper container">
           <LeftSideBar className="uc-left-bar">
             { this.renderUser() }
-            <LeftSideMenu links={sideMenuLinks} />
+            <LeftSideMenu data={sideMenuLinks} type="uc" />
             <a href="" className="uc-container-logout-btn">退出登录</a>
           </LeftSideBar>
           <RouteTransition>
