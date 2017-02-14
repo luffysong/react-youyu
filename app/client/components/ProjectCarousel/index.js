@@ -8,16 +8,14 @@
  */
 import React, { PureComponent } from 'react';
 import { take } from 'lodash';
-import { Link } from 'react-router';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import ProjectInfoBar from '../ProjectInfoBar';
 import IndexSlick from '../IndexSlick';
-import { numComma } from '../../utils/utils';
 import Button from '../Button';
+import ProjectItem from '../ProjectItem';
 
 class ProjectCarousel extends PureComponent {
   renderProjects(loading, projects) {
@@ -34,65 +32,13 @@ class ProjectCarousel extends PureComponent {
     const renderNum =  projects.length >= 3 ? 3 : 1;
 
     return take(projects, renderNum).map((item, index) => {
-      const projectInfo = [
-        {
-          name: '制片方',
-          value: item.project.producer,
-        },
-        {
-          name: '转让份额',
-          value: item.project.transferable_ratio + '%',
-        },
-        {
-          name: '挂牌标的',
-          value: item.listing && item.listing.length,
-        },
-      ];
-
-      return <Link to={`/project/${item.project.id}`} className={`${renderNum === 1 ? 'carousel-item-one' : classList[index]}`} key={`project-item-${index}`}>
-        <div className="cover" style={{ backgroundImage: `url(${item.project && item.project.list_img})`}}></div>
-        <div className="info">
-          <div className="info-title">
-            {item.project ? item.project.name : ''}
-            <div className="info-title-tag">
-              {item.project ? item.project.stage : ''}
-            </div>
-          </div>
-          <ProjectInfoBar data={projectInfo} />
-          { this.renderList(item.listing) }
-          {
-            item.listing && item.listing.length && item.listing.length > 3
-            ? <a className="more-link" href="">还有{item.listing.length - 3}个转让...</a>
-            : null
-          }
-        </div>
-      </Link>;
-    })
-  }
-
-  renderList(list) {
-    return <table className="transfer-info">
-      <tbody>
-        {
-          list && list.length && take(list, 3).map((item, index) => {
-            return <tr className="transfer-info-item" key={`transfer-info-item-${index}`}>
-              <td className="item-info">
-                <span>转让价格：</span>
-                <span className="font-white">￥{numComma(item.price)}元</span>
-              </td>
-              <td>
-                <span>转让份额：</span>
-                <span className="font-white">{item.share}%</span>
-              </td>
-              <td>
-                <span>转让方：</span>
-                <span>{item.transferor}</span>
-              </td>
-            </tr>;
-          })
-        }
-      </tbody>
-    </table>;
+      return (
+        <ProjectItem data={item}
+          className={`${renderNum === 1 ? 'carousel-item-one' : classList[index]}`}
+          key={`project-item-${index}`}>
+        </ProjectItem>
+      );
+    });
   }
 
   render() {
