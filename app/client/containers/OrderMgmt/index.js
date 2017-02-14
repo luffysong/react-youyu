@@ -8,19 +8,19 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectOrderMgmt from './selectors';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
 import UcNavTab from '../../components/UcNavTab';
+import dict from '../../utils/dict.json';
 
 export class OrderMgmt extends PureComponent {
   render() {
+    console.log(dict.movie_order_status);
     const navLinks = [
       {
         link: '/uc/orderMgmt/1',
@@ -66,9 +66,12 @@ OrderMgmt.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  OrderMgmt: makeSelectOrderMgmt(),
-});
+function mapStateToProps(state) {
+  const orderMgmt = state.orderMgmt;
+
+  return {
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
