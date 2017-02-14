@@ -17,7 +17,7 @@ import './style.less';
 import ProjectInfoBar from '../ProjectInfoBar';
 import IndexSlick from '../IndexSlick';
 import { numComma } from '../../utils/utils';
-// import Button from '../Button';
+import Button from '../Button';
 
 class ProjectCarousel extends PureComponent {
   renderProjects(loading, projects) {
@@ -109,8 +109,8 @@ class ProjectCarousel extends PureComponent {
           <IndexSlick>
             { this.renderProjects(loading, data) }
           </IndexSlick>
-          {/*<Button size="big" to="/projects">查看更多项目</Button>*/}
         </div>
+        <Button className="more-projects-btn" size="big" to="/projects">查看更多项目</Button>
       </div>
     );
   }
