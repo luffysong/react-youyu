@@ -44,7 +44,21 @@ class ProjectItem extends PureComponent {
   }
 
   render() {
-    const { data, className } = this.props;
+    const { loading, data, className } = this.props;
+
+    const classes = classnames([
+      'project-item-component',
+      className,
+      {
+        loading,
+      },
+    ]);
+
+    if (loading) {
+      return <div className={classes}>
+        <div className="cover loading"></div>
+      </div>;
+    }
 
     if (!data) {
       return null;
@@ -64,11 +78,6 @@ class ProjectItem extends PureComponent {
         value: data.listing && data.listing.length,
       },
     ];
-
-    const classes = classnames([
-      'project-item-component',
-      className,
-    ]);
 
     return <Link to={`/project/${data.project.id}`} className={classes}>
       <div className="cover" style={{ backgroundImage: `url(${data.project && data.project.list_img})`}}></div>
@@ -93,7 +102,8 @@ class ProjectItem extends PureComponent {
 
 ProjectItem.propTypes = {
   className: React.PropTypes.string,
-  data: React.PropTypes.object.isRequired,
+  data: React.PropTypes.object,
+  loading: React.PropTypes.bool,
 };
 
 export default ProjectItem;

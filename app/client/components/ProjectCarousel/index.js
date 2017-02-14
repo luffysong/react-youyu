@@ -23,9 +23,7 @@ class ProjectCarousel extends PureComponent {
 
     if (loading) {
       return Array(3).fill().map((_, index) => {
-        return <div className={`${index} ${classList[index]} loading`} key={`project-item-${index}`}>
-          <div className="cover loading"></div>
-        </div>;
+        return <ProjectItem className={classList[index]} key={`project-item-${index}`} loading={true}></ProjectItem>;
       });
     }
 
