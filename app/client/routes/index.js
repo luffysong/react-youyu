@@ -168,14 +168,11 @@ const rootRoute = function(store) {
         require.ensure([
           '../containers/Accept',
           '../containers/Accept/reducer',
-          '../containers/Accept/sagas',
         ], (require) => {
           const component = require('../containers/Accept');
           const reducer = require('../containers/Accept/reducer').default;
-          const sagas = require('../containers/Accept/sagas').default;
 
           injectReducer('accept', reducer);
-          injectSagas(sagas);
           loadModule(cb, component);
         });
       },
@@ -183,24 +180,27 @@ const rootRoute = function(store) {
       childRoutes: [{
         path: 'confirm',
         name: 'acceptConfirm',
+        childRoutes: [{
+          path: ':id',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/AcceptConfirm',
             '../containers/AcceptConfirm/reducer',
-            '../containers/AcceptConfirm/sagas',
           ], (require) => {
             const component = require('../containers/AcceptConfirm');
             const reducer = require('../containers/AcceptConfirm/reducer').default;
-            const sagas = require('../containers/AcceptConfirm/sagas').default;
 
             injectReducer('acceptConfirm', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },
       }, {
         path: 'pay',
         name: 'acceptPay',
+        childRoutes: [{
+          path: ':id',
+        }],
         getComponent(nextState, cb) {
           require.ensure([
             '../containers/AcceptPay',
@@ -209,10 +209,8 @@ const rootRoute = function(store) {
           ], (require) => {
             const component = require('../containers/AcceptPay');
             const reducer = require('../containers/AcceptPay/reducer').default;
-            const sagas = require('../containers/AcceptPay/sagas').default;
 
             injectReducer('acceptPay', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },
