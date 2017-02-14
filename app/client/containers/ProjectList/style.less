@@ -32,13 +32,52 @@
       color: @fontDark;
 
       &-tag {
-        color: @fontLighter;
+        display: inline-block;
+        position: relative;
+        bottom: auto;
+        right: auto;
+        color: @fontLight;
+        vertical-align: middle;
       }
     }
 
     .transfer-info {
+      color: @fontLight;
+
+      tr {
+        border-bottom: 1px solid @border;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        .font-white {
+          color: @fontLight;
+        }
+
+        td {
+          &:last-child {
+            width: 150px;
+          }
+        }
+      }
+
       .count-down-component {
         display: inline-block;
+      }
+    }
+  }
+
+  .project-info-bar-component {
+    &-item {
+      background-color: @LIGHT-GRAY-1;
+
+      .name {
+        color: @fontLight;
+      }
+
+      .desc {
+        background-color: @LIGHT-GRAY-2;
       }
     }
   }

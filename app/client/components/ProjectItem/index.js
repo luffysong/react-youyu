@@ -101,7 +101,7 @@ class ProjectItem extends PureComponent {
       <div className="cover" style={{ backgroundImage: `url(${data.project && data.project.list_img})`}}></div>
       <div className="info">
         <div className="info-title">
-          {data.project ? data.project.name : ''}
+          <span>{data.project ? data.project.name : ''}</span>
           <div className="info-title-tag">
             {data.project ? data.project.stage : ''}
           </div>
