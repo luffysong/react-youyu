@@ -7,10 +7,10 @@
  */
 
 /**
- * Internal dependencies
+ * Internal dependencies`
  */
 import * as types from './constants';
-import { get, post} from '../../utils/request';
+import { get } from '../../utils/request';
 
 
 /*获取汇款账户信息*/
