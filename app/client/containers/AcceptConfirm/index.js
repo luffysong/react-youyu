@@ -24,13 +24,13 @@ export class AcceptConfirm extends PureComponent {
     this.props.orderInfo(this.props.params.id);
     this.props.userInfo();
   }
-  //this.props.router.push(`/accept/pay/${this.props.params.id}`)
+  //
   submit() {
     this.props.placeOrder({
       movie_id: '',
       listing_id: '',
       reason: this.refs.investReason.value,
-    },() => console.log(this.props.params.id));
+    },() => this.props.router.push(`/accept/pay/${this.props.params.id}`));
   }
 
   render() {
@@ -78,7 +78,7 @@ export class AcceptConfirm extends PureComponent {
             <tr>
               <td></td>
               <td>
-                <Button className="accept-confirm-button" onClick={this.submit}>
+                <Button className="accept-confirm-button" onClick={this.submit.bind(this)}>
                   支付保证金
                 </Button>
               </td>

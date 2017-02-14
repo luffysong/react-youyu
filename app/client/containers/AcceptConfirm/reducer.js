@@ -51,17 +51,6 @@ function acceptConfirmReducer(state = initialState, action) {
       return state
         .set('orderInfoLoading', false)
         .set('orderInfoError', action.error);
-    case types.TRADE_INFO:
-      return state
-        .set('tradeInfoLoading', true);
-    case types.TRADE_INFO_SUC:
-      return state
-        .set('tradeInfoLoading', false)
-        .set('tradeInfoData', action.data);
-    case types.TRADE_INFO_ERR:
-      return state
-        .set('tradeInfoLoading', false)
-        .set('tradeInfoError', action.error);
     case types.USER_INFO:
       return state
         .set('userInfoLoading', true);

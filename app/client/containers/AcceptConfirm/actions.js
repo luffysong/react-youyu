@@ -70,32 +70,6 @@ export function orderInfoErr(error) {
 }
 
 
-/*获取汇款账户信息*/
-export function tradeInfo(id) {
-  return (dispatch) => {
-    dispatch({
-      type: types.TRADE_INFO,
-    });
-    return get(`/movie/order/${id}`).then((data) => {
-      dispatch(tradeInfoSuc(data));
-    });
-  };
-}
-
-export function tradeInfoSuc(data) {
-  return {
-    type: types.TRADE_INFO_SUC,
-    data,
-  };
-}
-
-export function tradeInfoErr(error) {
-  return {
-    type: types.TRADE_INFO_ERR,
-    error,
-  };
-}
-
 /*获取个人信息*/
 export function userInfo(id) {
   return (dispatch) => {

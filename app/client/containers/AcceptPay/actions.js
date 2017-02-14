@@ -9,12 +9,32 @@
 /**
  * Internal dependencies
  */
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import * as types from './constants';
+import { get, post} from '../../utils/request';
 
-export function defaultAction() {
+
+/*获取汇款账户信息*/
+export function tradeInfo(id) {
+  return (dispatch) => {
+    dispatch({
+      type: types.TRADE_INFO,
+    });
+    return get(`/movie/trade/${id}`).then((data) => {
+      dispatch(tradeInfoSuc(data));
+    });
+  };
+}
+
+export function tradeInfoSuc(data) {
   return {
-    type: DEFAULT_ACTION,
+    type: types.TRADE_INFO_SUC,
+    data,
+  };
+}
+
+export function tradeInfoErr(error) {
+  return {
+    type: types.TRADE_INFO_ERR,
+    error,
   };
 }

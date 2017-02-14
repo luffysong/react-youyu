@@ -8,15 +8,19 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectAcceptPay from './selectors';
+import * as actions from './actions';
+import { get } from 'lodash';
 
 export class AcceptPay extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.props.tradeInfo(this.props.params.id);
+  }
   render() {
     return (
       <div className="accept-pay-container">
@@ -40,23 +44,23 @@ export class AcceptPay extends PureComponent {
               <tbody>
                 <tr>
                   <td className="column-name">应付总额</td>
-                  <td className="column-value">202,000元</td>
+                  <td className="column-value">{get(this.props.tradeInfoData, 'amount')}元</td>
                 </tr>
                 <tr>
                   <td className="column-name">户名</td>
-                  <td className="column-value">李思思</td>
+                  <td className="column-value">{get(this.props.tradeInfoData, 'remittance_info.account_name')}</td>
                 </tr>
                 <tr>
                   <td className="column-name">账号</td>
-                  <td className="column-value">8888 0808 0532 6809 666</td>
+                  <td className="column-value">{get(this.props.tradeInfoData, 'business_id')}</td>
                 </tr>
                 <tr>
                   <td className="column-name">开户行</td>
-                  <td className="column-value">北京招商银行万泉河支行</td>
+                  <td className="column-value">{get(this.props.tradeInfoData, 'remittance_info.bank')}</td>
                 </tr>
                 <tr>
                   <td className="column-name">在备注里注明</td>
-                  <td className="column-value">神奇的动物在哪里保证金</td>
+                  <td className="column-value">{get(this.props.tradeInfoData, 'remittance_info.remark')}</td>
                 </tr>
               </tbody>
             </table>
@@ -72,13 +76,18 @@ AcceptPay.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  AcceptPay: makeSelectAcceptPay(),
-});
+function mapStateToProps(state) {
+  const acceptPay = state.acceptPay;
+  return {
+    tradeInfoLoading: acceptPay.get('tradeInfoLoading'),
+    tradeInfoData: acceptPay.get('tradeInfoData'),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    tradeInfo: (id) => dispatch(actions.tradeInfo(id)),
   };
 }
 
