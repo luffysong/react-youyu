@@ -311,8 +311,10 @@ const rootRoute = function(store) {
         ], (require) => {
           const component = require('../containers/Register');
           const reducer = require('../containers/Register/reducer').default;
+          const personreducer = require('../containers/Register/reducer').personRegisterReducer;
 
           injectReducer('register', reducer);
+          injectReducer('personRegister', personreducer);
           loadModule(cb, component);
         });
       },

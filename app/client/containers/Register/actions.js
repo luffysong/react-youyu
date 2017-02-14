@@ -36,3 +36,29 @@ export function orgRegisterErr(error) {
     error,
   };
 }
+
+// 个人注册
+export function personalRegister(params) {
+  return (dispatch) => {
+    dispatch({
+      type: types.PERSONAL_REGISTER,
+    });
+    return post('/register/personal', params).then((data) => {
+      dispatch(personalRegisterSuc(data));
+    });
+  };
+}
+
+export function personalRegisterSuc(data) {
+  return {
+    type: types.PERSONAL_REGISTER_SUC,
+    data,
+  };
+}
+
+export function personalRegisterErr(error) {
+  return {
+    type: types.PERSONAL_REGISTER_ERR,
+    error,
+  };
+}
