@@ -21,16 +21,30 @@ export class ProjectList extends PureComponent {
     this.props.loadProjectList();
   }
 
+  renderProjects(loading, projects) {
+    if (loading) {
+      return Array(3).fill().map((_, index) => {
+        return <ProjectItem key={`project-item-${index}`} loading={true}></ProjectItem>;
+      });
+    }
+
+    return projects.map((item, index) => {
+      return (
+        <ProjectItem data={item} type="list"
+          key={`project-item-${index}`}>
+        </ProjectItem>
+      );
+    });
+  }
+
   render() {
+    const { loading, data } = this.props;
+
     return (
       <div className="project-list-container">
         <Helmet title="项目列表" />
         <div className="container">
-          {
-            Array(3).fill().map((_, index) => {
-              return <ProjectItem loading={true} key={`project-item-${index}`} />;
-            })
-          }
+          { this.renderProjects(loading, data) }
         </div>
       </div>
     );
@@ -45,8 +59,8 @@ function mapStateToProps(state) {
   const projectList = state.projectList;
 
   return {
-    projectListLoading: projectList.get('projectListLoading'),
-    projectListData: projectList.get('projectListData'),
+    loading: projectList.get('projectListLoading'),
+    data: projectList.get('projectListData'),
   };
 }
 

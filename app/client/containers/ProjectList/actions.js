@@ -17,9 +17,9 @@ export function loadProjectList() {
     dispatch({
       type: types.LOAD_PROJECT_LIST,
     });
-    return get('/movie/projects').then(data => {
+    get('/movie/projects').then(data => {
       dispatch(loadProjectListSuc(data));
-    }).catch(err => {
+    }, err => {
       dispatch(loadProjectListErr(err));
     });
   };

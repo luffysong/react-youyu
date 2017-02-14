@@ -15,28 +15,25 @@ const showError = function (msg) {
   message.error(msg);
 };
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response.data;
+function sucCallback(response) {
+  const data = response.data;
+  if (data.code === 0) {
+    return data.data;
   }
 
+  showError(data.msg);
+
+  const error = new Error(data.code, data.msg);
+  error.code = data.code;
+  error.message = data.msg;
+  throw error;
+}
+
+function errCallback(response) {
   showError('网络错误，请刷新后重试');
 
   const error = new Error(response.statusText);
   error.response = response;
-  throw error;
-}
-
-function checkError(response) {
-  if (response.code === 0) {
-    return response.data;
-  }
-
-  showError(response.msg);
-
-  const error = new Error(response.code, response.msg);
-  error.code = response.code;
-  error.message = response.msg;
   throw error;
 }
 
@@ -56,8 +53,7 @@ export function get(url, params) {
       Accept: 'application/json'
     },
   })
-    .then(checkStatus)
-    .then(checkError);
+    .then(sucCallback, errCallback)
 }
 
 export function post(url, body) {
@@ -79,6 +75,5 @@ export function post(url, body) {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
   })
-    .then(checkStatus)
-    .then(checkError);
+    .then(sucCallback, errCallback)
 }

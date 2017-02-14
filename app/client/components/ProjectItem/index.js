@@ -16,6 +16,7 @@ import classnames from 'classnames';
 import './style.less';
 import { numComma } from '../../utils/utils';
 import ProjectInfoBar from '../ProjectInfoBar';
+import CountDown from '../CountDown';
 
 class ProjectItem extends PureComponent {
   renderList(list) {
@@ -36,6 +37,16 @@ class ProjectItem extends PureComponent {
                 <span>转让方：</span>
                 <span>{item.transferor}</span>
               </td>
+              {
+                this.props.type === 'list'
+                ? <td>
+                    <span>剩余时间：</span>
+                    <span>
+                      <CountDown remain={12400} />
+                    </span>
+                  </td>
+                : null
+              }
             </tr>;
           })
         }
@@ -44,7 +55,7 @@ class ProjectItem extends PureComponent {
   }
 
   render() {
-    const { loading, data, className } = this.props;
+    const { type, loading, data, className } = this.props;
 
     const classes = classnames([
       'project-item-component',
@@ -79,6 +90,13 @@ class ProjectItem extends PureComponent {
       },
     ];
 
+    if (type === 'list') {
+      projectInfo.push({
+        name: '转让总价',
+        value: numComma(50000000),
+      });
+    }
+
     return <Link to={`/project/${data.project.id}`} className={classes}>
       <div className="cover" style={{ backgroundImage: `url(${data.project && data.project.list_img})`}}></div>
       <div className="info">
@@ -102,6 +120,7 @@ class ProjectItem extends PureComponent {
 
 ProjectItem.propTypes = {
   className: React.PropTypes.string,
+  type: React.PropTypes.string,
   data: React.PropTypes.object,
   loading: React.PropTypes.bool,
 };
