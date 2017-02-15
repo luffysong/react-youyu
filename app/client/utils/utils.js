@@ -1,5 +1,5 @@
 export function numComma(x, prefix, suffix) {
-  if (!x) return;
+  if (!x) return (prefix ? '￥' : '') + 0 + (suffix ? '元' : '');
   return (prefix ? '￥' : '') + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (suffix ? '元' : '');
 }
 
