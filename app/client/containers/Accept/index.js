@@ -8,13 +8,11 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectAccept from './selectors';
 import StepNav from '../../components/StepNav';
 
 export class Accept extends PureComponent {
@@ -63,9 +61,11 @@ Accept.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  Accept: makeSelectAccept(),
-});
+function mapStateToProps(state) {
+  return {
+
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {

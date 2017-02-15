@@ -219,7 +219,6 @@ const rootRoute = function(store) {
           require.ensure([
             '../containers/AcceptPay',
             '../containers/AcceptPay/reducer',
-            '../containers/AcceptPay/sagas',
           ], (require) => {
             const component = require('../containers/AcceptPay');
             const reducer = require('../containers/AcceptPay/reducer').default;
