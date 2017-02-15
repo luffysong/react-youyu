@@ -6,9 +6,112 @@
 
 .not-found-container {
   color: #2d2f33;
-  height: 20rem;
   font-size: 2rem;
   line-height: 20rem;
-  background-color: #ececec;
+  background-image: linear-gradient(-180deg, #fafafa 0%, #f7f7f7 100%);
   text-align: center;
+  padding: 137px 0 104px;
+
+  .not-found-content {
+    width: 384px;
+    position: relative;
+    text-align: center;
+    line-height: 0;
+    margin: auto;
+
+    .not-found-logo {
+      display: block;
+    }
+
+    .shadow {
+      display: block;
+      position: absolute;
+      bottom: -48px;
+      left: 50%;
+      margin-left: -178px;
+    }
+
+    .grey-ball {
+      position: absolute;
+      left: -73px;
+      bottom: 30px;
+    }
+
+    .blue-ball {
+      position: absolute;
+      left: -111px;
+      bottom: 45px;
+      box-shadow: 0 19px 31px 0 rgba(0, 0, 0, 0.06);
+      animation: float 5s ease infinite;
+    }
+
+    .purple-ball {
+      position: absolute;
+      top: -25px;
+      left: -134px;
+      animation: float2 7s ease infinite;
+    }
+
+    .green-ball {
+      position: absolute;
+      right: -60px;
+      top: -15px;
+      animation: float 5s ease infinite;
+    }
+
+    .orange-ball {
+      position: absolute;
+      right: -100px;
+      top: 46px;
+      box-shadow: 0 34px 38px 0 rgba(0, 0, 0, 0.02);
+      animation: float2 7s ease infinite;
+    }
+  }
+
+  .not-found-text {
+    margin: 87px auto 71px;
+    font-size: 20px;
+    color: #92979e;
+    line-height: 0;
+  }
+
+  .index-btn {
+    display: block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    background: #484b53;
+    border-radius: 6px;
+    margin: auto;
+    font-size: 16px;
+    color: #ffd800;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, -10px);
+  }
+
+  50% {
+    transform: translate(0, 10px);
+  }
+
+  100% {
+    transform: translate(0, -10px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translate(0, 10px);
+  }
+
+  50% {
+    transform: translate(0, -10px);
+  }
+
+  100% {
+    transform: translate(0, 10px);
+  }
 }
