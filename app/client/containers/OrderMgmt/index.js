@@ -97,12 +97,7 @@ export class OrderMgmt extends PureComponent {
 
     return (
       <div className="order-mgmt-container">
-        <Helmet
-          title="订单管理"
-          meta={[
-            { name: 'description', content: 'Description of OrderMgmt' },
-          ]}
-        />
+        <Helmet title="订单管理" />
         <div className="order-mgmt-list">
           <UcNavTab links={navLinks} />
           {
