@@ -32,7 +32,7 @@ export class Uc extends PureComponent {
 
   logout(e) {
     e.preventDefault();
-    const backUrl = encodeURIComponent(location.href);
+    const backUrl = encodeURIComponent(location.protocol + '//' + location.host);
     location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
   }
 
