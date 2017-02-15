@@ -40,7 +40,7 @@ const requireLogin = (path) => {
 };
 
 const rootRoute = function(store) {
-  const { injectReducer, injectSagas } = injectors(store);
+  const { injectReducer } = injectors(store);
 
   return {
     getComponent(nextState, cb) {
@@ -412,14 +412,11 @@ const rootRoute = function(store) {
           require.ensure([
             '../containers/RightsMgmt',
             '../containers/RightsMgmt/reducer',
-            '../containers/RightsMgmt/sagas',
           ], (require) => {
             const component = require('../containers/RightsMgmt');
             const reducer = require('../containers/RightsMgmt/reducer').default;
-            const sagas = require('../containers/RightsMgmt/sagas').default;
 
             injectReducer('rightsMgmt', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },

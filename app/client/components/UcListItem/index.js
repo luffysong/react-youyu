@@ -264,30 +264,30 @@ class UcListItem extends PureComponent {
         topData = [
           {
             name: '份额号',
-            value: '0000001',
+            value: get(data, 'id'),
           },
           {
             name: '挂牌时间',
-            value: '2016-10-11 16:55:50',
+            value: get(data, 'listing_time'),
           },
         ];
 
         middleData = [
           {
             name: '项目名称',
-            value: '神奇动物在哪里',
+            value: get(data, 'name'),
           },
           {
             name: '制片方',
-            value: '华纳影业',
+            value: get(data, 'producer'),
           },
           {
             name: '转让份额',
-            value: '1%',
+            value: get(data, 'listing_quota') * 100 + '%',
           },
           {
             name: '转让价格',
-            value: '1,000,000,000元',
+            value: numComma(get(data, 'listing_price'), false, true),
           },
         ];
 
