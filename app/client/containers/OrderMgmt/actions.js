@@ -10,13 +10,21 @@
  * Internal dependencies
  */
 import * as types from './constants';
+import { get } from '../../utils/request';
 
 export function getOrderList(status, page) {
-  return {
-    type: types.GET_ORDER_LIST,
-    status,
-    page,
-  };
+  return dispatch => {
+    dispatch({
+      type: types.GET_ORDER_LIST,
+      status,
+      page,
+    });
+    get('/movie/order').then(data => {
+      dispatch(getOrderListSuc(status, page, data));
+    }, err => {
+      dispatch(getOrderListErr(status, page, err));
+    });
+  }
 }
 
 export function getOrderListSuc(status, page, data) {
