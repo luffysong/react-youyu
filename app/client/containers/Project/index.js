@@ -27,9 +27,7 @@ export class Project extends PureComponent {
     const { params } = this.props;
     const projectId = params.id ? params.id : 0;
 
-    if (!this.props.projectData) {
-      this.props.loadProject(projectId);
-    }
+    this.props.loadProject(projectId);
   }
 
   componentDidUpdate(prevProps) {
@@ -86,12 +84,7 @@ export class Project extends PureComponent {
 
     return (
       <div className="project-container">
-        <Helmet
-          title="项目详情"
-          meta={[
-            { name: 'description', content: 'Description of Project' },
-          ]}
-        />
+        <Helmet title="项目详情" />
         <ProjectBanner data={projectData} loading={projectLoading} />
         <PayFlowBar />
         <div className="container project-wrapper">

@@ -19,10 +19,24 @@ const initialState = fromJS({
   noticeLoading: true,
   noticeError: false,
   noticeData: false,
+  bannerLoading: true,
+  bannerError: false,
+  bannerData: false,
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
+    case types.LOAD_PROJECTS:
+      return state
+        .set('projectsLoading', true);
+    case types.LOAD_PROJECTS_SUC:
+      return state
+        .set('projectsLoading', false)
+        .set('projectsData', action.data);
+    case types.LOAD_PROJECTS_ERR:
+      return state
+        .set('projectsLoading', false)
+        .set('projectsError', action.error);
     case types.HOME_NOTICE:
       return state
         .set('noticeLoading', true);
