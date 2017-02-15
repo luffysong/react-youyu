@@ -86,8 +86,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         include: paths.clientSrc,
-        loader: 'babel',
-
+        loaders: [
+          'babel',
+          'strip-loader?strip[]=debug,strip[]=console.log'
+        ]
       },
       {
         test: /\.(css|less)$/,
