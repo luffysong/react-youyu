@@ -88,7 +88,7 @@ module.exports = {
         include: paths.clientSrc,
         loaders: [
           'babel',
-          'strip-loader?strip[]=debug,strip[]=console.log'
+          'strip-loader?strip[]=debug,strip[]=console.log,strip[]=console.info'
         ]
       },
       {
