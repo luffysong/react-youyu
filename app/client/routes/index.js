@@ -32,7 +32,7 @@ const requireLogin = (path) => {
       goToLogin(path);
       return false;
     } else {
-      if (nextState.location.pathname !== path) {
+      if (path) {
         replace(path);
       }
     }
@@ -384,7 +384,7 @@ const rootRoute = function(store) {
         },
         childRoutes:[{
           path: ':status',
-          onEnter: requireLogin('/uc/initialMgmt/1'),
+          onEnter: requireLogin(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
@@ -409,7 +409,7 @@ const rootRoute = function(store) {
         },
         childRoutes:[{
           path: ':status',
-          onEnter: requireLogin('/uc/rightsMgmt/1'),
+          onEnter: requireLogin(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
@@ -434,7 +434,7 @@ const rootRoute = function(store) {
         },
         childRoutes:[{
           path: ':status',
-          onEnter: requireLogin('/uc/orderMgmt/1'),
+          onEnter: requireLogin(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
