@@ -17,42 +17,67 @@ import './style.less';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
 import UcNavTab from '../../components/UcNavTab';
-import dict from '../../utils/dict.json';
 import * as actions from './actions';
 
 export class OrderMgmt extends PureComponent {
-  componentDidMount() {
-    const status = this.props.params.status;
+  constructor(props) {
+    super(props);
     const query = this.props.location.query;
-    const page = query.page ? query.page : 1;
-    if (!this.props.orderListData) {
-      this.props.getOrderList(status, page);
+    const status = this.props.params.status;
+    this.state = {
+      page: query.page ? parseInt(query.page, 10) : 1,
+      status,
+      STATUS: {
+        open: '待付款',
+        succeed: '已完成',
+        cancelled: '已失效',
+        all: '全部',
+      },
+    };
+    this.onPageChange = this.handlePageChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getOrderList(this.state.status, this.state.page);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const page = this.state.page;
+    const oldPage = prevState.page;
+
+    if (page !== oldPage) {
+      this.props.getOrderList(this.state.status, page);
     }
   }
 
+  handlePageChange(page) {
+    if (!page || page.selected === undefined) {
+      return false;
+    }
+    this.props.router.push({
+      pathname: `/uc/orderMgmt/${this.state.status}`,
+      query: {
+        page: parseInt(page.selected + 1, 10),
+      }
+    });
+  }
+
   render() {
-    const ORDER_STATUS = get(dict, 'movie_order_status');
+    const navLinks = [];
+    const { orderListData, orderListLoading } = this.props;
+    const pageInfo = {
+      currentPage: get(orderListData, 'current_page'),
+      lastPage: get(orderListData, 'last_page'),
+    };
 
-    console.log(ORDER_STATUS);
-
-    const navLinks = [
-      {
-        link: '/uc/orderMgmt/1',
-        text: '待付款',
-      },
-      {
-        link: '/uc/orderMgmt/2',
-        text: '已完成',
-      },
-      {
-        link: '/uc/orderMgmt/3',
-        text: '已失效',
-      },
-      {
-        link: '/uc/orderMgmt/4',
-        text: '全部',
-      },
-    ];
+    for (let item in this.state.STATUS) {
+      if (this.state.STATUS.hasOwnProperty(item)) {
+        navLinks.push({
+          link: `/uc/orderMgmt/${item}`,
+          text: this.state.STATUS[item],
+        });
+      }
+    }
 
     return (
       <div className="order-mgmt-container">
@@ -70,7 +95,11 @@ export class OrderMgmt extends PureComponent {
             })
           }
         </div>
-        <Pagination className="order-mgmt-pagination" />
+        {
+          orderListLoading
+          ? null
+          : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="order-mgmt-pagination" />
+        }
       </div>
     );
   }
@@ -84,7 +113,7 @@ function mapStateToProps(state, props) {
   const orderMgmt = state.orderMgmt;
   const status = props.params.status;
   const query = props.location.query;
-  const page = query.page ? query.page : 1;
+  const page = query.page ? parseInt(query.page, 10) : 1;
 
   return {
     orderListData: orderMgmt.getIn(['orderListData', status, page]),

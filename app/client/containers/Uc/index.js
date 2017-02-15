@@ -17,7 +17,7 @@ import './style.less';
 import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 import RouteTransition from '../../components/RouteTransition';
-import config from '../../config';
+import { goToLogout } from '../../utils/user';
 
 export class Uc extends PureComponent {
   renderUser(userInfo) {
@@ -32,8 +32,7 @@ export class Uc extends PureComponent {
 
   logout(e) {
     e.preventDefault();
-    const backUrl = encodeURIComponent(location.href);
-    location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
+    goToLogout();
   }
 
   render() {

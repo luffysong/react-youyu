@@ -13,20 +13,17 @@ import { get } from 'lodash';
  */
 import Button from '../Button';
 import UserInfo from '../UserInfo';
-import config from '../../config';
-import { isLogin } from '../../utils/user';
+import { isLogin, goToLogin, goToRegister } from '../../utils/user';
 
 class RightMenu extends PureComponent {
   login(e) {
     e.preventDefault();
-    const backUrl = encodeURIComponent(location.href);
-    location.href = `${config.apiBase}/passport/login?from=${backUrl}`;
+    goToLogin();
   }
 
   register(e) {
     e.preventDefault();
-    const backUrl = encodeURIComponent(location.href);
-    location.href = `${config.apiBase}/passport/register?ok_url=${backUrl}`;
+    goToRegister();
   }
 
   render() {

@@ -10,6 +10,7 @@ import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } fr
  * Internal dependencies
  */
 import { injectors } from '../store/reducers';
+import { isLogin, goToLogin } from '../utils/user';
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
@@ -23,6 +24,19 @@ export const getServerHistory = (store, url) =>
 
 const loadModule = (cb, componentModule) => {
   cb(null, componentModule.default);
+};
+
+const requireLogin = (path) => {
+  return (nextState, replace) => {
+    if (!isLogin()) {
+      goToLogin(path);
+      return false;
+    } else {
+      if (path) {
+        replace(path);
+      }
+    }
+  };
 };
 
 const rootRoute = function(store) {
@@ -359,13 +373,18 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
-      indexRoute: { onEnter: (nextState, replace) => replace('/uc/orderMgmt') },
+      indexRoute: {
+        onEnter: requireLogin('/uc/orderMgmt'),
+      },
       childRoutes: [{
         path: 'initialMgmt',
         name: 'initialMgmt',
-        indexRoute: { onEnter: (nextState, replace) => replace('/uc/initialMgmt/1') },
+        indexRoute: {
+          onEnter: requireLogin('/uc/initialMgmt/1'),
+        },
         childRoutes:[{
           path: ':status',
+          onEnter: requireLogin(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
@@ -385,9 +404,12 @@ const rootRoute = function(store) {
       }, {
         path: 'rightsMgmt',
         name: 'rightsMgmt',
-        indexRoute: { onEnter: (nextState, replace) => replace('/uc/rightsMgmt/1') },
+        indexRoute: {
+          onEnter: requireLogin('/uc/rightsMgmt/1'),
+        },
         childRoutes:[{
           path: ':status',
+          onEnter: requireLogin(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
@@ -407,9 +429,12 @@ const rootRoute = function(store) {
       }, {
         path: 'orderMgmt',
         name: 'orderMgmt',
-        indexRoute: { onEnter: (nextState, replace) => replace('/uc/orderMgmt/1') },
+        indexRoute: {
+          onEnter: requireLogin('/uc/orderMgmt/1'),
+        },
         childRoutes:[{
           path: ':status',
+          onEnter: requireLogin(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
