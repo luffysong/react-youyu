@@ -16,8 +16,8 @@ import './style.less';
 
 class Slick extends PureComponent {
   render() {
-    const { className } = this.props;
-
+    const { className, data } = this.props;
+    console.log(data);
     const settings = {
       dots: true,
       infinite: true,
@@ -25,7 +25,7 @@ class Slick extends PureComponent {
       slidesToShow: 1,
       slidesToScroll: 1,
       draggable: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 3000,
     };
 
@@ -35,20 +35,15 @@ class Slick extends PureComponent {
     ]);
 
     return (
-      <Slider {...settings} className={classes}>
-        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/1.jpg')})`}}>
-          1
-        </div>
-        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/2.jpg')})`}}>
-          2
-        </div>
-        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/3.jpg')})`}}>
-          3
-        </div>
-        <div className="slick-item" style={{backgroundImage: `url(${require('./imgs/4.jpg')})`}}>
-          4
-        </div>
-      </Slider>
+        data && data.length ?
+        <Slider {...settings} className={classes}>
+          {
+            data && data.map((item, index) => {
+              return <div className="slick-item" style={{backgroundImage: `url(${item.img_url})`}} key={`slick-${index}`}>
+                     </div>
+            })
+          }
+        </Slider> : null
     );
   }
 }

@@ -18,16 +18,21 @@ import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
 import ProjectCarousel from '../../components/ProjectCarousel';
 import * as actions from './actions';
+import { get } from 'lodash';
 
 export class Home extends PureComponent {
   componentDidMount() {
     this.props.loadProjects();
+    this.props.homeNotice();
+    this.props.homeBanner();
   }
 
   render() {
     const {
       projectsLoading,
       projectsData,
+      noticeData,
+      bannerData
     } = this.props;
 
     return (
@@ -39,8 +44,8 @@ export class Home extends PureComponent {
           ]}
         />
         <div className="slick-wrapper">
-          <Slick className="home-slick" />
-          <Announcements className="home-announcements" />
+          <Slick className="home-slick" data={bannerData} />
+          <Announcements className="home-announcements" data={get(noticeData, 'info.data')} />
         </div>
         <ProjectCarousel className="home-project-carousel" loading={projectsLoading} data={projectsData} />
         <HomeIntro className="home-rights-intro" type="rights" />
@@ -61,6 +66,10 @@ function mapStateToProps(state) {
   return {
     projectsLoading: home.get('projectsLoading'),
     projectsData: home.get('projectsData'),
+    noticeLoading: home.get('noticeLoading'),
+    noticeData: home.get('noticeData'),
+    bannerLoading: home.get('bannerLoading'),
+    bannerData: home.get('bannerData'),
   };
 }
 
@@ -68,6 +77,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     loadProjects: () => dispatch(actions.loadProjects()),
+    homeNotice: () => dispatch(actions.homeNotice()),
+    homeBanner: () => dispatch(actions.homeBanner()),
   };
 }
 

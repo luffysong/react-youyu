@@ -38,3 +38,57 @@ export function loadProjectsErr(error) {
     error,
   };
 }
+
+export function homeNotice() {
+  return (dispatch) => {
+    dispatch({
+      type: types.HOME_NOTICE,
+    });
+    return get('/news?pid=2').then(data => {
+      dispatch(homeNoticeSuc(data));
+    }, err => {
+      dispatch(homeNoticeErr(err));
+    });
+  };
+}
+
+export function homeNoticeSuc(data) {
+  return {
+    type: types.HOME_NOTICE_SUC,
+    data,
+  };
+}
+
+export function homeNoticeErr(error) {
+  return {
+    type: types.HOME_NOTICE_ERR,
+    error,
+  };
+}
+
+export function homeBanner() {
+  return (dispatch) => {
+    dispatch({
+      type: types.HOME_BANNER,
+    });
+    return get('/images?type=1').then(data => {
+      dispatch(homeBannerSuc(data));
+    }, err => {
+      dispatch(homeBannerErr(err));
+    });
+  };
+}
+
+export function homeBannerSuc(data) {
+  return {
+    type: types.HOME_BANNER_SUC,
+    data,
+  };
+}
+
+export function homeBannerErr(error) {
+  return {
+    type: types.HOME_BANNER_ERR,
+    error,
+  };
+}

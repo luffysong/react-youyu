@@ -16,21 +16,35 @@ const initialState = fromJS({
   projectsLoading: true,
   projectsError: false,
   projectsData: false,
+  noticeLoading: true,
+  noticeError: false,
+  noticeData: false,
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
-    case types.LOAD_PROJECTS:
+    case types.HOME_NOTICE:
       return state
-        .set('projectsLoading', true);
-    case types.LOAD_PROJECTS_SUC:
+        .set('noticeLoading', true);
+    case types.HOME_NOTICE_SUC:
       return state
-        .set('projectsLoading', false)
-        .set('projectsData', action.data);
-    case types.LOAD_PROJECTS_ERR:
+        .set('noticeLoading', false)
+        .set('noticeData', action.data);
+    case types.HOME_NOTICE_ERR:
       return state
-        .set('projectsLoading', false)
-        .set('projectsError', action.error);
+        .set('noticeLoading', false)
+        .set('noticeError', action.error);
+    case types.HOME_BANNER:
+      return state
+        .set('bannerLoading', true);
+    case types.HOME_BANNER_SUC:
+      return state
+        .set('bannerLoading', false)
+        .set('bannerData', action.data);
+    case types.HOME_BANNER_ERR:
+      return state
+        .set('bannerLoading', false)
+        .set('bannerError', action.error);
     default:
       return state;
   }

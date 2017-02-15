@@ -12,9 +12,10 @@ import classnames from 'classnames';
  * Internal dependencies
  */
 import './style.less';
+import { homeNoticeDate } from '../../utils/utils';
 
 function Announcements(props) {
-  const { className } = props;
+  const { className, data } = props;
   const classes = classnames([
     'announcements-component',
     className,
@@ -24,26 +25,16 @@ function Announcements(props) {
     <div className={classes}>
       <div className="announcements-inner">
         <img className="icon-announcements" src={require('./imgs/icon_notice_index.svg')} alt="公告" />
-        <div className="announcements-item">
-          <span className="indicator"></span>
-          <span className="title">公告：</span>
-          交易时间调整通知拍[11/10]
-        </div>
-        <div className="announcements-item">
-          <span className="indicator"></span>
-          <span className="title">公告：</span>
-          交易时间调整通知拍[11/10]
-        </div>
-        <div className="announcements-item">
-          <span className="indicator"></span>
-          <span className="title">公告：</span>
-          交易时间调整通知拍[11/10]
-        </div>
-        <div className="announcements-item">
-          <span className="indicator"></span>
-          <span className="title">公告：</span>
-          交易时间调整通知拍[11/10]
-        </div>
+        {
+          data && data.map((item, index) => {
+            if (index > 3) return null;
+             return <div className="announcements-item" key={`item-${index}`}>
+                      <span className="indicator"></span>
+                      <span className="title">公告：</span>
+                        {item.title.substring(0, 8)}[{homeNoticeDate(item.published_at)}]
+                    </div>
+          })
+        }
       </div>
     </div>
   );
