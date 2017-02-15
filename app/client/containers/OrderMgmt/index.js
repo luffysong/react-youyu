@@ -17,10 +17,21 @@ import './style.less';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
 import UcNavTab from '../../components/UcNavTab';
-import dict from '../../utils/dict.json';
 import * as actions from './actions';
 
 export class OrderMgmt extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      STATUS: {
+        open: '待付款',
+        succeed: '已完成',
+        cancelled: '已失效',
+        all: '全部',
+      },
+    };
+  }
+
   componentDidMount() {
     const status = this.props.params.status;
     const query = this.props.location.query;
@@ -31,28 +42,16 @@ export class OrderMgmt extends PureComponent {
   }
 
   render() {
-    const ORDER_STATUS = get(dict, 'movie_order_status');
+    const navLinks = [];
 
-    console.log(ORDER_STATUS);
-
-    const navLinks = [
-      {
-        link: '/uc/orderMgmt/1',
-        text: '待付款',
-      },
-      {
-        link: '/uc/orderMgmt/2',
-        text: '已完成',
-      },
-      {
-        link: '/uc/orderMgmt/3',
-        text: '已失效',
-      },
-      {
-        link: '/uc/orderMgmt/4',
-        text: '全部',
-      },
-    ];
+    for (let item in this.state.STATUS) {
+      if (this.state.STATUS.hasOwnProperty(item)) {
+        navLinks.push({
+          link: `/uc/orderMgmt/${item}`,
+          text: this.state.STATUS[item],
+        });
+      }
+    }
 
     return (
       <div className="order-mgmt-container">

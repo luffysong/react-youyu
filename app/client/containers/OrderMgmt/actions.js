@@ -19,7 +19,11 @@ export function getOrderList(status, page) {
       status,
       page,
     });
-    get('/movie/order').then(data => {
+    get('/movie/order', {
+      status,
+      page,
+      per_page: 10,
+    }).then(data => {
       dispatch(getOrderListSuc(status, page, data));
     }, err => {
       dispatch(getOrderListErr(status, page, err));
