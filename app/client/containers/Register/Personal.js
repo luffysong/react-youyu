@@ -24,8 +24,43 @@ export class Personal extends PureComponent {
     this.state = {
       memberType: '1',
       qualification: '1',
-      agree: true
+      agree: true,
+      uploadedImg: false,
     };
+
+    this.uploadParams = {
+      success(data) {
+        this.setState({
+          uploadedImg: data
+        });
+        this.setState({
+          uploading: false,
+          uploaded: true
+        });
+        console.log(data, 'suc');
+      },
+      progress(data) {
+        this.setState({
+          uploading: true,
+          uploadProgress: `${data}%`
+        });
+        console.log(data, 'pro');
+      },
+      error(msg) {
+        this.setState({
+          uploading: false,
+        });
+        console.log(msg);
+        message.error(msg);
+      },
+      params: {
+        'image-width-range': '0, 3000'
+      }
+    };
+
+    this.uploadParams.success = this.uploadParams.success.bind(this);
+    this.uploadParams.progress = this.uploadParams.progress.bind(this);
+    this.uploadParams.error = this.uploadParams.error.bind(this);
   }
 
   selectType(event) {
@@ -90,10 +125,20 @@ export class Personal extends PureComponent {
             <div className="col-attr">
               身份证扫描件
             </div>
-            <div className="col-value">
-            <span className="upload-btn">
-              点击上传
-            </span>
+            <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${this.state.uploadedImg ? 'uploaded' : ''}`}>
+              {
+                this.state.uploading || this.state.uploaded ?
+                  <div className="uploaded-pic" style={this.state.uploadedImg ? {backgroundImage: `url(${this.state.uploadedImg})`} : {}}>
+                    {
+                      this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
+                    }
+                  </div> : null
+              }
+              <UploadBtn {...this.uploadParams}>
+                {
+                  this.state.uploadedImg ? '重新上传' : '点击上传'
+                }
+              </UploadBtn>
             </div>
           </div>
           <div className="list-col">
