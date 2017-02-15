@@ -62,6 +62,22 @@ export class OrderMgmt extends PureComponent {
     });
   }
 
+  renderLoading() {
+    return Array(3).fill().map((_, index) => {
+      return <UcListItem type="order" loading={true} key={`order-list-item-${index}`} />;
+    });
+  }
+
+  renderList(data) {
+    if (!data || !data.length) {
+      return null;
+    }
+
+    return data.map((item, index) => {
+      return <UcListItem type="order" data={item} key={`order-list-item-${index}`} />;
+    });
+  }
+
   render() {
     const navLinks = [];
     const { orderListData, orderListLoading } = this.props;
@@ -90,9 +106,9 @@ export class OrderMgmt extends PureComponent {
         <div className="order-mgmt-list">
           <UcNavTab links={navLinks} />
           {
-            Array(10).fill().map((_, index) => {
-              return <UcListItem type="order" key={`order-list-item-${index}`} />;
-            })
+            orderListLoading
+            ? this.renderLoading()
+            : this.renderList(get(orderListData, 'data'))
           }
         </div>
         {

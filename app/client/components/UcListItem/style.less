@@ -81,6 +81,11 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+
+          &.loading {
+            color: transparent;
+            background-color: @mediumBg;
+          }
         }
 
         &-name {
@@ -90,6 +95,11 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+
+          &.loading {
+            color: transparent;
+            background-color: @mediumBg;
+          }
         }
       }
     }
@@ -135,6 +145,11 @@
             color: @fontLight;
             padding: 10px 79.5px 10px 0;
             font-size: 14px;
+
+            &.loading {
+              background-color: @mediumBg;
+              color: transparent;
+            }
 
             &:first-child {
               padding-right: 50px;
