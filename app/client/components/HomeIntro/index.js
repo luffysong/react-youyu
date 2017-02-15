@@ -103,16 +103,24 @@ function renderPartners() {
       <h3 className="intro-title">战略合作伙伴</h3>
       <ul className="intro-items">
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_tianjinsuo@2x.png')} alt="天金所" />
+          <a href="http://www.tjfae.com/" target="_blank">
+            <img className="partner" src={require('./imgs/partners/pic_partner_tianjinsuo@2x.png')} alt="天金所" />
+          </a>
         </li>
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_pusi@2x.png')} alt="普思资本" />
+          <a href="http://www.pusicapital.com/" target="_blank">
+            <img className="partner" src={require('./imgs/partners/pic_partner_pusi@2x.png')} alt="普思资本" />
+          </a>
         </li>
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_mayi@2x.png')} alt="蚂蚁金服" />
+          <a href="https://www.antgroup.com/" target="_blank">
+            <img className="partner" src={require('./imgs/partners/pic_partner_mayi@2x.png')} alt="蚂蚁金服" />
+          </a>
         </li>
         <li className="intro-item">
-          <img className="partner" src={require('./imgs/partners/pic_partner_xinpianchang@2x.png')} alt="新片场" />
+          <a href="http://www.xinpianchang.com/" target="_blank">
+            <img className="partner" src={require('./imgs/partners/pic_partner_xinpianchang@2x.png')} alt="新片场" />
+          </a>
         </li>
       </ul>
     </div>
