@@ -8,51 +8,108 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
-import makeSelectInitialMgmt from './selectors';
 import UcNavTab from '../../components/UcNavTab';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
+import * as actions from './actions';
 
 export class InitialMgmt extends PureComponent {
+  constructor(props) {
+    super(props);
+    const query = this.props.location.query;
+    const status = this.props.params.status;
+    this.state = {
+      page: query.page ? parseInt(query.page, 10) : 1,
+      status,
+      STATUS: {
+        holding: '持有中',
+        listing: '转让中',
+        finished: '已转让',
+      },
+    };
+    this.onPageChange = this.handlePageChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getInitialList(this.state.status, this.state.page);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const page = this.state.page;
+    const oldPage = prevState.page;
+
+    if (page !== oldPage) {
+      this.props.getInitialList(this.state.status, page);
+    }
+  }
+
+  handlePageChange(page) {
+    if (!page || page.selected === undefined) {
+      return false;
+    }
+    this.props.router.push({
+      pathname: `/uc/initialMgmt/${this.state.status}`,
+      query: {
+        page: parseInt(page.selected + 1, 10),
+      }
+    });
+  }
+
+  renderLoading() {
+    return Array(3).fill().map((_, index) => {
+      return <UcListItem type="initial" loading={true} key={`initial-list-item-${index}`} />;
+    });
+  }
+
+  renderList(data) {
+    if (!data || !data.length) {
+      return null;
+    }
+
+    return data.map((item, index) => {
+      return <UcListItem type="initial" data={item} key={`initial-list-item-${index}`} />;
+    });
+  }
+
   render() {
-    const navLinks = [
-      {
-        link: '/uc/initialMgmt/1',
-        text: '持有中',
-      },
-      {
-        link: '/uc/initialMgmt/2',
-        text: '转让中',
-      },
-      {
-        link: '/uc/initialMgmt/3',
-        text: '已转让',
-      },
-    ];
+    const navLinks = [];
+    const { initialListData, initialListLoading } = this.props;
+    const pageInfo = {
+      currentPage: get(initialListData, 'current_page'),
+      lastPage: get(initialListData, 'last_page'),
+    };
+
+    for (let item in this.state.STATUS) {
+      if (this.state.STATUS.hasOwnProperty(item)) {
+        navLinks.push({
+          link: `/uc/initialMgmt/${item}`,
+          text: this.state.STATUS[item],
+        });
+      }
+    }
 
     return (
       <div className="initial-mgmt-container">
-        <Helmet
-          title="初始份额管理"
-          meta={[
-            { name: 'description', content: 'Description of InitialMgmt' },
-          ]}
-        />
+        <Helmet title="初始份额管理" />
         <div className="initial-mgmt-list">
           <UcNavTab links={navLinks} />
           {
-            Array(10).fill().map((_, index) => {
-              return <UcListItem type="initial" key={`initial-list-item-${index}`} />;
-            })
+            initialListLoading
+            ? this.renderLoading()
+            : this.renderList(get(initialListData, 'data'))
           }
         </div>
-        <Pagination className="initial-mgmt-pagination" />
+        {
+          initialListLoading
+          ? null
+          : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="initial-mgmt-pagination" />
+        }
       </div>
     );
   }
@@ -62,13 +119,22 @@ InitialMgmt.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  InitialMgmt: makeSelectInitialMgmt(),
-});
+function mapStateToProps(state, props) {
+  const initialMgmt = state.initialMgmt;
+  const status = props.params.status;
+  const query = props.location.query;
+  const page = query.page ? parseInt(query.page, 10) : 1;
+
+  return {
+    initialListData: initialMgmt.getIn(['initialListData', status, page]),
+    initialListLoading: initialMgmt.getIn(['initialListLoading', status, page]),
+  };
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    getInitialList: (status, page) => dispatch(actions.getInitialList(status, page)),
   };
 }
 

@@ -40,7 +40,7 @@ const requireLogin = (path) => {
 };
 
 const rootRoute = function(store) {
-  const { injectReducer, injectSagas } = injectors(store);
+  const { injectReducer } = injectors(store);
 
   return {
     getComponent(nextState, cb) {
@@ -380,7 +380,7 @@ const rootRoute = function(store) {
         path: 'initialMgmt',
         name: 'initialMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/initialMgmt/1'),
+          onEnter: requireLogin('/uc/initialMgmt/holding'),
         },
         childRoutes:[{
           path: ':status',
@@ -390,14 +390,11 @@ const rootRoute = function(store) {
           require.ensure([
             '../containers/InitialMgmt',
             '../containers/InitialMgmt/reducer',
-            '../containers/InitialMgmt/sagas',
           ], (require) => {
             const component = require('../containers/InitialMgmt');
             const reducer = require('../containers/InitialMgmt/reducer').default;
-            const sagas = require('../containers/InitialMgmt/sagas').default;
 
             injectReducer('initialMgmt', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },
@@ -415,14 +412,11 @@ const rootRoute = function(store) {
           require.ensure([
             '../containers/RightsMgmt',
             '../containers/RightsMgmt/reducer',
-            '../containers/RightsMgmt/sagas',
           ], (require) => {
             const component = require('../containers/RightsMgmt');
             const reducer = require('../containers/RightsMgmt/reducer').default;
-            const sagas = require('../containers/RightsMgmt/sagas').default;
 
             injectReducer('rightsMgmt', reducer);
-            injectSagas(sagas);
             loadModule(cb, component);
           });
         },
@@ -430,7 +424,7 @@ const rootRoute = function(store) {
         path: 'orderMgmt',
         name: 'orderMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/orderMgmt/1'),
+          onEnter: requireLogin('/uc/orderMgmt/open'),
         },
         childRoutes:[{
           path: ':status',
