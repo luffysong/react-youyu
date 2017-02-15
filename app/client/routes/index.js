@@ -430,7 +430,7 @@ const rootRoute = function(store) {
         path: 'orderMgmt',
         name: 'orderMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/orderMgmt/1'),
+          onEnter: requireLogin('/uc/orderMgmt/open'),
         },
         childRoutes:[{
           path: ':status',

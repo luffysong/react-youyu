@@ -15,7 +15,7 @@ import { get } from 'lodash';
 import './style.less';
 import Button from '../Button';
 import { numComma } from '../../utils/utils';
-import dict from '../../utils/dict.json';
+import { movie_order_status, trade_status } from '../../utils/dict.json';
 
 class UcListItem extends PureComponent {
   renderTop(data) {
@@ -146,7 +146,7 @@ class UcListItem extends PureComponent {
             data.map((item, index) => {
               return <tr key={`uc-list-item-bottom-${index}`}>
                 <td>
-                  <div className="item-sign"></div>
+                  <div className={`item-sign ${item.status === '已付款' ? 'active' : ''}`}></div>
                 </td>
                 <td>{item.name}</td>
                 <td>{item.value}</td>
@@ -168,7 +168,7 @@ class UcListItem extends PureComponent {
         topData = [
           {
             name: '订单状态',
-            value: get(data, 'status'),
+            value: movie_order_status[get(data, 'status')],
           },
           {
             name: '下单时间',
@@ -207,12 +207,12 @@ class UcListItem extends PureComponent {
           {
             name: '支付保证金',
             value: numComma(get(data, 'trade_deposit.amount'), false, true),
-            status: get(data, 'trade_deposit.status'),
+            status: trade_status[get(data, 'trade_deposit.status')],
           },
           {
             name: '支付尾款',
             value: numComma(get(data, 'trade_balance.amount'), false, true),
-            status: get(data, 'trade_balance.status'),
+            status: trade_status[get(data, 'trade_balance.status')],
           },
         ];
 
