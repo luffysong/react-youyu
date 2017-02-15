@@ -23,32 +23,39 @@ export class Personal extends PureComponent {
     super(props);
     this.state = {
       memberType: '1',
-      qualification: '1',
-      agree: true,
-      uploadedImg: false,
+      qualification: '10',
+      agree: false,
+      // id card
+      idcardimg: '',
+      idcardloading: false,
+      idcardprogress: '',
+      idcardloaded: false,
+      // business card
+      businesscardimg: '',
+      businesscardloading: false,
+      businesscardprogress: '',
+      businesscardloaded: false,
     };
 
-    this.uploadParams = {
-      success(data) {
+    this.uploadIdCardParams = {
+      success: (data) => {
         this.setState({
-          uploadedImg: data
+          idcardimg: data
         });
         this.setState({
-          uploading: false,
-          uploaded: true
+          idcardloading: false,
+          idcardloaded: true
         });
-        console.log(data, 'suc');
       },
-      progress(data) {
+      progress: (data) => {
         this.setState({
-          uploading: true,
-          uploadProgress: `${data}%`
+          idcardloading: true,
+          idcardprogress: `${data}%`
         });
-        console.log(data, 'pro');
       },
-      error(msg) {
+      error: (msg) => {
         this.setState({
-          uploading: false,
+          idcardloading: false,
         });
         console.log(msg);
         message.error(msg);
@@ -58,9 +65,33 @@ export class Personal extends PureComponent {
       }
     };
 
-    this.uploadParams.success = this.uploadParams.success.bind(this);
-    this.uploadParams.progress = this.uploadParams.progress.bind(this);
-    this.uploadParams.error = this.uploadParams.error.bind(this);
+    this.uploadBusinessCardParams = {
+      success: (data) => {
+        this.setState({
+          businesscardimg: data
+        });
+        this.setState({
+          businesscardloading: false,
+          businesscardloaded: true
+        });
+      },
+      progress: (data) => {
+        this.setState({
+          businesscardloading: true,
+          businesscardprogress: `${data}%`
+        });
+      },
+      error: (msg) => {
+        this.setState({
+          businesscardloading: false,
+        });
+        console.log(msg);
+        message.error(msg);
+      },
+      params: {
+        'image-width-range': '0, 3000'
+      }
+    };
   }
 
   selectType(event) {
@@ -68,6 +99,7 @@ export class Personal extends PureComponent {
       memberType: event.target.value
     });
   }
+
   // 选择投资条件
   selectQualification(event) {
     this.setState({
@@ -109,7 +141,7 @@ export class Personal extends PureComponent {
               真实姓名
             </div>
             <div className="col-value">
-              <input type="text" className="price-input" ref='name' />
+              <input type="text" className="price-input" ref='name'/>
             </div>
           </div>
           <div className="list-col">
@@ -117,7 +149,7 @@ export class Personal extends PureComponent {
               身份证号
             </div>
             <div className="col-value">
-              <input type="text" className="price-input" ref="id_card_number" />
+              <input type="text" className="price-input" ref="id_card_number"/>
             </div>
           </div>
 
@@ -125,18 +157,21 @@ export class Personal extends PureComponent {
             <div className="col-attr">
               身份证扫描件
             </div>
-            <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${this.state.uploadedImg ? 'uploaded' : ''}`}>
+            <div
+              className={`col-value ${this.state.idcardloading ? 'uploading' : ''} ${this.state.idcardimg ? 'uploaded' : ''}`}>
               {
-                this.state.uploading || this.state.uploaded ?
-                  <div className="uploaded-pic" style={this.state.uploadedImg ? {backgroundImage: `url(${this.state.uploadedImg})`} : {}}>
+                this.state.idcardloading || this.state.idcardloaded ?
+                  <div className="uploaded-pic"
+                       style={this.state.idcardimg ? { backgroundImage: `url(${this.state.idcardimg})` } : {}}>
                     {
-                      this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
+                      this.state.idcardloading ? <div className="upload-progress"
+                                                  style={{ height: this.state.idcardprogress }}></div> : null
                     }
                   </div> : null
               }
-              <UploadBtn {...this.uploadParams}>
+              <UploadBtn {...this.uploadIdCardParams}>
                 {
-                  this.state.uploadedImg ? '重新上传' : '点击上传'
+                  this.state.idcardimg ? '重新上传' : '点击上传'
                 }
               </UploadBtn>
             </div>
@@ -145,10 +180,23 @@ export class Personal extends PureComponent {
             <div className="col-attr">
               个人名片
             </div>
-            <div className="col-value">
-            <span className="upload-btn">
-              点击上传
-            </span>
+            <div
+              className={`col-value ${this.state.businesscardloading ? 'uploading' : ''} ${this.state.businesscardimg ? 'uploaded' : ''}`}>
+              {
+                this.state.businesscardloading || this.state.businesscardloaded ?
+                  <div className="uploaded-pic"
+                       style={this.state.businesscardimg ? { backgroundImage: `url(${this.state.businesscardimg})` } : {}}>
+                    {
+                      this.state.businesscardloading ? <div className="upload-progress"
+                                                  style={{ height: this.state.businesscardprogress }}></div> : null
+                    }
+                  </div> : null
+              }
+              <UploadBtn {...this.uploadBusinessCardParams}>
+                {
+                  this.state.businesscardimg ? '重新上传' : '点击上传'
+                }
+              </UploadBtn>
             </div>
           </div>
 
@@ -158,16 +206,22 @@ export class Personal extends PureComponent {
             </div>
             <div className="col-value member-type">
               <section>
-                <div className={this.state.memberType === '1' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.memberType === '1'} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
+                <div
+                  className={this.state.memberType === '1' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.memberType === '1'}
+                         name="memberType" onChange={this.selectType.bind(this)}
+                         value="1" id="business"/>
                 </div>
                 <label htmlFor="business">
                   交易会员(普通投资会员)
                 </label>
               </section>
               <section>
-                <div className={this.state.memberType === '2' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.memberType === '2'} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
+                <div
+                  className={this.state.memberType === '2' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" checked={this.state.memberType === '2'}
+                         name="memberType" onChange={this.selectType.bind(this)}
+                         value="2" id="composite"/>
                 </div>
                 <label htmlFor="composite">
                   综合会员(持有影视初始份额的会员)
@@ -182,24 +236,39 @@ export class Personal extends PureComponent {
             </div>
             <div className="col-value member-type qualification">
               <section>
-                <div className={this.state.qualification === '10' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.qualification === '10'} name="qualification" onChange={this.selectQualification.bind(this)} value="10" />
+                <div
+                  className={this.state.qualification === '10' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio"
+                         checked={this.state.qualification === '10'}
+                         name="qualification"
+                         onChange={this.selectQualification.bind(this)}
+                         value="10"/>
                 </div>
                 <label htmlFor="business">
                   年收入超过50万元人民币
                 </label>
               </section>
               <section>
-                <div className={this.state.qualification === '20' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.qualification === '20'} name="qualification" onChange={this.selectQualification.bind(this)} value="20" />
+                <div
+                  className={this.state.qualification === '20' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio"
+                         checked={this.state.qualification === '20'}
+                         name="qualification"
+                         onChange={this.selectQualification.bind(this)}
+                         value="20"/>
                 </div>
                 <label htmlFor="composite">
                   金融资产超过200万元人民币
                 </label>
               </section>
               <section>
-                <div className={this.state.qualification === '30' ? 'quote-radio checked' : 'quote-radio'}>
-                  <input type="radio" checked={this.state.qualification === '30'} name="qualification" onChange={this.selectQualification.bind(this)} value="30" />
+                <div
+                  className={this.state.qualification === '30' ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio"
+                         checked={this.state.qualification === '30'}
+                         name="qualification"
+                         onChange={this.selectQualification.bind(this)}
+                         value="30"/>
                 </div>
                 <label htmlFor="composite">
                   具有三年以上的风险投资经验，或专业的文娱从业人员
@@ -212,8 +281,11 @@ export class Personal extends PureComponent {
             <div className="col-attr">
             </div>
             <div className="col-value">
-              <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
-                <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+              <div
+                className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
+                <input type="radio" name="memberType"
+                       onChange={this.agree.bind(this)} value="agree"
+                       id="agree"/>
               </div>
               <label htmlFor="agree">
                 同意《会员合同》《XXXX协议》
@@ -221,7 +293,9 @@ export class Personal extends PureComponent {
             </div>
           </div>
 
-          <Link to="" activeClassName="active" className={`next-btn ${this.state.agree ? '' : 'disabled'}`} onClick={this.submit.bind(this)}>下一步</Link>
+          <Link to="" activeClassName="active"
+                className={`next-btn ${this.state.agree ? '' : 'disabled'}`}
+                onClick={this.submit.bind(this)}>下一步</Link>
         </div>
       </div>
     );
