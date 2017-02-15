@@ -13,13 +13,12 @@ import { Link } from 'react-router';
  * Internal dependencies
  */
 import './style.less';
-import config from '../../config';
+import { goToLogout } from '../../utils/user';
 
 class UserInfo extends PureComponent {
   logout(e) {
     e.preventDefault();
-    const backUrl = encodeURIComponent(location.href);
-    location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
+    goToLogout();
   }
 
   render() {

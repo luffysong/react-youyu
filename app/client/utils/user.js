@@ -27,3 +27,17 @@ export function goToRegister(path) {
   const backUrl = path ? (baseUrl + path) : encodeURIComponent(location.href);
   location.href = `${config.apiBase}/passport/register?ok_url=${backUrl}`;
 }
+
+export function goToLogout() {
+  const underUc = /youyu\.top\/uc\//.test(location.href);
+  const baseUrl = `${location.protocol}//${location.host}`;
+  let backUrl = '';
+
+  if (underUc) {
+    backUrl = baseUrl;
+  } else {
+    backUrl = encodeURIComponent(location.href);
+  }
+
+  location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
+}
