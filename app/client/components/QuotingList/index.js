@@ -76,7 +76,7 @@ function QuotingList(props) {
               </div>
               <div className="quoting-list-item-column-name">剩余时间</div>
             </div>
-            <Button className="quoting-list-item-btn" to={`/accept/${get(item, 'id')}`}>认购</Button>
+            <Button className="quoting-list-item-btn" to={`/accept/confirm/${get(item, 'id')}`}>认购</Button>
           </div>
         )
       }
