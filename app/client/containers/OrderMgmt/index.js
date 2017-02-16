@@ -22,10 +22,8 @@ import * as actions from './actions';
 export class OrderMgmt extends PureComponent {
   constructor(props) {
     super(props);
-    const query = this.props.location.query;
     const status = this.props.params.status;
     this.state = {
-      page: query.page ? parseInt(query.page, 10) : 1,
       status,
       STATUS: {
         open: '待付款',
@@ -38,14 +36,18 @@ export class OrderMgmt extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.getOrderList(this.state.status, this.state.page);
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    this.props.getOrderList(this.state.status, page);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const page = this.state.page;
-    const oldPage = prevState.page;
+  componentDidUpdate(prevProps) {
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    const prevQuery = prevProps.location.query;
+    const prevPage = prevQuery.page;
 
-    if (page !== oldPage) {
+    if (page !== prevPage) {
       this.props.getOrderList(this.state.status, page);
     }
   }
@@ -124,7 +126,7 @@ function mapStateToProps(state, props) {
   const orderMgmt = state.orderMgmt;
   const status = props.params.status;
   const query = props.location.query;
-  const page = query.page ? parseInt(query.page, 10) : 1;
+  const page = query.page || 1;
 
   return {
     orderListData: orderMgmt.getIn(['orderListData', status, page]),
