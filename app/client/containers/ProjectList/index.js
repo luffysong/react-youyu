@@ -8,12 +8,14 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
 import ProjectItem from '../../components/ProjectItem';
+import Pagination from '../../components/Pagination';
 import * as actions from './actions';
 
 export class ProjectList extends PureComponent {
@@ -25,36 +27,70 @@ export class ProjectList extends PureComponent {
     this.state = {
       page,
     };
+    this.onPageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
     this.props.loadProjectList(this.state.page);
   }
 
-  renderProjects(loading, projects) {
+  componentDidUpdate(prevProps, prevState) {
+    const page = this.state.page;
+    const prevPage = prevState.page;
+
+    if (page !== prevPage) {
+      this.props.loadNewsList(page);
+    }
+  }
+
+  renderProjects(loading, data) {
     if (loading || loading === undefined) {
       return Array(3).fill().map((_, index) => {
         return <ProjectItem key={`project-item-${index}`} loading={true}></ProjectItem>;
       });
     }
 
-    return projects.map((item, index) => {
+    const projects = get(data, 'data');
+
+    return projects ? projects.map((item, index) => {
       return (
         <ProjectItem data={item} type="list"
           key={`project-item-${index}`}>
         </ProjectItem>
       );
+    }): null;
+  }
+
+  handlePageChange(page) {
+    if (!page || page.selected === undefined) {
+      return false;
+    }
+    this.props.router.push({
+      pathname: '/projects',
+      query: {
+        page: parseInt(page.selected + 1, 10),
+      }
     });
   }
 
   render() {
     const { loading, data } = this.props;
 
+    const pageInfo = {
+      currentPage: get(data, 'current_page'),
+      lastPage: get(data, 'last_page'),
+    };
+
     return (
       <div className="project-list-container">
         <Helmet title="项目列表" />
         <div className="container">
           { this.renderProjects(loading, data) }
+          {
+            loading
+            ? null
+            : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="project-list-pagination" />
+          }
         </div>
       </div>
     );

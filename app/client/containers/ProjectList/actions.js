@@ -22,7 +22,7 @@ export function loadProjectList(page) {
       page,
       per_page: 10,
     }).then(data => {
-      dispatch(loadProjectListSuc(page, data.data));
+      dispatch(loadProjectListSuc(page, data));
     }, err => {
       dispatch(loadProjectListErr(page, err));
     });
