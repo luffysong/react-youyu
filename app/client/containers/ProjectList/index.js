@@ -17,12 +17,22 @@ import ProjectItem from '../../components/ProjectItem';
 import * as actions from './actions';
 
 export class ProjectList extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    this.state = {
+      page,
+    };
+  }
+
   componentDidMount() {
-    this.props.loadProjectList();
+    this.props.loadProjectList(this.state.page);
   }
 
   renderProjects(loading, projects) {
-    if (loading) {
+    if (loading || loading === undefined) {
       return Array(3).fill().map((_, index) => {
         return <ProjectItem key={`project-item-${index}`} loading={true}></ProjectItem>;
       });
@@ -55,19 +65,21 @@ ProjectList.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   const projectList = state.projectList;
+  const query = props.location.query;
+  const page = query.page || 1;
 
   return {
-    loading: projectList.get('projectListLoading'),
-    data: projectList.get('projectListData'),
+    loading: projectList.getIn(['projectListLoading', page]),
+    data: projectList.getIn(['projectListData', page]),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    loadProjectList: () => dispatch(actions.loadProjectList()),
+    loadProjectList: (page) => dispatch(actions.loadProjectList(page)),
   };
 }
 

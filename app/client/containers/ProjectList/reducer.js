@@ -13,24 +13,24 @@ import { fromJS } from 'immutable';
 import * as types from './constants';
 
 const initialState = fromJS({
-  projectListLoading: true,
-  projectListError: false,
-  projectListData: false,
+  projectListLoading: {},
+  projectListError: {},
+  projectListData: {},
 });
 
 function projectListReducer(state = initialState, action) {
   switch (action.type) {
     case types.LOAD_PROJECT_LIST:
       return state
-        .set('projectListLoading', true);
+        .setIn(['projectListLoading', action.page], true);
     case types.LOAD_PROJECT_LIST_SUC:
       return state
-        .set('projectListLoading', false)
-        .set('projectListData', action.data);
+        .setIn(['projectListLoading', action.page], false)
+        .setIn(['projectListData', action.page], action.data);
     case types.LOAD_PROJECT_LIST_ERR:
       return state
-        .set('projectListLoading', false)
-        .set('projectListError', action.error);
+        .setIn(['projectListLoading', action.page], false)
+        .setIn(['projectListError', action.page], action.error);
     default:
       return state;
   }
