@@ -21,25 +21,23 @@ import * as actions from './actions';
 export class ProjectList extends PureComponent {
   constructor(props) {
     super(props);
-
-    const query = this.props.location.query;
-    const page = query.page || 1;
-    this.state = {
-      page,
-    };
     this.onPageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
-    this.props.loadProjectList(this.state.page);
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    this.props.loadProjectList(page);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const page = this.state.page;
-    const prevPage = prevState.page;
+  componentDidUpdate(prevProps) {
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    const prevQuery = prevProps.location.query;
+    const prevPage = prevQuery.page || 1;
 
     if (page !== prevPage) {
-      this.props.loadNewsList(page);
+      this.props.loadProjectList(page);
     }
   }
 
