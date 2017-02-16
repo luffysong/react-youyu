@@ -168,9 +168,9 @@ export class Personal extends PureComponent {
       <div className="col-value member-type qualification">
         <section>
           <div
-            className={this.props.sendData.condition === 10 ? 'quote-radio checked' : 'quote-radio'}>
+            className={get(this.props.formData, 'condition') === 10 ? 'quote-radio checked' : 'quote-radio'}>
             <input type="radio"
-                   checked={this.props.sendData.condition === 10}
+                   checked={get(this.props.formData, 'condition') === 10}
                    name="condition"
                    onChange={this.selectCondition.bind(this)}
                    value="10" id="up50w"/>
@@ -181,9 +181,9 @@ export class Personal extends PureComponent {
         </section>
         <section>
           <div
-            className={this.props.sendData.condition === 20 ? 'quote-radio checked' : 'quote-radio'}>
+            className={get(this.props.formData, 'condition') === 20 ? 'quote-radio checked' : 'quote-radio'}>
             <input type="radio"
-                   checked={this.props.sendData.condition === 20}
+                   checked={get(this.props.formData, 'condition') === 20}
                    name="condition"
                    onChange={this.selectCondition.bind(this)}
                    value="20" id="up200w"/>
@@ -194,9 +194,9 @@ export class Personal extends PureComponent {
         </section>
         <section>
           <div
-            className={this.props.sendData.condition === 30 ? 'quote-radio checked' : 'quote-radio'}>
+            className={get(this.props.formData, 'condition') === 30 ? 'quote-radio checked' : 'quote-radio'}>
             <input type="radio"
-                   checked={this.props.sendData.condition === 30}
+                   checked={get(this.props.formData, 'condition') === 30}
                    name="condition"
                    onChange={this.selectCondition.bind(this)}
                    value="30" id="profession"/>
@@ -226,15 +226,14 @@ export class Personal extends PureComponent {
     }
   }
 
+  // 选择会员类型
   selectType(event) {
     this.props.dispatch(change('PersonalForm', 'type', event.target.value - 0))
   }
 
   // 选择投资条件
   selectCondition(event) {
-    this.props.dispatch(actions.personalForm({
-      condition: event.target.value - 0,
-    }));
+    this.props.dispatch(change('PersonalForm', 'condition', event.target.value - 0))
   }
 
   agree(event) {
@@ -377,9 +376,8 @@ function mapStateToProps(state) {
   return {
     loading: personal.get('loading'),
     sucData: personal.get('sucData'),
-    initialValues: state.personalForm,
     formData: get(formState, 'values'),
-    sendData: state.personalForm
+    initialValues: state.personalForm,
   };
 }
 
