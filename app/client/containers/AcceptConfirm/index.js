@@ -42,7 +42,7 @@ export class AcceptConfirm extends PureComponent {
             { name: 'description', content: 'Description of AcceptConfirm' },
           ]}
         />
-        <AcceptInfoBar />
+        <AcceptInfoBar data={this.props.orderInfoData} />
         <table className="accept-confirm-table">
           <tbody>
             <tr>
