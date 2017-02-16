@@ -17,8 +17,10 @@ export function loadProjects() {
     dispatch({
       type: types.LOAD_PROJECTS,
     });
-    return get('/movie/projects').then(data => {
-      dispatch(loadProjectsSuc(data));
+    return get('/movie/projects', {
+      is_hot: 1,
+    }).then(data => {
+      dispatch(loadProjectsSuc(data.data));
     }, err => {
       dispatch(loadProjectsErr(err));
     });

@@ -23,7 +23,7 @@ class ProjectItem extends PureComponent {
     return <table className="transfer-info">
       <tbody>
         {
-          list && list.length && take(list, 3).map((item, index) => {
+          list && list.length ? take(list, 3).map((item, index) => {
             return <tr className="transfer-info-item" key={`transfer-info-item-${index}`}>
               <td className="item-info">
                 <span>转让价格：</span>
@@ -48,7 +48,7 @@ class ProjectItem extends PureComponent {
                 : null
               }
             </tr>;
-          })
+          }) : null
         }
       </tbody>
     </table>;
