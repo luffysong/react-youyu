@@ -19,6 +19,9 @@ function Menu(props) {
         <Link to="/" activeClassName="active">首页</Link>
       </li>
       <li className="item">
+        <Link to="/projects" activeClassName="active">全部项目</Link>
+      </li>
+      <li className="item">
         <Link to="/news" activeClassName="active">新闻公告</Link>
       </li>
       <li className="item">
