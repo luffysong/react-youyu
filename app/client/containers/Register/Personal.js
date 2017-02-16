@@ -10,14 +10,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
 import { Field, reduxForm, change } from 'redux-form'
-import * as actions from './actions';
-import message from '../../components/Message';
-import UploadBtn from  '../../components/UploadButton';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
+import * as actions from './actions';
+import message from '../../components/Message';
+import UploadBtn from  '../../components/UploadButton';
 
 const validate = values => {
   const errors = {}
@@ -105,7 +106,6 @@ export class Personal extends PureComponent {
         this.setState({
           businesscardloading: false,
         });
-        console.log(msg);
         message.error(msg);
       },
       params: {
@@ -138,8 +138,8 @@ export class Personal extends PureComponent {
         <div className="col-value member-type">
           <section>
             <div
-              className={this.props.initialValues.type === 1 ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={this.props.initialValues.type === 1}
+              className={get(this.props.formData, 'type') === 1 ? 'quote-radio checked' : 'quote-radio'}>
+              <input type="radio" checked={get(this.props.formData, 'type') === 1}
                      name="type"
                      onChange={this.selectType.bind(this)}
                      value="1" id="business"/>
@@ -150,8 +150,8 @@ export class Personal extends PureComponent {
           </section>
           <section>
             <div
-              className={this.props.initialValues.type === 2 ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={this.props.initialValues.type === 2}
+              className={get(this.props.formData, 'type') === 2 ? 'quote-radio checked' : 'quote-radio'}>
+              <input type="radio" checked={get(this.props.formData, 'type') === 2}
                      name="type"
                      onChange={this.selectType.bind(this)}
                      value="2" id="composite"/>
@@ -224,15 +224,10 @@ export class Personal extends PureComponent {
         </div>
       )
     }
-
   }
 
   selectType(event) {
-    this.props.dispatch(change('PersonalForm', 'type', event.target.value-0))
-
-    // this.props.dispatch(actions.personalForm({
-    //   type: event.target.value - 0,
-    // }));
+    this.props.dispatch(change('PersonalForm', 'type', event.target.value - 0))
   }
 
   // 选择投资条件
@@ -344,8 +339,7 @@ export class Personal extends PureComponent {
               <div className="col-attr">
                 会员类型
               </div>
-              <Field name="type" component={this.memberTypeField}/>
-              {/*{this.memberTypeField()}*/}
+              {this.memberTypeField()}
             </div>
 
             <div className="list-col">
@@ -371,9 +365,6 @@ export class Personal extends PureComponent {
       </div>
     );
   }
-
-  componentDidMount(){
-  }
 }
 
 Personal.propTypes = {
@@ -382,10 +373,12 @@ Personal.propTypes = {
 
 function mapStateToProps(state) {
   const personal = state.personRegister;
+  const formState = state.form.PersonalForm;
   return {
     loading: personal.get('loading'),
     sucData: personal.get('sucData'),
     initialValues: state.personalForm,
+    formData: get(formState, 'values'),
     sendData: state.personalForm
   };
 }

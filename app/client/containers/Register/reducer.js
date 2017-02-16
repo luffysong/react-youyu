@@ -35,9 +35,8 @@ function registerReducer(state = initialState, action) {
       return state;
   }
 }
+
 export default registerReducer;
-
-
 
 const initPersonState = fromJS({
   loading: false,
@@ -50,7 +49,6 @@ export function personRegisterReducer(state = initPersonState, action) {
     case types.PERSONAL_REGISTER:
       return state.set('loading', true);
     case types.PERSONAL_REGISTER_SUC:
-      console.log(action.data);
       return state
       .set('loading', false)
       .set('sucData', action.data);
@@ -69,6 +67,7 @@ const initPersonalFormState = {
   type: 1,
   condition: 10,
 };
+
 export function personalForm(state = initPersonalFormState, action) {
   switch(action.type) {
     case types.PERSONAL_FORM:
