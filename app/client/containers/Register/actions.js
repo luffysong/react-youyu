@@ -62,3 +62,10 @@ export function personalRegisterErr(error) {
     error,
   };
 }
+
+export function personalForm(data) {
+  return {
+    type: types.PERSONAL_FORM,
+    data,
+  }
+}
