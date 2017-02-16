@@ -401,7 +401,7 @@ const rootRoute = function(store) {
         path: 'rightsMgmt',
         name: 'rightsMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/rightsMgmt/1'),
+          onEnter: requireLogin('/uc/rightsMgmt/holding'),
         },
         childRoutes:[{
           path: ':status',

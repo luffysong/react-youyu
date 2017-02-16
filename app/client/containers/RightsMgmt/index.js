@@ -22,10 +22,8 @@ import * as actions from './actions';
 export class RightsMgmt extends PureComponent {
   constructor(props) {
     super(props);
-    const query = this.props.location.query;
     const status = this.props.params.status;
     this.state = {
-      page: query.page ? parseInt(query.page, 10) : 1,
       status,
       STATUS: {
         holding: '持有中',
@@ -37,14 +35,18 @@ export class RightsMgmt extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.getRightsList(this.state.status, this.state.page);
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    this.props.getRightsList(this.state.status, page);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const page = this.state.page;
-    const oldPage = prevState.page;
+  componentDidUpdate(prevProps) {
+    const query = this.props.location.query;
+    const page = query.page || 1;
+    const prevQuery = prevProps.location.query;
+    const prevPage = prevQuery.page;
 
-    if (page !== oldPage) {
+    if (page !== prevPage) {
       this.props.getRightsList(this.state.status, page);
     }
   }
@@ -124,7 +126,7 @@ function mapStateToProps(state, props) {
   const rightsMgmt = state.rightsMgmt;
   const status = props.params.status;
   const query = props.location.query;
-  const page = query.page ? parseInt(query.page, 10) : 1;
+  const page = query.page || 1;
 
   return {
     rightsListData: rightsMgmt.getIn(['rightsListData', status, page]),
