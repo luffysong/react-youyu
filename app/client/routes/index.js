@@ -360,6 +360,14 @@ const rootRoute = function(store) {
             loadModule(cb, require('../containers/Register/Company'));
           });
         },
+      }, {
+        path: 'personalresult',
+        name: 'personalResult',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Register/PersonalResult'));
+          });
+        },
       }],
     }, {
       path: '/uc',
