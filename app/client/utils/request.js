@@ -32,8 +32,7 @@ function sucCallback(response) {
 function errCallback(response) {
   showError('网络错误，请刷新后重试');
 
-  const error = new Error(response.statusText);
-  error.response = response;
+  const error = new Error('网络错误');
   throw error;
 }
 
