@@ -39,11 +39,13 @@ export function orgRegisterErr(error) {
 
 // 个人注册
 export function personalRegister(params) {
+  const { sendData, callback } =  params;
   return (dispatch) => {
     dispatch({
       type: types.PERSONAL_REGISTER,
     });
-    return post('/register/personal', params).then((data) => {
+    return post('/register/personal', sendData).then((data) => {
+      callback && callback();
       dispatch(personalRegisterSuc(data));
     });
   };

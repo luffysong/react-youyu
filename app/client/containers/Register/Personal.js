@@ -7,7 +7,7 @@
  */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import Helmet from 'react-helmet';
 import { Field, reduxForm, change } from 'redux-form'
 import { get } from 'lodash';
@@ -23,14 +23,14 @@ import UploadBtn from  '../../components/UploadButton';
 const validate = values => {
   const errors = {}
   if (!values.name) {
-    errors.name = 'Required'
+    errors.name = '请输入真实姓名'
   } else if (values.name.length > 15) {
-    errors.name = 'Must be 15 characters or less'
+    errors.name = '字数15个字以内'
   }
   if (!values.id_card_number) {
-    errors.id_card_number = 'Required'
-  } else if (values.id_card_number.length > 15) {
-    errors.id_card_number = 'Must be 15 characters or less'
+    errors.id_card_number = '请输入身份证号'
+  } else if (values.id_card_number.length < 8) {
+    errors.id_card_number = '请输入有效位数'
   }
   return errors
 }
@@ -47,11 +47,13 @@ export class Personal extends PureComponent {
       idcardloading: false,
       idcardprogress: '',
       idcardloaded: false,
+      idcarderr: '',
       // business card
       businesscardimg: '',
       businesscardloading: false,
       businesscardprogress: '',
       businesscardloaded: false,
+      businesscarderr: '',
 
       handleSubmit(cs) {
         console.log(cs, 'submit');
@@ -60,12 +62,12 @@ export class Personal extends PureComponent {
 
     this.uploadIdCardParams = {
       success: (data) => {
-        this.setState({
-          idcardimg: data
-        });
+        this.props.dispatch(change('PersonalForm', 'idcardimg', data))
+
         this.setState({
           idcardloading: false,
-          idcardloaded: true
+          idcardloaded: true,
+          idcarderr: '',
         });
       },
       progress: (data) => {
@@ -88,12 +90,11 @@ export class Personal extends PureComponent {
 
     this.uploadBusinessCardParams = {
       success: (data) => {
-        this.setState({
-          businesscardimg: data
-        });
+        this.props.dispatch(change('PersonalForm', 'businesscardimg', data))
         this.setState({
           businesscardloading: false,
-          businesscardloaded: true
+          businesscardloaded: true,
+          businesscarderr: '',
         });
       },
       progress: (data) => {
@@ -118,7 +119,7 @@ export class Personal extends PureComponent {
         <div>
           <input {...input} className="price-input" placeholder={label}
                  type={type} name="name"/>
-          {touched && ((error && <span>{error}</span>) || (warning &&
+          {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
           <span>{warning}</span>))}
         </div>
       );
@@ -128,8 +129,59 @@ export class Personal extends PureComponent {
       <div>
         <input {...input} className="price-input" placeholder={label}
                type={type} name="id_card_number"/>
-        {touched && ((error && <span>{error}</span>) || (warning &&
+        {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
         <span>{warning}</span>))}
+      </div>
+    );
+
+    this.idcardpic = () => (
+      <div className={`col-value ${this.state.idcardloading ? 'uploading' : ''} ${ get(this.props.formData, 'idcardimg') ? 'uploaded' : ''}`}>
+        {
+          this.state.idcardloading || this.state.idcardloaded ?
+            <div className="uploaded-pic"
+                 style={get(this.props.formData, 'idcardimg') ? { backgroundImage: `url(${ get(this.props.formData, 'idcardimg')})` } : {}}>
+              {
+                this.state.idcardloading ?
+                  <div className="upload-progress"
+                       style={{ height: this.state.idcardprogress }}></div> : null
+              }
+            </div> : null
+        }
+        <div className="uploader">
+          <UploadBtn {...this.uploadIdCardParams}>
+            {
+              this.state.idcardimg ? '重新上传' : '点击上传'
+            }
+          </UploadBtn>
+          <span className="errmsg">{this.state.idcarderr}</span>
+        </div>
+
+      </div>
+    );
+
+    this.businesscardpic = () => (
+      <div
+        className={`col-value ${this.state.businesscardloading ? 'uploading' : ''} ${get(this.props.formData, 'businesscardimg') ? 'uploaded' : ''}`}>
+        {
+          this.state.businesscardloading || this.state.businesscardloaded ?
+            <div className="uploaded-pic"
+                 style={get(this.props.formData, 'businesscardimg') ? { backgroundImage: `url(${get(this.props.formData, 'businesscardimg')})` } : {}}>
+              {
+                this.state.businesscardloading ?
+                  <div className="upload-progress"
+                       style={{ height: this.state.businesscardprogress }}></div> : null
+              }
+            </div> : null
+        }
+        <div className="uploader">
+          <UploadBtn {...this.uploadBusinessCardParams}>
+            {
+              this.state.businesscardimg ? '重新上传' : '点击上传'
+            }
+          </UploadBtn>
+          <span className="errmsg">{this.state.businesscarderr}</span>
+        </div>
+
       </div>
     );
 
@@ -139,7 +191,8 @@ export class Personal extends PureComponent {
           <section>
             <div
               className={get(this.props.formData, 'type') === 1 ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={get(this.props.formData, 'type') === 1}
+              <input type="radio"
+                     checked={get(this.props.formData, 'type') === 1}
                      name="type"
                      onChange={this.selectType.bind(this)}
                      value="1" id="business"/>
@@ -151,7 +204,8 @@ export class Personal extends PureComponent {
           <section>
             <div
               className={get(this.props.formData, 'type') === 2 ? 'quote-radio checked' : 'quote-radio'}>
-              <input type="radio" checked={get(this.props.formData, 'type') === 2}
+              <input type="radio"
+                     checked={get(this.props.formData, 'type') === 2}
                      name="type"
                      onChange={this.selectType.bind(this)}
                      value="2" id="composite"/>
@@ -208,7 +262,7 @@ export class Personal extends PureComponent {
       </div>
     )
 
-    this.agreeField = ({ input, type, meta: { touched, error, warning } }) => {
+    this.agreeField = () => {
       return (
         <div className="col-value">
           <span>{this.state.agree}</span>
@@ -243,15 +297,25 @@ export class Personal extends PureComponent {
   }
 
   submit() {
+    if(!this.props.formData.idcardimg) {
+      this.setState({
+        idcarderr: '请上传身份证扫描件'
+      });
+      return;
+    }
+    if(!this.props.formData.businesscardimg) {
+      this.setState({
+        businesscarderr: '请上传名片'
+      });
+      return;
+    }
+
     this.props.personalRegister({
-      name: this.refs.name.value || '',
-      id_card_number: this.refs.id_card_number.value || '',
-      id_card_pic: '111',
-      business_card: '222',
-      type: this.state.memberType,
-      condition: this.state.qualification || '',
-    }).then(data => console.log(data))
-    .catch(err => console.log(err));
+      sendData: this.props.formData,
+      callback: () => {
+        browserHistory.push('/register/personalresult');
+      },
+    });
   }
 
   render() {
@@ -289,49 +353,13 @@ export class Personal extends PureComponent {
               <div className="col-attr">
                 身份证扫描件
               </div>
-              <div
-                className={`col-value ${this.state.idcardloading ? 'uploading' : ''} ${this.state.idcardimg ? 'uploaded' : ''}`}>
-                {
-                  this.state.idcardloading || this.state.idcardloaded ?
-                    <div className="uploaded-pic"
-                         style={this.state.idcardimg ? { backgroundImage: `url(${this.state.idcardimg})` } : {}}>
-                      {
-                        this.state.idcardloading ?
-                          <div className="upload-progress"
-                               style={{ height: this.state.idcardprogress }}></div> : null
-                      }
-                    </div> : null
-                }
-                <UploadBtn {...this.uploadIdCardParams}>
-                  {
-                    this.state.idcardimg ? '重新上传' : '点击上传'
-                  }
-                </UploadBtn>
-              </div>
+              {this.idcardpic()}
             </div>
             <div className="list-col">
               <div className="col-attr">
                 个人名片
               </div>
-              <div
-                className={`col-value ${this.state.businesscardloading ? 'uploading' : ''} ${this.state.businesscardimg ? 'uploaded' : ''}`}>
-                {
-                  this.state.businesscardloading || this.state.businesscardloaded ?
-                    <div className="uploaded-pic"
-                         style={this.state.businesscardimg ? { backgroundImage: `url(${this.state.businesscardimg})` } : {}}>
-                      {
-                        this.state.businesscardloading ?
-                          <div className="upload-progress"
-                               style={{ height: this.state.businesscardprogress }}></div> : null
-                      }
-                    </div> : null
-                }
-                <UploadBtn {...this.uploadBusinessCardParams}>
-                  {
-                    this.state.businesscardimg ? '重新上传' : '点击上传'
-                  }
-                </UploadBtn>
-              </div>
+              {this.businesscardpic()}
             </div>
 
             <div className="list-col">
@@ -351,14 +379,21 @@ export class Personal extends PureComponent {
             <div className="list-col">
               <div className="col-attr">
               </div>
-              <Field name="agree"
-                component={this.agreeField}/>
+              {this.agreeField()}
             </div>
 
-            <button type="submit">Submit</button>
-            <Link to="" activeClassName="active"
-                  className={`next-btn ${this.state.agree ? '' : 'disabled'}`}
-                  onClick={this.submit.bind(this)}>下一步</Link>
+            <div className="button-wrap">
+              <button type="button"
+                      className={`next-btn ${this.state.agree ? 'active' : ''}`}
+                      disabled={this.state.agree ? '' : 'disabled'}
+                      onClick={this.submit.bind(this)}>下一步</button>
+              {
+                (this.state.businesscarderr || this.state.idcarderr) ?
+                  <span className="errmsg">缺少必填项</span> : ''
+              }
+            </div>
+
+
           </form>
         </div>
       </div>

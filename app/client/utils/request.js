@@ -18,7 +18,7 @@ const showError = function (msg) {
 function sucCallback(response) {
   const data = response.data;
   if (data.code === 0) {
-    return data.data;
+    return data.data || 'success';
   }
 
   showError(data.msg);
