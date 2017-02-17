@@ -9,6 +9,7 @@ import React, { PureComponent } from 'react';
 import { take } from 'lodash';
 import { Link } from 'react-router';
 import classnames from 'classnames';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -31,7 +32,7 @@ class ProjectItem extends PureComponent {
               </td>
               <td>
                 <span>转让份额：</span>
-                <span className="font-white">{item.share}%</span>
+                <span className="font-white">{item.share * 100}%</span>
               </td>
               <td>
                 <span>转让方：</span>
@@ -78,11 +79,11 @@ class ProjectItem extends PureComponent {
     const projectInfo = [
       {
         name: '制片方',
-        value: data.project.producer,
+        value: get(data, 'project.producer'),
       },
       {
         name: '转让份额',
-        value: data.project.transferable_ratio + '%',
+        value: get(data, 'project.transferable_ratio') * 100 + '%',
       },
       {
         name: '挂牌标的',
@@ -97,13 +98,13 @@ class ProjectItem extends PureComponent {
       });
     }
 
-    return <Link to={`/project/${data.project.id}`} className={classes}>
-      <div className="cover" style={{ backgroundImage: `url(${data.project && data.project.list_img})`}}></div>
+    return <Link to={`/project/${get(data, 'project.id')}`} className={classes}>
+      <div className="cover" style={{ backgroundImage: `url(${get(data, 'project.list_img')})`}}></div>
       <div className="info">
         <div className="info-title">
-          <span>{data.project ? data.project.name : ''}</span>
+          <span>{get(data, 'project.name')}</span>
           <div className="info-title-tag">
-            {data.project ? data.project.stage : ''}
+            {get(data, 'project.stage')}
           </div>
         </div>
         <ProjectInfoBar data={projectInfo} />
