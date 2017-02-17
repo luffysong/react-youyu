@@ -29,7 +29,7 @@ export class NewsList extends PureComponent {
 
   componentDidMount() {
     const query = this.props.location.query;
-    const page = query.page ? query.page : 1;
+    const page = query.page ? query.page : '1';
     if (!this.props.newsListData) {
       this.props.loadNewsList(pid, page);
     }
@@ -37,9 +37,9 @@ export class NewsList extends PureComponent {
 
   componentDidUpdate(prevProps) {
     const query = this.props.location.query;
-    const page = query.page ? query.page : 1;
+    const page = query.page ? query.page : '1';
     const prevQuery = prevProps.location.query;
-    const oldPage = prevQuery.page ? prevQuery.page : 1;
+    const oldPage = prevQuery.page;
 
     if (page !== oldPage && !this.props.newsListData) {
       this.props.loadNewsList(pid, page);
@@ -63,7 +63,7 @@ export class NewsList extends PureComponent {
     this.props.router.push({
       pathname: '/news/list',
       query: {
-        page: parseInt(page.selected + 1, 10),
+        page: '' + (page.selected + 1),
       }
     });
   }
@@ -111,7 +111,7 @@ NewsList.propTypes = {
 function mapStateToProps(state, props) {
   const newsList = state.newsList;
   const query = props.location.query;
-  const page = query.page ? query.page : 1;
+  const page = query.page ? query.page : '1';
 
   return {
     newsListLoading: newsList.getIn(['newsListLoading', pid]),
