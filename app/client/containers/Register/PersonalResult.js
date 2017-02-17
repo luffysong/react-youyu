@@ -9,7 +9,7 @@ export default function () {
         <div className="path1"></div>
         <div className="path2">
           <svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <path d="M70 60 C 75 80, 105 80, 110 60" stroke="black" fill="transparent"/>
+            <path d="M70 60 C 75 80, 105 80, 110 60" strokeWidth="3" stroke="black" fill="transparent" strokeLinecap="round"/>
           </svg>
         </div>
       </div>
