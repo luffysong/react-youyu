@@ -21,16 +21,35 @@ import { get } from 'lodash';
 export class AcceptConfirm extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {};
     this.props.orderInfo(this.props.params.id);
     this.props.userInfo();
   }
   //
   submit() {
+    if (!this.refs.investReason.value) {
+      this.setState({
+        reasonRequired: '认购陈述不能为空'
+      });
+      return;
+    }
     this.props.placeOrder({
       movie_id: '',
       listing_id: '',
       reason: this.refs.investReason.value,
     },() => this.props.router.push(`/accept/pay/${this.props.params.id}`));
+  }
+
+  investDesc(event) {
+    this.setState({
+      reasonRequired: event.target.value ? '' : '认购陈述不能为空'
+    })
+  }
+
+  agree(event) {
+    this.setState({
+      agree: !this.state.agree
+    });
   }
 
   render() {
@@ -62,23 +81,30 @@ export class AcceptConfirm extends PureComponent {
                 <span className="left-column-name-top">认购陈述：</span>
               </td>
               <td>
-                <textarea name="confirm-reason" rows="5" placeholder="例如：个人介绍、投资理由、为项目提供的资源等。" ref="investReason">
+                <textarea name="confirm-reason" rows="5" placeholder="例如：个人介绍、投资理由、为项目提供的资源等。" ref="investReason" onChange={this.investDesc.bind(this)}>
                 </textarea>
+                <div className="err-msg">
+                  {
+                    this.state.reasonRequired
+                  }
+                </div>
               </td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <input type="checkbox" id="agreement-checkbox" />
-                <label htmlFor="agreement-checkbox">
-                  同意：<span className="color-orange">《XXXXXXXX协议》</span>
+                <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+                </div>
+                <label htmlFor="agree">
+                  同意：《XXXXXXXX协议》
                 </label>
               </td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <Button className="accept-confirm-button" onClick={this.submit.bind(this)}>
+                <Button className="accept-confirm-button {`next-btn ${this.state.agree ? 'active' : ''}`}" disabled={this.state.agree ? '' : 'disabled'} onClick={this.submit.bind(this)}>
                   支付保证金
                 </Button>
               </td>

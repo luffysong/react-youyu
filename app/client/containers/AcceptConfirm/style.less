@@ -48,11 +48,10 @@
 
       label {
         position: relative;
-        padding-left: 30px;
         cursor: pointer;
         user-select: none;
 
-        &::before {
+        /*&::before {
           position: absolute;
           top: 3px;
           left: 3px;
@@ -81,7 +80,7 @@
 
         &:hover::after {
           opacity: 0.4;
-        }
+        }*/
       }
 
       input[type=checkbox] {
@@ -108,6 +107,50 @@
 
       .left-column {
         text-align: right;
+      }
+
+      .err-msg {
+        color: #ff4949;
+        margin-top: 10px;
+      }
+
+      .quote-radio {
+        position: relative;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: #d4d4d4;
+        vertical-align: middle;
+        margin-right: 10px;
+
+        input[type='radio'] {
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          left: 0;
+          z-index: 2;
+        }
+
+        & + label {
+          vertical-align: middle;
+          font-size: 14px;
+          color: #484b53;
+        }
+
+        &.checked {
+          background: #484b53;
+
+          &::after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: #ffd800;
+            border-radius: 50%;
+            margin: 4px;
+          }
+        }
       }
     }
 
