@@ -60,8 +60,8 @@ export function personRegisterReducer(state = initPersonState, action) {
 }
 
 const initPersonalFormState = {
-  name: 1,
-  id_card_number: 2432432,
+  name: '',
+  id_card_number: '',
   idcardimg: '',
   businesscardimg: '',
   type: 1,
