@@ -7,9 +7,9 @@
  */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import message from '../../components/Message';
 import { Field, reduxForm, change, touch } from 'redux-form'
 import { get } from 'lodash';
+import Helmet from 'react-helmet';
 
 /**
  * Internal dependencies
@@ -18,6 +18,7 @@ import './style.less';
 import * as actions from './actions';
 import UploadBtn from  '../../components/UploadButton';
 import RegisterSuc from '../../components/RegisterSuc';
+import message from '../../components/Message';
 
 const validate = values => {
   const errors = {}
@@ -100,9 +101,6 @@ export class Company extends PureComponent {
   }
 
   selectType(event) {
-    /*this.setState({
-      memberType: event.target.value
-    });*/
     this.props.dispatch(change('companyForm', 'type', event.target.value - 0));
   }
 
@@ -140,11 +138,12 @@ export class Company extends PureComponent {
   render() {
     return (
       <div>
+        <Helmet title="机构会员认证" />
         {
           this.state.submitSuc ? <RegisterSuc /> :
             <div className="register-company-container">
               <form onSubmit={this.submit}>
-                <h5 className="register-title">企业注册</h5>
+                <h5 className="register-title">机构会员认证</h5>
                 <div className="list-col">
                   <div className="col-attr">
                     企业全称
