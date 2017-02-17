@@ -27,17 +27,17 @@ export class ProjectList extends PureComponent {
 
   componentDidMount() {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     this.props.loadProjectList(page);
   }
 
   componentDidUpdate(prevProps) {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     const prevQuery = prevProps.location.query;
-    const prevPage = prevQuery.page || 1;
+    const prevPage = prevQuery.page || '1';
 
-    if (page !== prevPage) {
+    if (prevPage && (page !== prevPage)) {
       this.props.loadProjectList(page);
     }
   }
@@ -49,9 +49,7 @@ export class ProjectList extends PureComponent {
       });
     }
 
-    const projects = get(data, 'data');
-
-    return projects && projects.length ? projects.map((item, index) => {
+    return data && data.length ? data.map((item, index) => {
       return (
         <ProjectItem data={item} type="list"
           key={`project-item-${index}`}>
@@ -67,26 +65,26 @@ export class ProjectList extends PureComponent {
     this.props.router.push({
       pathname: '/projects',
       query: {
-        page: parseInt(page.selected + 1, 10),
+        page: '' + (page.selected + 1),
       }
     });
   }
 
   render() {
     const { loading, data } = this.props;
-
     const pageInfo = {
       currentPage: get(data, 'current_page'),
       lastPage: get(data, 'last_page'),
     };
+    const projects = get(data, 'data');
 
     return (
       <div className="project-list-container">
         <Helmet title="项目列表" />
         <div className="container">
-          { this.renderProjects(loading, data) }
+          { this.renderProjects(loading, projects) }
           {
-            loading
+            (loading || (!loading && !(projects && projects.length)))
             ? null
             : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="project-list-pagination" />
           }
@@ -103,7 +101,7 @@ ProjectList.propTypes = {
 function mapStateToProps(state, props) {
   const projectList = state.projectList;
   const query = props.location.query;
-  const page = query.page || 1;
+  const page = query.page || '1';
 
   return {
     loading: projectList.getIn(['projectListLoading', page]),
