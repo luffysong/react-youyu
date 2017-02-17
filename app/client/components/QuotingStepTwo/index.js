@@ -8,7 +8,6 @@
 import React, {PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
 import { DateField } from 'react-date-picker';
-import { Link } from 'react-router';
 import 'react-date-picker/index.css';
 
 /**

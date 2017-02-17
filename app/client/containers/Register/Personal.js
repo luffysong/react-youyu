@@ -329,15 +329,10 @@ export class Personal extends PureComponent {
   render() {
     return (
       <div className="register-container">
-        <Helmet
-          title="Personal"
-          meta={[
-            { name: 'description', content: 'Description of Personal' },
-          ]}
-        />
+        <Helmet title="个人会员认证" />
         <div className="register-personal-wrap">
           <form onSubmit={this.state.handleSubmit}>
-            <h5 className="register-title">个人注册</h5>
+            <h5 className="register-title">个人会员认证</h5>
             <div className="list-col">
               <div className="col-attr">
                 真实姓名
