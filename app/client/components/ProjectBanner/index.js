@@ -42,15 +42,15 @@ function ProjectBanner(props) {
     },
     {
       name: '转让方',
-      value: get(data, 'basic.listing_share'),
+      value: get(data, 'basic.transferor_count'),
     },
     {
       name: '合计转让份额',
-      value: get(data, 'basic.listing_price') * 100 + '%',
+      value: get(data, 'basic.listing_share') * 100 + '%',
     },
     {
       name: '转让总价',
-      value: numComma(get(data, 'basic.transferor_count'), false, true),
+      value: numComma(get(data, 'basic.listing_price'), false, true),
     },
   ];
 
