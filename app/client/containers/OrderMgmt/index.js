@@ -17,6 +17,7 @@ import './style.less';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
 import UcNavTab from '../../components/UcNavTab';
+import Empty from '../../components/Empty';
 import * as actions from './actions';
 
 export class OrderMgmt extends PureComponent {
@@ -37,17 +38,17 @@ export class OrderMgmt extends PureComponent {
 
   componentDidMount() {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     this.props.getOrderList(this.state.status, page);
   }
 
   componentDidUpdate(prevProps) {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     const prevQuery = prevProps.location.query;
     const prevPage = prevQuery.page;
 
-    if (page !== prevPage) {
+    if (prevPage && (page !== prevPage)) {
       this.props.getOrderList(this.state.status, page);
     }
   }
@@ -59,7 +60,7 @@ export class OrderMgmt extends PureComponent {
     this.props.router.push({
       pathname: `/uc/orderMgmt/${this.state.status}`,
       query: {
-        page: parseInt(page.selected + 1, 10),
+        page: '' + (page.selected + 1),
       }
     });
   }
@@ -72,7 +73,7 @@ export class OrderMgmt extends PureComponent {
 
   renderList(data) {
     if (!data || !data.length) {
-      return null;
+      return <Empty text="暂时还没有数据哦" />;
     }
 
     return data.map((item, index) => {
@@ -87,6 +88,7 @@ export class OrderMgmt extends PureComponent {
       currentPage: get(orderListData, 'current_page'),
       lastPage: get(orderListData, 'last_page'),
     };
+    const listData = get(orderListData, 'data');
 
     for (let item in this.state.STATUS) {
       if (this.state.STATUS.hasOwnProperty(item)) {
@@ -105,11 +107,11 @@ export class OrderMgmt extends PureComponent {
           {
             orderListLoading
             ? this.renderLoading()
-            : this.renderList(get(orderListData, 'data'))
+            : this.renderList(listData)
           }
         </div>
         {
-          orderListLoading
+          (orderListLoading || (!orderListLoading && !(listData && listData.length)))
           ? null
           : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="order-mgmt-pagination" />
         }
@@ -126,7 +128,7 @@ function mapStateToProps(state, props) {
   const orderMgmt = state.orderMgmt;
   const status = props.params.status;
   const query = props.location.query;
-  const page = query.page || 1;
+  const page = query.page || '1';
 
   return {
     orderListData: orderMgmt.getIn(['orderListData', status, page]),
