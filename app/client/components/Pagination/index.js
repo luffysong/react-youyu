@@ -15,6 +15,47 @@ import classnames from 'classnames';
 import './style.less';
 
 class Pagination extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.onKeyDown = this.handleKeyDown.bind(this);
+    this.onKeyUp = this.handleKeyUp.bind(this);
+    this.KEYCODE = {
+      ENTER: 13,
+    };
+    this.state = {
+      current: parseInt(props.pageInfo.currentPage, 10),
+    };
+  }
+
+  handleKeyDown(evt) {
+    if (evt.keyCode === this.KEYCODE.ARROW_UP || evt.keyCode === this.KEYCODE.ARROW_DOWN) {
+      evt.preventDefault();
+    }
+  }
+
+  handleKeyUp(evt) {
+    const _val = evt.target.value;
+    let val;
+
+    if (_val === '') {
+      val = '';
+    } else if (isNaN(Number(_val))) {
+      val = this.state.current;
+    } else {
+      val = Number(_val);
+    }
+
+    this.setState({
+      current: val,
+    });
+
+    if (evt.keyCode === this.KEYCODE.ENTER) {
+      this.props.onPageChange({
+        selected: Number(val) - 1,
+      });
+    }
+  }
+
   renderPrev() {
     return <img src={require('./imgs/btn_pre_sheet.svg')} alt=""/>;
   }
@@ -42,12 +83,23 @@ class Pagination extends PureComponent {
           pageCount={pageInfo.lastPage}
           pageRangeDisplayed={0}
           marginPagesDisplayed={4}
-          initialPage={parseInt(pageInfo.currentPage - 1, 10)}
+          initialPage={(this.state.current - 1) || 0}
           previousLabel={this.renderPrev()}
           nextLabel={this.renderNext()}
           onPageChange={onPageChange}
           containerClassName="pagination-container"
         />
+        <div className='pagination-input'>
+          <span>第</span>
+          <input
+            type="text"
+            value={this.state.current}
+            onKeyDown={this.onKeyDown}
+            onKeyUp={this.onKeyUp}
+            onChange={this.onKeyUp}
+          />
+          <span>页</span>
+        </div>
       </div>
     );
   }
