@@ -42,7 +42,7 @@ function ProjectBanner(props) {
     },
     {
       name: '转让方',
-      value: get(data, 'basic.transferor_count'),
+      value: get(data, 'basic.transferor_count') + '人',
     },
     {
       name: '合计转让份额',

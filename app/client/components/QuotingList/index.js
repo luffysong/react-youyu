@@ -63,7 +63,7 @@ function QuotingList(props) {
               <div className="quoting-list-item-column-name">转让方</div>
             </div>
             <div className="quoting-list-item-column">
-              <div className="quoting-list-item-column-value">{get(item, 'share')}%</div>
+              <div className="quoting-list-item-column-value">{get(item, 'share') ? get(item, 'share') * 100 : 0}%</div>
               <div className="quoting-list-item-column-name">转让份额</div>
             </div>
             <div className="quoting-list-item-column">
