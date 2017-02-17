@@ -19,12 +19,7 @@ export class QA extends PureComponent {
   render() {
     return (
       <div className="project-container-qa-tab">
-        <Helmet
-          title="常见问题"
-          meta={[
-            { name: 'description', content: 'Description of QA' },
-          ]}
-        />
+        <Helmet title="常见问题" />
         <div className="project-container-qa-tab-item">
           <div className="project-container-qa-tab-item-q">
             Q: 投资流程是什么样的？

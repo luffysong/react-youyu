@@ -2,6 +2,7 @@
  * External dependencies
  */
 import React from 'react';
+import { reducer as formReducer } from 'redux-form';
 import { useScroll } from 'react-router-scroll';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } from 'react-router';
@@ -325,9 +326,12 @@ const rootRoute = function(store) {
           const component = require('../containers/Register');
           const reducer = require('../containers/Register/reducer').default;
           const personreducer = require('../containers/Register/reducer').personRegisterReducer;
+          const personalformreducer = require('../containers/Register/reducer').personalForm;
 
+          injectReducer('form', formReducer);
           injectReducer('register', reducer);
           injectReducer('personRegister', personreducer);
+          injectReducer('personalForm', personalformreducer);
           loadModule(cb, component);
         });
       },
@@ -354,6 +358,14 @@ const rootRoute = function(store) {
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Register/Company'));
+          });
+        },
+      }, {
+        path: 'personalresult',
+        name: 'personalResult',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../containers/Register/PersonalResult'));
           });
         },
       }],

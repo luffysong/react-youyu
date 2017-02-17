@@ -34,12 +34,7 @@ export class Detail extends PureComponent {
 
     return (
       <div className="project-container-detail-tab">
-        <Helmet
-          title="项目详情"
-          meta={[
-            { name: 'description', content: 'Description of Detail' },
-          ]}
-        />
+        <Helmet title="项目详情" />
         {
           pics && pics.map((item, index) => {
             return <img key={`description-img-${index}`} src={item} alt=""/>

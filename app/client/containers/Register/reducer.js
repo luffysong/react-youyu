@@ -36,6 +36,8 @@ function registerReducer(state = initialState, action) {
   }
 }
 
+export default registerReducer;
+
 const initPersonState = fromJS({
   loading: false,
   sucData: {},
@@ -47,7 +49,6 @@ export function personRegisterReducer(state = initPersonState, action) {
     case types.PERSONAL_REGISTER:
       return state.set('loading', true);
     case types.PERSONAL_REGISTER_SUC:
-      console.log(action.data);
       return state
       .set('loading', false)
       .set('sucData', action.data);
@@ -58,4 +59,24 @@ export function personRegisterReducer(state = initPersonState, action) {
   }
 }
 
-export default registerReducer;
+const initPersonalFormState = {
+  name: 1,
+  id_card_number: 2432432,
+  idcardimg: '',
+  businesscardimg: '',
+  type: 1,
+  condition: 10,
+};
+
+export function personalForm(state = initPersonalFormState, action) {
+  switch(action.type) {
+    case types.PERSONAL_FORM:
+      return {
+        ...state,
+        ...action.data,
+      }
+    default:
+      return state;
+  }
+}
+

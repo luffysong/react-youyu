@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -28,11 +29,13 @@ function Announcements(props) {
         {
           data && data.map((item, index) => {
             if (index > 3) return null;
-             return <div className="announcements-item" key={`item-${index}`}>
+            return <div className="announcements-item" key={`item-${index}`}>
                       <span className="indicator"></span>
                       <span className="title">公告：</span>
+                      <Link to={`/news/detail/${item.id}`}>
                         {item.title.substring(0, 8)}[{homeNoticeDate(item.published_at)}]
-                    </div>
+                      </Link>
+                    </div>;
           })
         }
       </div>

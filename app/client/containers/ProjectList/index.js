@@ -16,6 +16,7 @@ import { get } from 'lodash';
 import './style.less';
 import ProjectItem from '../../components/ProjectItem';
 import Pagination from '../../components/Pagination';
+import Empty from '../../components/Empty';
 import * as actions from './actions';
 
 export class ProjectList extends PureComponent {
@@ -50,13 +51,13 @@ export class ProjectList extends PureComponent {
 
     const projects = get(data, 'data');
 
-    return projects ? projects.map((item, index) => {
+    return projects && projects.length ? projects.map((item, index) => {
       return (
         <ProjectItem data={item} type="list"
           key={`project-item-${index}`}>
         </ProjectItem>
       );
-    }): null;
+    }): <Empty text="暂时没有数据哦" />;
   }
 
   handlePageChange(page) {

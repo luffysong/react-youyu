@@ -9,6 +9,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
+import Helmet from 'react-helmet';
 
 /**
  * Internal dependencies
@@ -22,6 +23,7 @@ export class Quoting extends PureComponent {
 
     return (
       <div className="project-container-quoting-tab">
+        <Helmet title="转让中的份额" />
         <QuotingList loading={projectLoading} data={get(projectData, 'listing')} />
       </div>
     );

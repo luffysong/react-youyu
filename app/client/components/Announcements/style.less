@@ -10,6 +10,7 @@
   height: 50px;
   color: @fontLighter;
   font-size: 14px;
+  -webkit-backdrop-filter: blur(5px);
 
   &::before {
     content: ' ';
@@ -27,6 +28,7 @@
     width: @containerWidth;
     height: 100%;
     margin: 0 auto;
+    white-space: nowrap;
     overflow: hidden;
   }
 
@@ -40,9 +42,12 @@
 
   .announcements-item {
     display: inline-block;
-    max-width: 233px;
+    width: 225px;
     margin-left: 74px;
     line-height: 50px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     .indicator {
       display: inline-block;
@@ -55,6 +60,15 @@
 
     .title {
       font-weight: 600;
+    }
+
+    a {
+      color: @fontLighter;
+
+      &:hover {
+        color: @white;
+        text-decoration: underline;
+      }
     }
   }
 }
