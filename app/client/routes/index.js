@@ -331,7 +331,9 @@ const rootRoute = function(store) {
           loadModule(cb, component);
         });
       },
-      indexRoute: { onEnter: (nextState, replace) => replace('/register/choose') },
+      indexRoute: {
+        onEnter: requireLogin('/register/choose'),
+      },
       childRoutes: [{
         path: 'choose',
         name: 'chooseRegister',
@@ -343,6 +345,7 @@ const rootRoute = function(store) {
       }, {
         path: 'personal',
         name: 'personalRegister',
+        onEnter: requireLogin(),
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             const personreducer = require('../containers/Register/reducer').personRegisterReducer;
@@ -356,12 +359,11 @@ const rootRoute = function(store) {
       }, {
         path: 'company',
         name: 'companyRegister',
+        onEnter: requireLogin(),
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
-            //const companyreducer = require('../containers/Register/reducer').companyRegisterReducer;
             const companyFormReducer = require('../containers/Register/reducer').companyForm;
 
-            //injectReducer('companyRegister', companyreducer);
             injectReducer('companyForm', companyFormReducer);
             loadModule(cb, require('../containers/Register/Company'));
           });
