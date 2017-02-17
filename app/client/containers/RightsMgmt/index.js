@@ -17,6 +17,7 @@ import './style.less';
 import UcNavTab from '../../components/UcNavTab';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
+import Empty from '../../components/Empty';
 import * as actions from './actions';
 
 export class RightsMgmt extends PureComponent {
@@ -36,17 +37,17 @@ export class RightsMgmt extends PureComponent {
 
   componentDidMount() {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     this.props.getRightsList(this.state.status, page);
   }
 
   componentDidUpdate(prevProps) {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     const prevQuery = prevProps.location.query;
     const prevPage = prevQuery.page;
 
-    if (page !== prevPage) {
+    if (prevPage && (page !== prevPage)) {
       this.props.getRightsList(this.state.status, page);
     }
   }
@@ -58,7 +59,7 @@ export class RightsMgmt extends PureComponent {
     this.props.router.push({
       pathname: `/uc/rightsMgmt/${this.state.status}`,
       query: {
-        page: parseInt(page.selected + 1, 10),
+        page: '' + (page.selected + 1),
       }
     });
   }
@@ -71,7 +72,7 @@ export class RightsMgmt extends PureComponent {
 
   renderList(data) {
     if (!data || !data.length) {
-      return null;
+      return <Empty text="暂时还没有数据哦" />;
     }
 
     return data.map((item, index) => {
@@ -86,6 +87,7 @@ export class RightsMgmt extends PureComponent {
       currentPage: get(rightsListData, 'current_page'),
       lastPage: get(rightsListData, 'last_page'),
     };
+    const listData = get(rightsListData, 'data');
 
     for (let item in this.state.STATUS) {
       if (this.state.STATUS.hasOwnProperty(item)) {
@@ -104,11 +106,11 @@ export class RightsMgmt extends PureComponent {
           {
             rightsListLoading
             ? this.renderLoading()
-            : this.renderList(get(rightsListData, 'data'))
+            : this.renderList(listData)
           }
         </div>
         {
-          rightsListLoading
+          (rightsListLoading || (!rightsListLoading && !(listData && listData.length)))
           ? null
           : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="rights-mgmt-pagination" />
         }
@@ -126,7 +128,7 @@ function mapStateToProps(state, props) {
   const rightsMgmt = state.rightsMgmt;
   const status = props.params.status;
   const query = props.location.query;
-  const page = query.page || 1;
+  const page = query.page || '1';
 
   return {
     rightsListData: rightsMgmt.getIn(['rightsListData', status, page]),
