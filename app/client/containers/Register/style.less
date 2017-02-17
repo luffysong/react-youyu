@@ -279,6 +279,38 @@
       cursor: none;
       pointer-events: none;
     }
+
+    &.active {
+      background-color: #484b53;
+      color: #ffd800;
+      cursor: pointer;
+    }
+  }
+
+  .errmsg {
+    color: @RED;
+  }
+
+  .uploader {
+    position: relative;
+
+    .errmsg {
+      position: absolute;
+      margin: 10px 0 0 10px;
+    }
+  }
+
+  .button-wrap {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+
+    .errmsg {
+      position: absolute;
+      left: 220px;
+      top: 16px;
+      white-space: nowrap;
+    }
   }
 }
 

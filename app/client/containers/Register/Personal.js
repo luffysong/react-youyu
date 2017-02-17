@@ -5,11 +5,12 @@
 /**
  * External dependencies
  */
+/* eslint-disable */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Helmet from 'react-helmet';
-import { Field, reduxForm, change } from 'redux-form'
+import { Field, reduxForm, change, touch } from 'redux-form'
 import { get } from 'lodash';
 
 /**
@@ -31,6 +32,12 @@ const validate = values => {
     errors.id_card_number = '请输入身份证号'
   } else if (values.id_card_number.length < 8) {
     errors.id_card_number = '请输入有效位数'
+  }
+  if (!values.idcardimg) {
+    errors.idcardimg = '请上传身份证复印件'
+  }
+  if (!values.businesscardimg) {
+    errors.businesscardimg = '请上传名片复印件'
   }
   return errors
 }
@@ -63,22 +70,21 @@ export class Personal extends PureComponent {
     this.uploadIdCardParams = {
       success: (data) => {
         this.props.dispatch(change('PersonalForm', 'idcardimg', data))
-
         this.setState({
-          idcardloading: false,
+          idcardloading: 0,
           idcardloaded: true,
           idcarderr: '',
         });
       },
       progress: (data) => {
         this.setState({
-          idcardloading: true,
+          idcardloading: 1,
           idcardprogress: `${data}%`
         });
       },
       error: (msg) => {
         this.setState({
-          idcardloading: false,
+          idcardloading: 0,
         });
         console.log(msg);
         message.error(msg);
@@ -92,20 +98,20 @@ export class Personal extends PureComponent {
       success: (data) => {
         this.props.dispatch(change('PersonalForm', 'businesscardimg', data))
         this.setState({
-          businesscardloading: false,
+          businesscardloading: 0,
           businesscardloaded: true,
           businesscarderr: '',
         });
       },
       progress: (data) => {
         this.setState({
-          businesscardloading: true,
+          businesscardloading: 1,
           businesscardprogress: `${data}%`
         });
       },
       error: (msg) => {
         this.setState({
-          businesscardloading: false,
+          businesscardloading: 0,
         });
         message.error(msg);
       },
@@ -134,52 +140,53 @@ export class Personal extends PureComponent {
       </div>
     );
 
-    this.idcardpic = () => (
-      <div className={`col-value ${this.state.idcardloading ? 'uploading' : ''} ${ get(this.props.formData, 'idcardimg') ? 'uploaded' : ''}`}>
-        {
-          this.state.idcardloading || this.state.idcardloaded ?
-            <div className="uploaded-pic"
-                 style={get(this.props.formData, 'idcardimg') ? { backgroundImage: `url(${ get(this.props.formData, 'idcardimg')})` } : {}}>
+    this.idcardpic = ({input, ...state}) => {
+      return (
+        <div className={`col-value ${state.idcardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
+          {
+            state.idcardloading || state.idcardloaded ?
+              <div className="uploaded-pic"
+                   style={input.value ? { backgroundImage: `url(${input.value})` } : {}}>
+                {
+                  state.idcardloading ?
+                    <div className="upload-progress"
+                         style={{ height: state.idcardprogress }}></div> : null
+                }
+              </div> : null
+          }
+          <div className="uploader">
+            <UploadBtn {...this.uploadIdCardParams}>
               {
-                this.state.idcardloading ?
-                  <div className="upload-progress"
-                       style={{ height: this.state.idcardprogress }}></div> : null
+                input.value ? '重新上传' : '点击上传'
               }
-            </div> : null
-        }
-        <div className="uploader">
-          <UploadBtn {...this.uploadIdCardParams}>
-            {
-              this.state.idcardimg ? '重新上传' : '点击上传'
-            }
-          </UploadBtn>
-          <span className="errmsg">{this.state.idcarderr}</span>
+            </UploadBtn>
+            { state.meta.touched && (state.meta.error && <span className="errmsg">{state.meta.error}</span>)}
+          </div>
+
         </div>
+      )
+    };
 
-      </div>
-    );
-
-    this.businesscardpic = () => (
-      <div
-        className={`col-value ${this.state.businesscardloading ? 'uploading' : ''} ${get(this.props.formData, 'businesscardimg') ? 'uploaded' : ''}`}>
+    this.businesscardpic = ({input, ...state}) => (
+      <div className={`col-value ${state.businesscardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
         {
-          this.state.businesscardloading || this.state.businesscardloaded ?
+          state.businesscardloading || state.businesscardloaded ?
             <div className="uploaded-pic"
-                 style={get(this.props.formData, 'businesscardimg') ? { backgroundImage: `url(${get(this.props.formData, 'businesscardimg')})` } : {}}>
+                 style={input.value ? { backgroundImage: `url(${input.value})` } : {}}>
               {
-                this.state.businesscardloading ?
+                state.businesscardloading ?
                   <div className="upload-progress"
-                       style={{ height: this.state.businesscardprogress }}></div> : null
+                       style={{ height: state.businesscardprogress }}></div> : null
               }
             </div> : null
         }
         <div className="uploader">
           <UploadBtn {...this.uploadBusinessCardParams}>
             {
-              this.state.businesscardimg ? '重新上传' : '点击上传'
+              input.value ? '重新上传' : '点击上传'
             }
           </UploadBtn>
-          <span className="errmsg">{this.state.businesscarderr}</span>
+          { state.meta.touched && (state.meta.error && <span className="errmsg">{state.meta.error}</span>)}
         </div>
 
       </div>
@@ -297,19 +304,20 @@ export class Personal extends PureComponent {
   }
 
   submit() {
-    if(!this.props.formData.idcardimg) {
+    this.props.dispatch(touch('PersonalForm', 'name', 'id_card_number', 'idcardimg', 'businesscardimg'))
+    console.log(!this.props.personform.syncErrors);
+    if(this.props.personform.syncErrors) {
       this.setState({
-        idcarderr: '请上传身份证扫描件'
-      });
+        formErr: '表单填写不完整，请检查'
+      }, ()=>{
+        setTimeout(() => {
+          this.setState({
+            formErr: '',
+          })
+        }, 3000);
+      })
       return;
     }
-    if(!this.props.formData.businesscardimg) {
-      this.setState({
-        businesscarderr: '请上传名片'
-      });
-      return;
-    }
-
     this.props.personalRegister({
       sendData: this.props.formData,
       callback: () => {
@@ -353,13 +361,13 @@ export class Personal extends PureComponent {
               <div className="col-attr">
                 身份证扫描件
               </div>
-              {this.idcardpic()}
+              <Field name="idcardimg" {...this.state} component={this.idcardpic}/>
             </div>
             <div className="list-col">
               <div className="col-attr">
                 个人名片
               </div>
-              {this.businesscardpic()}
+              <Field name="businesscardimg" {...this.state} component={this.businesscardpic}/>
             </div>
 
             <div className="list-col">
@@ -388,12 +396,10 @@ export class Personal extends PureComponent {
                       disabled={this.state.agree ? '' : 'disabled'}
                       onClick={this.submit.bind(this)}>下一步</button>
               {
-                (this.state.businesscarderr || this.state.idcarderr) ?
-                  <span className="errmsg">缺少必填项</span> : ''
+                (this.state.formErr) ?
+                  <span className="errmsg">{this.state.formErr}</span> : ''
               }
             </div>
-
-
           </form>
         </div>
       </div>
@@ -411,6 +417,7 @@ function mapStateToProps(state) {
   return {
     loading: personal.get('loading'),
     sucData: personal.get('sucData'),
+    personform: formState,
     formData: get(formState, 'values'),
     initialValues: state.personalForm,
   };
