@@ -60,8 +60,8 @@ export function personRegisterReducer(state = initPersonState, action) {
 }
 
 const initPersonalFormState = {
-  name: 1,
-  id_card_number: 2432432,
+  name: '',
+  id_card_number: '',
   idcardimg: '',
   businesscardimg: '',
   type: 1,
@@ -80,3 +80,21 @@ export function personalForm(state = initPersonalFormState, action) {
   }
 }
 
+const initCompanyFormState = {
+  name: '',
+  code: '',
+  license_pic: '',
+  type: 1,
+};
+
+export function companyForm(state = initCompanyFormState, action) {
+  switch(action.type) {
+    case types.COMPANY_FORM:
+      return {
+        ...state,
+        ...action.data,
+      }
+    default:
+      return state;
+  }
+}

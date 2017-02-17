@@ -180,7 +180,7 @@
         display: block;
         width: 173px;
         height: 100px;
-        background-size: contain;
+        background-size: cover;
         margin-bottom: 16px;
 
         .upload-progress {
@@ -273,42 +273,11 @@
     color: #92979e;
     text-align: center;
     font-weight: 600;
-    cursor: default;
+    cursor: pointer;
 
     &.disabled {
       cursor: none;
       pointer-events: none;
-    }
-
-    &.active {
-      background-color: #484b53;
-      color: #ffd800;
-      cursor: pointer;
-    }
-  }
-
-  .errmsg {
-    color: @RED;
-  }
-
-  .uploader {
-    position: relative;
-
-    .errmsg {
-      position: absolute;
-      margin: 10px 0 0 10px;
-    }
-  }
-
-  .button-wrap {
-    position: relative;
-
-    .errmsg {
-      position: absolute;
-      left: 50%;
-      top: 16px;
-      transform: translateX(-50%);
-      margin: 0 0 0 150px;
     }
   }
 }

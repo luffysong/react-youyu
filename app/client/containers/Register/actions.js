@@ -71,3 +71,10 @@ export function personalForm(data) {
     data,
   }
 }
+
+export function companyForm(data) {
+  return {
+    type: types.COMPANY_FORM,
+    data,
+  }
+}

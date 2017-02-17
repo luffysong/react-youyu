@@ -325,13 +325,9 @@ const rootRoute = function(store) {
         ], (require) => {
           const component = require('../containers/Register');
           const reducer = require('../containers/Register/reducer').default;
-          const personreducer = require('../containers/Register/reducer').personRegisterReducer;
-          const personalformreducer = require('../containers/Register/reducer').personalForm;
 
           injectReducer('form', formReducer);
           injectReducer('register', reducer);
-          injectReducer('personRegister', personreducer);
-          injectReducer('personalForm', personalformreducer);
           loadModule(cb, component);
         });
       },
@@ -349,6 +345,11 @@ const rootRoute = function(store) {
         name: 'personalRegister',
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
+            const personreducer = require('../containers/Register/reducer').personRegisterReducer;
+            const personalformreducer = require('../containers/Register/reducer').personalForm;
+
+            injectReducer('personRegister', personreducer);
+            injectReducer('personalForm', personalformreducer);
             loadModule(cb, require('../containers/Register/Personal'));
           });
         },
@@ -357,6 +358,11 @@ const rootRoute = function(store) {
         name: 'companyRegister',
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
+            //const companyreducer = require('../containers/Register/reducer').companyRegisterReducer;
+            const companyFormReducer = require('../containers/Register/reducer').companyForm;
+
+            //injectReducer('companyRegister', companyreducer);
+            injectReducer('companyForm', companyFormReducer);
             loadModule(cb, require('../containers/Register/Company'));
           });
         },

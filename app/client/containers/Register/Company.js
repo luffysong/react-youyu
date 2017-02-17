@@ -9,6 +9,8 @@ import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import message from '../../components/Message';
+import { Field, reduxForm, change } from 'redux-form'
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -18,41 +20,52 @@ import * as actions from './actions';
 import UploadBtn from  '../../components/UploadButton';
 import RegisterSuc from '../../components/RegisterSuc';
 
-
+const validate = values => {
+  const errors = {}
+  if (!values.name) {
+    errors.name = '请输入企业全称'
+  } else if (values.name.length > 15) {
+    errors.name = '字数15个字以内'
+  }
+  if (!values.code) {
+    errors.code = '请输入社会信用代码'
+  } else if (values.code.length < 8) {
+    errors.code = '请输入有效位数'
+  }
+  return errors
+}
 
 export class Company extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      memberType: '1',
-      agree: true,
+      agree: false,
       submitSuc: false
     };
 
     this.uploadParams = {
       success(data) {
-        this.setState({
+        /*this.setState({
           uploadedImg: data
-        });
+        });*/
+        this.props.dispatch(change('companyForm', 'license_pic', data));
         this.setState({
           uploading: false,
-          uploaded: true
+          uploaded: true,
+          licenseErr: ''
         });
-        console.log(data, 'suc');
       },
       progress(data) {
         this.setState({
           uploading: true,
           uploadProgress: `${data}%`
         });
-        console.log(data, 'pro');
       },
       error(msg) {
         this.setState({
           uploading: false,
         });
-        console.log(msg);
         message.error(msg);
       },
       params: {
@@ -63,12 +76,35 @@ export class Company extends PureComponent {
     this.uploadParams.success = this.uploadParams.success.bind(this);
     this.uploadParams.progress = this.uploadParams.progress.bind(this);
     this.uploadParams.error = this.uploadParams.error.bind(this);
+
+    this.nameField = ({ input, label, type, meta: { touched, error, warning } }) => {
+      return (
+        <div>
+          <input {...input} className="price-input" placeholder={label}
+                 type={type} name="name" />
+          {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
+          <span>{warning}</span>))}
+        </div>
+      );
+    }
+
+    this.codeField = ({ input, label, type, meta: { touched, error, warning } }) => {
+      return (
+        <div>
+          <input {...input} className="price-input" placeholder={label}
+                 type={type} name="orgCode" />
+          {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
+          <span>{warning}</span>))}
+        </div>
+      );
+    }
   }
 
   selectType(event) {
-    this.setState({
+    /*this.setState({
       memberType: event.target.value
-    });
+    });*/
+    this.props.dispatch(change('companyForm', 'type', event.target.value - 0));
   }
 
   agree(event) {
@@ -78,98 +114,114 @@ export class Company extends PureComponent {
   }
 
   submit() {
-    this.props.orgRegister({
-       name: this.refs.orgName.value || '',
-       code: this.refs.orgCode.value || '',
-       license_pic: this.state.uploadedImg,
-       type: this.state.memberType
-    }).then(data => this.setState({submitSuc: true}))
-      .catch(err => console.log(err));
+    console.log(this.props.formData);
+    if(!this.props.formData.license_pic) {
+      this.setState({
+        licenseErr: '请上传营业执照'
+      });
+      return;
+    }
+    this.props.orgRegister(this.props.formData).then(data => this.setState({submitSuc: true}))
+      .catch(err => message.error(err));
   }
 
-  render() {
+  render() {``
     return (
       <div>
         {
           this.state.submitSuc ? <RegisterSuc /> :
             <div className="register-company-container">
-              <h5 className="register-title">企业注册</h5>
-              <div className="list-col">
-                <div className="col-attr">
-                  企业全称
-                </div>
-                <div className="col-value">
-                  <input type="text" className="price-input" ref='orgName' />
-                </div>
-              </div>
-              <div className="list-col">
-                <div className="col-attr">
-                  社会信用代码
-                </div>
-                <div className="col-value">
-                  <input type="text" className="price-input" ref="orgCode" />
-                </div>
-              </div>
-
-              <div className="list-col">
-                <div className={`col-attr ${this.state.uploading || this.state.uploaded ? 'ver-top' : ''}`}>
-                  营业执照
-                </div>
-                <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${this.state.uploadedImg ? 'uploaded' : ''}`}>
-                  {
-                    this.state.uploading || this.state.uploaded ?
-                      <div className="uploaded-pic" style={this.state.uploadedImg ? {backgroundImage: `url(${this.state.uploadedImg})`} : {}}>
-                        {
-                          this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
-                        }
-                      </div> : null
-                  }
-                  <UploadBtn {...this.uploadParams}>
-                    {
-                      this.state.uploadedImg ? '重新上传' : '点击上传'
-                    }
-                  </UploadBtn>
-                </div>
-              </div>
-
-              <div className="list-col">
-                <div className="col-attr">
-                  会员类型
-                </div>
-                <div className="col-value member-type">
-                  <section>
-                    <div className={this.state.memberType === '1' ? 'quote-radio checked' : 'quote-radio'}>
-                      <input type="radio" checked={this.state.memberType === '1'} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
-                    </div>
-                    <label htmlFor="business">
-                      交易会员(普通投资会员)
-                    </label>
-                  </section>
-                  <section>
-                    <div className={this.state.memberType === '2' ? 'quote-radio checked' : 'quote-radio'}>
-                      <input type="radio" checked={this.state.memberType === '2'} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
-                    </div>
-                    <label htmlFor="composite">
-                      综合会员(持有影视初始份额的会员)
-                    </label>
-                  </section>
-                </div>
-              </div>
-
-              <div className="list-col">
-                <div className="col-attr">
-                </div>
-                <div className="col-value">
-                  <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
-                    <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+              <form onSubmit={this.submit}>
+                <h5 className="register-title">企业注册</h5>
+                <div className="list-col">
+                  <div className="col-attr">
+                    企业全称
                   </div>
-                  <label htmlFor="agree">
-                    同意《会员合同》《XXXX协议》
-                  </label>
+                  <div className="col-value">
+                    <Field className="price-input" name="name" type="text" component={this.nameField}/>
+                  </div>
                 </div>
-              </div>
+                <div className="list-col">
+                  <div className="col-attr">
+                    社会信用代码
+                  </div>
+                  <div className="col-value">
+                    <Field className="price-input" name="code" type="text" component={this.codeField}/>
+                  </div>
+                </div>
 
-              <Link to="" activeClassName="active" className={`next-btn ${this.state.agree ? '' : 'disabled'}`} onClick={this.submit.bind(this)}>下一步</Link>
+                <div className="list-col">
+                  <div className={`col-attr ${this.state.uploading || this.state.uploaded ? 'ver-top' : ''}`}>
+                    营业执照
+                  </div>
+                  <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${get(this.props.formData, 'license_pic') ? 'uploaded' : ''}`}>
+                    {
+                      this.state.uploading || this.state.uploaded ?
+                        <div className="uploaded-pic" style={get(this.props.formData, 'license_pic') ? {backgroundImage: `url(${get(this.props.formData, 'license_pic')})`} : {}}>
+                          {
+                            this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
+                          }
+                        </div> : null
+                    }
+                    <div className="uploader">
+                      <UploadBtn {...this.uploadParams}>
+                        {
+                          get(this.props.formData, 'license_pic') ? '重新上传' : '点击上传'
+                        }
+                      </UploadBtn>
+                      <span className="errmsg">{this.state.licenseErr}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="list-col">
+                  <div className="col-attr">
+                    会员类型
+                  </div>
+                  <div className="col-value member-type">
+                    <section>
+                      <div className={get(this.props.formData, 'type') === 1 ? 'quote-radio checked' : 'quote-radio'}>
+                        <input type="radio" checked={get(this.props.formData, 'type') === 1} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
+                      </div>
+                      <label htmlFor="business">
+                        交易会员(普通投资会员)
+                      </label>
+                    </section>
+                    <section>
+                      <div className={get(this.props.formData, 'type') === 2 ? 'quote-radio checked' : 'quote-radio'}>
+                        <input type="radio" checked={get(this.props.formData, 'type') === 2} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
+                      </div>
+                      <label htmlFor="composite">
+                        综合会员(持有影视初始份额的会员)
+                      </label>
+                    </section>
+                  </div>
+                </div>
+
+                <div className="list-col">
+                  <div className="col-attr">
+                  </div>
+                  <div className="col-value">
+                    <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
+                      <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+                    </div>
+                    <label htmlFor="agree">
+                      同意《会员合同》《XXXX协议》
+                    </label>
+                  </div>
+                </div>
+
+                <div className="button-wrap">
+                  <button type="button"
+                          className={`next-btn ${this.state.agree ? 'active' : ''}`}
+                          disabled={this.state.agree ? '' : 'disabled'}
+                          onClick={this.submit.bind(this)}>下一步</button>
+                  {
+                    (this.state.licenseErr) ?
+                      <span className="errmsg">缺少必填项</span> : ''
+                  }
+                </div>
+              </form>
             </div>
         }
       </div>
@@ -184,10 +236,14 @@ Company.propTypes = {
 
 function mapStateToProps(state) {
   const company = state.register;
+  //const personal = state.personRegister;
+  const formState = state.form.companyForm;
 
   return {
     orgRegisterLoading: company.get('orgRegisterLoading'),
     orgRegisterData: company.get('orgRegisterData'),
+    formData: get(formState, 'values'),
+    initialValues: state.companyForm,
   };
 }
 
@@ -195,7 +251,13 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     orgRegister: (params) => dispatch(actions.orgRegister(params)),
+    companyForm: (params) => dispatch(actions.companyForm(params)),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Company);
+//export default connect(mapStateToProps, mapDispatchToProps)(Company);
+
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+  form: 'companyForm',
+  validate,
+})(Company));
