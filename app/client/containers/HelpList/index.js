@@ -28,7 +28,7 @@ export class HelpList extends PureComponent {
   componentDidMount() {
     const columnId = this.props.params.id;
     const query = this.props.location.query;
-    const page = query.page ? query.page : 1;
+    const page = query.page ? query.page : '1';
     if (!this.props.listData) {
       this.props.loadList(columnId, page);
     }
@@ -37,11 +37,11 @@ export class HelpList extends PureComponent {
   componentDidUpdate(prevProps) {
     const columnId = this.props.params.id;
     const query = this.props.location.query;
-    const page = query.page ? query.page : 1;
+    const page = query.page ? query.page : '1';
     const prevQuery = prevProps.location.query;
-    const oldPage = prevQuery.page ? prevQuery.page : 1;
+    const oldPage = prevQuery.page;
 
-    if (page !== oldPage && !this.props.newsListData) {
+    if (oldPage && (page !== oldPage) && !this.props.listData) {
       this.props.loadList(columnId, page);
     }
   }
@@ -54,7 +54,7 @@ export class HelpList extends PureComponent {
     this.props.router.push({
       pathname: `/help/list/${columnId}`,
       query: {
-        page: parseInt(page.selected + 1, 10),
+        page: '' + (page.selected + 1),
       }
     });
   }
@@ -98,7 +98,7 @@ function mapStateToProps(state, props) {
   const helpList = state.helpList;
   const columnId = props.params.id;
   const query = props.location.query;
-  const page = query.page ? query.page : 1;
+  const page = query.page ? query.page : '1';
 
   return {
     listLoading: helpList.getIn(['loading', columnId, page]),
