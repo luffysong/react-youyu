@@ -9,7 +9,7 @@ import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import message from '../../components/Message';
-import { Field, reduxForm, change } from 'redux-form'
+import { Field, reduxForm, change, touch } from 'redux-form'
 import { get } from 'lodash';
 
 /**
@@ -115,6 +115,19 @@ export class Company extends PureComponent {
 
   submit() {
     console.log(this.props.formData);
+    this.props.dispatch(touch('companyForm', 'name', 'code', 'license_pic', 'type'));
+    if(this.props.companyForm.syncErrors) {
+      this.setState({
+        formErr: '表单填写不完整，请检查'
+      }, ()=>{
+        setTimeout(() => {
+          this.setState({
+            formErr: '',
+          })
+        }, 3000);
+      })
+      return;
+    }
     if(!this.props.formData.license_pic) {
       this.setState({
         licenseErr: '请上传营业执照'
@@ -217,8 +230,8 @@ export class Company extends PureComponent {
                           disabled={this.state.agree ? '' : 'disabled'}
                           onClick={this.submit.bind(this)}>下一步</button>
                   {
-                    (this.state.licenseErr) ?
-                      <span className="errmsg">缺少必填项</span> : ''
+                    (this.state.formErr) ?
+                      <span className="errmsg">{this.state.formErr}</span> : ''
                   }
                 </div>
               </form>
