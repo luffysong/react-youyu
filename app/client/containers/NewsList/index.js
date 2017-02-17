@@ -16,6 +16,7 @@ import { get } from 'lodash';
 import './style.less';
 import NewsItem from '../../components/NewsItem';
 import Pagination from '../../components/Pagination';
+import Empty from '../../components/Empty';
 import * as actions from './actions';
 
 const pid = 2;
@@ -50,9 +51,9 @@ export class NewsList extends PureComponent {
   }
 
   renderList(data) {
-    return data && data.length && data.map((item, index) => {
+    return data && data.length ? data.map((item, index) => {
       return <NewsItem loading={false} data={item} key={`news-item-${index}`} />;
-    });
+    }) : <Empty text="暂时没有数据哦" />;
   }
 
   handlePageChange(page) {
@@ -74,6 +75,8 @@ export class NewsList extends PureComponent {
       lastPage: get(newsListData, 'last_page'),
     };
 
+    const listData = get(newsListData, 'data');
+
     return (
       <div className="news-list-container">
         <Helmet
@@ -87,11 +90,11 @@ export class NewsList extends PureComponent {
             {
               newsListLoading
               ? this.renderLoading()
-              : this.renderList(get(newsListData, 'data'))
+              : this.renderList(listData)
             }
           </div>
           {
-            newsListLoading
+            (newsListLoading || (!newsListLoading && !(listData && listData.length)))
             ? null
             : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="news-list-pagination" />
           }
