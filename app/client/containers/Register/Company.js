@@ -7,7 +7,6 @@
  */
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import message from '../../components/Message';
 import { Field, reduxForm, change, touch } from 'redux-form'
 import { get } from 'lodash';
@@ -138,7 +137,7 @@ export class Company extends PureComponent {
       .catch(err => message.error(err));
   }
 
-  render() {``
+  render() {
     return (
       <div>
         {
@@ -249,7 +248,6 @@ Company.propTypes = {
 
 function mapStateToProps(state) {
   const company = state.register;
-  //const personal = state.personRegister;
   const formState = state.form.companyForm;
 
   return {
@@ -267,8 +265,6 @@ function mapDispatchToProps(dispatch) {
     companyForm: (params) => dispatch(actions.companyForm(params)),
   };
 }
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Company);
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   form: 'companyForm',

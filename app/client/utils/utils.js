@@ -10,12 +10,7 @@ export function removeInlineStyle(str) {
   return str.replace(REGEX, '');
 }
 
-export function homeNoticeDate(date) {
-  date = moment(date);
-  return date.format('MM/DD');
-}
-
 export function acceptFormatDate(date) {
-  date = new Date(date);
-  return `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`;
+  date = moment(date);
+  return date.format('YY年MM月DD日');
 }
