@@ -9,7 +9,7 @@ import React, {PropTypes, PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 /**
  * Internal dependencies
  */
@@ -26,16 +26,32 @@ class QuoteStepOne extends PureComponent {
   }
 
   setPrice(event) {
-    this.setState({
-      listing_price: event.target.value
-    });
+    if (/^\d*$/.test(event.target.value)) {
+      this.setState({
+        listing_price: event.target.value,
+        priceErr: ''
+      });
+    } else {
+      this.setState({
+        listing_price: 0,
+        priceErr: '转让价格只能为纯数字'
+      });
+    }
   }
 
   nextStep(event) {
+    if (!this.refs.exchangePrice.value) {
+      this.setState({
+        listing_price: 0,
+        priceErr: '转让价格不能为空'
+      });
+      return;
+    }
+    if (this.state.priceErr) return;
     const {listing_quota, listing_price} = this.state;
     this.props.data.listing_quota = listing_quota;
     this.props.data.listing_price = listing_price;
-    console.log(this.props.data);
+    browserHistory.push(`/quote/${this.props.display === 'rights' ? 'rights' : 'initial'}/${this.props.id}/2`);
   }
 
   render() {
@@ -80,8 +96,11 @@ class QuoteStepOne extends PureComponent {
             转让价格 :
           </div>
           <div className="col-value">
-            <input type="text" className="price-input" onChange={this.setPrice.bind(this)}  />
+            <input type="text" className="price-input" onChange={this.setPrice.bind(this)} ref='exchangePrice'  />
             元
+            {
+              this.state.priceErr ? <span className="err-msg">{this.state.priceErr}</span> : null
+            }
           </div>
         </div>
         <div className="list-col service-price">
@@ -95,7 +114,7 @@ class QuoteStepOne extends PureComponent {
             </ReactTooltip>
           </div>
         </div>
-        <Link to={`/quote/${this.props.display === 'rights' ? 'rights' : 'initial'}/${this.props.id}/2`} activeClassName="active" className="next-btn" onClick={this.nextStep.bind(this)}>下一步</Link>
+        <div className="next-btn" onClick={this.nextStep.bind(this)}>下一步</div>
       </div>
     );
   }

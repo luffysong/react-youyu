@@ -30,7 +30,12 @@ class QuoteStepTwo extends PureComponent {
   }
 
   submit(event) {
-    event.preventDefault();
+    if (this.refs.quoteDays.value < 2 || this.refs.quoteDays.value > 60) {
+      this.setState({
+        daysErr: '请设置在2天至60天之间'
+      });
+      return;
+    }
     const {is_privacy, transferee_cert_type, transferee_lock_period} = this.state;
     this.props.data.is_privacy = is_privacy;
     if (this.state.specify === '1') {
@@ -58,8 +63,15 @@ class QuoteStepTwo extends PureComponent {
   }
 
   setDays(event) {
+    if (event.target.value < 2 || event.target.value > 60) {
+      this.setState({
+        daysErr: '请设置在2天至60天之间'
+      });
+      return;
+    }
     this.setState({
-      listing_days: event.target.value
+      listing_days: event.target.value,
+      daysErr: ''
     })
   }
 
@@ -71,11 +83,16 @@ class QuoteStepTwo extends PureComponent {
             设置挂牌天数 :
           </div>
           <div className="col-value">
-            <input type="text" data-tip data-for="quoteDays" className="price-input" placeholder="建议30天" onChange={this.setDays.bind(this)}  />
-            <ReactTooltip class='quote-day-tooltip' id='quoteDays' type='light' place="right" effect="solid">
-              <span>请设置在2天至60天之间</span>
-            </ReactTooltip>
+            <input type="text" data-tip data-for="quoteDays" className="price-input" placeholder="建议30天" onChange={this.setDays.bind(this)} ref="quoteDays"  />
             天
+            {
+              this.state.daysErr ? <span className="err-msg">{this.state.daysErr}</span> : null
+            }
+            {
+              !this.state.daysErr ? <ReactTooltip class='quote-day-tooltip' id='quoteDays' type='light' place="right" effect="solid">
+                <span>请设置在2天至60天之间</span>
+              </ReactTooltip> : null
+            }
           </div>
         </div>
         <div className="list-col">
@@ -200,7 +217,7 @@ class QuoteStepTwo extends PureComponent {
             </div> : null
         }
 
-        <Link to={`/quote/initial/${this.props.id}/3`} activeClassName="active" className="next-btn" onClick={this.submit.bind(this)}>提交</Link>
+        <div className="next-btn" onClick={this.submit.bind(this)}>提交</div>
       </div>
     );
   }
