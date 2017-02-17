@@ -30,12 +30,7 @@ export class Help extends PureComponent {
 
     return (
       <div className="help-container">
-        <Helmet
-          title="帮助中心"
-          meta={[
-            { name: 'description', content: 'Description of Help' },
-          ]}
-        />
+        <Helmet title="帮助中心" />
         <div className="help-wrapper container">
           <LeftSideBar className="help-left-bar">
             <div className="help-left-bar-top">

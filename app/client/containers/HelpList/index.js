@@ -16,6 +16,7 @@ import { get } from 'lodash';
 import './style.less';
 import HelpListItems from '../../components/HelpListItems';
 import Pagination from '../../components/Pagination';
+import Empty from '../../components/Empty';
 import * as actions from './actions';
 
 export class HelpList extends PureComponent {
@@ -58,6 +59,11 @@ export class HelpList extends PureComponent {
     });
   }
 
+  hasItems(listData) {
+    const data = get(listData, 'data');
+    return data && data.length;
+  }
+
   render() {
     const { listLoading, listData } = this.props;
 
@@ -68,15 +74,14 @@ export class HelpList extends PureComponent {
 
     return (
       <div className="help-list-container">
-        <Helmet
-          title="帮助中心"
-          meta={[
-            { name: 'description', content: '帮助中心' },
-          ]}
-        />
-        <HelpListItems loading={listLoading} data={listData} />
+        <Helmet title="帮助中心" />
         {
-          listLoading
+          listLoading || (!listLoading && this.hasItems(listData))
+          ? <HelpListItems loading={listLoading} data={listData} />
+          : <Empty text="暂时还没有数据哦" />
+        }
+        {
+          (listLoading || (!listLoading && !this.hasItems(listData)))
           ? null
           : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="help-list-pagination" />
         }
