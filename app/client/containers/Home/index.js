@@ -32,7 +32,8 @@ export class Home extends PureComponent {
       projectsLoading,
       projectsData,
       noticeData,
-      bannerData
+      bannerData,
+      userInfo,
     } = this.props;
 
     return (
@@ -44,7 +45,7 @@ export class Home extends PureComponent {
         </div>
         <ProjectCarousel className="home-project-carousel" loading={projectsLoading} data={projectsData} />
         <HomeIntro className="home-rights-intro" type="rights" />
-        <HomeIntro className="home-youyu-intro" type="youyu" />
+        <HomeIntro className="home-youyu-intro" type="youyu" userInfo={userInfo} />
         <HomeIntro className="home-partners-intro" type="partners" />
       </div>
     );
@@ -57,6 +58,7 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
   const home = state.home;
+  const layout = state.layout;
 
   return {
     projectsLoading: home.get('projectsLoading'),
@@ -65,6 +67,7 @@ function mapStateToProps(state) {
     noticeData: home.get('noticeData'),
     bannerLoading: home.get('bannerLoading'),
     bannerData: home.get('bannerData'),
+    userInfo: layout.getIn(['userInfo', 'data']),
   };
 }
 

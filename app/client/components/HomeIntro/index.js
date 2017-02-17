@@ -8,6 +8,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
@@ -15,7 +16,7 @@ import { Link } from 'react-router';
 import './style.less';
 
 function HomeIntro(props) {
-  const { className, type } = props;
+  const { className, type, userInfo } = props;
 
   const classes = classnames([
     'home-intro-component',
@@ -26,7 +27,7 @@ function HomeIntro(props) {
     <div className={classes}>
       <div className="intro-inner">
         {type === 'rights' ? renderRightsIntro() : null}
-        {type === 'youyu' ? renderYouYuIntro() : null}
+        {type === 'youyu' ? renderYouYuIntro(userInfo) : null}
         {type === 'partners' ? renderPartners() : null}
       </div>
     </div>
@@ -63,7 +64,7 @@ function renderRightsIntro() {
   );
 }
 
-function renderYouYuIntro() {
+function renderYouYuIntro(userInfo) {
   return (
     <div>
       <h3 className="intro-title">为什么选择有娱</h3>
@@ -89,10 +90,14 @@ function renderYouYuIntro() {
           <div className="intro">有娱遴选优质项目，提供正规的投资交易流程以及项目风险控制管理服务。</div>
         </li>
       </ul>
-      <Link to="/register" className="btn-quick-register">
-          <img src={require('./imgs/btn_submit_nor.svg')} alt="快速开户" />
-          <span>快速开户</span>
-      </Link>
+      {
+        get(userInfo, 'info.member_type')
+        ? null
+        : <Link to="/register" className="btn-quick-register">
+              <img src={require('./imgs/btn_submit_nor.svg')} alt="快速开户" />
+              <span>快速开户</span>
+          </Link>
+      }
     </div>
   );
 }

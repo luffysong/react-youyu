@@ -17,6 +17,8 @@ import HomeIntro from '../../components/HomeIntro';
 
 export class QA extends PureComponent {
   render() {
+    const { userInfo } = this.props;
+
     return (
       <div className="project-container-qa-tab">
         <Helmet title="常见问题" />
@@ -45,7 +47,7 @@ export class QA extends PureComponent {
           </div>
         </div>
         <div className="project-container-qa-tab-split"></div>
-        <HomeIntro type="youyu" className="project-container-qa-tab-intro" />
+        <HomeIntro type="youyu" className="project-container-qa-tab-intro" userInfo={userInfo} />
       </div>
     );
   }
@@ -56,7 +58,9 @@ QA.propTypes = {
 };
 
 function mapStateToProps(state) {
+  const layout = state.layout;
   return {
+    userInfo: layout.getIn(['userInfo', 'data']),
   };
 }
 

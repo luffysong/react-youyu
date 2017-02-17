@@ -32,7 +32,7 @@ class RightMenu extends PureComponent {
     return (
       <div className={className}>
         {
-          isLogin() && (loading || get(data, 'info.identity_type'))
+          isLogin() && (loading || get(data, 'info.member_type'))
           ? null
           : <div className="button-wrapper">
               <Button className="btn-quick-register" to="/register">快速开户</Button>
