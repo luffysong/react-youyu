@@ -15,6 +15,7 @@
       padding: 0;
       font-size: 16px;
       line-height: 16px;
+      display: inline-block;
 
       li {
         display: inline-block;
@@ -64,6 +65,33 @@
           text-align: center;
           color: @fontDark;
         }
+      }
+    }
+
+    &-input {
+      display: inline-block;
+
+      span {
+        display: inline-block;
+        font-size: 16px;
+        color: @fontDark;
+        vertical-align: middle;
+
+        &:first-child {
+          margin-left: 18px;
+        }
+      }
+
+      input {
+        display: inline-block;
+        font-size: 16px;
+        width: 48px;
+        height: 34px;
+        margin: 0 6px;
+        border: 1px solid #d4d4d4;
+        border-radius: 4px;
+        vertical-align: middle;
+        text-align: center;
       }
     }
   }
