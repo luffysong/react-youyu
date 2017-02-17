@@ -17,6 +17,7 @@ import './style.less';
 import UcNavTab from '../../components/UcNavTab';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
+import Empty from '../../components/Empty';
 import * as actions from './actions';
 
 export class InitialMgmt extends PureComponent {
@@ -36,17 +37,17 @@ export class InitialMgmt extends PureComponent {
 
   componentDidMount() {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     this.props.getInitialList(this.state.status, page);
   }
 
   componentDidUpdate(prevProps) {
     const query = this.props.location.query;
-    const page = query.page || 1;
+    const page = query.page || '1';
     const prevQuery = prevProps.location.query;
     const prevPage = prevQuery.page;
 
-    if (page !== prevPage) {
+    if (prevPage && (page !== prevPage)) {
       this.props.getInitialList(this.state.status, page);
     }
   }
@@ -58,7 +59,7 @@ export class InitialMgmt extends PureComponent {
     this.props.router.push({
       pathname: `/uc/initialMgmt/${this.state.status}`,
       query: {
-        page: parseInt(page.selected + 1, 10),
+        page: '' + (page.selected + 1),
       }
     });
   }
@@ -71,7 +72,7 @@ export class InitialMgmt extends PureComponent {
 
   renderList(data) {
     if (!data || !data.length) {
-      return null;
+      return <Empty text="暂时没有数据哦" />;
     }
 
     return data.map((item, index) => {
@@ -86,6 +87,7 @@ export class InitialMgmt extends PureComponent {
       currentPage: get(initialListData, 'current_page'),
       lastPage: get(initialListData, 'last_page'),
     };
+    const listData = get(initialListData, 'data');
 
     for (let item in this.state.STATUS) {
       if (this.state.STATUS.hasOwnProperty(item)) {
@@ -104,11 +106,11 @@ export class InitialMgmt extends PureComponent {
           {
             initialListLoading
             ? this.renderLoading()
-            : this.renderList(get(initialListData, 'data'))
+            : this.renderList(listData)
           }
         </div>
         {
-          initialListLoading
+          (initialListLoading || (!initialListLoading && !(listData && listData.length)))
           ? null
           : <Pagination pageInfo={pageInfo} onPageChange={this.onPageChange} className="initial-mgmt-pagination" />
         }
@@ -125,7 +127,7 @@ function mapStateToProps(state, props) {
   const initialMgmt = state.initialMgmt;
   const status = props.params.status;
   const query = props.location.query;
-  const page = query.page || 1;
+  const page = query.page || '1';
 
   return {
     initialListData: initialMgmt.getIn(['initialListData', status, page]),
