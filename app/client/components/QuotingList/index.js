@@ -15,6 +15,7 @@ import './style.less';
 import Button from '../Button';
 import { numComma } from '../../utils/utils';
 import CountDown from '../CountDown';
+import Empty from '../Empty';
 
 function QuotingListLoading() {
   return (
@@ -46,11 +47,19 @@ function QuotingListLoading() {
   );
 }
 
+function renderEmpty() {
+  return <Empty className="project-quoting-list-empty" text="暂时没有数据哦" />;
+}
+
 function QuotingList(props) {
   const { loading, data } = props;
 
   if (loading) {
     return QuotingListLoading();
+  }
+
+  if (!(data && data.length)) {
+    return renderEmpty();
   }
 
   return (
