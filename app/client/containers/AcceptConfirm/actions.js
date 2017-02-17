@@ -46,7 +46,7 @@ export function orderInfo(id) {
     dispatch({
       type: types.ORDER_INFO,
     });
-    return get(`/movie/listing/${id}`).then((data) => {
+    return get(`/movie/order/listing/${id}`).then((data) => {
       dispatch(orderInfoSuc(data));
     }).catch(err => {
       dispatch(orderInfoErr(err));

@@ -12,6 +12,7 @@ import React from 'react';
  */
 import './style.less';
 import { get } from 'lodash';
+import { acceptFormatDate } from '../../utils/utils';
 
 function AcceptInfoBar(props) {
   return (
@@ -20,9 +21,9 @@ function AcceptInfoBar(props) {
         {get(props,'data.name')}
       </h2>
       {
-        props.transferee_deadline ?
+        get(props,'data.transferee_deadline') ?
           <div className="accept-info-bar-tip">
-            重要提示：该收益权设置有禁售期，在2017年3月15日前不能转让此收益权。
+            重要提示：该收益权设置有禁售期，在{acceptFormatDate(get(props,'data.transferee_deadline'))}前不能转让此收益权。
           </div> : null
       }
       <ul className="accept-info-bar-info">

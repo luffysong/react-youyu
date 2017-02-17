@@ -12,3 +12,8 @@ export function homeNoticeDate(date) {
   date = new Date(date);
   return `${date.getMonth()+1}/${date.getDate()}`;
 }
+
+export function acceptFormatDate(date) {
+  date = new Date(date);
+  return `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`;
+}
