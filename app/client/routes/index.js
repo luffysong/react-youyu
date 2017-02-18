@@ -12,6 +12,12 @@ import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } fr
  */
 import { injectors } from '../store/reducers';
 import { isLogin, goToLogin, getUserInfo } from '../utils/user';
+import homeRoute from './pages/home';
+import classRoute from './pages/class';
+import aboutRoute from './pages/about';
+import projectRoute from './pages/project';
+import quoteRoute from './pages/quote';
+import acceptRoute from './pages/accept';
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
@@ -23,11 +29,11 @@ export const getServerHistory = (store, url) =>
     selectLocationState: (state) => state.router,
   });
 
-const loadModule = (cb, componentModule) => {
+export const loadModule = (cb, componentModule) => {
   cb(null, componentModule.default);
 };
 
-const requireAuth = (props) => {
+export const requireAuth = (props) => {
   const params = props || {};
   const { path, extra } = params;
 
@@ -52,7 +58,7 @@ const requireAuth = (props) => {
   };
 };
 
-const requireIdentity = (nextState, replace, callback) => {
+export const requireIdentity = (nextState, replace, callback) => {
   getUserInfo((data) => {
     if (data && data.info && data.info.member_type) {
       callback();
@@ -79,183 +85,13 @@ const rootRoute = function(store) {
         loadModule(cb, component);
       });
     },
-    childRoutes: [{
-      path: '/',
-      name: 'home',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/Home',
-          '../containers/Home/reducer',
-        ], (require) => {
-          const component = require('../containers/Home');
-          const reducer = require('../containers/Home/reducer').default;
-
-          injectReducer('home', reducer);
-          loadModule(cb, component);
-        });
-      },
-    }, {
-      path: '/class',
-      name: 'class',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          loadModule(cb, require('../containers/Class'));
-        });
-      },
-    }, {
-      path: '/about',
-      name: 'about',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          loadModule(cb, require('../containers/About'));
-        });
-      },
-    }, {
-      path: '/project/:id',
-      name: 'project',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/Project',
-          '../containers/Project/reducer',
-        ], (require) => {
-          const component = require('../containers/Project');
-          const reducer = require('../containers/Project/reducer').default;
-
-          injectReducer('project', reducer);
-          loadModule(cb, component);
-        });
-      },
-      indexRoute: { onEnter: (nextState, replace) => replace(`/project/${nextState.params.id}/quoting`) },
-      childRoutes: [{
-        path: 'quoting',
-        name: 'projectQuoting',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/Project/Quoting'));
-          });
-        },
-      }, {
-        path: 'detail',
-        name: 'projectDetail',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/Project/Detail'));
-          });
-        },
-      }, {
-        path: 'qa',
-        name: 'projectQA',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/Project/QA'));
-          });
-        },
-      }],
-    }, {
-      path: '/quote',
-      name: 'quote',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/Quote',
-          '../containers/Quote/reducer',
-        ], (require) => {
-
-          const component = require('../containers/Quote');
-          const reducer = require('../containers/Quote/reducer').default;
-
-          injectReducer('quote', reducer);
-          loadModule(cb, component);
-        });
-      },
-      indexRoute: { onEnter: (nextState, replace) => replace('/quote/initial') },
-      childRoutes: [{
-        path: 'initial',
-        name: 'initialQuote',
-        childRoutes: [{
-          path: ':id',
-          indexRoute: { onEnter: (nextState, replace) => replace(`/quote/initial/${nextState.params.id}/1`) },
-          childRoutes: [{
-            path: ':step',
-          }]
-        }],
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/Quote/Initial'));
-          });
-        },
-      }, {
-        path: 'rights',
-        name: 'rightsQuote',
-        childRoutes: [{
-          path: ':id',
-          indexRoute: { onEnter: (nextState, replace) => replace(`/quote/rights/${nextState.params.id}/1`) },
-          childRoutes: [{
-            path: ':step',
-          }]
-        }],
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../containers/Quote/Rights'));
-          });
-        },
-      }],
-    }, {
-      path: '/accept',
-      name: 'accept',
-      onEnter: requireAuth({
-        extra: requireIdentity,
-      }),
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/Accept',
-          '../containers/Accept/reducer',
-        ], (require) => {
-          const component = require('../containers/Accept');
-          const reducer = require('../containers/Accept/reducer').default;
-
-          injectReducer('accept', reducer);
-          loadModule(cb, component);
-        });
-      },
-      indexRoute: { onEnter: (nextState, replace) => replace('/accept/confirm') },
-      childRoutes: [{
-        path: 'confirm',
-        name: 'acceptConfirm',
-        childRoutes: [{
-          path: ':id',
-        }],
-        getComponent(nextState, cb) {
-          require.ensure([
-            '../containers/AcceptConfirm',
-            '../containers/AcceptConfirm/reducer',
-          ], (require) => {
-            const component = require('../containers/AcceptConfirm');
-            const reducer = require('../containers/AcceptConfirm/reducer').default;
-
-            injectReducer('acceptConfirm', reducer);
-            loadModule(cb, component);
-          });
-        },
-      }, {
-        path: 'pay',
-        name: 'acceptPay',
-        childRoutes: [{
-          path: ':id',
-        }],
-        getComponent(nextState, cb) {
-          require.ensure([
-            '../containers/AcceptPay',
-            '../containers/AcceptPay/reducer',
-          ], (require) => {
-            const component = require('../containers/AcceptPay');
-            const reducer = require('../containers/AcceptPay/reducer').default;
-
-            injectReducer('acceptPay', reducer);
-            loadModule(cb, component);
-          });
-        },
-      }],
-    }, {
+    childRoutes: [
+      homeRoute(loadModule, injectReducer),
+      classRoute(loadModule, injectReducer),
+      aboutRoute(loadModule, injectReducer),
+      projectRoute(loadModule, injectReducer),
+      quoteRoute(loadModule, injectReducer),
+      acceptRoute(loadModule, injectReducer), {
       path: '/help',
       name: 'help',
       getComponent(nextState, cb) {
