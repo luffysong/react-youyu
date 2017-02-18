@@ -7,6 +7,7 @@ import Cookie from 'js-cookie';
  * Internal dependencies
  */
 import config from '../config';
+import { get } from './request';
 
 export function getUID() {
   return Cookie.get('kr_plus_id');
@@ -40,4 +41,12 @@ export function goToLogout() {
   }
 
   location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
+}
+
+export function getUserInfo(sucCallback, errCallback) {
+  get(`/user/${getUID()}`).then(data => {
+    sucCallback(data);
+  }, err => {
+    errCallback(err);
+  });
 }

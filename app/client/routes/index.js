@@ -11,7 +11,7 @@ import { Router, browserHistory, createMemoryHistory, applyRouterMiddleware } fr
  * Internal dependencies
  */
 import { injectors } from '../store/reducers';
-import { isLogin, goToLogin } from '../utils/user';
+import { isLogin, goToLogin, getUserInfo } from '../utils/user';
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
@@ -27,17 +27,40 @@ const loadModule = (cb, componentModule) => {
   cb(null, componentModule.default);
 };
 
-const requireLogin = (path) => {
-  return (nextState, replace) => {
+const requireAuth = (props) => {
+  const params = props || {};
+  const { path, extra } = params;
+
+  return (nextState, replace, callback) => {
     if (!isLogin()) {
       goToLogin(path);
-      return false;
+      setTimeout(() => {
+        callback();
+      }, 1000);
     } else {
-      if (path) {
-        replace(path);
+      if (extra) {
+        extra(nextState, replace, callback);
+      } else {
+        if (path) {
+          replace(path);
+          callback();
+        } else {
+          callback();
+        }
       }
     }
   };
+};
+
+const requireIdentity = (nextState, replace, callback) => {
+  getUserInfo((data) => {
+    if (data && data.info && data.info.member_type) {
+      callback();
+    } else {
+      replace('/register');
+      callback();
+    }
+  });
 };
 
 const rootRoute = function(store) {
@@ -179,6 +202,9 @@ const rootRoute = function(store) {
     }, {
       path: '/accept',
       name: 'accept',
+      onEnter: requireAuth({
+        extra: requireIdentity,
+      }),
       getComponent(nextState, cb) {
         require.ensure([
           '../containers/Accept',
@@ -332,11 +358,14 @@ const rootRoute = function(store) {
         });
       },
       indexRoute: {
-        onEnter: requireLogin('/register/choose'),
+        onEnter: requireAuth({
+          path: '/register/choose',
+        }),
       },
       childRoutes: [{
         path: 'choose',
         name: 'chooseRegister',
+        onEnter: requireAuth(),
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             loadModule(cb, require('../containers/Register/Choose'));
@@ -345,7 +374,7 @@ const rootRoute = function(store) {
       }, {
         path: 'personal',
         name: 'personalRegister',
-        onEnter: requireLogin(),
+        onEnter: requireAuth(),
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             const personreducer = require('../containers/Register/reducer').personRegisterReducer;
@@ -359,7 +388,7 @@ const rootRoute = function(store) {
       }, {
         path: 'company',
         name: 'companyRegister',
-        onEnter: requireLogin(),
+        onEnter: requireAuth(),
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
             const companyFormReducer = require('../containers/Register/reducer').companyForm;
@@ -393,17 +422,21 @@ const rootRoute = function(store) {
         });
       },
       indexRoute: {
-        onEnter: requireLogin('/uc/orderMgmt'),
+        onEnter: requireAuth({
+          path: '/uc/orderMgmt',
+        }),
       },
       childRoutes: [{
         path: 'initialMgmt',
         name: 'initialMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/initialMgmt/holding'),
+          onEnter: requireAuth({
+            path: '/uc/initialMgmt/holding',
+          }),
         },
         childRoutes:[{
           path: ':status',
-          onEnter: requireLogin(),
+          onEnter: requireAuth(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
@@ -421,11 +454,13 @@ const rootRoute = function(store) {
         path: 'rightsMgmt',
         name: 'rightsMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/rightsMgmt/holding'),
+          onEnter: requireAuth({
+            path: '/uc/rightsMgmt/holding',
+          }),
         },
         childRoutes:[{
           path: ':status',
-          onEnter: requireLogin(),
+          onEnter: requireAuth(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
@@ -443,11 +478,13 @@ const rootRoute = function(store) {
         path: 'orderMgmt',
         name: 'orderMgmt',
         indexRoute: {
-          onEnter: requireLogin('/uc/orderMgmt/open'),
+          onEnter: requireAuth({
+            path: '/uc/orderMgmt/open',
+          }),
         },
         childRoutes:[{
           path: ':status',
-          onEnter: requireLogin(),
+          onEnter: requireAuth(),
         }],
         getComponent(nextState, cb) {
           require.ensure([
