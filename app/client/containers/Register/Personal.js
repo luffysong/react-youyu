@@ -400,6 +400,16 @@ export class Personal extends PureComponent {
       </div>
     );
   }
+
+  componentWillMount() {
+    const memberType = get(this.props.userinfo, 'data.info.member_type');
+    const memberStatus = get(this.props.userinfo, 'data.info.operation_steps.member_status');
+    if(memberType === 1) {
+
+    } else if (memberType === 2) {
+
+    }
+  }
 }
 
 Personal.propTypes = {
@@ -415,6 +425,7 @@ function mapStateToProps(state) {
     personform: formState,
     formData: get(formState, 'values'),
     initialValues: state.personalForm,
+    userinfo: state.layout.userInfo,
   };
 }
 

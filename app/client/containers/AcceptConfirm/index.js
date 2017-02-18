@@ -104,7 +104,7 @@ export class AcceptConfirm extends PureComponent {
             <tr>
               <td></td>
               <td>
-                <Button className="accept-confirm-button {`next-btn ${this.state.agree ? 'active' : ''}`}" disabled={this.state.agree ? '' : 'disabled'} onClick={this.submit.bind(this)}>
+                <Button className={`accept-confirm-button next-btn ${this.state.agree ? 'active' : ''}`} disabled={this.state.agree ? '' : 'disabled'} onClick={this.submit.bind(this)}>
                   支付保证金
                 </Button>
               </td>
