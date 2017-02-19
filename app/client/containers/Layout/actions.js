@@ -11,18 +11,19 @@
  */
 import * as types from './constants';
 import { get } from '../../utils/request';
-import { getUID } from '../../utils/user';
+import { getUID, getUserInfo } from '../../utils/user';
 
 export function loadUserInfo() {
   return (dispatch) => {
     dispatch({
       type: types.LOAD_USER_INFO,
     });
-    get(`/user/${getUID()}`).then(data => {
+    console.log(new Date());
+    getUserInfo(data => {
       dispatch(loadUserInfoSuc(data));
     }, err => {
       dispatch(loadUserInfoErr(err));
-    });
+    })
   }
 }
 

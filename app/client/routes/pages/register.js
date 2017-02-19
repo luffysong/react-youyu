@@ -1,5 +1,7 @@
 import { reducer as formReducer } from 'redux-form';
 import { requireAuth } from '../index';
+import { getUserInfo } from '../../utils/user';
+import infoCache from '../../utils/infoCache';
 
 export default function registerRoute(loadModule, injectReducer) {
   return {
@@ -35,7 +37,24 @@ export default function registerRoute(loadModule, injectReducer) {
     }, {
       path: 'personal',
       name: 'personalRegister',
-      onEnter: requireAuth(),
+      onEnter: requireAuth({
+        extra(nextState, replace, callback) {
+          console.log(replace, 'r');
+          if (!infoCache.userInfo) {
+            getUserInfo(() => {
+              if(!infoCache.userInfo.info.member_type
+                && infoCache.userInfo.info.operation_steps.member_status === 1) {
+              // if (infoCache.userInfo.info.member_type) {
+                replace({
+                  pathname: '/register/personalresult'
+                });
+              }
+              console.log(nextState);
+              callback();
+            });
+          }
+        }
+      }),
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           const personreducer = require('../../containers/Register/reducer').personRegisterReducer;

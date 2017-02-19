@@ -42,6 +42,7 @@ export const requireAuth = (props) => {
   const { path, extra } = params;
 
   return (nextState, replace, callback) => {
+    console.log(replace, 'h')
     if (!isLogin()) {
       goToLogin(path);
       setTimeout(() => {
