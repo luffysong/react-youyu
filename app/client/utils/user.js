@@ -68,5 +68,4 @@ export function getUserInfo(sucCallback, errCallback) {
   } else {
     sucCallback(infoCache.userInfo);
   }
-
 }

@@ -10,15 +10,13 @@
  * Internal dependencies
  */
 import * as types from './constants';
-import { get } from '../../utils/request';
-import { getUID, getUserInfo } from '../../utils/user';
+import { getUserInfo } from '../../utils/user';
 
 export function loadUserInfo() {
   return (dispatch) => {
     dispatch({
       type: types.LOAD_USER_INFO,
     });
-    console.log(new Date());
     getUserInfo(data => {
       dispatch(loadUserInfoSuc(data));
     }, err => {
