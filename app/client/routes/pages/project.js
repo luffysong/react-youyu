@@ -18,6 +18,7 @@ export default function projectRoute(loadModule, injectReducer) {
     childRoutes: [{
       path: 'quoting',
       name: 'projectQuoting',
+      ignoreScrollBehavior: true,
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           loadModule(cb, require('../../containers/Project/Quoting'));
@@ -26,6 +27,7 @@ export default function projectRoute(loadModule, injectReducer) {
     }, {
       path: 'detail',
       name: 'projectDetail',
+      ignoreScrollBehavior: true,
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           loadModule(cb, require('../../containers/Project/Detail'));
@@ -34,6 +36,7 @@ export default function projectRoute(loadModule, injectReducer) {
     }, {
       path: 'qa',
       name: 'projectQA',
+      ignoreScrollBehavior: true,
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           loadModule(cb, require('../../containers/Project/QA'));

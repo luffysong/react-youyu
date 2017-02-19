@@ -113,7 +113,21 @@ const rootRoute = function(store) {
   };
 };
 
+function scrollBehavior () {
+  return useScroll((prevRouterProps, { routes }) => {
+    if (routes.some(route => route.ignoreScrollBehavior)) {
+      return false;
+    }
+
+    if (routes.some(route => route.scrollToTop)) {
+      return [0, 0];
+    }
+
+    return true;
+  });
+}
+
 export const getRoutes = (history, store) => (
-  <Router history={history} routes={rootRoute(store)} render={applyRouterMiddleware(useScroll())} />
+  <Router history={history} routes={rootRoute(store)} render={applyRouterMiddleware(scrollBehavior())} />
 );
 
