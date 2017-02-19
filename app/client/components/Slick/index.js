@@ -38,8 +38,7 @@ class Slick extends PureComponent {
         <Slider {...settings} className={classes}>
           {
             data && data.map((item, index) => {
-              return <div className="slick-item" style={{backgroundImage: `url(${item.img_url})`}} key={`slick-${index}`}>
-                     </div>
+              return <a href={item.link_url} target="_blank" className="slick-item" style={{backgroundImage: `url(${item.img_url})`}} key={`slick-${index}`}></a>
             })
           }
         </Slider> : null
