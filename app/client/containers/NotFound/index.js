@@ -20,12 +20,7 @@ export class NotFound extends PureComponent {
   render() {
     return (
       <div className="not-found-container">
-        <Helmet
-          title="NotFound"
-          meta={[
-            { name: 'description', content: 'Description of NotFound' },
-          ]}
-        />
+        <Helmet title="找不到页面" />
         <div className="not-found-content">
           <img className="not-found-logo" src={require('./imgs/not-found-logo.png')} alt="404" width='384' />
           <img className="shadow" src={require('./imgs/shadow.png')} alt="404" width='356' />
