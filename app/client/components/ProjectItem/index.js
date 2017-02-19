@@ -94,7 +94,7 @@ class ProjectItem extends PureComponent {
     if (type === 'list') {
       projectInfo.push({
         name: '转让总价',
-        value: numComma(50000000),
+        value: numComma(50000000, false, true),
       });
     }
 

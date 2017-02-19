@@ -14,6 +14,7 @@ import { get } from 'lodash';
 import './style.less';
 import ProjectInfoBar from '../ProjectInfoBar';
 import { numComma } from '../../utils/utils';
+import { movie_stage } from '../../utils/dict.json';
 
 function projectBannerLoading() {
   return(
@@ -26,6 +27,16 @@ function projectBannerLoading() {
       </div>
     </div>
   );
+}
+
+function getStage(stageText) {
+  for(var i in movie_stage) {
+    if(movie_stage.hasOwnProperty(i)) {
+      if (movie_stage[i] === stageText) {
+        return i;
+      }
+    }
+  }
 }
 
 function ProjectBanner(props) {
@@ -65,7 +76,8 @@ function ProjectBanner(props) {
               {get(data, 'basic.name')}
             </h3>
             <span className="project-banner-detail-state-tag">
-              <i className="icon icon-shooting"></i>{get(data, 'basic.stage')}
+              <i className={`icon icon-stage-${getStage(get(data, 'basic.stage'))}`}></i>
+              <span className="icon-tag">{get(data, 'basic.stage')}</span>
             </span>
           </div>
           <ul className="project-banner-detail-info">
