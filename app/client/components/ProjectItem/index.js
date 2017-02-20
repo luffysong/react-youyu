@@ -83,18 +83,18 @@ class ProjectItem extends PureComponent {
       },
       {
         name: '转让份额',
-        value: get(data, 'project.transferable_ratio') * 100 + '%',
+        value: get(data, 'project.listing_share') * 100 + '%',
       },
       {
         name: '挂牌标的',
-        value: data.listing && data.listing.length,
+        value: get(data, 'project.listing_count'),
       },
     ];
 
     if (type === 'list') {
       projectInfo.push({
         name: '转让总价',
-        value: numComma(50000000, false, true),
+        value: numComma(get(data, 'project.listing_price'), false, true),
       });
     }
 
