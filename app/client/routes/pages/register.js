@@ -42,13 +42,8 @@ export default function registerRoute(loadModule, injectReducer) {
           const jump = function () {
             if(!infoCache.userInfo.info.member_type
               && infoCache.userInfo.info.operation_steps.member_status === 1) {
-            // if (!infoCache.userInfo.info.member_type) {
-              // replace({
-              //   pathname: '/register/personalresult'
-              // });
               replace('/register/personalresult')
             }
-            console.log(nextState);
             callback();
           }
           if (!infoCache.userInfo) {
