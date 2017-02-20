@@ -10,6 +10,7 @@ import ReactTooltip from 'react-tooltip';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { browserHistory } from 'react-router';
 
 /**
  * Internal dependencies
@@ -20,7 +21,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 class QuoteStepTwo extends PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       is_privacy: '0',
       specify: '0',
@@ -29,6 +29,12 @@ class QuoteStepTwo extends PureComponent {
       price: 0,
       transferee_lock_period: moment(),
     };
+  }
+
+  componentWillMount() {
+    if (!this.props.data.listing_price) {
+      browserHistory.push(`/quote/initial/${this.props.id}/1`);
+    }
   }
 
   submit(event) {

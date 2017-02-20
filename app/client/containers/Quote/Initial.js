@@ -27,6 +27,7 @@ export class Initial extends PureComponent {
 
   submit(params) {
     this.props.initialQuote(params, function () {
+      this.submitData = {};
       this.props.router.push(`/quote/initial/${this.props.params.id}/3`);
     }.bind(this));
   }
@@ -35,9 +36,6 @@ export class Initial extends PureComponent {
     const {initialInfoData} = this.props;
     return (
       <div className="quote-initial-container">
-        {
-          console.log(this.props.initialInfoData)
-        }
         {
           `${this.props.params.step}` === `1` ? <QuoteStepOne id={this.props.params.id} data={this.submitData} source={initialInfoData} />  : ''
         }
