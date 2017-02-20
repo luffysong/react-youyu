@@ -12,5 +12,5 @@ export function removeInlineStyle(str) {
 
 export function acceptFormatDate(date) {
   date = moment(date);
-  return date.format('YY年MM月DD日');
+  return date.format('YYYY年MM月DD日');
 }
