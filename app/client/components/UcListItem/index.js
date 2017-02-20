@@ -162,7 +162,7 @@ class UcListItem extends PureComponent {
   }
 
   render() {
-    const { type, data } = this.props;
+    const { type, data, status } = this.props;
     let tpl, topData, middleData;
 
     switch(type) {
@@ -272,6 +272,21 @@ class UcListItem extends PureComponent {
           },
         ];
 
+        if (status === 'holding') {
+          topData[1] = {
+            name: '获得时间',
+            value: get(data, 'gain_time'),
+          };
+          topData.push({
+            name: '转让中',
+            value: get(data, 'listing_quota') * 100 + '%',
+          },
+          {
+            name: '审核中',
+            value: get(data, 'audited_quota') * 100 + '%',
+          });
+        }
+
         middleData = [
           {
             name: '项目名称',
@@ -290,6 +305,13 @@ class UcListItem extends PureComponent {
             value: numComma(get(data, 'listing_price'), false, true),
           },
         ];
+
+        if (status === 'holding') {
+          middleData.splice(2, 2, {
+            name: '持有份额',
+            value: get(data, 'current_quota') * 100 + '%',
+          });
+        }
 
         tpl = <div>
           {this.renderTop(topData)}
