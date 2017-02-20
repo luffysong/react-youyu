@@ -16,7 +16,7 @@ import { removeInlineStyle } from '../../utils/utils';
  * Internal dependencies
  */
 import './style.less';
-import ShareBar from '../../components/ShareBar';
+// import ShareBar from '../../components/ShareBar';
 import * as actions from './actions';
 
 export class NewsDetail extends PureComponent {
@@ -61,8 +61,8 @@ export class NewsDetail extends PureComponent {
       <h1 className="news-detail-title">{get(data, 'title')}</h1>
       <div className="news-detail-time">{moment(get(data, 'published_at')).format('YYYY年MM月DD日')}</div>
       <div className="news-detail-content article-format" dangerouslySetInnerHTML={this.createMarkup(get(data, 'content'))}></div>
-      <div className="news-detail-split"></div>
-      <ShareBar className="news-detail-share" />
+      {/*<div className="news-detail-split"></div>*/}
+      {/*<ShareBar className="news-detail-share" />*/}
     </div>;
   }
 
