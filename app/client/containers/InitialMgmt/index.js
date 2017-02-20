@@ -33,6 +33,7 @@ export class InitialMgmt extends PureComponent {
       },
     };
     this.onPageChange = this.handlePageChange.bind(this);
+    this.cancel = id => this.handleCancel.bind(this, id);
   }
 
   componentDidMount() {
@@ -64,6 +65,10 @@ export class InitialMgmt extends PureComponent {
     });
   }
 
+  handleCancel(id) {
+    this.props.cancelTransfer(id);
+  }
+
   renderLoading() {
     return Array(3).fill().map((_, index) => {
       return <UcListItem type="initial" loading={true} key={`initial-list-item-${index}`} />;
@@ -76,7 +81,7 @@ export class InitialMgmt extends PureComponent {
     }
 
     return data.map((item, index) => {
-      return <UcListItem type="initial" data={item} status={this.state.status} key={`initial-list-item-${index}`} />;
+      return <UcListItem type="initial" data={item} status={this.state.status} cancel={this.cancel} key={`initial-list-item-${index}`} />;
     });
   }
 
@@ -139,6 +144,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     getInitialList: (status, page) => dispatch(actions.getInitialList(status, page)),
+    cancelTransfer: id => dispatch(actions.cancelTransfer(id)),
   };
 }
 

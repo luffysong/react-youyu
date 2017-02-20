@@ -163,7 +163,7 @@ class UcListItem extends PureComponent {
   }
 
   render() {
-    const { type, data, status } = this.props;
+    const { type, data, status, cancel } = this.props;
     let tpl, topData, middleData, extra;
 
     switch(type) {
@@ -285,7 +285,7 @@ class UcListItem extends PureComponent {
         }
 
         if (status === 'listing') {
-          extra = <Button bordered={true} className="uc-list-item-button">撤销</Button>
+          extra = <Button bordered={true} className="uc-list-item-button" onClick={this.props.cancel(get(data, 'id'))}>撤销</Button>
         }
 
         if (status === 'finished') {
@@ -359,7 +359,7 @@ class UcListItem extends PureComponent {
         }
 
         if (status === 'listing') {
-          extra = <Button bordered={true} className="uc-list-item-button">撤销</Button>
+          extra = <Button bordered={true} className="uc-list-item-button" onClick={cancel(get(data, 'id'))}>撤销</Button>
         }
 
         if (status === 'finished') {
@@ -396,6 +396,7 @@ UcListItem.propTypes = {
   type: React.PropTypes.string.isRequired,
   data: React.PropTypes.object,
   loading: React.PropTypes.bool,
+  cancel: React.PropTypes.func,
 };
 
 export default UcListItem;

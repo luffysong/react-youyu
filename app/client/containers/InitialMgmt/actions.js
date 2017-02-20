@@ -10,7 +10,8 @@
  * Internal dependencies
  */
 import * as types from './constants';
-import { get } from '../../utils/request';
+import { get, post } from '../../utils/request';
+import message from '../../components/Message';
 
 export function getInitialList(status, page) {
   return dispatch => {
@@ -47,4 +48,38 @@ export function getInitialListErr(status, page, err) {
     err,
   };
 }
+
+export function cancelTransfer(id) {
+  return dispatch => {
+    dispatch({
+      type: types.CANCEL_TRANSFER,
+      id,
+    });
+    post('/movie/rights-quote/cancel-listing-apply', {
+      id,
+    }).then(data => {
+      dispatch(cancelTransferSuc(id, data));
+    }, err => {
+      dispatch(cancelTransferErr(id, err));
+    });
+  }
+}
+
+export function cancelTransferSuc(id, data) {
+  message.success('撤销成功');
+  return {
+    type: types.CANCEL_TRANSFER_SUC,
+    id,
+    data,
+  }
+}
+
+export function cancelTransferErr(id, err) {
+  return {
+    type: types.CANCEL_TRANSFER_ERR,
+    id,
+    err,
+  }
+}
+
 
