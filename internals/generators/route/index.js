@@ -22,15 +22,6 @@ function reducerExists(comp) {
   }
 }
 
-function sagasExists(comp) {
-  try {
-    fs.accessSync(path.join(__dirname, `../../../app/client/containers/${comp}/sagas.js`), fs.F_OK);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
 function trimTemplateFile(template) {
   return fs.readFileSync(path.join(__dirname, `./${template}`), 'utf8').replace(/\s*$/, '');
 }
@@ -65,7 +56,6 @@ module.exports = {
   actions: (data) => {
     const actions = [];
     if (reducerExists(data.component)) {
-      data.useSagas = sagasExists(data.component);
       actions.push({
         type: 'modify',
         path: '../../app/client/routes/index.js',

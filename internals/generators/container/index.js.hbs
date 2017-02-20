@@ -10,16 +10,12 @@ import { connect } from 'react-redux';
 {{#if wantHeaders}}
 import Helmet from 'react-helmet';
 {{/if}}
-{{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect';
-{{/if}}
 
 /**
  * Internal dependencies
  */
 import './style.less';
 {{#if wantActionsAndReducer}}
-import makeSelect{{properCase name}} from './selectors';
 {{/if}}
 
 export class {{ properCase name }} extends {{{ component }}} {
@@ -45,9 +41,10 @@ export class {{ properCase name }} extends {{{ component }}} {
 };
 
 {{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{name}}: makeSelect{{properCase name}}(),
-});
+function mapStateToProps(state, props) {
+  return {
+  };
+}
 {{/if}}
 
 function mapDispatchToProps(dispatch) {

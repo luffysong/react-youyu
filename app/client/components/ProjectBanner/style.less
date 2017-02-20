@@ -5,23 +5,23 @@
 @import '../../styles/colors';
 
 .project-banner-component {
-  height: 411rem / 20;
+  height: 411px;
   background: @darkBg url('./imgs/bg_projinfo@2x.png') no-repeat center top;
   background-size: cover;
 
   .project-banner {
     &-info {
       position: relative;
-      width: 1026rem / 20;
+      width: 1026px;
       height: 100%;
       margin: 0 auto;
-      padding: (57rem / 20) 0 (57rem / 20);
+      padding: 57px 0;
     }
 
     &-cover {
       float: left;
-      width: 212rem / 20;
-      height: 296rem / 20;
+      width: 212px;
+      height: 296px;
       background: @black no-repeat center top;
       background-size: cover;
     }
@@ -29,27 +29,27 @@
     &-detail {
       float: right;
       height: 100%;
-      width: (1026rem - (212rem + 58rem)) / 20;
+      width: 1026px - (212px + 58px);
 
       &-title-wrapper {
-        line-height: 18rem / 20;
-        margin-bottom: 24rem / 20;
+        line-height: 18px;
+        margin-bottom: 24px;
       }
 
       &-title {
         display: inline-block;
         margin: 0;
-        font-size: 18rem / 20;
+        font-size: 18px;
         color: @white;
-        margin-right: 19rem / 20;
+        margin-right: 19px;
       }
 
       &-state-tag {
         display: inline-block;
-        height: 18rem / 20;
-        line-height: 18rem / 20;
+        height: 18px;
+        line-height: 18px;
         color: @brandColor;
-        font-size: 12rem / 20;
+        font-size: 12px;
         vertical-align: middle;
       }
 
@@ -57,30 +57,50 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: 14rem / 20;
+        font-size: 14px;
         color: @fontLighter;
 
         li {
-          margin-bottom: 8rem / 20;
+          margin-bottom: 8px;
         }
       }
 
       &-info-bar {
-        margin-top: 24rem / 20;
+        margin-top: 24px;
       }
     }
   }
 
   .icon {
     display: inline-block;
-    width: 14rem / 20;
-    height: 8rem / 20;
+    width: 14px;
+    height: 14px;
     vertical-align: middle;
-    margin-right: 6rem / 20;
+    margin-right: 6px;
 
-    &-shooting {
-      margin-top: -1rem / 20;
-      background: url('./imgs/icon_state_tag.svg') no-repeat center;
+    &-stage-10 {
+      background: url('./imgs/icon_state_tag_1@1x.svg') no-repeat center;
+    }
+
+    &-stage-20 {
+      background: url('./imgs/icon_state_tag_2.svg') no-repeat center;
+    }
+
+    &-stage-30 {
+      background: url('./imgs/icon_state_tag_3@1x.svg') no-repeat center;
+    }
+
+    &-stage-40 {
+      background: url('./imgs/icon_state_tag_4@1x.svg') no-repeat center;
+    }
+
+    &-stage-50 {
+      background: url('./imgs/icon_state_tag_5@1x.svg') no-repeat center;
+    }
+
+    &-tag {
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }

@@ -33,12 +33,7 @@ module.exports = {
     type: 'confirm',
     name: 'wantActionsAndReducer',
     default: true,
-    message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
-  }, {
-    type: 'confirm',
-    name: 'wantSagas',
-    default: true,
-    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
+    message: 'Do you want an actions/constants/reducer tuple for this container?',
   }],
   actions: (data) => {
     const actions = [{
@@ -70,24 +65,8 @@ module.exports = {
 
       actions.push({
         type: 'add',
-        path: '../../app/client/containers/{{properCase name}}/selectors.js',
-        templateFile: './container/selectors.js.hbs',
-        abortOnFail: true,
-      });
-
-      actions.push({
-        type: 'add',
         path: '../../app/client/containers/{{properCase name}}/reducer.js',
         templateFile: './container/reducer.js.hbs',
-        abortOnFail: true,
-      });
-    }
-
-    if (data.wantSagas) {
-      actions.push({
-        type: 'add',
-        path: '../../app/client/containers/{{properCase name}}/sagas.js',
-        templateFile: './container/sagas.js.hbs',
         abortOnFail: true,
       });
     }

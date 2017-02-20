@@ -2,11 +2,13 @@
  * External dependencies
  */
 import Cookie from 'js-cookie';
+import infoCache from './infoCache';
 
 /**
  * Internal dependencies
  */
 import config from '../config';
+import { get } from './request';
 
 export function getUID() {
   return Cookie.get('kr_plus_id');
@@ -40,4 +42,30 @@ export function goToLogout() {
   }
 
   location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
+}
+
+let userInfoCacheTime = (new Date()) - 0 + 100000;
+let userInfoCallbackArr = [];
+let userInfoLoading = false;
+export function getUserInfo(sucCallback, errCallback) {
+  const now = new Date() - 0;
+  userInfoCallbackArr.push(sucCallback);
+  if(userInfoLoading) {
+    return;
+  }
+  if(now - userInfoCacheTime > 5000 || !infoCache.userInfo) {
+    userInfoLoading = true;
+    get(`/user/${getUID()}`).then(data => {
+      infoCache.userInfo = data;
+      userInfoCallbackArr.forEach((el) => {
+        el(data)
+      })
+      userInfoLoading = false;
+    }, err => {
+      errCallback(err);
+      userInfoLoading = false
+    });
+  } else {
+    sucCallback(infoCache.userInfo);
+  }
 }

@@ -28,10 +28,11 @@ const validate = values => {
   } else if (values.name.length > 15) {
     errors.name = '字数15个字以内'
   }
+  const idReg = /^((1[1-5])|(2[1-3])|(3[1-7])|(4[1-6])|(5[0-4])|(6[1-5])|71|(8[12])|91)\d{4}((19\d{2}(0[13-9]|1[012])(0[1-9]|[12]\d|30))|(19\d{2}(0[13578]|1[02])31)|(19\d{2}02(0[1-9]|1\d|2[0-8]))|(19([13579][26]|[2468][048]|0[48])0229))\d{3}(\d|X|x)?$/;
   if (!values.id_card_number) {
     errors.id_card_number = '请输入身份证号'
-  } else if (values.id_card_number.length < 8) {
-    errors.id_card_number = '请输入有效位数'
+  } else if (!idReg.test(values.id_card_number)) {
+    errors.id_card_number = '请输入有效号码'
   }
   if (!values.idcardimg) {
     errors.idcardimg = '请上传身份证复印件'
@@ -305,7 +306,18 @@ export class Personal extends PureComponent {
 
   submit() {
     this.props.dispatch(touch('PersonalForm', 'name', 'id_card_number', 'idcardimg', 'businesscardimg'))
-    console.log(!this.props.personform.syncErrors);
+    if(!this.state.agree) {
+      this.setState({
+        formErr: '请填写表单并阅读协议，同意协议内容才能提交。',
+      }, ()=>{
+        setTimeout(() => {
+          this.setState({
+            formErr: '',
+          })
+        }, 4000);
+      })
+      return;
+    }
     if(this.props.personform.syncErrors) {
       this.setState({
         formErr: '表单填写不完整，请检查'
@@ -388,7 +400,6 @@ export class Personal extends PureComponent {
             <div className="button-wrap">
               <button type="button"
                       className={`next-btn ${this.state.agree ? 'active' : ''}`}
-                      disabled={this.state.agree ? '' : 'disabled'}
                       onClick={this.submit.bind(this)}>下一步</button>
               {
                 (this.state.formErr) ?
@@ -399,6 +410,9 @@ export class Personal extends PureComponent {
         </div>
       </div>
     );
+  }
+
+  componentWillMount() {
   }
 }
 
@@ -415,6 +429,7 @@ function mapStateToProps(state) {
     personform: formState,
     formData: get(formState, 'values'),
     initialValues: state.personalForm,
+    userinfo: state.layout.userInfo,
   };
 }
 
