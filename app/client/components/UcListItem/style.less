@@ -25,12 +25,17 @@
         margin-right: 50px;
         font-size: 14px;
         color: @fontLight;
+
+        .highlight {
+          color: @RED;
+        }
       }
     }
 
     &-middle {
       margin: 0 54px;
       border-bottom: 1px solid @border;
+      white-space: nowrap;
       overflow: hidden;
 
       &.no-border {
@@ -52,7 +57,7 @@
       }
 
       &-item {
-        float: left;
+        display: inline-block;
         padding: 28px 20px 20px 0;
 
         &.item-1 {

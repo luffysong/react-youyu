@@ -28,14 +28,15 @@ class UcListItem extends PureComponent {
       {
         data && data.length ? data.map((item, index) => {
           return <div className="uc-list-item-top-item" key={`uc-list-item-top-item-${index}`}>
-            {`${item.name}：${item.value}`}
+            {item.name + ': '}
+            {item.highlight ? <span className="highlight">{item.value}</span> : item.value}
           </div>;
         }) : null
       }
     </div>;
   }
 
-  renderMiddle(type, data, id) {
+  renderMiddle(type, data, extra) {
     const classes = classnames([
       'uc-list-item-middle',
       'clearfix',
@@ -100,7 +101,7 @@ class UcListItem extends PureComponent {
           ];
         }) : null
       }
-      { type !== 'order' ? <Button className="uc-list-item-button" to={`/quote/${type}/${id}`}>申请转让</Button> : null }
+      {extra}
     </div>;
   }
 
@@ -162,8 +163,8 @@ class UcListItem extends PureComponent {
   }
 
   render() {
-    const { type, data } = this.props;
-    let tpl, topData, middleData;
+    const { type, data, status } = this.props;
+    let tpl, topData, middleData, extra;
 
     switch(type) {
       case 'order':
@@ -220,7 +221,7 @@ class UcListItem extends PureComponent {
 
         tpl = <div>
           {this.renderTop(topData)}
-          {this.renderMiddle(type, middleData, get(data, 'id'))}
+          {this.renderMiddle(type, middleData)}
           {this.renderBottom(bottomData)}
         </div>
         break;
@@ -255,9 +256,53 @@ class UcListItem extends PureComponent {
           },
         ];
 
+        if (status === 'holding') {
+          topData.splice(1, 1, {
+            name: '初始登记时间',
+            value: get(data, 'register_time'),
+          }, {
+            name: '冻结份额',
+            value: get(data, 'blocked_quota') * 100 + '%',
+          }, {
+            name: '转让中',
+            value: get(data, 'listing_quota') * 100 + '%',
+            highlight: 1,
+          }, {
+            name: '审核中',
+            value: get(data, 'audited_quota') * 100 + '%',
+            highlight: 1,
+          });
+
+          middleData.splice(2, 2, {
+            name: '原始份额',
+            value: get(data, 'initial_quota') * 100 + '%',
+          }, {
+            name: '持有份额',
+            value: get(data, 'current_quota') * 100 + '%',
+          });
+
+          extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+        }
+
+        if (status === 'listing') {
+          extra = <Button bordered={true} className="uc-list-item-button">撤销</Button>
+        }
+
+        if (status === 'finished') {
+          topData.push({
+            name: '成交时间',
+            value: get(data, 'finished_time'),
+          });
+
+          middleData.push({
+            name: '受让方',
+            value: get(data, 'transferee'),
+          });
+        }
+
         tpl = <div>
           {this.renderTop(topData)}
-          {this.renderMiddle(type, middleData, get(data, 'id'))}
+          {this.renderMiddle(type, middleData, extra)}
         </div>;
         break;
       case 'rights':
@@ -291,9 +336,47 @@ class UcListItem extends PureComponent {
           },
         ];
 
+        if (status === 'holding') {
+          topData.splice(1, 1, {
+            name: '获得时间',
+            value: get(data, 'gain_time'),
+          }, {
+            name: '转让中',
+            value: get(data, 'listing_quota') * 100 + '%',
+            highlight: 1,
+          }, {
+            name: '审核中',
+            value: get(data, 'audited_quota') * 100 + '%',
+            highlight: 1,
+          });
+
+          middleData.splice(2, 2, {
+            name: '持有份额',
+            value: get(data, 'current_quota') * 100 + '%',
+          });
+
+          extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+        }
+
+        if (status === 'listing') {
+          extra = <Button bordered={true} className="uc-list-item-button">撤销</Button>
+        }
+
+        if (status === 'finished') {
+          topData.push({
+            name: '成交时间',
+            value: get(data, 'finished_time'),
+          });
+
+          middleData.push({
+            name: '受让方',
+            value: get(data, 'transferee'),
+          });
+        }
+
         tpl = <div>
           {this.renderTop(topData)}
-          {this.renderMiddle(type, middleData, get(data, 'id'))}
+          {this.renderMiddle(type, middleData, extra)}
         </div>;
         break;
       default:

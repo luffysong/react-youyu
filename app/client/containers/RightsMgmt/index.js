@@ -76,7 +76,7 @@ export class RightsMgmt extends PureComponent {
     }
 
     return data.map((item, index) => {
-      return <UcListItem type="rights" data={item} key={`rights-list-item-${index}`} />;
+      return <UcListItem type="rights" status={this.state.status} data={item} key={`rights-list-item-${index}`} />;
     });
   }
 
