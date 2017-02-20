@@ -29,8 +29,6 @@ const validate = values => {
   }
   if (!values.code) {
     errors.code = '请输入社会信用代码'
-  } else if (values.code.length < 8) {
-    errors.code = '请输入有效位数'
   }
   return errors
 }
