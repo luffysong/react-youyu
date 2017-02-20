@@ -318,6 +318,7 @@ export class Personal extends PureComponent {
       })
       return;
     }
+    console.log(this.props.personform);
     if(this.props.personform.syncErrors) {
       this.setState({
         formErr: '表单填写不完整，请检查'

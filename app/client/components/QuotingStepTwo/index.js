@@ -35,6 +35,20 @@ class QuoteStepTwo extends PureComponent {
       });
       return;
     }
+    if (this.state.specify === '1') {
+      if (!this.refs.transfereeName.value) {
+        this.setState({
+          transfereeNameErr: '受让方名称不能为空'
+        });
+        return;
+      }
+      if (!this.refs.transfereeNumber.value) {
+        this.setState({
+          transfereeNumberErr: '受让方证件号不能为空'
+        });
+        return;
+      }
+    }
     const {is_privacy, transferee_cert_type, transferee_lock_period} = this.state;
     this.props.data.is_privacy = is_privacy;
     if (this.state.specify === '1') {
@@ -46,6 +60,30 @@ class QuoteStepTwo extends PureComponent {
       this.props.data.transferee_lock_period = transferee_lock_period;
     }
     this.props.submit(this.props.data);
+  }
+
+  typeTransfer(target, event) {
+    if (target === 'transfereeName') {
+      if (event.target.value) {
+        this.setState({
+          transfereeNameErr: ''
+        });
+      } else {
+        this.setState({
+          transfereeNameErr: '受让方名称不能为空'
+        });
+      }
+    } else {
+      if (event.target.value) {
+        this.setState({
+          transfereeNumberErr: ''
+        });
+      } else {
+        this.setState({
+          transfereeNumberErr: '受让方名称不能为空'
+        });
+      }
+    }
   }
 
   selectSpecify(val, event) {
@@ -162,7 +200,10 @@ class QuoteStepTwo extends PureComponent {
                   受让方名称 :
                 </div>
                 <div className="col-value">
-                  <input type="text" className="price-input specify-input" placeholder="真实姓名/组织机构名称" ref="transfereeName" />
+                  <input type="text" className="price-input specify-input" placeholder="真实姓名/组织机构名称" ref="transfereeName" onChange={this.typeTransfer.bind(this, 'transfereeName')} />
+                  {
+                    this.state.transfereeNameErr ? <span className="err-msg">{this.state.transfereeNameErr}</span> : null
+                  }
                 </div>
               </div>
               <div className="list-col">
@@ -170,7 +211,10 @@ class QuoteStepTwo extends PureComponent {
                   受让方证件号 :
                 </div>
                 <div className="col-value">
-                  <input type="text" className="price-input specify-input" placeholder="身份证号/统一社会信用代码" ref="transfereeNumber" />
+                  <input type="text" className="price-input specify-input" placeholder="身份证号/统一社会信用代码" ref="transfereeNumber" onChange={this.typeTransfer.bind(this, 'transfereeNumber')} />
+                  {
+                    this.state.transfereeNumberErr ? <span className="err-msg">{this.state.transfereeNumberErr}</span> : null
+                  }
                 </div>
               </div>
             </div> : null

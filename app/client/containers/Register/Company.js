@@ -112,8 +112,20 @@ export class Company extends PureComponent {
 
   submit() {
     console.log(this.props.formData);
+    console.log(this.props.companyform);
+    if (!this.state.agree) {
+      this.setState({
+        formErr: '请先勾选同意相关协议'
+      });
+      setTimeout(() => {
+        this.setState({
+          formErr: '',
+        })
+      }, 2000);
+      return;
+    }
     this.props.dispatch(touch('companyForm', 'name', 'code', 'license_pic', 'type'));
-    if(this.props.companyForm.syncErrors) {
+    if(this.props.companyform.syncErrors) {
       this.setState({
         formErr: '表单填写不完整，请检查'
       }, ()=>{
@@ -225,7 +237,6 @@ export class Company extends PureComponent {
                 <div className="button-wrap">
                   <button type="button"
                           className={`next-btn ${this.state.agree ? 'active' : ''}`}
-                          disabled={this.state.agree ? '' : 'disabled'}
                           onClick={this.submit.bind(this)}>下一步</button>
                   {
                     (this.state.formErr) ?
@@ -253,6 +264,7 @@ function mapStateToProps(state) {
     orgRegisterLoading: company.get('orgRegisterLoading'),
     orgRegisterData: company.get('orgRegisterData'),
     formData: get(formState, 'values'),
+    companyform: formState,
     initialValues: state.companyForm,
   };
 }
