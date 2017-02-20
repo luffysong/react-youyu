@@ -5131,10 +5131,6 @@ lodash.templatesettings@^3.0.0:
     lodash._reinterpolate "^3.0.0"
     lodash.escape "^3.0.0"
 
-lodash.throttle@^4.0.1:
-  version "4.1.1"
-  resolved "http://registry.npm.taobao.org/lodash.throttle/download/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
-
 lodash@~1.0.1:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/lodash/download/lodash-1.0.2.tgz#8f57560c83b59fc270bd3d561b690043430e2551"
@@ -5387,7 +5383,7 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, "mkdirp@>=0.5 0", mkdirp@~0.5.0, mkdirp@~0.5.1, mk
   dependencies:
     minimist "0.0.8"
 
-moment, moment@^2.10.6:
+moment, moment@^2.10.6, moment@^2.17.1:
   version "2.17.1"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -5689,10 +5685,6 @@ object-assign@^4.0.1, object-assign@^4.1.0, object-assign@4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
 
-object-assign@4.0.1:
-  version "4.0.1"
-  resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-4.0.1.tgz#99504456c3598b5cad4fc59c26e8a9bb107fe0bd"
-
 object.omit@^2.0.0:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/object.omit/download/object.omit-2.0.1.tgz#1a9c744829f39dbb858c76ca3579ae2a54ebd1fa"
@@ -5987,10 +5979,6 @@ pbkdf2-compat@2.0.1:
 pend@~1.2.0:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/pend/download/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
-
-performance-now@~0.2.0:
-  version "0.2.0"
-  resolved "http://registry.npm.taobao.org/performance-now/download/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
@@ -6599,12 +6587,6 @@ querystringify@0.0.x:
   version "0.0.4"
   resolved "http://registry.npm.taobao.org/querystringify/download/querystringify-0.0.4.tgz#0cf7f84f9463ff0ae51c4c4b142d95be37724d9c"
 
-raf@3.2.0:
-  version "3.2.0"
-  resolved "http://registry.npm.taobao.org/raf/download/raf-3.2.0.tgz#2aba9a09bb70f8c2e9094dc60ace7c374fadec7e"
-  dependencies:
-    performance-now "~0.2.0"
-
 random-bytes@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/random-bytes/download/random-bytes-1.0.0.tgz#4f68a1dc0ae58bd3fb95848c30324db75d64360b"
@@ -6673,25 +6655,14 @@ react-addons-css-transition-group:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-class@^2.0.0, react-class@2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/react-class/download/react-class-2.0.0.tgz#5a52fdc15d4d99738ebf2bf69db374ce82737797"
+react-datepicker@^0.41.1:
+  version "0.41.1"
+  resolved "http://registry.npm.taobao.org/react-datepicker/download/react-datepicker-0.41.1.tgz#21c26cc3821bee01eb6deb650880fa98f44588ec"
   dependencies:
-    object-assign "^4.0.1"
-
-react-date-picker@^5.3.28:
-  version "5.3.28"
-  resolved "http://registry.npm.taobao.org/react-date-picker/download/react-date-picker-5.3.28.tgz#b7baeee261c5c8dcb909973fb9788914ef07f518"
-  dependencies:
-    lodash.throttle "^4.0.1"
-    object-assign "4.0.1"
-    raf "3.2.0"
-    react-class "2.0.0"
-    react-field "2.0.2"
-    react-flex "2.2.7"
-    react-inline-block "2.0.0"
-    react-notify-resize "1.0.3"
-    react-style-normalizer "1.2.8"
+    classnames "^2.2.5"
+    moment "^2.17.1"
+    react-onclickoutside "^5.9.0"
+    tether "^1.4.0"
 
 react-dev-utils@^0.4.2:
   version "0.4.2"
@@ -6713,19 +6684,6 @@ react-dom@^15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-field@2.0.2:
-  version "2.0.2"
-  resolved "http://registry.npm.taobao.org/react-field/download/react-field-2.0.2.tgz#74e657944372dec0f8c9c8e340786e7bb761d2b5"
-  dependencies:
-    object-assign "^4.1.0"
-
-react-flex@2.2.7:
-  version "2.2.7"
-  resolved "http://registry.npm.taobao.org/react-flex/download/react-flex-2.2.7.tgz#5c84e6c3affcbdc366edde4088f8d07303318fa8"
-  dependencies:
-    object-assign "^4.0.1"
-    react-class "^2.0.0"
-
 react-helmet:
   version "3.3.1"
   resolved "http://registry.npm.taobao.org/react-helmet/download/react-helmet-3.3.1.tgz#b23a9dd15f4dc4c530da4dac7ddf6b6cc1129aec"
@@ -6733,12 +6691,6 @@ react-helmet:
     deep-equal "1.0.1"
     object-assign "^4.0.1"
     react-side-effect "^1.1.0"
-
-react-inline-block@2.0.0:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/react-inline-block/download/react-inline-block-2.0.0.tgz#7db7acd615705b54598702f18622de84af809ffa"
-  dependencies:
-    object-assign "^4.0.1"
 
 react-input-range@^1.0.2:
   version "1.0.2"
@@ -6754,11 +6706,9 @@ react-modal:
     exenv "1.2.0"
     lodash.assign "^4.2.0"
 
-react-notify-resize@1.0.3:
-  version "1.0.3"
-  resolved "http://registry.npm.taobao.org/react-notify-resize/download/react-notify-resize-1.0.3.tgz#a1d7503aeefd27eecb6b3b5b35c7707be9422f48"
-  dependencies:
-    react-class "^2.0.0"
+react-onclickoutside@^5.9.0:
+  version "5.9.0"
+  resolved "http://registry.npm.taobao.org/react-onclickoutside/download/react-onclickoutside-5.9.0.tgz#c47bb506384adc98d686d134b34412ed17b97437"
 
 react-paginate:
   version "4.1.1"
@@ -6828,10 +6778,6 @@ react-slick:
     object-assign "^4.1.0"
     react-responsive-mixin "^0.4.0"
     slick-carousel "^1.6.0"
-
-react-style-normalizer@1.2.8:
-  version "1.2.8"
-  resolved "http://registry.npm.taobao.org/react-style-normalizer/download/react-style-normalizer-1.2.8.tgz#7e84b3d25cea6225545c5af68963b225885344a2"
 
 react-tooltip@^3.2.3:
   version "3.2.3"
@@ -7959,6 +7905,10 @@ test-exclude@^2.1.1:
     object-assign "^4.1.0"
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
+
+tether@^1.4.0:
+  version "1.4.0"
+  resolved "http://registry.npm.taobao.org/tether/download/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
 
 text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"

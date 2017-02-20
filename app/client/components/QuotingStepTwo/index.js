@@ -7,7 +7,7 @@
  */
 import React, {PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
-import 'react-date-picker/index.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
