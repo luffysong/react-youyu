@@ -18,13 +18,28 @@ import './style.less';
 import { numComma } from '../../utils/utils';
 import ProjectInfoBar from '../ProjectInfoBar';
 import CountDown from '../CountDown';
+import { movie_stage } from '../../utils/dict.json';
 
 class ProjectItem extends PureComponent {
+  getStage(stageText) {
+    for(var i in movie_stage) {
+      if(movie_stage.hasOwnProperty(i)) {
+        if (movie_stage[i] === stageText) {
+          return i;
+        }
+      }
+    }
+  }
+
   renderList(list) {
+    if (!(list && list.length)) {
+      return <div className="list-empty">该项目已上映，没有可转让的标的</div>;
+    }
+
     return <table className="transfer-info">
       <tbody>
         {
-          list && list.length ? take(list, 3).map((item, index) => {
+          take(list, 3).map((item, index) => {
             return <tr className="transfer-info-item" key={`transfer-info-item-${index}`}>
               <td className="item-info">
                 <span>转让价格：</span>
@@ -49,7 +64,7 @@ class ProjectItem extends PureComponent {
                 : null
               }
             </tr>;
-          }) : null
+          })
         }
       </tbody>
     </table>;
@@ -104,7 +119,8 @@ class ProjectItem extends PureComponent {
         <div className="info-title">
           <span>{get(data, 'project.name')}</span>
           <div className="info-title-tag">
-            {get(data, 'project.stage')}
+            <i className={`icon icon-stage-${this.getStage(get(data, 'project.stage'))}`}></i>
+            <span className="icon-tag">{get(data, 'project.stage')}</span>
           </div>
         </div>
         <ProjectInfoBar data={projectInfo} />
