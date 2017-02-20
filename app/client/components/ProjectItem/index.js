@@ -49,7 +49,7 @@ class ProjectItem extends PureComponent {
                 : null
               }
             </tr>;
-          }) : null
+          }) : <div className="list-empty">该项目已上映，没有可转让的标的</div>
         }
       </tbody>
     </table>;
