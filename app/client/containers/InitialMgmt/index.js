@@ -76,7 +76,7 @@ export class InitialMgmt extends PureComponent {
     }
 
     return data.map((item, index) => {
-      return <UcListItem type="initial" data={item} key={`initial-list-item-${index}`} />;
+      return <UcListItem type="initial" data={item} status={this.state.status} key={`initial-list-item-${index}`} />;
     });
   }
 
