@@ -58,9 +58,29 @@
     &-btn {
       margin-left: 40px;
     }
+
+    &-btn-bordered {
+      height: 42px;
+      width: 118px;
+      line-height: 42px;
+      padding: 0;
+      text-align: center;
+      margin-left: 40px;
+    }
   }
 }
 
 .project-quoting-list-empty {
   margin-top: 4px;
+}
+
+.quote-list-tooltip {
+  background-color: @brandColor !important;
+  color: @fontDark !important;
+  font-size: 12px !important;
+  padding: 5px 15px !important;
+
+  &::after {
+    border-right-color: @brandColor !important;
+  }
 }
