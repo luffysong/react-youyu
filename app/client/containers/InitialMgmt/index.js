@@ -18,6 +18,7 @@ import UcNavTab from '../../components/UcNavTab';
 import UcListItem from '../../components/UcListItem';
 import Pagination from '../../components/Pagination';
 import Empty from '../../components/Empty';
+import Modal from '../../components/Modal';
 import * as actions from './actions';
 
 export class InitialMgmt extends PureComponent {
@@ -26,6 +27,8 @@ export class InitialMgmt extends PureComponent {
     const status = this.props.params.status;
     this.state = {
       status,
+      modalIsOpen: false,
+      calcleId: '',
       STATUS: {
         holding: '持有中',
         listing: '转让中',
@@ -34,6 +37,8 @@ export class InitialMgmt extends PureComponent {
     };
     this.onPageChange = this.handlePageChange.bind(this);
     this.cancel = id => this.handleCancel.bind(this, id);
+    this.confirm = this.handleConfirm.bind(this);
+    this.back = this.handleBack.bind(this);
   }
 
   componentDidMount() {
@@ -66,7 +71,38 @@ export class InitialMgmt extends PureComponent {
   }
 
   handleCancel(id) {
-    this.props.cancelTransfer(id);
+    this.setState({
+      cancelId: id,
+    }, () => {
+      this.openModal();
+    });
+  }
+
+  handleConfirm() {
+    this.props.cancelTransfer(this.state.cancelId, () => {
+      this.closeModal();
+      this.props.getRightsList(this.state.status, '1');
+    });
+  }
+
+  handleBack() {
+    this.setState({
+      cancelId: '',
+    }, () => {
+      this.closeModal();
+    });
+  }
+
+  openModal() {
+    this.setState({
+      modalIsOpen: true,
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      modalIsOpen: false,
+    });
   }
 
   renderLoading() {
@@ -106,6 +142,7 @@ export class InitialMgmt extends PureComponent {
     return (
       <div className="initial-mgmt-container">
         <Helmet title="初始份额管理" />
+        <Modal title="确认要撤销挂牌吗" content="撤销后再次挂牌需要重新审核" isOpen={this.state.modalIsOpen} confirm={this.confirm} back={this.back} />
         <div className="initial-mgmt-list">
           <UcNavTab links={navLinks} />
           {
@@ -144,7 +181,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     getInitialList: (status, page) => dispatch(actions.getInitialList(status, page)),
-    cancelTransfer: id => dispatch(actions.cancelTransfer(id)),
+    cancelTransfer: (id, sucCallback) => dispatch(actions.cancelTransfer(id, sucCallback)),
   };
 }
 
