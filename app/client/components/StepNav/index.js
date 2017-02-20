@@ -28,7 +28,7 @@ function StepNav(props) {
               {
                 item.link
                 ?
-                  <Link to={item.link} activeClassName="active">
+                  <Link to={item.link} activeClassName="active" onClick={e => e.preventDefault()}>
                     {item.name}
                   </Link>
                 :
