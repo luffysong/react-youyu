@@ -25,7 +25,7 @@ export class AcceptConfirm extends PureComponent {
     this.props.orderInfo(this.props.params.id);
     this.props.userInfo();
   }
-  //
+
   submit() {
     if (!this.refs.investReason.value) {
       this.setState({
@@ -34,10 +34,9 @@ export class AcceptConfirm extends PureComponent {
       return;
     }
     this.props.placeOrder({
-      movie_id: '',
-      listing_id: '',
+      listing_id: this.props.params.id,
       reason: this.refs.investReason.value,
-    },() => this.props.router.push(`/accept/pay/${this.props.params.id}`));
+    },(data) => this.props.router.push(`/accept/pay/${data.trade_deposit_id}`));
   }
 
   investDesc(event) {
@@ -74,7 +73,7 @@ export class AcceptConfirm extends PureComponent {
             </tr>
             <tr>
               <td className="left-column">意向保证金：</td>
-              <td><span className="color-orange">15,000元</span> = 1,500,000元 * 5%</td>
+              <td><span className="color-orange">{ this.props.orderInfoData.price * 0.01 }元</span> = {this.props.orderInfoData.price}元 * 1%</td>
             </tr>
             <tr>
               <td className="left-column">
@@ -104,7 +103,7 @@ export class AcceptConfirm extends PureComponent {
             <tr>
               <td></td>
               <td>
-                <Button className={`accept-confirm-button next-btn ${this.state.agree ? 'active' : ''}`} disabled={this.state.agree ? '' : 'disabled'} onClick={this.submit.bind(this)}>
+                <Button className={`accept-confirm-button next-btn ${this.state.agree ? 'active' : ''}`} disabled={!this.state.agree} onClick={this.submit.bind(this)}>
                   支付保证金
                 </Button>
               </td>
