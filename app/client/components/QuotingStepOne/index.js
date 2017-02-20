@@ -51,6 +51,7 @@ class QuoteStepOne extends PureComponent {
     const {listing_quota, listing_price} = this.state;
     this.props.data.listing_quota = listing_quota;
     this.props.data.listing_price = listing_price;
+    this.props.data.id = this.props.id;
     browserHistory.push(`/quote/${this.props.display === 'rights' ? 'rights' : 'initial'}/${this.props.id}/2`);
   }
 

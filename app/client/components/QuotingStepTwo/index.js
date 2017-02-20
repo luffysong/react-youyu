@@ -109,9 +109,9 @@ class QuoteStepTwo extends PureComponent {
       return;
     }
     this.setState({
-      listing_days: event.target.value,
       daysErr: ''
-    })
+    });
+    this.props.data.listing_days = event.target.value;
   }
 
   render() {
