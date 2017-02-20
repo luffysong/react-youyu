@@ -22,13 +22,13 @@ import { movie_stage } from '../../utils/dict.json';
 
 class ProjectItem extends PureComponent {
   getStage(stageText) {
-    for(var i in movie_stage) {
-      if(movie_stage.hasOwnProperty(i)) {
-        if (movie_stage[i] === stageText) {
-          return i;
-        }
+    let stage = '';
+    Object.keys(movie_stage).forEach(item => {
+      if (movie_stage[item] === stageText) {
+        stage = item;
       }
-    }
+    });
+    return stage;
   }
 
   renderList(list) {
