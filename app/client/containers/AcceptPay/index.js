@@ -52,7 +52,7 @@ export class AcceptPay extends PureComponent {
                 </tr>
                 <tr>
                   <td className="column-name">账号</td>
-                  <td className="column-value">{get(this.props.tradeInfoData, 'business_id')}</td>
+                  <td className="column-value">{get(this.props.tradeInfoData, 'remittance_account')}</td>
                 </tr>
                 <tr>
                   <td className="column-name">开户行</td>

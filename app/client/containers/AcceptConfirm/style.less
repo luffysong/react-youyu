@@ -152,6 +152,27 @@
           }
         }
       }
+
+      .pay-deposit {
+        display: block;
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        background: #484b53;
+        box-shadow: 0 -2px 6px 0 rgba(72, 74, 83, 0.2);
+        border-radius: 6px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        color: #ffd800;
+
+        &.disabled {
+          color: #92979e;
+          background: #ececec;
+          pointer-events: none;
+          cursor: auto;
+        }
+      }
     }
 
     &-button {

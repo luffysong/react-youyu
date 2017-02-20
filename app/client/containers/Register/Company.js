@@ -111,8 +111,6 @@ export class Company extends PureComponent {
   }
 
   submit() {
-    console.log(this.props.formData);
-    console.log(this.props.companyform);
     if (!this.state.agree) {
       this.setState({
         formErr: '请先勾选同意相关协议'

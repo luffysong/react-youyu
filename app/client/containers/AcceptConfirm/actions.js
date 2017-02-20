@@ -21,7 +21,7 @@ export function placeOrder(params, callback) {
     });
     return post('/movie/order', params).then((data) => {
       dispatch(placeOrderSuc(data));
-      callback();
+      callback(data);
     });
   };
 }

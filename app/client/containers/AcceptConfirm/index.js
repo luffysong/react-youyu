@@ -14,7 +14,6 @@ import Helmet from 'react-helmet';
  */
 import './style.less';
 import AcceptInfoBar from '../../components/AcceptInfoBar';
-import Button from '../../components/Button';
 import * as actions from './actions';
 import { get } from 'lodash';
 
@@ -103,9 +102,9 @@ export class AcceptConfirm extends PureComponent {
             <tr>
               <td></td>
               <td>
-                <Button className={`accept-confirm-button next-btn ${this.state.agree ? 'active' : ''}`} disabled={!this.state.agree} onClick={this.submit.bind(this)}>
+                <div className={`pay-deposit ${!this.state.agree ? 'disabled' : ''}`} onClick={this.submit.bind(this)}>
                   支付保证金
-                </Button>
+                </div>
               </td>
             </tr>
           </tbody>
