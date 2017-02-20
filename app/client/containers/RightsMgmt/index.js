@@ -33,6 +33,7 @@ export class RightsMgmt extends PureComponent {
       },
     };
     this.onPageChange = this.handlePageChange.bind(this);
+    this.cancel = id => this.handleCancel.bind(this, id);
   }
 
   componentDidMount() {
@@ -64,6 +65,10 @@ export class RightsMgmt extends PureComponent {
     });
   }
 
+  handleCancel(id) {
+    this.props.cancelTransfer(id);
+  }
+
   renderLoading() {
     return Array(3).fill().map((_, index) => {
       return <UcListItem type="rights" loading={true} key={`rights-list-item-${index}`} />;
@@ -76,7 +81,7 @@ export class RightsMgmt extends PureComponent {
     }
 
     return data.map((item, index) => {
-      return <UcListItem type="rights" status={this.state.status} data={item} key={`rights-list-item-${index}`} />;
+      return <UcListItem type="rights" status={this.state.status} data={item} cancel={this.cancel} key={`rights-list-item-${index}`} />;
     });
   }
 
@@ -140,6 +145,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     getRightsList: (status, page) => dispatch(actions.getRightsList(status, page)),
+    cancelTransfer: (id) => dispatch(actions.cancelTransfer(id)),
   };
 }
 

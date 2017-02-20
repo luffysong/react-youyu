@@ -31,7 +31,7 @@ function notice(content, duration, type, onClose) {
   let instance = getMessageInstance();
   instance.notice({
     key,
-    duration: duration ? duration : 1.5,
+    duration: duration ? duration : 3,
     style: {},
     content: (
       <div className={`${prefixCls}-custom-content ${prefixCls}-${type}`}>
