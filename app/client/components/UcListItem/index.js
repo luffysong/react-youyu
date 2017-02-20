@@ -284,6 +284,22 @@ class UcListItem extends PureComponent {
           extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
         }
 
+        if (status === 'listing') {
+          extra = <Button bordered={true} className="uc-list-item-button">撤销</Button>
+        }
+
+        if (status === 'finished') {
+          topData.push({
+            name: '成交时间',
+            value: get(data, 'finished_time'),
+          });
+
+          middleData.push({
+            name: '受让方',
+            value: get(data, 'transferee'),
+          });
+        }
+
         tpl = <div>
           {this.renderTop(topData)}
           {this.renderMiddle(type, middleData, extra)}
@@ -340,6 +356,10 @@ class UcListItem extends PureComponent {
           });
 
           extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+        }
+
+        if (status === 'listing') {
+          extra = <Button bordered={true} className="uc-list-item-button">撤销</Button>
         }
 
         if (status === 'finished') {
