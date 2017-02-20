@@ -129,6 +129,13 @@
         min-width: 312px;
       }
 
+      &.date-picker {
+        input {
+          box-shadow: inset 0 2px 2px #e9e9e9;
+          border: 1px solid #aeaeae;
+        }
+      }
+
       .err-msg {
         color: #ff4949;
         margin-left: 20px;
@@ -179,7 +186,6 @@
 
   .next-btn {
     display: block;
-    background: #ececec;
     box-shadow: 0 -2px 6px 0 rgba(72, 74, 83, 0.2);
     border-radius: 6px;
     width: 200px;
@@ -187,10 +193,11 @@
     line-height: 50px;
     margin: 70px auto 0;
     font-size: 16px;
-    color: #92979e;
     text-align: center;
     font-weight: 600;
     cursor: pointer;
+    color: #ffd800;
+    background: #484b53;
   }
 
   .input-range__slider {

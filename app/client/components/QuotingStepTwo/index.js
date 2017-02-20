@@ -7,13 +7,15 @@
  */
 import React, {PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
-import { DateField } from 'react-date-picker';
 import 'react-date-picker/index.css';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 /**
  * Internal dependencies
  */
 import './style.less';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class QuoteStepTwo extends PureComponent {
   constructor(props) {
@@ -24,7 +26,8 @@ class QuoteStepTwo extends PureComponent {
       specify: '0',
       dateBanned: '0',
       transferee_cert_type: '1',
-      price: 0
+      price: 0,
+      transferee_lock_period: moment(),
     };
   }
 
@@ -57,7 +60,7 @@ class QuoteStepTwo extends PureComponent {
       this.props.data.transferee_cert_number = this.refs.transfereeNumber.value;
     }
     if (this.state.dateBanned === '1') {
-      this.props.data.transferee_lock_period = transferee_lock_period;
+      this.props.data.transferee_lock_period = moment(transferee_lock_period).format('YYYY-mm-DD');
     }
     this.props.submit(this.props.data);
   }
@@ -92,10 +95,9 @@ class QuoteStepTwo extends PureComponent {
     this.setState(obj);
   }
 
-  selectDate(dateString, { dateMoment, timestamp }) {
-    console.log(dateString);
+  selectDate(date) {
     this.setState({
-      transferee_lock_period: dateString
+      transferee_lock_period: date
     });
   }
 
@@ -249,11 +251,15 @@ class QuoteStepTwo extends PureComponent {
               <div className="list-col">
                 <div className="col-attr">
                 </div>
-                <div className="col-value">
-                  <DateField
+                <div className="col-value date-picker">
+                  <DatePicker
+                    dateFormat="YYYY/MM/DD"
+                    selected={this.state.transferee_lock_period}
+                    onChange={this.selectDate.bind(this)} />
+                  {/*<DateField
                     dateFormat="YYYY-MM-DD"
                     onChange={this.selectDate.bind(this)}
-                  />
+                  />*/}
                   <span className="date-tip">前受让方不能转让此份额</span>
                 </div>
               </div>
