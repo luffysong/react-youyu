@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import { get } from 'lodash';
+import ReactTooltip from 'react-tooltip';
 
 /**
  * Internal dependencies
@@ -85,7 +86,14 @@ function QuotingList(props) {
               </div>
               <div className="quoting-list-item-column-name">剩余时间</div>
             </div>
-            <Button className="quoting-list-item-btn" to={`/accept/confirm/${get(item, 'id')}`}>认购</Button>
+            {
+              get(item, 'assigned_to_other')
+              ? <div data-tip data-for="quote-list-tooltip"><Button bordered={true} className="quoting-list-item-btn-bordered">指定受让方</Button></div>
+              : <Button className="quoting-list-item-btn" to={`/accept/confirm/${get(item, 'id')}`}>认购</Button>
+            }
+            <ReactTooltip class='quote-list-tooltip' id='quote-list-tooltip' type='light' place="right" effect="solid">
+              <span>非指定受让方不能认购</span>
+            </ReactTooltip>
           </div>
         )
       }
