@@ -32,10 +32,14 @@ class ProjectItem extends PureComponent {
   }
 
   renderList(list) {
+    if (!(list && list.length)) {
+      return <div className="list-empty">该项目已上映，没有可转让的标的</div>;
+    }
+
     return <table className="transfer-info">
       <tbody>
         {
-          list && list.length ? take(list, 3).map((item, index) => {
+          take(list, 3).map((item, index) => {
             return <tr className="transfer-info-item" key={`transfer-info-item-${index}`}>
               <td className="item-info">
                 <span>转让价格：</span>
@@ -60,7 +64,7 @@ class ProjectItem extends PureComponent {
                 : null
               }
             </tr>;
-          }) : <div className="list-empty">该项目已上映，没有可转让的标的</div>
+          })
         }
       </tbody>
     </table>;
