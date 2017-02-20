@@ -49,7 +49,7 @@ export function getRightsListErr(status, page, err) {
   };
 }
 
-export function cancelTransfer(id) {
+export function cancelTransfer(id, sucCallback) {
   return dispatch => {
     dispatch({
       type: types.CANCEL_TRANSFER,
@@ -58,15 +58,16 @@ export function cancelTransfer(id) {
     post('/movie/rights-quote/cancel-listing-apply', {
       id,
     }).then(data => {
-      dispatch(cancelTransferSuc(id, data));
+      dispatch(cancelTransferSuc(id, data, sucCallback));
     }, err => {
       dispatch(cancelTransferErr(id, err));
     });
   }
 }
 
-export function cancelTransferSuc(id, data) {
+export function cancelTransferSuc(id, data, sucCallback) {
   message.success('撤销成功');
+  sucCallback && sucCallback();
   return {
     type: types.CANCEL_TRANSFER_SUC,
     id,
