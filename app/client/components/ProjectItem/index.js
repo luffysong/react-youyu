@@ -18,8 +18,19 @@ import './style.less';
 import { numComma } from '../../utils/utils';
 import ProjectInfoBar from '../ProjectInfoBar';
 import CountDown from '../CountDown';
+import { movie_stage } from '../../utils/dict.json';
 
 class ProjectItem extends PureComponent {
+  getStage(stageText) {
+    for(var i in movie_stage) {
+      if(movie_stage.hasOwnProperty(i)) {
+        if (movie_stage[i] === stageText) {
+          return i;
+        }
+      }
+    }
+  }
+
   renderList(list) {
     return <table className="transfer-info">
       <tbody>
@@ -104,7 +115,8 @@ class ProjectItem extends PureComponent {
         <div className="info-title">
           <span>{get(data, 'project.name')}</span>
           <div className="info-title-tag">
-            {get(data, 'project.stage')}
+            <i className={`icon icon-stage-${this.getStage(get(data, 'project.stage'))}`}></i>
+            <span className="icon-tag">{get(data, 'project.stage')}</span>
           </div>
         </div>
         <ProjectInfoBar data={projectInfo} />

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_state_tag_5_black@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="项目列表页_项目不同状态" transform="translate(-640.000000, -234.000000)" stroke="#484B53">
+            <g id="proj_info" transform="translate(640.000000, 129.000000)">
+                <g id="progress-copy-4" transform="translate(0.000000, 104.000000)">
+                    <g id="Page-1" transform="translate(1.000000, 2.000000)">
+                        <path d="M11.5384615,6 C11.5384615,9.05815385 9.05815385,11.5384615 6,11.5384615 C2.94184615,11.5384615 0.461538462,9.05815385 0.461538462,6 C0.461538462,2.94184615 2.94184615,0.461538462 6,0.461538462 C9.05815385,0.461538462 11.5384615,2.94184615 11.5384615,6 Z" id="Stroke-1"></path>
+                        <path d="M4.89212308,8.95403077 C5.48104615,8.95403077 6.22504615,9.06110769 6.75304615,8.74818462 C7.19796923,8.48418462 7.47673846,7.99403077 7.47673846,7.47710769 C7.47673846,6.76818462 6.97550769,6.20603077 6.29981538,6.05464615 C5.84566154,5.95403077 5.38689231,5.95218462 5.02227692,5.63003077 C4.70658462,5.35126154 4.52289231,4.94418462 4.52289231,4.52326154 C4.52289231,3.91126154 4.93550769,3.34818462 5.51058462,3.13403077 C5.9952,2.95403077 6.59796923,3.04633846 7.10750769,3.04633846" id="Stroke-3"></path>
+                        <path d="M6,2.20356923 L6,2.94203077" id="Stroke-5"></path>
+                        <path d="M6,9.21904615 L6,9.95750769" id="Stroke-7"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
