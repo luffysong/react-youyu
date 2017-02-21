@@ -31,7 +31,7 @@ class ProjectItem extends PureComponent {
     return stage;
   }
 
-  renderList(list) {
+  renderList(list, type) {
     if (!(list && list.length)) {
       return <div className="list-empty">没有可转让的标的</div>;
     }
@@ -40,7 +40,7 @@ class ProjectItem extends PureComponent {
       <tbody>
         {
           take(list, 3).map((item, index) => {
-            return <tr className="transfer-info-item" key={`transfer-info-item-${index}`}>
+            return <tr className={`transfer-info-item transfer-info-item-${type}`} key={`transfer-info-item-${index}`}>
               <td className="item-info">
                 <span>转让价格：</span>
                 <span className="font-white">￥{numComma(item.price)}元</span>
@@ -124,7 +124,7 @@ class ProjectItem extends PureComponent {
           </div>
         </div>
         <ProjectInfoBar data={projectInfo} />
-        { this.renderList(data.listing) }
+        { this.renderList(data.listing, type) }
         {
           data.listing && data.listing.length && data.listing.length > 3
           ? <span className={`more-link more-link-${type}`}>还有{data.listing.length - 3}个转让...</span>

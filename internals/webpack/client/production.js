@@ -42,7 +42,6 @@ if (env['process.env'].NODE_ENV !== '"production"') {
 
 module.exports = {
   bail: true,
-  devtool: 'source-map',
   entry: [
     require.resolve('../../config/polyfills'),
     paths.indexJs
@@ -101,7 +100,6 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'file',
         loaders: [
           'file?name=static/media/[name].[hash:8].[ext]',
           'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
