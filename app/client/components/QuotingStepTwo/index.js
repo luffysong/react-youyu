@@ -44,7 +44,7 @@ class QuoteStepTwo extends PureComponent {
       });
       return;
     }
-    if (!/^\d*$/.test(event.target.value)) {
+    if (!/^\d*$/.test(this.refs.quoteDays.value)) {
       this.setState({
         daysErr: '挂牌天数只能为整数'
       });
