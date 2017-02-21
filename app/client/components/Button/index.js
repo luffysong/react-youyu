@@ -44,6 +44,12 @@ function Button(props) {
       </button>
     );
   }
+
+  return (
+    <button className={classes}>
+      {props.children}
+    </button>
+  );
 }
 
 Button.propTypes = {
