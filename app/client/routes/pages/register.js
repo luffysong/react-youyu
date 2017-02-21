@@ -2,6 +2,7 @@ import { reducer as formReducer } from 'redux-form';
 import { requireAuth } from '../index';
 import { getUserInfo } from '../../utils/user';
 import infoCache from '../../utils/infoCache';
+import get from 'lodash';
 
 export default function registerRoute(loadModule, injectReducer) {
   return {
@@ -40,8 +41,7 @@ export default function registerRoute(loadModule, injectReducer) {
       onEnter: requireAuth({
         extra(nextState, replace, callback) {
           const jump = function () {
-            if(!infoCache.userInfo.info.member_type
-              && infoCache.userInfo.info.operation_steps.member_status.status === 1) {
+            if(!get(infoCache, 'userInfo.info.member_type') && get(infoCache, 'userInfo.info.operation_steps.member_status') === 1) {
               replace('/register/personalresult')
             }
             callback();
@@ -71,7 +71,7 @@ export default function registerRoute(loadModule, injectReducer) {
       onEnter: requireAuth({
         extra(nextState, replace, callback) {
           const jump = function () {
-            if(!infoCache.userInfo.info.member_type && infoCache.userInfo.info.operation_steps.member_status.status === 1) {
+            if(!get(infoCache, 'userInfo.info.member_type') && get(infoCache, 'userInfo.info.operation_steps.member_status') === 1) {
               replace('/register/companyresult')
             }
             callback();
