@@ -65,11 +65,6 @@
     z-index: 9;
     transition: transform 0.6s ease, width 0.6s ease, padding 0.6s ease, height 0.6s ease, margin 0.6s ease;
     overflow: hidden;
-  }
-
-  .carousel-item-one {
-    transition: none;
-    position: relative;
 
     &::before {
       position: absolute;
@@ -82,5 +77,10 @@
       filter: blur(1px);
       z-index: -1;
     }
+  }
+
+  .carousel-item-one {
+    transition: none;
+    position: relative;
   }
 }

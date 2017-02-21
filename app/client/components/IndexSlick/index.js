@@ -31,8 +31,7 @@ class IndexSlick extends PureComponent {
         }
         item.className = arr[temp];
       });
-    }, 2000);
-
+    }, 3000);
   }
 
   componentWillUnmount() {
