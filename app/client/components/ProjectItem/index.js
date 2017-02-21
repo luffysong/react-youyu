@@ -33,7 +33,7 @@ class ProjectItem extends PureComponent {
 
   renderList(list) {
     if (!(list && list.length)) {
-      return <div className="list-empty">该项目已上映，没有可转让的标的</div>;
+      return <div className="list-empty">没有可转让的标的</div>;
     }
 
     return <table className="transfer-info">
