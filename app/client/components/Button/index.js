@@ -8,6 +8,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
+
 
 /**
  * Internal dependencies
@@ -26,13 +28,26 @@ function Button(props) {
     `button-component-${size}`,
     props.className,
   ]);
+
+  if (onClick) {
+    return (
+      <button className={classes} onClick={onClick}>
+        {props.children}
+      </button>
+    );
+  }
+
+  if (to) {
+    return (
+      <button className={classes} onClick={() => browserHistory.push(to)}>
+        <Link to={to}>{props.children}</Link>
+      </button>
+    );
+  }
+
   return (
-    <button className={classes} onClick={onClick ? onClick : e => e.preventDefault() }>
-      {
-        to
-        ? <Link to={to}>{props.children}</Link>
-        : props.children
-      }
+    <button className={classes}>
+      {props.children}
     </button>
   );
 }
@@ -52,7 +67,6 @@ Button.defaultProps = {
   size: 'normal',
   disabled: false,
   bordered: false,
-  onClick: () => {}
 };
 
 export default Button;
