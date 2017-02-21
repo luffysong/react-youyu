@@ -19,7 +19,7 @@ function Choose() {
       <Helmet title="开户选择" />
       <h4 className="register-container-choose-title">天金所开户</h4>
       <div className="register-container-choose-sub-title">请先选择开户类型</div>
-      <div className="register-container-choose-area">
+      <div className="container register-container-choose-area">
         <Link to="/register/company" className="register-container-choose-item">
           <img src={require('./imgs/btn_signup_business.svg')} alt="企业开户" />
           <div className="register-container-choose-item-title">
