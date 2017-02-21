@@ -44,6 +44,12 @@ class QuoteStepTwo extends PureComponent {
       });
       return;
     }
+    if (!/^\d*$/.test(event.target.value)) {
+      this.setState({
+        daysErr: '挂牌天数只能为整数'
+      });
+      return;
+    }
     if (this.state.specify === '1') {
       if (!this.refs.transfereeName.value) {
         this.setState({
@@ -111,6 +117,12 @@ class QuoteStepTwo extends PureComponent {
     if (event.target.value < 2 || event.target.value > 60) {
       this.setState({
         daysErr: '请设置在2天至60天之间'
+      });
+      return;
+    }
+    if (!/^\d*$/.test(event.target.value)) {
+      this.setState({
+        daysErr: '挂牌天数只能为整数'
       });
       return;
     }
