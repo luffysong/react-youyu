@@ -21,7 +21,7 @@ function StepNav(props) {
       {
         steps && steps.length && steps.map((item, index) => {
           return [
-            <li className={`step-nav-component-item ${item.link === currentPath ? 'highlight' : ''}`} key={`step-nav-component-item-${index}`}>
+            <li className={`step-nav-component-item ${currentPath.indexOf(item.link) >= 0  ? 'highlight' : ''}`} key={`step-nav-component-item-${index}`}>
               <div className="step-nav-component-item-sign">
                 {index + 1}
               </div>
@@ -37,7 +37,7 @@ function StepNav(props) {
                   </div>
               }
             </li>,
-            <img className={`${steps.length === (index + 1) ? 'hide' : ''}`} src={item.link === currentPath ? require('./imgs/icon_arrow_sel.svg') : require('./imgs/icon_arrow_nor.svg')} alt=""/>
+            <img className={`${steps.length === (index + 1) ? 'hide' : ''}`} src={currentPath.indexOf(item.link) >= 0 ? require('./imgs/icon_arrow_sel.svg') : require('./imgs/icon_arrow_nor.svg')} alt=""/>
           ];
         })
       }
