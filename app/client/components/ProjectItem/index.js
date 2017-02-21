@@ -58,7 +58,7 @@ class ProjectItem extends PureComponent {
                 ? <td>
                     <span>剩余时间：</span>
                     <span>
-                      <CountDown remain={12400} />
+                      <CountDown remain={get(item, 'time_remain')} />
                     </span>
                   </td>
                 : null
