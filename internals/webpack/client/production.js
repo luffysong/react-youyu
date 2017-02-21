@@ -42,7 +42,6 @@ if (env['process.env'].NODE_ENV !== '"production"') {
 
 module.exports = {
   bail: true,
-  devtool: 'source-map',
   entry: [
     require.resolve('../../config/polyfills'),
     paths.indexJs
