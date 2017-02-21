@@ -13,7 +13,9 @@ const makeRootReducer = (asyncReducers) => {
 
 const injectReducer = (store) => {
   return (key, reducer) => {
-    if (Reflect.has(store.asyncReducers, key)) return;
+    if (store.asyncReducers.hasOwnProperty(key)) {
+      return;
+    }
     store.asyncReducers[key] = reducer;
     store.replaceReducer(makeRootReducer(store.asyncReducers));
   };

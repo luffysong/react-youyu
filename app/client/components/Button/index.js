@@ -27,7 +27,7 @@ function Button(props) {
     props.className,
   ]);
   return (
-    <button className={classes} onClick={onClick}>
+    <button className={classes} onClick={onClick ? onClick : e => e.preventDefault() }>
       {
         to
         ? <Link to={to}>{props.children}</Link>
