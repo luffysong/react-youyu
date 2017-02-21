@@ -17,8 +17,8 @@ import Helmet from 'react-helmet';
 import './style.less';
 import * as actions from './actions';
 import UploadBtn from  '../../components/UploadButton';
-import RegisterSuc from '../../components/RegisterSuc';
 import message from '../../components/Message';
+import { browserHistory } from 'react-router';
 
 const validate = values => {
   const errors = {}
@@ -39,7 +39,6 @@ export class Company extends PureComponent {
 
     this.state = {
       agree: false,
-      submitSuc: false
     };
 
     this.uploadParams = {
@@ -139,7 +138,7 @@ export class Company extends PureComponent {
       });
       return;
     }
-    this.props.orgRegister(this.props.formData).then(data => this.setState({submitSuc: true}))
+    this.props.orgRegister(this.props.formData).then(data => browserHistory.replace('/register/companyresult'))
       .catch(err => message.error(err));
   }
 
@@ -147,101 +146,98 @@ export class Company extends PureComponent {
     return (
       <div>
         <Helmet title="机构会员认证" />
-        {
-          this.state.submitSuc ? <RegisterSuc /> :
-            <div className="register-company-container">
-              <form onSubmit={this.submit}>
-                <h5 className="register-title">机构会员认证</h5>
-                <div className="list-col">
-                  <div className="col-attr">
-                    企业全称
-                  </div>
-                  <div className="col-value">
-                    <Field className="price-input" name="name" type="text" component={this.nameField}/>
-                  </div>
-                </div>
-                <div className="list-col">
-                  <div className="col-attr">
-                    社会信用代码
-                  </div>
-                  <div className="col-value">
-                    <Field className="price-input" name="code" type="text" component={this.codeField}/>
-                  </div>
-                </div>
-
-                <div className="list-col">
-                  <div className={`col-attr ${this.state.uploading || this.state.uploaded ? 'ver-top' : ''}`}>
-                    营业执照
-                  </div>
-                  <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${get(this.props.formData, 'license_pic') ? 'uploaded' : ''}`}>
-                    {
-                      this.state.uploading || this.state.uploaded ?
-                        <div className="uploaded-pic" style={get(this.props.formData, 'license_pic') ? {backgroundImage: `url(${get(this.props.formData, 'license_pic')})`} : {}}>
-                          {
-                            this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
-                          }
-                        </div> : null
-                    }
-                    <div className="uploader">
-                      <UploadBtn {...this.uploadParams}>
-                        {
-                          get(this.props.formData, 'license_pic') ? '重新上传' : '点击上传'
-                        }
-                      </UploadBtn>
-                      <span className="errmsg">{this.state.licenseErr}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="list-col">
-                  <div className="col-attr">
-                    会员类型
-                  </div>
-                  <div className="col-value member-type">
-                    <section>
-                      <div className={get(this.props.formData, 'type') === 1 ? 'quote-radio checked' : 'quote-radio'}>
-                        <input type="radio" checked={get(this.props.formData, 'type') === 1} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
-                      </div>
-                      <label htmlFor="business">
-                        交易会员(普通投资会员)
-                      </label>
-                    </section>
-                    <section>
-                      <div className={get(this.props.formData, 'type') === 2 ? 'quote-radio checked' : 'quote-radio'}>
-                        <input type="radio" checked={get(this.props.formData, 'type') === 2} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
-                      </div>
-                      <label htmlFor="composite">
-                        综合会员(持有影视初始份额的会员)
-                      </label>
-                    </section>
-                  </div>
-                </div>
-
-                <div className="list-col">
-                  <div className="col-attr">
-                  </div>
-                  <div className="col-value">
-                    <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
-                      <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
-                    </div>
-                    <label htmlFor="agree">
-                      同意《会员合同》《XXXX协议》
-                    </label>
-                  </div>
-                </div>
-
-                <div className="button-wrap">
-                  <button type="button"
-                          className={`next-btn ${this.state.agree ? 'active' : ''}`}
-                          onClick={this.submit.bind(this)}>下一步</button>
-                  {
-                    (this.state.formErr) ?
-                      <span className="errmsg">{this.state.formErr}</span> : ''
-                  }
-                </div>
-              </form>
+        <div className="register-company-container">
+          <form onSubmit={this.submit}>
+            <h5 className="register-title">机构会员认证</h5>
+            <div className="list-col">
+              <div className="col-attr">
+                企业全称
+              </div>
+              <div className="col-value">
+                <Field className="price-input" name="name" type="text" component={this.nameField}/>
+              </div>
             </div>
-        }
+            <div className="list-col">
+              <div className="col-attr">
+                社会信用代码
+              </div>
+              <div className="col-value">
+                <Field className="price-input" name="code" type="text" component={this.codeField}/>
+              </div>
+            </div>
+
+            <div className="list-col">
+              <div className={`col-attr ${this.state.uploading || this.state.uploaded ? 'ver-top' : ''}`}>
+                营业执照
+              </div>
+              <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${get(this.props.formData, 'license_pic') ? 'uploaded' : ''}`}>
+                {
+                  this.state.uploading || this.state.uploaded ?
+                    <div className="uploaded-pic" style={get(this.props.formData, 'license_pic') ? {backgroundImage: `url(${get(this.props.formData, 'license_pic')})`} : {}}>
+                      {
+                        this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
+                      }
+                    </div> : null
+                }
+                <div className="uploader">
+                  <UploadBtn {...this.uploadParams}>
+                    {
+                      get(this.props.formData, 'license_pic') ? '重新上传' : '点击上传'
+                    }
+                  </UploadBtn>
+                  <span className="errmsg">{this.state.licenseErr}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="list-col">
+              <div className="col-attr">
+                会员类型
+              </div>
+              <div className="col-value member-type">
+                <section>
+                  <div className={get(this.props.formData, 'type') === 1 ? 'quote-radio checked' : 'quote-radio'}>
+                    <input type="radio" checked={get(this.props.formData, 'type') === 1} name="memberType" onChange={this.selectType.bind(this)} value="1" id="business" />
+                  </div>
+                  <label htmlFor="business">
+                    交易会员(普通投资会员)
+                  </label>
+                </section>
+                <section>
+                  <div className={get(this.props.formData, 'type') === 2 ? 'quote-radio checked' : 'quote-radio'}>
+                    <input type="radio" checked={get(this.props.formData, 'type') === 2} name="memberType" onChange={this.selectType.bind(this)} value="2" id="composite" />
+                  </div>
+                  <label htmlFor="composite">
+                    综合会员(持有影视初始份额的会员)
+                  </label>
+                </section>
+              </div>
+            </div>
+
+            <div className="list-col">
+              <div className="col-attr">
+              </div>
+              <div className="col-value">
+                <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
+                  <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+                </div>
+                <label htmlFor="agree">
+                  同意《会员合同》《XXXX协议》
+                </label>
+              </div>
+            </div>
+
+            <div className="button-wrap">
+              <button type="button"
+                      className={`next-btn ${this.state.agree ? 'active' : ''}`}
+                      onClick={this.submit.bind(this)}>下一步</button>
+              {
+                (this.state.formErr) ?
+                  <span className="errmsg">{this.state.formErr}</span> : ''
+              }
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

@@ -26,7 +26,8 @@ export class AcceptConfirm extends PureComponent {
   }
 
   submit() {
-    if (!this.refs.investReason.value) {
+    //去除空格
+    if (!this.refs.investReason.value.replace(/(^\s+)|(\s+$)/g,"")) {
       this.setState({
         reasonRequired: '认购陈述不能为空'
       });
@@ -40,7 +41,7 @@ export class AcceptConfirm extends PureComponent {
 
   investDesc(event) {
     this.setState({
-      reasonRequired: event.target.value ? '' : '认购陈述不能为空'
+      reasonRequired: event.target.value.replace(/(^\s+)|(\s+$)/g,"") ? '' : '认购陈述不能为空'
     })
   }
 

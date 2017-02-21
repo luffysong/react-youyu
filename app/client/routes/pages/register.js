@@ -41,7 +41,7 @@ export default function registerRoute(loadModule, injectReducer) {
         extra(nextState, replace, callback) {
           const jump = function () {
             if(!infoCache.userInfo.info.member_type
-              && infoCache.userInfo.info.operation_steps.member_status === 1) {
+              && infoCache.userInfo.info.operation_steps.member_status.status === 1) {
               replace('/register/personalresult')
             }
             callback();
@@ -68,13 +68,37 @@ export default function registerRoute(loadModule, injectReducer) {
     }, {
       path: 'company',
       name: 'companyRegister',
-      onEnter: requireAuth(),
+      onEnter: requireAuth({
+        extra(nextState, replace, callback) {
+          const jump = function () {
+            if(!infoCache.userInfo.info.member_type && infoCache.userInfo.info.operation_steps.member_status.status === 1) {
+              replace('/register/companyresult')
+            }
+            callback();
+          }
+          if (!infoCache.userInfo) {
+            getUserInfo(() => {
+              jump();
+            });
+          } else {
+            jump();
+          }
+        }
+      }),
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           const companyFormReducer = require('../../containers/Register/reducer').companyForm;
 
           injectReducer('companyForm', companyFormReducer);
           loadModule(cb, require('../../containers/Register/Company'));
+        });
+      },
+    }, {
+      path: 'companyresult',
+      name: 'companyResult',
+      getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+          loadModule(cb, require('../../containers/Register/CompanyResult'));
         });
       },
     }, {
