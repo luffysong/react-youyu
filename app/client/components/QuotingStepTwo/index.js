@@ -66,7 +66,7 @@ class QuoteStepTwo extends PureComponent {
       this.props.data.transferee_cert_number = this.refs.transfereeNumber.value;
     }
     if (this.state.dateBanned === '1') {
-      this.props.data.transferee_lock_period = moment(transferee_lock_period).format('YYYY-mm-DD');
+      this.props.data.transferee_lock_period = moment(transferee_lock_period).format('YYYY-MM-DD');
     }
     this.props.submit(this.props.data);
   }
@@ -259,7 +259,7 @@ class QuoteStepTwo extends PureComponent {
                 </div>
                 <div className="col-value date-picker">
                   <DatePicker
-                    dateFormat="YYYY/MM/DD"
+                    dateFormat="YYYY-MM-DD"
                     selected={this.state.transferee_lock_period}
                     onChange={this.selectDate.bind(this)} />
                   {/*<DateField
