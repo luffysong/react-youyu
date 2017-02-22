@@ -97,18 +97,23 @@
     margin-top: 27px;
 
     tr {
-      border-bottom: 1px solid #9e9e9f;
+      border-bottom: 1px solid rgba(158, 158, 159, 0.2);
 
       &:last-child {
         border-bottom: 0;
       }
 
-      &.transfer-info-item-list {
-        border-bottom: 1px solid @LIGHT-GRAY-1;
-      }
-
       td {
         padding: 3px 0;
+      }
+
+      &.transfer-info-item-list {
+        border-bottom: 1px solid rgba(146, 151, 158, 0.2);
+
+        td {
+          line-height: 19px;
+          padding: 6px 0;
+        }
       }
     }
 
@@ -129,9 +134,11 @@
     color: @brandColor;
     font-size: 14px;
     text-decoration: none;
-    margin-top: 14px;
+    margin-top: 13px;
 
     &-list {
+      margin-top: 24px;
+      line-height: 19px;
       color: @brandColorDark;
     }
   }
