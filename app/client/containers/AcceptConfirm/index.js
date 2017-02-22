@@ -65,7 +65,7 @@ export class AcceptConfirm extends PureComponent {
           <tbody>
             <tr>
               <td className="left-column">受让方：</td>
-              <td>{get(this.props.userInfoData, 'info.base.name')}</td>
+              <td>{get(this.props.userInfoData, 'info.real_info.certificate_name')}</td>
             </tr>
             <tr>
               <td className="left-column">受让方ID：</td>
@@ -73,7 +73,7 @@ export class AcceptConfirm extends PureComponent {
             </tr>
             <tr>
               <td className="left-column">意向保证金：</td>
-              <td><span className="color-orange">{ this.props.orderInfoData.price * 0.01 }元</span> = {this.props.orderInfoData.price}元 * 1%</td>
+              <td><span className="color-orange">{ this.props.orderInfoData.price / 100 }元</span> = {this.props.orderInfoData.price}元 * 1%</td>
             </tr>
             <tr>
               <td className="left-column">

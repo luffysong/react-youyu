@@ -62,7 +62,9 @@ export class Uc extends PureComponent {
             <a href="" onClick={this.logout} className="uc-container-logout-btn">退出登录</a>
           </LeftSideBar>
           <RouteTransition>
-            {children}
+            <div className="uc-right-wrapper">
+              {children}
+            </div>
           </RouteTransition>
         </div>
       </div>

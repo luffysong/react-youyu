@@ -13,6 +13,7 @@ import React from 'react';
 import './style.less';
 import { get } from 'lodash';
 import { acceptFormatDate } from '../../utils/utils';
+import { toPercent } from '../../utils/math';
 
 function AcceptInfoBar(props) {
   return (
@@ -45,7 +46,7 @@ function AcceptInfoBar(props) {
         </li>
         <li className="accept-info-bar-info-item">
           <div className="accept-info-bar-info-item-value">
-            {get(props,'data.share') * 100}%
+            {toPercent(get(props,'data.share'))}
           </div>
           <div className="accept-info-bar-info-item-name">
             转让份额

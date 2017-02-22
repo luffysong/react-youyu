@@ -1,5 +1,5 @@
 function money_conv(num) {
-  return parseInt((Number(num)).toFixed(4).toString().split('.').join(''));
+  return parseInt((Number(num)).toFixed(4).toString().split('.').join(''), 10);
 }
 
 //金额计算 加
@@ -24,7 +24,7 @@ export function money_div(a, b) {
 
 // 返回百分比
 export function toPercent(origin) {
-  if(!origin && origin != 0) {
+  if(!origin && origin !== 0) {
     return '-';
   }
   const val = money_mul(origin, 100);

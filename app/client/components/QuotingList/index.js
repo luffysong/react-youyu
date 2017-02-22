@@ -15,6 +15,7 @@ import ReactTooltip from 'react-tooltip';
 import './style.less';
 import Button from '../Button';
 import { numComma } from '../../utils/utils';
+import { toPercent } from '../../utils/math';
 import CountDown from '../CountDown';
 import Empty from '../Empty';
 
@@ -73,7 +74,7 @@ function QuotingList(props) {
               <div className="quoting-list-item-column-name">转让方</div>
             </div>
             <div className="quoting-list-item-column">
-              <div className="quoting-list-item-column-value">{get(item, 'share') ? get(item, 'share') * 100 : 0}%</div>
+              <div className="quoting-list-item-column-value">{get(item, 'share') ? toPercent(get(item, 'share')) : '0%'}</div>
               <div className="quoting-list-item-column-name">转让份额</div>
             </div>
             <div className="quoting-list-item-column">
