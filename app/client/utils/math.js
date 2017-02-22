@@ -24,6 +24,9 @@ export function money_div(a, b) {
 
 // 返回百分比
 export function toPercent(origin) {
+  if(!origin && origin != 0) {
+    return '-';
+  }
   const val = money_mul(origin, 100);
   return `${val}%`
 }
