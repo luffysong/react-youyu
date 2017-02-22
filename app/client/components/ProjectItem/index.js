@@ -128,7 +128,7 @@ class ProjectItem extends PureComponent {
         { this.renderList(data.listing, type) }
         {
           data.listing && data.listing.length && data.listing.length > 3
-          ? <span className={`more-link more-link-${type}`}>还有{data.listing.length - 3}个转让...</span>
+          ? <span className={`more-link more-link-${type}`}>还有{data.listing.length - 3}个转让{type === 'list' ? ' >' : '...'}</span>
           : null
         }
       </div>
