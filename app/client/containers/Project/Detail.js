@@ -8,7 +8,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { get } from 'lodash';
+import { get, fill } from 'lodash';
 
 /**
  * Internal dependencies
@@ -22,7 +22,7 @@ export class Detail extends PureComponent {
     if (projectLoading) {
       return <div className="project-container-detail-tab">
         {
-          Array(3).fill().map((_, index) => {
+          fill(Array(3), 0).map((_, index) => {
             return <div className="placeholder loading" key={`placeholder-${index}`}>
             </div>
           })

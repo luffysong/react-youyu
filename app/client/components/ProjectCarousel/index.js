@@ -7,7 +7,7 @@
  * External dependencies
  */
 import React, { PureComponent } from 'react';
-import { take } from 'lodash';
+import { take, fill } from 'lodash';
 
 /**
  * Internal dependencies
@@ -22,7 +22,7 @@ class ProjectCarousel extends PureComponent {
     const classList = ['carousel-item-first', 'carousel-item', 'carousel-item-last'];
 
     if (loading) {
-      return Array(3).fill().map((_, index) => {
+      return fill(Array(3), 0).map((_, index) => {
         return <ProjectItem className={`${classList[index]} 'loading'`} key={`project-item-${index}`} loading={true}></ProjectItem>;
       });
     }
