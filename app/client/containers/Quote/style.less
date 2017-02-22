@@ -15,10 +15,10 @@
 }
 
 .quote-day-tooltip {
-  background-color: #f2f3f5 !important;
+  background-color: #f3f3f5 !important;
   color: #92979e !important;
   font-size: 12px !important;
-  padding: 5px 15px !important;
+  padding: 4px 31px !important;
 
   &::after {
     border-right-color: #f2f3f5 !important;
@@ -137,8 +137,9 @@
       }
 
       .err-msg {
-        color: #ff4949;
+        color: #fc351b;
         margin-left: 20px;
+        font-size: 14px;
       }
 
       label {
@@ -165,9 +166,20 @@
         color: #484b53;
         padding-left: 12px;
         margin-right: 18px;
+        outline: none;
 
         &.specify-input {
           width: 230px;
+        }
+
+        &.error {
+          border: 1px solid #fc351b;
+          color: #fc351b;
+
+          &:active,
+          &:focus {
+            border-color: #fc351b;
+          }
         }
 
         &:active,

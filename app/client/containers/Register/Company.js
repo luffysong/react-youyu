@@ -75,9 +75,10 @@ export class Company extends PureComponent {
     this.uploadParams.error = this.uploadParams.error.bind(this);
 
     this.nameField = ({ input, label, type, meta: { touched, error, warning } }) => {
+      console.log(error);
       return (
         <div>
-          <input {...input} className="price-input" placeholder={label}
+          <input {...input} className={`price-input ${touched && error ? 'error' : ''}`} placeholder={label}
                  type={type} name="name" />
           {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
           <span>{warning}</span>))}
@@ -88,7 +89,7 @@ export class Company extends PureComponent {
     this.codeField = ({ input, label, type, meta: { touched, error, warning } }) => {
       return (
         <div>
-          <input {...input} className="price-input" placeholder={label}
+          <input {...input} className={`price-input ${touched && error ? 'error' : ''}`} placeholder={label}
                  type={type} name="orgCode" />
           {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
           <span>{warning}</span>))}
@@ -154,7 +155,7 @@ export class Company extends PureComponent {
                 企业全称
               </div>
               <div className="col-value">
-                <Field className="price-input" name="name" type="text" component={this.nameField}/>
+                <Field name="name" type="text" component={this.nameField}/>
               </div>
             </div>
             <div className="list-col">

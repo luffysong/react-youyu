@@ -107,6 +107,27 @@
   margin: auto;
   padding: 63px 0 60px;
 
+  input {
+    outline: none;
+
+    &[class~=error] {
+      border: 1px solid #fc351b;
+      color: #fc351b;
+
+      &:active,
+      &:focus {
+        border: 1px solid #fc351b !important;
+      }
+    }
+
+    &.price-input {
+      &:active,
+      &:focus {
+        border: 1px solid #484b53;
+      }
+    }
+  }
+
   .register-title {
     font-size: 20px;
     color: #2d2f33;

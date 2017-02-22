@@ -97,7 +97,7 @@ class QuoteStepOne extends PureComponent {
             转让价格 :
           </div>
           <div className="col-value">
-            <input type="text" className="price-input" onChange={this.setPrice.bind(this)} ref='exchangePrice'  />
+            <input type="text" className={`price-input ${this.state.priceErr ? 'error' : ''}`} onChange={this.setPrice.bind(this)} ref='exchangePrice'  />
             元
             {
               this.state.priceErr ? <span className="err-msg">{this.state.priceErr}</span> : null
