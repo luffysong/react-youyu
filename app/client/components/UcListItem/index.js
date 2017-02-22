@@ -16,6 +16,7 @@ import './style.less';
 import Button from '../Button';
 import { numComma } from '../../utils/utils';
 import { movie_order_status, trade_status } from '../../utils/dict.json';
+import { toPercent } from '../../utils/math';
 
 class UcListItem extends PureComponent {
   renderTop(data) {
@@ -198,7 +199,7 @@ class UcListItem extends PureComponent {
           },
           {
             name: '份额',
-            value: get(data, 'share') * 100 + '%',
+            value: toPercent(get(data, 'share')),
           },
           {
             name: '转让价格',
@@ -248,7 +249,7 @@ class UcListItem extends PureComponent {
           },
           {
             name: '转让份额',
-            value: get(data, 'listing_quota') * 100 + '%',
+            value: toPercent(get(data, 'listing_quota')),
           },
           {
             name: '转让价格',
@@ -262,23 +263,23 @@ class UcListItem extends PureComponent {
             value: get(data, 'register_time'),
           }, {
             name: '冻结份额',
-            value: get(data, 'blocked_quota') * 100 + '%',
+            value: toPercent(get(data, 'blocked_quota')),
           }, {
             name: '转让中',
-            value: get(data, 'listing_quota') * 100 + '%',
+            value: toPercent(get(data, 'listing_quota')),
             highlight: 1,
           }, {
             name: '审核中',
-            value: get(data, 'audited_quota') * 100 + '%',
+            value: toPercent(get(data, 'audited_quota')),
             highlight: 1,
           });
 
           middleData.splice(2, 2, {
             name: '原始份额',
-            value: get(data, 'initial_quota') * 100 + '%',
+            value: toPercent(get(data, 'initial_quota')),
           }, {
             name: '持有份额',
-            value: get(data, 'current_quota') * 100 + '%',
+            value: toPercent(get(data, 'current_quota')),
           });
 
           extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
@@ -328,7 +329,7 @@ class UcListItem extends PureComponent {
           },
           {
             name: '转让份额',
-            value: get(data, 'listing_quota') * 100 + '%',
+            value: toPercent(get(data, 'listing_quota')),
           },
           {
             name: '转让价格',
@@ -342,17 +343,17 @@ class UcListItem extends PureComponent {
             value: get(data, 'gain_time'),
           }, {
             name: '转让中',
-            value: get(data, 'listing_quota') * 100 + '%',
+            value: toPercent(get(data, 'listing_quota')),
             highlight: 1,
           }, {
             name: '审核中',
-            value: get(data, 'audited_quota') * 100 + '%',
+            value: toPercent(get(data, 'audited_quota')),
             highlight: 1,
           });
 
           middleData.splice(2, 2, {
             name: '持有份额',
-            value: get(data, 'current_quota') * 100 + '%',
+            value: toPercent(get(data, 'current_quota')),
           });
 
           extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>

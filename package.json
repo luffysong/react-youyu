@@ -154,7 +154,7 @@
   },
   "betterScripts": {
     "start:client:test01": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -164,7 +164,7 @@
       }
     },
     "start:client:test02": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -174,7 +174,7 @@
       }
     },
     "start:client:test03": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -184,7 +184,7 @@
       }
     },
     "start:client:test04": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -194,7 +194,7 @@
       }
     },
     "start:client:test05": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -204,7 +204,7 @@
       }
     },
     "start:client:test06": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -214,7 +214,7 @@
       }
     },
     "start:client:test07": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -224,7 +224,7 @@
       }
     },
     "start:client:test08": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -234,7 +234,7 @@
       }
     },
     "start:client:test09": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -244,7 +244,7 @@
       }
     },
     "start:client:test10": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -254,7 +254,7 @@
       }
     },
     "start:client:test11": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
@@ -264,7 +264,7 @@
       }
     },
     "start:client:test12": {
-      "command": "gulp dict && node internals/scripts/start-client.js",
+      "command": "node internals/scripts/start-client.js",
       "env": {
         "DEBUG": "youyu:*",
         "NODE_ENV": "development",
