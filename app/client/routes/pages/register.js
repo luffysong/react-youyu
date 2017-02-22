@@ -41,7 +41,7 @@ export default function registerRoute(loadModule, injectReducer) {
       onEnter: requireAuth({
         extra(nextState, replace, callback) {
           const jump = function () {
-            if(!get(infoCache, 'userInfo.info.member_type') && get(infoCache, 'userInfo.info.operation_steps.member_status') === 1) {
+            if(!get(infoCache, 'userInfo.info.member_type') && get(infoCache, 'userInfo.info.operation_steps.member_status') === 1 && get(infoCache, 'userInfo.info.operation_steps.identity_type') === 1) {
               replace('/register/personalresult')
             }
             callback();
@@ -71,7 +71,7 @@ export default function registerRoute(loadModule, injectReducer) {
       onEnter: requireAuth({
         extra(nextState, replace, callback) {
           const jump = function () {
-            if(!get(infoCache, 'userInfo.info.member_type') && get(infoCache, 'userInfo.info.operation_steps.member_status') === 1) {
+            if(!get(infoCache, 'userInfo.info.member_type') && get(infoCache, 'userInfo.info.operation_steps.member_status') === 1 && get(infoCache, 'userInfo.info.operation_steps.identity_type') === 2) {
               replace('/register/companyresult')
             }
             callback();
