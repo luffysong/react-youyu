@@ -48,7 +48,7 @@ class ProjectItem extends PureComponent {
               </td>
               <td>
                 <span>转让份额：</span>
-                <span className="font-white">{item.share * 100}%</span>
+                <span className="font-white">{toPercent(item.share)}</span>
               </td>
               <td>
                 <span>转让方：</span>
