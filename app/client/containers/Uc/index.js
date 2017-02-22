@@ -9,6 +9,7 @@ import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { get } from 'lodash';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -23,10 +24,9 @@ export class Uc extends PureComponent {
   renderUser(userInfo) {
     const avatar = get(userInfo, 'info.base.avatar');
     return <div className="uc-container-userinfo">
-      <div className="uc-container-userinfo-avatar"
-        style={{backgroundImage: `url(${avatar ? avatar : require('../../components/UserInfo/imgs/pic_avatar_nav@2x.png')})`}}>
-      </div>
-      <div className="uc-container-userinfo-name">{get(userInfo, 'info.base.name')}</div>
+      <Link to="/uc" className="uc-container-userinfo-avatar"
+        style={{backgroundImage: `url(${avatar ? avatar : require('../../components/UserInfo/imgs/pic_avatar_nav@2x.png')})`}} />
+      <Link to="/uc" className="uc-container-userinfo-name">{get(userInfo, 'info.base.name')}</Link>
     </div>;
   }
 
