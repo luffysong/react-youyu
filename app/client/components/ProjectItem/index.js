@@ -16,6 +16,7 @@ import { get } from 'lodash';
  */
 import './style.less';
 import { numComma } from '../../utils/utils';
+import { toPercent } from '../../utils/math';
 import ProjectInfoBar from '../ProjectInfoBar';
 import CountDown from '../CountDown';
 import { movie_stage } from '../../utils/dict.json';
@@ -98,7 +99,7 @@ class ProjectItem extends PureComponent {
       },
       {
         name: '转让份额',
-        value: get(data, 'project.listing_share') * 100 + '%',
+        value: toPercent(get(data, 'project.listing_share')),
       },
       {
         name: '挂牌标的',

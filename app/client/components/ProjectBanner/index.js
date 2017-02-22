@@ -14,6 +14,7 @@ import { get } from 'lodash';
 import './style.less';
 import ProjectInfoBar from '../ProjectInfoBar';
 import { numComma } from '../../utils/utils';
+import { toPercent } from '../../utils/math';
 import { movie_stage } from '../../utils/dict.json';
 
 function projectBannerLoading() {
@@ -57,7 +58,7 @@ function ProjectBanner(props) {
     },
     {
       name: '合计转让份额',
-      value: get(data, 'basic.listing_share') * 100 + '%',
+      value: toPercent(get(data, 'basic.listing_share')),
     },
     {
       name: '转让总价',
