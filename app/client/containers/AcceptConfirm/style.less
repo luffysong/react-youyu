@@ -29,12 +29,27 @@
         padding: 12px;
         outline: none;
 
+        &:active,
+        &:focus {
+          border: 1px solid #484b53;
+        }
+
         &::-webkit-input-placeholder {
           color: #d4d4d4;
         }
 
         &:-ms-input-placeholder {
           color: #d4d4d4;
+        }
+
+        &[class~=error] {
+          border: 1px solid #fc351b;
+          color: #fc351b;
+
+          &:active,
+          &:focus {
+            border: 1px solid #fc351b !important;
+          }
         }
       }
 

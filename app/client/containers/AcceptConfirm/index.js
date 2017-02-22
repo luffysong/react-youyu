@@ -80,7 +80,7 @@ export class AcceptConfirm extends PureComponent {
                 <span className="left-column-name-top">认购陈述：</span>
               </td>
               <td>
-                <textarea name="confirm-reason" rows="5" placeholder="例如：个人介绍、投资理由、为项目提供的资源等。" ref="investReason" onChange={this.investDesc.bind(this)}>
+                <textarea name="confirm-reason" className={ this.state.reasonRequired ? 'error' : ''} rows="5" placeholder="例如：个人介绍、投资理由、为项目提供的资源等。" ref="investReason" onChange={this.investDesc.bind(this)}>
                 </textarea>
                 <div className="err-msg">
                   {
