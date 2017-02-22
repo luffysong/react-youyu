@@ -2,7 +2,7 @@ import { reducer as formReducer } from 'redux-form';
 import { requireAuth } from '../index';
 import { getUserInfo } from '../../utils/user';
 import infoCache from '../../utils/infoCache';
-import get from 'lodash';
+import { get } from 'lodash';
 
 export default function registerRoute(loadModule, injectReducer) {
   return {
@@ -44,6 +44,7 @@ export default function registerRoute(loadModule, injectReducer) {
             const memberType = get(infoCache, 'userInfo.info.member_type');
             const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
             const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
+            debugger;
             if(!memberType && memberStatus === 1 && identityType === 1) {
               replace('/register/personalresult')
             } else if(!memberType && memberStatus === 1 && identityType === 2) {
