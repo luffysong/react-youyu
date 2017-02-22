@@ -6,7 +6,7 @@
  * External dependencies
  */
 import React from 'react';
-import { get } from 'lodash';
+import { get, fill } from 'lodash';
 import ReactTooltip from 'react-tooltip';
 
 /**
@@ -23,7 +23,7 @@ function QuotingListLoading() {
   return (
     <div className="quoting-list-component">
       {
-        Array(10).fill(0).map((item, index) =>
+        fill(Array(10), 0).map((item, index) =>
           <div className="quoting-list-item loading" key={`quoting-list-item-${index}`}>
             <div className="quoting-list-item-column">
               <div className="quoting-list-item-column-value loading">达芬奇</div>
