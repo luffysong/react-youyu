@@ -62,8 +62,8 @@ export function personRegisterReducer(state = initPersonState, action) {
 const initPersonalFormState = {
   name: '',
   id_card_number: '',
-  idcardimg: '',
-  businesscardimg: '',
+  id_card_pic: '',
+  business_card: '',
   type: 1,
   condition: 10,
 };
