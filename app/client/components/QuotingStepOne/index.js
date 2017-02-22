@@ -10,11 +10,12 @@ import ReactTooltip from 'react-tooltip';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import { browserHistory } from 'react-router';
+import { get } from 'lodash';
 /**
  * Internal dependencies
  */
 import './style.less';
-import { get } from 'lodash';
+import { toPercent, money_mul } from '../../utils/math';
 
 class QuoteStepOne extends PureComponent {
   constructor(props) {
@@ -81,7 +82,7 @@ class QuoteStepOne extends PureComponent {
           </div>
           <div className="col-value" data-tip data-for="quoteInitial">
             <InputRange
-              maxValue={this.props.source.tradable_quote * 100}
+              maxValue={money_mul(this.props.source.tradable_quote, 100)}
               minValue={0.5}
               formatLabel={value => `${value}%`}
               value={this.state.listing_quota}
@@ -109,7 +110,7 @@ class QuoteStepOne extends PureComponent {
             服务费 :
           </div>
           <div className="col-value">
-            转让价格 X {this.props.source.service_rate * 100}%=<span className="finally-price" data-tip data-for="costIntro">{this.state.listing_price ? (this.state.listing_price * this.props.source.service_rate).toFixed(2) : 0}元</span>
+            转让价格 X {toPercent(this.props.source.service_rate)}=<span className="finally-price" data-tip data-for="costIntro">{this.state.listing_price ? (this.state.listing_price * this.props.source.service_rate).toFixed(2) : 0}元</span>
             <ReactTooltip class='quote-day-tooltip' id='costIntro' type='light' place="right" effect="solid">
               <span>服务费将会在转让成功后扣除</span>
             </ReactTooltip>

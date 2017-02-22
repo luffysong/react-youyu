@@ -34,11 +34,11 @@ const validate = values => {
   } else if (!idReg.test(values.id_card_number)) {
     errors.id_card_number = '请输入有效号码'
   }
-  if (!values.idcardimg) {
-    errors.idcardimg = '请上传身份证复印件'
+  if (!values.id_card_pic) {
+    errors.id_card_pic = '请上传身份证复印件'
   }
-  if (!values.businesscardimg) {
-    errors.businesscardimg = '请上传名片复印件'
+  if (!values.business_card) {
+    errors.business_card = '请上传名片复印件'
   }
   return errors
 }
@@ -51,13 +51,11 @@ export class Personal extends PureComponent {
       qualification: '10',
       agree: false,
       // id card
-      idcardimg: '',
       idcardloading: false,
       idcardprogress: '',
       idcardloaded: false,
       idcarderr: '',
       // business card
-      businesscardimg: '',
       businesscardloading: false,
       businesscardprogress: '',
       businesscardloaded: false,
@@ -70,7 +68,7 @@ export class Personal extends PureComponent {
 
     this.uploadIdCardParams = {
       success: (data) => {
-        this.props.dispatch(change('PersonalForm', 'idcardimg', data))
+        this.props.dispatch(change('PersonalForm', 'id_card_pic', data))
         this.setState({
           idcardloading: 0,
           idcardloaded: true,
@@ -97,7 +95,7 @@ export class Personal extends PureComponent {
 
     this.uploadBusinessCardParams = {
       success: (data) => {
-        this.props.dispatch(change('PersonalForm', 'businesscardimg', data))
+        this.props.dispatch(change('PersonalForm', 'business_card', data))
         this.setState({
           businesscardloading: 0,
           businesscardloaded: true,
@@ -121,10 +119,11 @@ export class Personal extends PureComponent {
       }
     };
 
-    this.nameField = ({ input, label, type, meta: { touched, error, warning } }) => {
+    this.nameField = ({ input, label, type, meta: { touched, error, warning} }) => {
+
       return (
         <div>
-          <input {...input} className="price-input" placeholder={label}
+          <input {...input} className={error ? 'errBorder price-input' : 'price-input'} placeholder={label}
                  type={type} name="name"/>
           {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
           <span>{warning}</span>))}
@@ -134,7 +133,7 @@ export class Personal extends PureComponent {
 
     this.idcardnumberField = ({ input, label, type, meta: { touched, error, warning } }) => (
       <div>
-        <input {...input} className="price-input" placeholder={label}
+        <input {...input} className={error ? 'errBorder price-input' : 'price-input'} placeholder={label}
                type={type} name="id_card_number"/>
         {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
         <span>{warning}</span>))}
@@ -142,6 +141,7 @@ export class Personal extends PureComponent {
     );
 
     this.idcardpic = ({input, ...state}) => {
+      console.log(input);
       return (
         <div className={`col-value ${state.idcardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
           {
@@ -305,7 +305,7 @@ export class Personal extends PureComponent {
   }
 
   submit() {
-    this.props.dispatch(touch('PersonalForm', 'name', 'id_card_number', 'idcardimg', 'businesscardimg'))
+    this.props.dispatch(touch('PersonalForm', 'name', 'id_card_number', 'id_card_pic', 'business_card'))
     if(!this.state.agree) {
       this.setState({
         formErr: '请填写表单并阅读协议，同意协议内容才能提交。',
@@ -369,13 +369,13 @@ export class Personal extends PureComponent {
               <div className="col-attr">
                 身份证扫描件
               </div>
-              <Field name="idcardimg" {...this.state} component={this.idcardpic}/>
+              <Field name="id_card_pic" {...this.state} component={this.idcardpic}/>
             </div>
             <div className="list-col">
               <div className="col-attr">
                 个人名片
               </div>
-              <Field name="businesscardimg" {...this.state} component={this.businesscardpic}/>
+              <Field name="business_card" {...this.state} component={this.businesscardpic}/>
             </div>
 
             <div className="list-col">

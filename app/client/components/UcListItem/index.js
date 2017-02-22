@@ -261,18 +261,30 @@ class UcListItem extends PureComponent {
           topData.splice(1, 1, {
             name: '初始登记时间',
             value: get(data, 'register_time'),
-          }, {
-            name: '冻结份额',
-            value: toPercent(get(data, 'blocked_quota')),
-          }, {
-            name: '转让中',
-            value: toPercent(get(data, 'listing_quota')),
-            highlight: 1,
-          }, {
-            name: '审核中',
-            value: toPercent(get(data, 'audited_quota')),
-            highlight: 1,
           });
+
+          if (get(data, 'blocked_quota')) {
+            topData.push({
+              name: '冻结份额',
+              value: toPercent(get(data, 'blocked_quota')),
+            });
+          }
+
+          if (get(data, 'listing_quota')) {
+            topData.push({
+              name: '转让中',
+              value: toPercent(get(data, 'listing_quota')),
+              highlight: 1,
+            });
+          }
+
+          if (get(data, 'audited_quota')) {
+            topData.push({
+              name: '审核中',
+              value: toPercent(get(data, 'audited_quota')),
+              highlight: 1,
+            });
+          }
 
           middleData.splice(2, 2, {
             name: '原始份额',
@@ -341,15 +353,23 @@ class UcListItem extends PureComponent {
           topData.splice(1, 1, {
             name: '获得时间',
             value: get(data, 'gain_time'),
-          }, {
-            name: '转让中',
-            value: toPercent(get(data, 'listing_quota')),
-            highlight: 1,
-          }, {
-            name: '审核中',
-            value: toPercent(get(data, 'audited_quota')),
-            highlight: 1,
           });
+
+          if (get(data, 'listing_quota')) {
+            topData.push({
+              name: '转让中',
+              value: toPercent(get(data, 'listing_quota')),
+              highlight: 1,
+            });
+          }
+
+          if (get(data, 'audited_quota')) {
+            topData.push({
+              name: '审核中',
+              value: toPercent(get(data, 'audited_quota')),
+              highlight: 1,
+            });
+          }
 
           middleData.splice(2, 2, {
             name: '持有份额',
