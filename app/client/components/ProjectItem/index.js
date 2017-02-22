@@ -119,7 +119,7 @@ class ProjectItem extends PureComponent {
       <div className="info">
         <div className="info-title">
           <span>{get(data, 'project.name')}</span>
-          <div className="info-title-tag">
+          <div className={`info-title-tag info-title-tag-${type}`}>
             <i className={`icon icon-stage-${this.getStage(get(data, 'project.stage'))}`}></i>
             <span className="icon-tag">{get(data, 'project.stage')}</span>
           </div>
