@@ -48,7 +48,7 @@ export class Uc extends PureComponent {
       },
     ];
 
-    if (get(userInfo, 'info.member_type')) {
+    if (get(userInfo, 'info.member_type') === 2) {
       sideMenuLinks.splice(1, 0, {
         link: '/uc/initialMgmt',
         text: '初始份额管理',
