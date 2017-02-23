@@ -25,11 +25,12 @@ export class Initial extends PureComponent {
     this.props.initialInfo(this.props.params.id);
   }
 
-  submit(params) {
-    this.props.initialQuote(params, function () {
+  submit(params, suc, err) {
+    this.props.initialQuote(params, () => {
       this.submitData = {};
       this.props.router.push(`/quote/initial/${this.props.params.id}/3`);
-    }.bind(this));
+      suc();
+    }, () => err());
   }
 
   render() {
@@ -69,7 +70,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    initialQuote: (params, callback) => dispatch(actions.initialQuote(params, callback)),
+    initialQuote: (params, callback, err) => dispatch(actions.initialQuote(params, callback, err)),
     initialInfo: (params) => dispatch(actions.initialInfo(params)),
   };
 }

@@ -13,7 +13,7 @@ import * as types from './constants';
 import { get, post} from '../../utils/request';
 
 /*初始份额转让申请*/
-export function initialQuote(params, callback) {
+export function initialQuote(params, callback, err) {
   return (dispatch) => {
     dispatch({
       type: types.INITIAL_QUOTE,
@@ -21,7 +21,7 @@ export function initialQuote(params, callback) {
     return post('/movie/initial-quote/listing-apply', params).then((data) => {
       dispatch(initialQuoteSuc(data));
       callback();
-    });
+    }, () => err());
   };
 }
 

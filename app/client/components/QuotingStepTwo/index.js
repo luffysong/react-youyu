@@ -68,6 +68,9 @@ class QuoteStepTwo extends PureComponent {
         return;
       }
     }
+    this.setState({
+      submiting: true
+    });
     const {is_privacy, transferee_cert_type, transferee_lock_period} = this.state;
     this.props.data.is_privacy = is_privacy;
     if (this.state.specify === '1') {
@@ -78,7 +81,11 @@ class QuoteStepTwo extends PureComponent {
     if (this.state.dateBanned === '1') {
       this.props.data.transferee_lock_period = moment(transferee_lock_period).format('YYYY-MM-DD');
     }
-    this.props.submit(this.props.data);
+    this.props.submit(this.props.data, () => this.setState({
+      submiting: false
+    }), () => this.setState({
+      submiting: false
+    }));
   }
 
   typeTransfer(target, event) {
@@ -330,7 +337,7 @@ class QuoteStepTwo extends PureComponent {
             </div> : null
         }
 
-        <div className="next-btn" onClick={this.submit.bind(this)}>提交</div>
+        <div className={`next-btn ${this.state.submiting ? 'disabled' : ''}`} onClick={this.submit.bind(this)}>提交</div>
       </div>
     );
   }
