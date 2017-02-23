@@ -54,7 +54,7 @@ class UploadButton extends PureComponent {
         'x-gmkerl-type': 'fix_width',
         'x-gmkerl-unsharp': true,
         'allow-file-type': 'jpg,jpeg,png,gif',
-        'content-length-range': '5120, 5120000',
+        'content-length-range': '5120, 25600000',
         'image-width-range': '20, 1024'
       },
     };

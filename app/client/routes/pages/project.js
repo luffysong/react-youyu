@@ -18,7 +18,6 @@ export default function projectRoute(loadModule, injectReducer) {
     childRoutes: [{
       path: 'quoting',
       name: 'projectQuoting',
-      ignoreScrollBehavior: true,
       getComponent(nextState, cb) {
         require.ensure([], (require) => {
           loadModule(cb, require('../../containers/Project/Quoting'));

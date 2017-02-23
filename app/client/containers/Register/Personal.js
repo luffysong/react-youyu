@@ -89,7 +89,7 @@ export class Personal extends PureComponent {
         message.error(msg);
       },
       params: {
-        'image-width-range': '0, 3000'
+        'image-width-range': '0, 5000'
       }
     };
 
@@ -115,35 +115,41 @@ export class Personal extends PureComponent {
         message.error(msg);
       },
       params: {
-        'image-width-range': '0, 3000'
+        'image-width-range': '0, 5000'
       }
     };
 
     this.nameField = ({ input, label, type, meta: { touched, error, warning} }) => {
-
       return (
         <div>
-          <input {...input} className={error ? 'errBorder price-input' : 'price-input'} placeholder={label}
+          <input {...input} className={touched && error ? 'error price-input' : 'price-input'} placeholder={label}
                  type={type} name="name"/>
-          {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
-          <span>{warning}</span>))}
+          {
+            touched &&
+            (
+              (error && <span className="errmsg">{error}</span>) ||
+              (warning && <span>{warning}</span>) ||
+              (<span><img src={require('./imgs/icon_correct.svg')} alt=""/></span>)
+            )
+          }
         </div>
       );
     }
 
     this.idcardnumberField = ({ input, label, type, meta: { touched, error, warning } }) => (
       <div>
-        <input {...input} className={error ? 'errBorder price-input' : 'price-input'} placeholder={label}
+        <input {...input} className={touched && error ? 'error price-input' : 'price-input'} placeholder={label}
                type={type} name="id_card_number"/>
-        {touched && ((error && <span className="errmsg">{error}</span>) || (warning &&
-        <span>{warning}</span>))}
+        {touched && ((error && <span className="errmsg">{error}</span>) ||
+        (warning &&<span>{warning}</span>) ||
+        (<span><img src={require('./imgs/icon_correct.svg')} alt=""/></span>))}
       </div>
     );
 
     this.idcardpic = ({input, ...state}) => {
       console.log(input);
       return (
-        <div className={`col-value ${state.idcardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
+        <div className={`col-value verticaltop ${state.idcardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
           {
             state.idcardloading || state.idcardloaded ?
               <div className="uploaded-pic"
@@ -161,15 +167,19 @@ export class Personal extends PureComponent {
                 input.value ? '重新上传' : '点击上传'
               }
             </UploadBtn>
-            { state.meta.touched && (state.meta.error && <span className="errmsg">{state.meta.error}</span>)}
+            {
+              state.meta.touched &&
+              (state.meta.error && <span className="errmsg">{state.meta.error}</span>)
+            }
           </div>
+          <p className="upload-desc">文件格式：jpg,jpeg,png,gif，小于5MB</p>
 
         </div>
       )
     };
 
     this.businesscardpic = ({input, ...state}) => (
-      <div className={`col-value ${state.businesscardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
+      <div className={`col-value verticaltop ${state.businesscardloading ? 'uploading' : ''} ${input.value ? 'uploaded' : ''}`}>
         {
           state.businesscardloading || state.businesscardloaded ?
             <div className="uploaded-pic"
@@ -189,7 +199,7 @@ export class Personal extends PureComponent {
           </UploadBtn>
           { state.meta.touched && (state.meta.error && <span className="errmsg">{state.meta.error}</span>)}
         </div>
-
+        <p className="upload-desc">文件格式：jpg,jpeg,png,gif，小于5MB</p>
       </div>
     );
 
@@ -318,7 +328,7 @@ export class Personal extends PureComponent {
       })
       return;
     }
-    console.log(this.props.personform);
+
     if(this.props.personform.syncErrors) {
       this.setState({
         formErr: '表单填写不完整，请检查'

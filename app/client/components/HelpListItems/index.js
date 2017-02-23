@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
-import { get } from 'lodash';
+import { get, fill } from 'lodash';
 
 /**
  * Internal dependencies
@@ -20,7 +20,7 @@ function HelpListItems(props) {
   if (loading) {
     return <ul className="help-list-items-component">
       {
-        Array(10).fill().map((_, index) => {
+        fill(Array(10), 0).map((_, index) => {
           return <li className="help-list-items-component-item loading" key={`help-list-items-item-${index}`}></li>;
         })
       }

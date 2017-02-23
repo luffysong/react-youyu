@@ -43,14 +43,17 @@ export class Uc extends PureComponent {
         text: '订单管理',
       },
       {
-        link: '/uc/initialMgmt',
-        text: '初始份额管理',
-      },
-      {
         link: '/uc/rightsMgmt',
         text: '影视收益权管理',
       },
     ];
+
+    if (get(userInfo, 'info.member_type')) {
+      sideMenuLinks.splice(1, 0, {
+        link: '/uc/initialMgmt',
+        text: '初始份额管理',
+      });
+    }
 
     return (
       <div className="uc-container">

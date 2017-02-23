@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
-import { get } from 'lodash';
+import { get, fill } from 'lodash';
 
 /**
  * Internal dependencies
@@ -36,7 +36,7 @@ function LeftSideMenu(props) {
   if (loading) {
     return <ul className="left-side-menu-component">
         {
-          Array(5).fill().map((_, index) => {
+          fill(Array(5), 0).map((_, index) => {
             return <li className="left-side-menu-component-item loading" key={`left-side-menu-component-item-${index}`}></li>;
           })
         }

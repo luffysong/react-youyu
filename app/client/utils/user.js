@@ -44,7 +44,7 @@ export function goToLogout() {
   location.href = `${config.apiBase}/passport/logout?return_to=${backUrl}`;
 }
 
-let userInfoCacheTime = (new Date()) - 0 + 100000;
+let userInfoCacheTime = (new Date()) - 0 + 10000;
 let userInfoCallbackArr = [];
 let userInfoLoading = false;
 export function getUserInfo(sucCallback, errCallback) {
@@ -53,7 +53,9 @@ export function getUserInfo(sucCallback, errCallback) {
   if(userInfoLoading) {
     return;
   }
+  console.log(now - userInfoCacheTime, 'time');
   if(now - userInfoCacheTime > 5000 || !infoCache.userInfo) {
+    userInfoCacheTime = now;
     userInfoLoading = true;
     get(`/user/${getUID()}`).then(data => {
       infoCache.userInfo = data;
@@ -66,6 +68,8 @@ export function getUserInfo(sucCallback, errCallback) {
       userInfoLoading = false
     });
   } else {
-    sucCallback(infoCache.userInfo);
+    userInfoCallbackArr.forEach((el) => {
+      el(infoCache.userInfo);
+    })
   }
 }

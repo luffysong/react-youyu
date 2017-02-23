@@ -8,7 +8,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { get } from 'lodash';
+import { get, fill } from 'lodash';
 
 /**
  * Internal dependencies
@@ -44,7 +44,7 @@ export class ProjectList extends PureComponent {
 
   renderProjects(loading, data) {
     if (loading || loading === undefined) {
-      return Array(3).fill().map((_, index) => {
+      return fill(Array(3), 0).map((_, index) => {
         return <ProjectItem key={`project-item-${index}`} loading={true}></ProjectItem>;
       });
     }
