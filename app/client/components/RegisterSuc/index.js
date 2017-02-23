@@ -44,7 +44,7 @@ class RegisterSuc extends PureComponent {
           </section>
         </div>
 
-        <Link to='/help' activeClassName="active" className="next-btn">了解下平台交易细则</Link>
+        <Link to='/class' activeClassName="active" className="next-btn">了解下平台交易细则</Link>
       </div>
     );
   }

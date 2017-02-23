@@ -8,9 +8,13 @@
 import React, {PureComponent} from 'react';
 import ReactTooltip from 'react-tooltip';
 import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker from 'react-datepicker';
+//import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import { browserHistory } from 'react-router';
+import Calendar from 'rc-calendar';
+import zhCN from 'rc-calendar/lib/locale/zh_CN';
+import 'rc-calendar/assets/index.css';
+import DatePicker from 'rc-calendar/lib/Picker';
 
 /**
  * Internal dependencies
@@ -27,7 +31,7 @@ class QuoteStepTwo extends PureComponent {
       dateBanned: '0',
       transferee_cert_type: '1',
       price: 0,
-      transferee_lock_period: moment(),
+      transferee_lock_period: moment().locale('zh-cn').utcOffset(8),
     };
   }
 
@@ -109,7 +113,7 @@ class QuoteStepTwo extends PureComponent {
 
   selectDate(date) {
     this.setState({
-      transferee_lock_period: date
+      transferee_lock_period: moment(date)
     });
   }
 
@@ -133,6 +137,13 @@ class QuoteStepTwo extends PureComponent {
   }
 
   render() {
+    const calendar = (<Calendar
+                    locale={zhCN}
+                    dateInputPlaceholder='请选择日期'
+                    formatter='YYYY-MM-DD'
+                    selected={this.state.transferee_lock_period}
+                    showDateInput={true}
+                    onChange={this.selectDate.bind(this)} />);
     return (
       <div>
         <div className="list-col quote-days">
@@ -271,9 +282,32 @@ class QuoteStepTwo extends PureComponent {
                 </div>
                 <div className="col-value date-picker">
                   <DatePicker
+          animation="slide-up"
+           calendar={calendar}
+          value={this.state.transferee_lock_period}
+          onChange={this.selectDate.bind(this)}
+        >
+          {
+            ({ value }) => {
+              return (
+                <span tabIndex="0">
+                <input
+                  placeholder="please select"
+                  readOnly
+                  tabIndex="-1"
+                  className="ant-calendar-picker-input ant-input"
+                  value={value.format('YYYY-MM-DD')}
+                />
+                </span>
+              );
+            }
+          }
+          </DatePicker>
+      
+                  {/*<Calendar
                     dateFormat="YYYY-MM-DD"
                     selected={this.state.transferee_lock_period}
-                    onChange={this.selectDate.bind(this)} />
+                    onChange={this.selectDate.bind(this)} />*/}
                   {/*<DateField
                     dateFormat="YYYY-MM-DD"
                     onChange={this.selectDate.bind(this)}

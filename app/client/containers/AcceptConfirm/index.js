@@ -68,8 +68,8 @@ export class AcceptConfirm extends PureComponent {
               <td>{get(this.props.userInfoData, 'info.real_info.certificate_name')}</td>
             </tr>
             <tr>
-              <td className="left-column">受让方ID：</td>
-              <td>{get(this.props.userInfoData, 'info.id')}</td>
+              <td className="left-column">受让方证件号：</td>
+              <td>{get(this.props.userInfoData, 'info.real_info.certificate_number')}</td>
             </tr>
             <tr>
               <td className="left-column">意向保证金：</td>

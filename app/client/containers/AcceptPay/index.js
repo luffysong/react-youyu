@@ -8,6 +8,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -61,6 +62,11 @@ export class AcceptPay extends PureComponent {
                 <tr>
                   <td className="column-name">在备注里注明</td>
                   <td className="column-value">{get(this.props.tradeInfoData, 'remittance_info.remark')}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <Link to={`/uc/orderMgmt/open`} activeClassName="active" className="order-btn">查看订单</Link>
+                  </td>
                 </tr>
               </tbody>
             </table>

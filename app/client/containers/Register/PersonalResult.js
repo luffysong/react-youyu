@@ -17,7 +17,7 @@ export default function () {
       <p className="desc center">
         我们会在3个工作日内联系您
       </p>
-      <Link to="/help"
+      <Link to="/class"
             className="next-btn center">了解下平台交易规则</Link>
     </div>
   )
