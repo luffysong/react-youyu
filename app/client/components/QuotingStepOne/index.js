@@ -27,7 +27,7 @@ class QuoteStepOne extends PureComponent {
   }
 
   setPrice(event) {
-    if (/^\d*$/.test(event.target.value)) {
+    if (/^\d*$/.test(event.target.value) && event.target.value > 0) {
       this.setState({
         listing_price: event.target.value,
         priceErr: ''
@@ -35,7 +35,7 @@ class QuoteStepOne extends PureComponent {
     } else {
       this.setState({
         listing_price: 0,
-        priceErr: '转让价格只能为纯数字'
+        priceErr: '转让价格只能为大于0的纯数字'
       });
     }
   }

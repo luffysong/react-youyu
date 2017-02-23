@@ -117,6 +117,18 @@ class QuoteStepTwo extends PureComponent {
     });
   }
 
+  disabledDate(current) {
+     if (!current) {
+    // allow empty select
+    return false;
+  }
+  const date = moment();
+  date.hour(0);
+  date.minute(0);
+  date.second(0);
+  return current < date;  // can not select days before today
+  }
+
   setDays(event) {
     if (event.target.value < 2 || event.target.value > 60) {
       this.setState({
@@ -143,6 +155,7 @@ class QuoteStepTwo extends PureComponent {
                     formatter='YYYY-MM-DD'
                     selected={this.state.transferee_lock_period}
                     showDateInput={true}
+                    disabledDate={this.disabledDate}
                     onChange={this.selectDate.bind(this)} />);
     return (
       <div>
@@ -285,7 +298,6 @@ class QuoteStepTwo extends PureComponent {
           animation="slide-up"
            calendar={calendar}
           value={this.state.transferee_lock_period}
-          onChange={this.selectDate.bind(this)}
         >
           {
             ({ value }) => {
