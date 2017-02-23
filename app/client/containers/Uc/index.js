@@ -26,7 +26,9 @@ export class Uc extends PureComponent {
     return <div className="uc-container-userinfo">
       <Link to="/uc" className="uc-container-userinfo-avatar"
         style={{backgroundImage: `url(${avatar ? avatar : require('../../components/UserInfo/imgs/pic_avatar_nav@2x.png')})`}} />
-      <Link to="/uc" className="uc-container-userinfo-name">{get(userInfo, 'info.base.name')}</Link>
+      <Link to="/uc" className="uc-container-userinfo-name">
+        {get(userInfo, 'info.base.name') || get(userInfo, 'info.base.nick_name')}
+      </Link>
     </div>;
   }
 
