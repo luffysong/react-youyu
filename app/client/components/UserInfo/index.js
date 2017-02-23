@@ -37,7 +37,7 @@ class UserInfo extends PureComponent {
         </Link>
         <ul className="user-info-menu">
           <li>
-            <Link activeClassName="active" to="/uc/rightsMgmt/listing">交易中</Link>
+            <Link activeClassName="active" to="/uc/orderMgmt/open">交易中</Link>
           </li>
           <li>
             <Link activeClassName="active" to="/uc/rightsMgmt/holding">持有中</Link>
