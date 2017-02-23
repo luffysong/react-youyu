@@ -52,13 +52,9 @@ export default function registerRoute(loadModule, injectReducer) {
             }
             callback();
           }
-          if (!infoCache.userInfo) {
-            getUserInfo(() => {
-              jump();
-            });
-          } else {
+          getUserInfo(() => {
             jump();
-          }
+          });
         }
       }),
       getComponent(nextState, cb) {
@@ -87,13 +83,9 @@ export default function registerRoute(loadModule, injectReducer) {
             }
             callback();
           }
-          if (!infoCache.userInfo) {
-            getUserInfo(() => {
-              jump();
-            });
-          } else {
+          getUserInfo(() => {
             jump();
-          }
+          });
         }
       }),
       getComponent(nextState, cb) {
