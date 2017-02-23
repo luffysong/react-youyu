@@ -46,9 +46,11 @@ export default function registerRoute(loadModule, injectReducer) {
             const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
 
             if(!memberType && memberStatus === 1 && identityType === 1) {
-              replace('/register/personalresult')
+              replace('/register/personalresult');
             } else if(!memberType && memberStatus === 1 && identityType === 2) {
-              replace('/register/companyresult')
+              replace('/register/companyresult');
+            } else if (memberType) {
+              replace('/projects');
             }
             callback();
           }
@@ -77,9 +79,11 @@ export default function registerRoute(loadModule, injectReducer) {
             const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
             const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
             if(!memberType && memberStatus === 1 && identityType === 1) {
-              replace('/register/personalresult')
+              replace('/register/personalresult');
             } else if(!memberType && memberStatus === 1 && identityType === 2) {
-              replace('/register/companyresult')
+              replace('/register/companyresult');
+            } else if (memberType) {
+              replace('/projects');
             }
             callback();
           }
