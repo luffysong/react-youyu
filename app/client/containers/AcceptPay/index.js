@@ -63,13 +63,9 @@ export class AcceptPay extends PureComponent {
                   <td className="column-name">在备注里注明</td>
                   <td className="column-value">{get(this.props.tradeInfoData, 'remittance_info.remark')}</td>
                 </tr>
-                <tr>
-                  <td>
-                    <Link to={`/uc/orderMgmt/open`} activeClassName="active" className="order-btn">查看订单</Link>
-                  </td>
-                </tr>
               </tbody>
             </table>
+            <Link to={`/uc/orderMgmt/open`} activeClassName="active" className="order-btn">查看订单</Link>
             <img src={require('./imgs/pic_line_payment.svg')} alt="border" className="accept-pay-part-border"/>
           </div>
         </div>
