@@ -34,7 +34,7 @@ function NewsItem(props) {
     <Link to={`/news/detail/${get(data, 'id')}`} className="news-item-component">
       <div className="news-item-title-wrapper">
         <h3 className="news-item-title">{get(data, 'title')}</h3>
-        <span className="news-item-time">{moment(get(data, 'published_at')).format('YYYY年MM月DD日')}</span>
+        <span className="news-item-time">{moment(get(data, 'created_at')).format('YYYY年MM月DD日')}</span>
       </div>
       <div className="news-item-desc">
         {get(data, 'description')}
