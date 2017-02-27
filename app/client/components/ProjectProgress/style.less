@@ -6,7 +6,7 @@
 
 .project-progress-component {
   position: relative;
-  border-left: (1rem / 20) solid @mediumBg;
+  border-left: 1px solid @mediumBg;
 
   .project-progress-list {
     list-style: none;
@@ -15,8 +15,8 @@
 
     &-item {
       position: relative;
-      padding-left: 24rem / 20;
-      margin-bottom: 22rem / 20;
+      padding-left: 24px;
+      margin-bottom: 22px;
 
       &::before {
         position: absolute;
@@ -25,9 +25,9 @@
         transform: translate(-50%, -50%);
         content: ' ';
         display: block;
-        width: 6rem / 20;
-        height: 6rem / 20;
-        border-radius: 1rem / 20;
+        width: 6px;
+        height: 6px;
+        border-radius: 1px;
         background-color: @brandColor;
         z-index: 1;
       }
@@ -38,11 +38,11 @@
           content: ' ';
           display: block;
           position: absolute;
-          width: 1rem / 20;
+          width: 1px;
           height: 50%;
           background-color: @white;
           top: 0;
-          left: -1rem / 20;
+          left: -1px;
           z-index: 0;
         }
       }
@@ -55,13 +55,13 @@
       }
 
       &-time {
-        font-size: 14rem / 20;
+        font-size: 14px;
         color: @fontLightest;
       }
 
       &-title {
-        font-size: 14rem / 20;
-        line-height: 28rem / 20;
+        font-size: 14px;
+        line-height: 28px;
         color: @fontLight;
       }
     }
