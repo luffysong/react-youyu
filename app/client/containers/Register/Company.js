@@ -171,7 +171,7 @@ export class Company extends PureComponent {
               <div className={`col-attr ${this.state.uploading || this.state.uploaded ? 'ver-top' : ''}`}>
                 营业执照
               </div>
-              <div className={`col-value ${this.state.uploading ? 'uploading' : ''} ${get(this.props.formData, 'license_pic') ? 'uploaded' : ''}`}>
+              <div className={`col-value verticaltop ${this.state.uploading ? 'uploading' : ''} ${get(this.props.formData, 'license_pic') ? 'uploaded' : ''}`}>
                 {
                   this.state.uploading || this.state.uploaded ?
                     <div className="uploaded-pic" style={get(this.props.formData, 'license_pic') ? {backgroundImage: `url(${get(this.props.formData, 'license_pic')})`} : {}}>
@@ -188,6 +188,7 @@ export class Company extends PureComponent {
                   </UploadBtn>
                   <span className="errmsg">{this.state.licenseErr}</span>
                 </div>
+                 <p className="upload-desc">文件格式：jpg,jpeg,png,gif，小于5MB</p>
               </div>
             </div>
 
