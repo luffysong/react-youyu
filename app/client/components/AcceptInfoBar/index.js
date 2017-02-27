@@ -12,7 +12,7 @@ import React from 'react';
  */
 import './style.less';
 import { get } from 'lodash';
-import { acceptFormatDate } from '../../utils/utils';
+import { acceptFormatDate, numComma } from '../../utils/utils';
 import { toPercent } from '../../utils/math';
 
 function AcceptInfoBar(props) {
@@ -54,7 +54,7 @@ function AcceptInfoBar(props) {
         </li>
         <li className="accept-info-bar-info-item">
           <div className="accept-info-bar-info-item-value">
-            {get(props,'data.price')}元
+            {numComma(get(props,'data.price'))}元
           </div>
           <div className="accept-info-bar-info-item-name">
             转让价格

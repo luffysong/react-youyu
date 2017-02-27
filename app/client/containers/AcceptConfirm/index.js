@@ -16,6 +16,7 @@ import './style.less';
 import AcceptInfoBar from '../../components/AcceptInfoBar';
 import * as actions from './actions';
 import { get } from 'lodash';
+import { numComma } from '../../utils/utils';
 
 export class AcceptConfirm extends PureComponent {
   constructor(props) {
@@ -73,7 +74,7 @@ export class AcceptConfirm extends PureComponent {
             </tr>
             <tr>
               <td className="left-column">意向保证金：</td>
-              <td><span className="color-orange">{ this.props.orderInfoData.price / 100 }元</span> = {this.props.orderInfoData.price}元 * 1%</td>
+              <td><span className="color-orange">{ numComma(this.props.orderInfoData.price / 100) }元</span> = {numComma(this.props.orderInfoData.price)}元 * 1%</td>
             </tr>
             <tr>
               <td className="left-column">
