@@ -132,4 +132,43 @@
     white-space: pre-wrap;
     background-color: transparent;
   }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid @border;
+
+    thead {
+      th,
+      td {
+        border-bottom-width: 2px;
+      }
+    }
+
+    th,
+    td {
+      padding: 5px;
+      vertical-align: top;
+      border: 1px solid @border;
+    }
+
+    thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid @border;
+    }
+
+    tbody + tbody {
+      border-top: 2px solid @border;
+    }
+
+    tbody tr:hover {
+      background-color: @lightBg;
+    }
+
+    table {
+      background-color: @lightBg;
+    }
+  }
 }
