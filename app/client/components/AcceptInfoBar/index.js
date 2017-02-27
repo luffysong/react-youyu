@@ -24,7 +24,10 @@ function AcceptInfoBar(props) {
       {
         get(props,'data.transferee_deadline') ?
           <div className="accept-info-bar-tip">
-            重要提示：该收益权设置有禁售期，在{acceptFormatDate(get(props,'data.transferee_deadline'))}前不能转让此收益权。
+            <img src={require('./imgs/icon_alert@1x.svg')} alt="icon"/>
+            <span>
+              重要提示：该收益权设置有禁售期，在{acceptFormatDate(get(props,'data.transferee_deadline'))}前不能转让此收益权。
+            </span>
           </div> : null
       }
       <ul className="accept-info-bar-info">
