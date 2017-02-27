@@ -67,6 +67,10 @@ class CountDown extends Component {
   parseTime(remain) {
     const timeObj = this.getTimeRemaining(remain);
 
+    if (remain <= 0) {
+      return '已过期';
+    }
+
     if (timeObj.days > 0) {
       return `${timeObj.days}天`;
     } else {
