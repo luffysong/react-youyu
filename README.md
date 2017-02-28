@@ -1,4 +1,4 @@
-# 有娱 YouYu <。)#)))≦>
+# 有娱 YouYu 
 
 ## 一、环境需求 Requirements
 
