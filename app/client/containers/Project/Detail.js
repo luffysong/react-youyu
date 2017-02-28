@@ -14,6 +14,7 @@ import { get, fill } from 'lodash';
  * Internal dependencies
  */
 import './style.less';
+import Tracker from '../../components/Tracker';
 
 export class Detail extends PureComponent {
   render() {
@@ -65,4 +66,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Detail);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Detail));

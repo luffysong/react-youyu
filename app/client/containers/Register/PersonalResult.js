@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import './style.less';
+import Tracker from '../../components/Tracker';
 
-export default function () {
+function PersonalResult() {
   return (
     <div className="personal-result">
       <div className="ico center">
@@ -22,3 +23,4 @@ export default function () {
     </div>
   )
 }
+export default Tracker(PersonalResult);

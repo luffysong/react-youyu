@@ -12,6 +12,7 @@ import Helmet from 'react-helmet';
 /**
  * Internal dependencies
  */
+import Tracker from '../../components/Tracker';
 
 function Choose() {
   return (
@@ -53,4 +54,4 @@ Choose.propTypes = {
 
 };
 
-export default Choose;
+export default Tracker(Choose);

@@ -19,6 +19,7 @@ import Button from '../../components/Button';
 import * as actions from './actions';
 import { removeInlineStyle } from '../../utils/utils';
 import message from '../../components/Message';
+import Tracker from '../../components/Tracker';
 
 export class HelpDetail extends PureComponent {
   constructor(props) {
@@ -263,4 +264,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HelpDetail);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(HelpDetail));

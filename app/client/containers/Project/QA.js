@@ -14,6 +14,7 @@ import Helmet from 'react-helmet';
  */
 import './style.less';
 import HomeIntro from '../../components/HomeIntro';
+import Tracker from '../../components/Tracker';
 
 export class QA extends PureComponent {
   render() {
@@ -70,4 +71,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QA);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(QA));

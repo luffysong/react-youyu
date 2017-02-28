@@ -21,6 +21,7 @@ import ProjectProgres from '../../components/ProjectProgress';
 import ProjectNav from '../../components/ProjectNav';
 import RouteTransition from '../../components/RouteTransition';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class Project extends PureComponent {
   componentDidMount() {
@@ -126,4 +127,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Project);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Project));

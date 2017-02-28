@@ -14,7 +14,7 @@ import { Link } from 'react-router';
  * Internal dependencies
  */
 import './style.less';
-
+import Tracker from '../../components/Tracker';
 
 export class NotFound extends PureComponent {
   render() {
@@ -44,11 +44,10 @@ NotFound.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
   };
 }
 
-export default connect(null, mapDispatchToProps)(NotFound);
+export default Tracker(connect(null, mapDispatchToProps)(NotFound));

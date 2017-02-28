@@ -17,6 +17,7 @@ import QuoteSuc from '../../components/QuotingSuc';
 import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class Initial extends PureComponent {
   constructor(props) {
@@ -75,4 +76,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Initial);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Initial));

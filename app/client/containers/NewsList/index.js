@@ -18,6 +18,7 @@ import NewsItem from '../../components/NewsItem';
 import Pagination from '../../components/Pagination';
 import Empty from '../../components/Empty';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 const pid = 2;
 
@@ -126,4 +127,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsList);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(NewsList));

@@ -19,6 +19,7 @@ import * as actions from './actions';
 import UploadBtn from  '../../components/UploadButton';
 import message from '../../components/Message';
 import { browserHistory } from 'react-router';
+import Tracker from '../../components/Tracker';
 
 const validate = values => {
   const errors = {}
@@ -271,7 +272,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   form: 'companyForm',
   validate,
-})(Company));
+})(Company)));

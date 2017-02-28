@@ -13,6 +13,7 @@ import Helmet from 'react-helmet';
  * Internal dependencies
  */
 import './style.less';
+import Tracker from '../../components/Tracker';
 
 export class Register extends PureComponent {
   render() {
@@ -42,4 +43,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Register));

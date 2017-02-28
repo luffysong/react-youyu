@@ -18,6 +18,7 @@ import ProjectItem from '../../components/ProjectItem';
 import Pagination from '../../components/Pagination';
 import Empty from '../../components/Empty';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class ProjectList extends PureComponent {
   constructor(props) {
@@ -116,4 +117,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectList);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(ProjectList));

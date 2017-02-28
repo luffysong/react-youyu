@@ -16,6 +16,7 @@ import './style.less';
 import ReasonsBar from './ReasonsBar';
 import SucProjectSlick from '../../components/SucProjectSlick';
 import HomeIntro from '../../components/HomeIntro';
+import Tracker from '../../components/Tracker';
 
 export class Class extends PureComponent {
   render() {
@@ -132,4 +133,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(Class);
+export default Tracker(connect(null, mapDispatchToProps)(Class));

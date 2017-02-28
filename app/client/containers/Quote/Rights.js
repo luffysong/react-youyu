@@ -18,6 +18,7 @@ import QuoteSuc from '../../components/QuotingSuc';
 import QuoteStepTwo from '../../components/QuotingStepTwo';
 import QuoteStepOne from '../../components/QuotingStepOne';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class Rights extends PureComponent {
   constructor(props) {
@@ -72,4 +73,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Rights);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Rights));

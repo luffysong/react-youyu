@@ -20,6 +20,7 @@ import Pagination from '../../components/Pagination';
 import Empty from '../../components/Empty';
 import Modal from '../../components/Modal';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class InitialMgmt extends PureComponent {
   constructor(props) {
@@ -185,4 +186,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InitialMgmt);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(InitialMgmt));

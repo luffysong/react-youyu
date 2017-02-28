@@ -14,6 +14,7 @@ import Helmet from 'react-helmet';
  */
 import './style.less';
 import QuoteProgress from '../../components/QuoteProgress';
+import Tracker from '../../components/Tracker';
 
 export class Quote extends PureComponent {
   render() {
@@ -56,7 +57,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quote);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Quote));
 
 
 

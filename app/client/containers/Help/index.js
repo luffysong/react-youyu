@@ -17,6 +17,7 @@ import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 import RouteTransition from '../../components/RouteTransition';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class Help extends PureComponent {
   componentDidMount() {
@@ -68,4 +69,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Help);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Help));

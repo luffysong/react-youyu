@@ -14,6 +14,7 @@ import Helmet from 'react-helmet';
  */
 import './style.less';
 import StepNav from '../../components/StepNav';
+import Tracker from '../../components/Tracker';
 
 export class Accept extends PureComponent {
   render() {
@@ -73,4 +74,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Accept);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Accept));

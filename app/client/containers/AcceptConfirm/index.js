@@ -17,6 +17,7 @@ import AcceptInfoBar from '../../components/AcceptInfoBar';
 import * as actions from './actions';
 import { get } from 'lodash';
 import { numComma } from '../../utils/utils';
+import Tracker from '../../components/Tracker';
 
 export class AcceptConfirm extends PureComponent {
   constructor(props) {
@@ -147,4 +148,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AcceptConfirm);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(AcceptConfirm));

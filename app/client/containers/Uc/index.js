@@ -19,6 +19,7 @@ import LeftSideBar from '../../components/LeftSideBar';
 import LeftSideMenu from '../../components/LeftSideMenu';
 import RouteTransition from '../../components/RouteTransition';
 import { goToLogout } from '../../utils/user';
+import Tracker from '../../components/Tracker';
 
 export class Uc extends PureComponent {
   renderUser(userInfo) {
@@ -96,4 +97,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Uc);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Uc));

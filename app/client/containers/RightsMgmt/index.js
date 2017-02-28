@@ -20,6 +20,7 @@ import Pagination from '../../components/Pagination';
 import Empty from '../../components/Empty';
 import Modal from '../../components/Modal';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class RightsMgmt extends PureComponent {
   constructor(props) {
@@ -186,4 +187,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RightsMgmt);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(RightsMgmt));

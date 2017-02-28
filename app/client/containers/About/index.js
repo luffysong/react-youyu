@@ -13,6 +13,7 @@ import Helmet from 'react-helmet';
  * Internal dependencies
  */
 import './style.less';
+import Tracker from '../../components/Tracker';
 
 export class About extends PureComponent {
   render() {
@@ -68,4 +69,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(About);
+export default Tracker(connect(null, mapDispatchToProps)(About));

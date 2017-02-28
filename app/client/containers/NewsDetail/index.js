@@ -18,6 +18,7 @@ import { removeInlineStyle } from '../../utils/utils';
 import './style.less';
 // import ShareBar from '../../components/ShareBar';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class NewsDetail extends PureComponent {
   componentDidMount() {
@@ -108,4 +109,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsDetail);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(NewsDetail));

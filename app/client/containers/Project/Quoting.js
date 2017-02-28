@@ -15,6 +15,7 @@ import Helmet from 'react-helmet';
  * Internal dependencies
  */
 import './style.less';
+import Tracker from '../../components/Tracker';
 import QuotingList from '../../components/QuotingList';
 
 export class Quoting extends PureComponent {
@@ -50,4 +51,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quoting);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Quoting));

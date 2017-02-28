@@ -19,6 +19,7 @@ import Pagination from '../../components/Pagination';
 import UcNavTab from '../../components/UcNavTab';
 import Empty from '../../components/Empty';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class OrderMgmt extends PureComponent {
   constructor(props) {
@@ -143,4 +144,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderMgmt);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(OrderMgmt));

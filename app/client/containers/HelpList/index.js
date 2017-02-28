@@ -18,6 +18,7 @@ import HelpListItems from '../../components/HelpListItems';
 import Pagination from '../../components/Pagination';
 import Empty from '../../components/Empty';
 import * as actions from './actions';
+import Tracker from '../../components/Tracker';
 
 export class HelpList extends PureComponent {
   constructor(props) {
@@ -113,4 +114,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HelpList);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(HelpList));

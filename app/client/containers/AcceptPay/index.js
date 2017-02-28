@@ -9,13 +9,14 @@ import React, { PropTypes, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
+import { get } from 'lodash';
 
 /**
  * Internal dependencies
  */
 import './style.less';
 import * as actions from './actions';
-import { get } from 'lodash';
+import Tracker from '../../components/Tracker';
 
 export class AcceptPay extends PureComponent {
   constructor(props) {
@@ -93,4 +94,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AcceptPay);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(AcceptPay));

@@ -17,6 +17,7 @@ import Slick from '../../components/Slick';
 import Announcements from '../../components/Announcements';
 import HomeIntro from '../../components/HomeIntro';
 import ProjectCarousel from '../../components/ProjectCarousel';
+import Tracker from '../../components/Tracker';
 import * as actions from './actions';
 import { get } from 'lodash';
 
@@ -80,4 +81,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(Home));

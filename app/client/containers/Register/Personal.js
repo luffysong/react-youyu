@@ -20,6 +20,7 @@ import './style.less';
 import * as actions from './actions';
 import message from '../../components/Message';
 import UploadBtn from  '../../components/UploadButton';
+import Tracker from '../../components/Tracker';
 
 const validate = values => {
   const errors = {}
@@ -452,7 +453,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
+export default Tracker(connect(mapStateToProps, mapDispatchToProps)(reduxForm({
   form: 'PersonalForm',
   validate,
-})(Personal));
+})(Personal)));
