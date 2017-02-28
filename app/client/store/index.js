@@ -3,7 +3,6 @@
  */
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 
@@ -13,9 +12,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import makeRootReducer from './reducers';
 
 export default (initialState = {}, history) => {
-  const saga = createSagaMiddleware();
   const middleware = [
-    saga,
     thunk,
     routerMiddleware(history),
   ];
@@ -46,7 +43,6 @@ export default (initialState = {}, history) => {
     )
   );
 
-  store.runSaga = saga.run;
   store.asyncReducers = {};
 
   if (module.hot) {

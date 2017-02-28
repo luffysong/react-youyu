@@ -7003,10 +7003,6 @@ redux-logger:
   dependencies:
     deep-diff "0.3.4"
 
-redux-saga:
-  version "0.14.3"
-  resolved "http://registry.npm.taobao.org/redux-saga/download/redux-saga-0.14.3.tgz#28cd2c5b49cf780a1de25875765724150c630513"
-
 redux-thunk:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.1.0.tgz#c724bfee75dbe352da2e3ba9bc14302badd89a98"
