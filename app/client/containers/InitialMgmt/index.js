@@ -81,7 +81,7 @@ export class InitialMgmt extends PureComponent {
   handleConfirm() {
     this.props.cancelTransfer(this.state.cancelId, () => {
       this.closeModal();
-      this.props.getRightsList(this.state.status, '1');
+      this.props.getInitialList(this.state.status, '1');
     });
   }
 
