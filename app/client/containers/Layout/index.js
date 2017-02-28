@@ -37,7 +37,7 @@ class Layout extends Component {
         />
         <Header data={userInfoData} loading={userInfoLoading} />
         {React.Children.toArray(children)}
-        <Footer />
+        <Footer data={userInfoData} />
       </div>
     );
   }
