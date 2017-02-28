@@ -59,7 +59,13 @@ $ vim /etc/hosts
 
 ## 三、项目开发 Development
 
-### 1. 生成器
+### 1. 项目启动：
+
+```
+$ yarn run start:client:<环境变量> （环境变量可选: test01 ~ test12）
+```
+
+### 2. 生成器:
 
 * 生成 component (组件)
 * 生成 container (容器)
@@ -72,3 +78,7 @@ $ yarn run generate
 执行以上命令后，按照命令行提示即可生成对应组件、容器和路由。
 
 ## 四、项目部署 Deploy
+
+```
+$ yarn run build:client:<环境变量> （环境变量可选：test01 ~ test12）
+```
