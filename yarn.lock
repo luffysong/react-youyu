@@ -4466,10 +4466,6 @@ known-css-properties@^0.0.6:
   version "0.0.6"
   resolved "http://registry.npm.taobao.org/known-css-properties/download/known-css-properties-0.0.6.tgz#71a0b8fde1b6e3431c471efbc3d9733faebbcfbf"
 
-koa-cors:
-  version "0.0.16"
-  resolved "http://registry.npm.taobao.org/koa-cors/download/koa-cors-0.0.16.tgz#98107993a7909e34c042986c5ec6156d77f3432e"
-
 latest-version@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/latest-version/download/latest-version-1.0.1.tgz#72cfc46e3e8d1be651e1ebb54ea9f6ea96f374bb"
