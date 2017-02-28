@@ -371,6 +371,14 @@ class UcListItem extends PureComponent {
             });
           }
 
+          if (get(data, 'frozen_quota')) {
+            topData.push({
+              name: '禁售中',
+              value: toPercent(get(data, 'frozen_quota')),
+              highlight: 1,
+            });
+          }
+
           middleData.splice(2, 2, {
             name: '持有份额',
             value: toPercent(get(data, 'current_quota')),
