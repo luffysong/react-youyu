@@ -21,16 +21,9 @@ const injectReducer = (store) => {
   };
 };
 
-const injectSagas = (store) => {
-  return (sagas) => {
-    sagas.map(store.runSaga);
-  };
-};
-
 export const injectors = (store) => {
   return {
     injectReducer: injectReducer(store),
-    injectSagas: injectSagas(store),
   };
 };
 
