@@ -56,7 +56,7 @@ export default function registerRoute(loadModule, injectReducer) {
           }
           getUserInfo(() => {
             jump();
-          });
+          }, () => {}, true);
         }
       }),
       getComponent(nextState, cb) {
@@ -78,6 +78,7 @@ export default function registerRoute(loadModule, injectReducer) {
             const memberType = get(infoCache, 'userInfo.info.member_type');
             const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
             const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
+            console.log(memberType, memberStatus, identityType);
             if(!memberType && memberStatus === 1 && identityType === 1) {
               replace('/register/personalresult');
             } else if(!memberType && memberStatus === 1 && identityType === 2) {
@@ -89,7 +90,7 @@ export default function registerRoute(loadModule, injectReducer) {
           }
           getUserInfo(() => {
             jump();
-          });
+          }, () => {}, true);
         }
       }),
       getComponent(nextState, cb) {

@@ -47,14 +47,13 @@ export function goToLogout() {
 let userInfoCacheTime = (new Date()) - 0 + 10000;
 let userInfoCallbackArr = [];
 let userInfoLoading = false;
-export function getUserInfo(sucCallback, errCallback) {
+export function getUserInfo(sucCallback, errCallback, forceUpdate) {
   const now = new Date() - 0;
   userInfoCallbackArr.push(sucCallback);
   if(userInfoLoading) {
     return;
   }
-  console.log(now - userInfoCacheTime, 'time');
-  if(now - userInfoCacheTime > 5000 || !infoCache.userInfo) {
+  if(now - userInfoCacheTime > 5000 || !infoCache.userInfo || forceUpdate) {
     userInfoCacheTime = now;
     userInfoLoading = true;
     get(`/user/${getUID()}`).then(data => {
