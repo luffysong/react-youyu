@@ -294,7 +294,11 @@ class UcListItem extends PureComponent {
             value: toPercent(get(data, 'current_quota')),
           });
 
-          extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+          if(get(data, 'movie_status') >= 30) {
+            extra = <Button className="uc-list-item-button" disabled={true}>已上映</Button>
+          } else {
+            extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+          }
         }
 
         if (status === 'listing') {
@@ -384,7 +388,11 @@ class UcListItem extends PureComponent {
             value: toPercent(get(data, 'current_quota')),
           });
 
-          extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+          if(get(data, 'movie_status') >= 30) {
+            extra = <Button className="uc-list-item-button" disabled={true}>已上映</Button>
+          } else {
+            extra = <Button className="uc-list-item-button" to={`/quote/${type}/${get(data, 'id')}`}>申请转让</Button>
+          }
         }
 
         if (status === 'listing') {
