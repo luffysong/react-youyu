@@ -73,11 +73,6 @@ export const requireIdentity = (nextState, replace, callback) => {
   });
 };
 
-export const trackPageView = (nextState, replace, callback) => {
-  console.log(nextState);
-  window.krtracker && window.krtracker('trackPageView', window.location.pathname);
-};
-
 const rootRoute = function(store) {
   const { injectReducer } = injectors(store);
 
