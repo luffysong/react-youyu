@@ -20,7 +20,7 @@ import Empty from '../../components/Empty';
 import * as actions from './actions';
 import Tracker from '../../components/Tracker';
 
-const pid = 2;
+const pid = 18;
 
 export class NewsList extends PureComponent {
   constructor(props) {

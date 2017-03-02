@@ -17,7 +17,7 @@ export function loadMenu() {
     dispatch({
       type: types.LOAD_HELP_MENU,
     });
-    get(`/news-column?pid=11`).then(data => {
+    get(`/news-column?pid=19`).then(data => {
       dispatch(loadMenuSuc(data));
     }, err => {
       dispatch(loadMenuErr(err));

@@ -30,6 +30,7 @@ app.get('*', async (req, res, next) => {
     const store = configureStore(initialState);
     const history = getServerHistory(store, req.url);
     const routes = getRoutes(history, store);
+    console.log(routes);
     await match({ routes, history }, (error, redirectLocation, renderProps) => {
       console.log(error);
       console.log(redirectLocation);

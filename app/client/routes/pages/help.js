@@ -18,7 +18,7 @@ export default function helpRoute(loadModule, injectReducer) {
     childRoutes: [{
       path: 'list',
       name: 'helpList',
-      indexRoute: { onEnter: (nextState, replace) => replace(`/help/list/12`) },
+      indexRoute: { onEnter: (nextState, replace) => replace(`/help/list/21`) },
       childRoutes: [{
         path: ':id',
       }],
