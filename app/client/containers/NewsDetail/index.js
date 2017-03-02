@@ -60,7 +60,7 @@ export class NewsDetail extends PureComponent {
   renderDetail(data) {
     return <div className="container news-detail-wrapper">
       <h1 className="news-detail-title">{get(data, 'title')}</h1>
-      <div className="news-detail-time">{moment(get(data, 'published_at')).format('YYYY年MM月DD日')}</div>
+      <div className="news-detail-time">{moment(get(data, 'created_at')).format('YYYY年MM月DD日')}</div>
       <div className="news-detail-content article-format" dangerouslySetInnerHTML={this.createMarkup(get(data, 'content'))}></div>
       {/*<div className="news-detail-split"></div>*/}
       {/*<ShareBar className="news-detail-share" />*/}
