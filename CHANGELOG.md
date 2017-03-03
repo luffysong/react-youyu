@@ -1,3 +1,19 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.1.1...v1.2.0) (2017-03-03)
+
+
+### Bug Fixes
+
+* upload token url (暂时修改) ([a2cfd98](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/a2cfd98))
+* 修复 proxy ([04b0cbe](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/04b0cbe))
+
+
+### Features
+
+* 更改域名 ([290169e](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/290169e))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.1.0...v1.1.1) (2017-03-03)
 
