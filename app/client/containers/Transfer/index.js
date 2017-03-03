@@ -18,13 +18,10 @@ export class Transfer extends PureComponent {
   render() {
     return (
       <div className="transfer-container">
-        <Helmet
-          title="Transfer"
-          meta={[
-            { name: 'description', content: 'Description of Transfer' },
-          ]}
-        />
-        Transfer
+        <Helmet title="汇款信息" />
+        <div className="transfer-wrapper container">
+          <h1 className="transfer-title">汇款信息</h1>
+        </div>
       </div>
     );
   }

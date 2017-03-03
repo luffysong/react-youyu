@@ -22,6 +22,7 @@ import newsRoute from './pages/news';
 import registerRoute from './pages/register';
 import ucRoute from './pages/uc';
 import projectsRoute from './pages/projects';
+import transferRoute from './pages/transfer';
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
@@ -100,22 +101,8 @@ const rootRoute = function(store) {
       newsRoute(loadModule, injectReducer),
       registerRoute(loadModule, injectReducer),
       ucRoute(loadModule, injectReducer),
-      projectsRoute(loadModule, injectReducer), {
-      path: '/transfer',
-      name: 'transfer',
-      getComponent(nextState, cb) {
-        require.ensure([
-          '../containers/Transfer',
-          '../containers/Transfer/reducer',
-        ], (require) => {
-          const component = require('../containers/Transfer');
-          const reducer = require('../containers/Transfer/reducer').default;
-
-          injectReducer('transfer', reducer);
-          loadModule(cb, component);
-        });
-      },
-    }, {
+      projectsRoute(loadModule, injectReducer),
+      transferRoute(loadModule, injectReducer), {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
