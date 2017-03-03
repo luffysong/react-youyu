@@ -122,6 +122,7 @@
     "start:client:test10": "better-npm-run start:client:test10",
     "start:client:test11": "better-npm-run start:client:test11",
     "start:client:test12": "better-npm-run start:client:test12",
+    "build:client": "better-npm-run build:client",
     "build:client:test01": "better-npm-run build:client:test01",
     "build:client:test02": "better-npm-run build:client:test02",
     "build:client:test03": "better-npm-run build:client:test03",
@@ -255,6 +256,15 @@
         "NODE_ENV": "development",
         "PORT": 8801,
         "API_ENV": "test12",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
+    "build:client": {
+      "command": "node internals/scripts/build-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "production",
+        "API_ENV": "prod",
         "APP_ENV_RUNTIME": "client"
       }
     },

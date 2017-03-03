@@ -32,12 +32,17 @@ function ensureSlash(path, needsSlash) {
 
 const homepagePath = require(paths.packageJson).homepage;
 const homepagePathname = homepagePath ? url.parse(homepagePath).pathname : '/';
-const publicPath = ensureSlash(homepagePathname, true);
-const publicUrl = ensureSlash(homepagePathname, false);
+let publicPath = ensureSlash(homepagePathname, true);
+let publicUrl = ensureSlash(homepagePathname, false);
 const env = getClientEnvironment(publicUrl);
 
 if (env['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
+}
+
+if (env['process.env'].API_ENV === '"prod"') {
+  publicPath = '//sta.36krcnd.com/youyu/';
+  publicUrl = '//sta.36krcnd.com/youyu';
 }
 
 module.exports = {

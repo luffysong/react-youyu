@@ -14,7 +14,7 @@ import React from 'react';
 function CopyRight() {
   return (
     <section className="copy-right">
-      © 2017 有娱 youyu.top | 京ICP备16042819号-1
+      © 2017 有娱 youyutouzi.com | 京ICP备16042819号-1
     </section>
   );
 }
