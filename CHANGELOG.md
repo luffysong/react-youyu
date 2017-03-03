@@ -1,3 +1,14 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.2.0...v1.3.0) (2017-03-03)
+
+
+### Features
+
+* 查看汇款信息静态 ([79a4f39](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/79a4f39))
+* 添加查看汇款信息 ([78c6fce](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/78c6fce))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.1.1...v1.2.0) (2017-03-03)
 
