@@ -7,14 +7,45 @@
 .transfer-container {
   .transfer {
     &-wrapper {
-      padding-top: 94px;
+      padding: 94px 0 240.3px;
     }
 
     &-title {
       font-size: 20px;
-      color: @fontDark;
+      color: @fontLight;
       font-weight: 600;
       text-align: center;
+      margin-bottom: 53px;
+    }
+
+    &-info {
+      margin: 0 auto;
+      padding: 80.8px 0 95.5px;
+      width: 743.6px;
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.04);
+      background: @white url('./imgs/remit_bg@2x.png') no-repeat bottom left;
+      background-size: 247px 242px;
+
+      table {
+        margin: 0 auto;
+      }
+
+      td {
+        padding: 20.3px 15px;
+        line-height: 21px;
+      }
+
+      &-left {
+        font-size: 14px;
+        color: @fontLight;
+        text-align: right;
+      }
+
+      &-right {
+        font-size: 16px;
+        color: @fontLight;
+        font-weight: 600;
+      }
     }
   }
 }
