@@ -432,5 +432,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://%env%youyu.top"
+  "proxy": "http://%env%youyutouzi.com"
 }
