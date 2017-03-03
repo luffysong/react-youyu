@@ -101,6 +101,21 @@ const rootRoute = function(store) {
       registerRoute(loadModule, injectReducer),
       ucRoute(loadModule, injectReducer),
       projectsRoute(loadModule, injectReducer), {
+      path: '/transfer',
+      name: 'transfer',
+      getComponent(nextState, cb) {
+        require.ensure([
+          '../containers/Transfer',
+          '../containers/Transfer/reducer',
+        ], (require) => {
+          const component = require('../containers/Transfer');
+          const reducer = require('../containers/Transfer/reducer').default;
+
+          injectReducer('transfer', reducer);
+          loadModule(cb, component);
+        });
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

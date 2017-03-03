@@ -175,7 +175,7 @@ function runDevServer(host, port, protocol) {
     console.log(chalk.cyan('Starting the development server...'));
     console.log();
     if (isInteractive) {
-      openBrowser('http://local.youyu.top');
+      openBrowser('http://local.youyutouzi.com');
     }
   });
 }

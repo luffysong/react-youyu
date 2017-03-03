@@ -28,7 +28,7 @@ $ npm install -g gulp-cli
 ```
 server {
   listen       80;
-  server_name  local.youyu.top;
+  server_name  local.youyutouzi.com;
 
   location  / {
     proxy_pass              http://127.0.0.1:8801;
@@ -55,7 +55,7 @@ $ vim /etc/hosts
 
 添加一行：
 
-127.0.0.1 local.youyu.top
+127.0.0.1 local.youyutouzi.com
 
 ## 三、项目开发 Development
 
