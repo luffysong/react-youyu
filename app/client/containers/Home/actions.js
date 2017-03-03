@@ -46,7 +46,7 @@ export function homeNotice() {
     dispatch({
       type: types.HOME_NOTICE,
     });
-    return get('/news?pid=2').then(data => {
+    return get('/news?pid=18').then(data => {
       dispatch(homeNoticeSuc(data));
     }, err => {
       dispatch(homeNoticeErr(err));

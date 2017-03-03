@@ -26,12 +26,7 @@ export class AcceptPay extends PureComponent {
   render() {
     return (
       <div className="accept-pay-container">
-        <Helmet
-          title="支付保证金"
-          meta={[
-            { name: 'description', content: 'Description of AcceptPay' },
-          ]}
-        />
+        <Helmet title="支付保证金" />
         <div className="container">
           <div className="accept-pay-part accept-pay-top">
             <img src={require('./imgs/icon_buy_payment.svg')} alt="支付保证金"/>

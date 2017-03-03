@@ -106,7 +106,7 @@ class UcListItem extends PureComponent {
     </div>;
   }
 
-  renderBottom(data) {
+  renderBottom(data, extra) {
     const tempData = [
       {
         name: '支付保证金',
@@ -160,6 +160,7 @@ class UcListItem extends PureComponent {
           }
         </tbody>
       </table>
+      {extra}
     </div>;
   }
 
@@ -220,10 +221,12 @@ class UcListItem extends PureComponent {
           },
         ];
 
+        extra = <Button bordered={true} className="uc-list-item-button uc-list-item-transfer-button" to={`/transfer/${get(data, 'trade_deposit_id')}`}>汇款信息</Button>
+
         tpl = <div>
           {this.renderTop(topData)}
           {this.renderMiddle(type, middleData)}
-          {this.renderBottom(bottomData)}
+          {this.renderBottom(bottomData, extra)}
         </div>
         break;
       case 'initial':

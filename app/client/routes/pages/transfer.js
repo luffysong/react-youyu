@@ -1,21 +1,19 @@
-import { requireAuth, requireIdentity } from '../index';
+import { requireAuth } from '../index';
 
 export default function transferRoute(loadModule, injectReducer) {
   return {
-    path: '/transfer',
+    path: '/transfer/:id',
     name: 'transfer',
-    onEnter: requireAuth({
-      extra: requireIdentity,
-    }),
+    onEnter: requireAuth(),
     getComponent(nextState, cb) {
       require.ensure([
         '../../containers/Transfer',
-        '../../containers/Transfer/reducer',
+        '../../containers/AcceptPay/reducer',
       ], (require) => {
         const component = require('../../containers/Transfer');
-        const reducer = require('../../containers/Transfer/reducer').default;
+        const reducer = require('../../containers/AcceptPay/reducer').default;
 
-        injectReducer('transfer', reducer);
+        injectReducer('acceptPay', reducer);
         loadModule(cb, component);
       });
     },
