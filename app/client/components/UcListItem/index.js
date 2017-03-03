@@ -221,7 +221,13 @@ class UcListItem extends PureComponent {
           },
         ];
 
-        extra = <Button bordered={true} className="uc-list-item-button uc-list-item-transfer-button" to={`/transfer/${get(data, 'trade_deposit_id')}`}>汇款信息</Button>
+        if (movie_order_status[get(data, 'status')] === '待付保证金') {
+          extra = <Button bordered={true} className="uc-list-item-button uc-list-item-transfer-button" to={`/transfer/${get(data, 'trade_deposit_id')}`}>汇款信息</Button>
+        }
+
+        if (movie_order_status[get(data, 'status')] === '待付剩余款') {
+          extra = <Button bordered={true} className="uc-list-item-button uc-list-item-transfer-button" to={`/transfer/${get(data, 'trade_balance_id')}`}>汇款信息</Button>
+        }
 
         tpl = <div>
           {this.renderTop(topData)}
