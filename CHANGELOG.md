@@ -1,3 +1,13 @@
+<a name="1.3.3"></a>
+## [1.3.3](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.3.2...v1.3.3) (2017-03-03)
+
+
+### Bug Fixes
+
+* 汇款信息判断 ([fce0065](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/fce0065))
+
+
+
 <a name="1.3.2"></a>
 ## [1.3.2](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.3.1...v1.3.2) (2017-03-03)
 
