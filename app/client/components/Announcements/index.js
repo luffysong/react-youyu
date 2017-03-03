@@ -21,6 +21,10 @@ function Announcements(props) {
     className,
   ]);
 
+  if (!(data && data.length)) {
+    return null;
+  }
+
   return (
     <div className={classes}>
       <div className="announcements-inner">
