@@ -25,8 +25,8 @@ const validate = values => {
   const errors = {}
   if (!values.name) {
     errors.name = '请输入企业全称'
-  } else if (values.name.length > 15) {
-    errors.name = '字数15个字以内'
+  } else if (values.name.length > 100) {
+    errors.name = '字数100个字以内'
   }
   if (!values.code) {
     errors.code = '请输入社会信用代码'
