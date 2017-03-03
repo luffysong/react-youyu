@@ -1,3 +1,13 @@
+<a name="1.3.2"></a>
+## [1.3.2](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.3.1...v1.3.2) (2017-03-03)
+
+
+### Bug Fixes
+
+* 企业全称长度限制修改 ([4e883e4](https://gitlab.corp.36kr.com/f2e/youyu-frontend/commit/4e883e4))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://gitlab.corp.36kr.com/f2e/youyu-frontend/compare/v1.3.0...v1.3.1) (2017-03-03)
 
