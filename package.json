@@ -110,6 +110,7 @@
     "slick-carousel": "^1.6.0"
   },
   "scripts": {
+    "start:client": "better-npm-run start:client",
     "start:client:test01": "better-npm-run start:client:test01",
     "start:client:test02": "better-npm-run start:client:test02",
     "start:client:test03": "better-npm-run start:client:test03",
@@ -139,6 +140,16 @@
     "generate": "plop --plopfile internals/generators/index.js"
   },
   "betterScripts": {
+    "start:client": {
+      "command": "node internals/scripts/start-client.js",
+      "env": {
+        "DEBUG": "youyu:*",
+        "NODE_ENV": "development",
+        "PORT": 8801,
+        "API_ENV": "prod",
+        "APP_ENV_RUNTIME": "client"
+      }
+    },
     "start:client:test01": {
       "command": "node internals/scripts/start-client.js",
       "env": {

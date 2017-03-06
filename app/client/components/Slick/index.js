@@ -24,7 +24,7 @@ class Slick extends PureComponent {
       slidesToShow: 1,
       slidesToScroll: 1,
       draggable: true,
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 3000,
     };
 
