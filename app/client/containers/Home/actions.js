@@ -73,7 +73,7 @@ export function homeBanner() {
     dispatch({
       type: types.HOME_BANNER,
     });
-    return get('/images?type=1').then(data => {
+    return get('/images?type=110').then(data => {
       dispatch(homeBannerSuc(data));
     }, err => {
       dispatch(homeBannerErr(err));
