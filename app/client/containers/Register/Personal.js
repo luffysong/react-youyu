@@ -56,11 +56,13 @@ export class Personal extends PureComponent {
       idcardprogress: '',
       idcardloaded: false,
       idcarderr: '',
+      idcarddisplay: '',
       // business card
       businesscardloading: false,
       businesscardprogress: '',
       businesscardloaded: false,
       businesscarderr: '',
+      businesscarddisplay: '',
 
       handleSubmit(cs) {
         console.log(cs, 'submit');
@@ -69,11 +71,12 @@ export class Personal extends PureComponent {
 
     this.uploadIdCardParams = {
       success: (data) => {
-        this.props.dispatch(change('PersonalForm', 'id_card_pic', data))
+        this.props.dispatch(change('PersonalForm', 'id_card_pic', data.url))
         this.setState({
           idcardloading: 0,
           idcardloaded: true,
           idcarderr: '',
+          idcarddisplay: data.src,
         });
       },
       progress: (data) => {
@@ -96,11 +99,12 @@ export class Personal extends PureComponent {
 
     this.uploadBusinessCardParams = {
       success: (data) => {
-        this.props.dispatch(change('PersonalForm', 'business_card', data))
+        this.props.dispatch(change('PersonalForm', 'business_card', data.url))
         this.setState({
           businesscardloading: 0,
           businesscardloaded: true,
           businesscarderr: '',
+          businesscarddisplay: data.src,
         });
       },
       progress: (data) => {
@@ -154,7 +158,7 @@ export class Personal extends PureComponent {
           {
             state.idcardloading || state.idcardloaded ?
               <div className="uploaded-pic"
-                   style={input.value ? { backgroundImage: `url(${input.value})` } : {}}>
+                   style={input.value ? { backgroundImage: `url(${state.idcarddisplay})` } : {}}>
                 {
                   state.idcardloading ?
                     <div className="upload-progress"
@@ -184,7 +188,7 @@ export class Personal extends PureComponent {
         {
           state.businesscardloading || state.businesscardloaded ?
             <div className="uploaded-pic"
-                 style={input.value ? { backgroundImage: `url(${input.value})` } : {}}>
+                 style={input.value ? { backgroundImage: `url(${state.businesscarddisplay})` } : {}}>
               {
                 state.businesscardloading ?
                   <div className="upload-progress"

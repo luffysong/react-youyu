@@ -34,10 +34,12 @@ import qs from 'query-string';
 import './style.less';
 
 const uploadUrlParams = {
-  token: config.uploadToken,
+  token: `${ config.apiBase }/upload/upyun-token`,
   api: '//v0.api.upyun.com',
-  name: 'krplus-pic',
-  url: 'https://pic.36krcnd.com',
+  name: 'krplus-priv',
+  url: 'https://krplus-priv.b0.upaiyun.com',
+  picname: 'krplus-pic',
+  picurl: 'https://pic.36krcnd.com'
 };
 const action = uploadUrlParams.api + '/' + uploadUrlParams.name;
 
@@ -47,7 +49,7 @@ class UploadButton extends PureComponent {
     this.bindGetToken = this.getToken.bind(this);
     this.state = {
       params: {
-        "bucket": "krplus-pic",
+        "bucket": uploadUrlParams.name,
         "expiration": parseInt((new Date().getTime() + 3600 * 1000 * 24 * 365) / 1000, 10),
         "save-key": "/{year}{mon}{day}/{filemd5}{.suffix}",
         "x-gmkerl-thumb": "/rotate/auto",
@@ -78,23 +80,20 @@ class UploadButton extends PureComponent {
   getToken(ev) {
     const fd = new FormData();
     const s = this;
-    fd.append('file', ev.currentTarget.files[0]);
-    return axios.post(uploadUrlParams.token, qs.stringify({
-      param: JSON.stringify(s.state.params),
-      type: 'pic',
-      useOwnOrder: 1
-    }), {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+    const file = ev.currentTarget.files[0]
+    fd.append('file', file);
+    return axios.get(uploadUrlParams.token, {
+      params: {
+        param: JSON.stringify(s.state.params)
       }
     }).then((res) => {
       fd.append('policy', res.data.data.policy);
       fd.append('signature', res.data.data.signature);
-      this.postImg(fd);
+      this.postImg(fd, file);
     });
   }
 
-  postImg(fd) {
+  postImg(fd, file) {
     const s = this;
     return axios.post(action, fd, {
       onUploadProgress(data) {
@@ -103,7 +102,12 @@ class UploadButton extends PureComponent {
       },
     }).then((res) => {
       const url = `${uploadUrlParams.url}${res.data.url}`;
-      s.propsParams.success(url);
+      const src = window.URL.createObjectURL(file);
+      console.log(src);
+      s.propsParams.success({
+        url,
+        src
+      });
     }, (...err) => {
       s.propsParams.error(err[0].response.data.message);
     });
