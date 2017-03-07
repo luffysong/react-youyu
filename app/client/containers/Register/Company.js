@@ -44,14 +44,16 @@ export class Company extends PureComponent {
 
     this.uploadParams = {
       success(data) {
+
         /*this.setState({
           uploadedImg: data
         });*/
-        this.props.dispatch(change('companyForm', 'license_pic', data));
+        this.props.dispatch(change('companyForm', 'license_pic', data.url));
         this.setState({
           uploading: false,
           uploaded: true,
-          licenseErr: ''
+          licenseErr: '',
+          license_display: data.src
         });
       },
       progress(data) {
@@ -175,7 +177,7 @@ export class Company extends PureComponent {
               <div className={`col-value verticaltop ${this.state.uploading ? 'uploading' : ''} ${get(this.props.formData, 'license_pic') ? 'uploaded' : ''}`}>
                 {
                   this.state.uploading || this.state.uploaded ?
-                    <div className="uploaded-pic" style={get(this.props.formData, 'license_pic') ? {backgroundImage: `url(${get(this.props.formData, 'license_pic')})`} : {}}>
+                    <div className="uploaded-pic" style={this.state.license_display ? {backgroundImage: `url(${this.state.license_display})`} : {}}>
                       {
                         this.state.uploading ? <div className="upload-progress" style={{height: this.state.uploadProgress}}></div> : null
                       }
