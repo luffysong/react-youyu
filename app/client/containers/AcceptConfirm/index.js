@@ -112,12 +112,12 @@ export class AcceptConfirm extends PureComponent {
             </tr>
           </tbody>
         </table>
-        <div className="accept-confirm-desc">
+        {/*<div className="accept-confirm-desc">
           <h3 className="accept-confirm-desc-title">保证金使用说明</h3>
           <div className="accept-confirm-desc-text">
             说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字
           </div>
-        </div>
+        </div>*/}
       </div>
     );
   }
