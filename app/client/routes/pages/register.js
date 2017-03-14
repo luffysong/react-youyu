@@ -26,97 +26,122 @@ export default function registerRoute(loadModule, injectReducer) {
         path: '/register/choose',
       }),
     },
-    childRoutes: [{
-      path: 'choose',
-      name: 'chooseRegister',
-      onEnter: requireAuth(),
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          loadModule(cb, require('../../containers/Register/Choose'));
-        });
+    childRoutes: [
+      {
+        path: 'choose',
+        name: 'chooseRegister',
+        onEnter: requireAuth(),
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../../containers/Register/Choose'));
+          });
+        },
       },
-    }, {
-      path: 'personal',
-      name: 'personalRegister',
-      onEnter: requireAuth({
-        extra(nextState, replace, callback) {
-          const jump = function () {
-            const memberType = get(infoCache, 'userInfo.info.member_type');
-            const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
-            const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
-
-            if(!memberType && memberStatus === 1 && identityType === 1) {
-              replace('/register/personalresult');
-            } else if(!memberType && memberStatus === 1 && identityType === 2) {
-              replace('/register/companyresult');
-            } else if (memberType) {
-              replace('/projects');
-            }
-            callback();
-          }
-          getUserInfo(() => {
-            jump();
-          }, () => {}, true);
+      {
+        path: 'regprotocol',
+        name: 'regProtocol',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../../containers/Register/regProtocol'));
+          })
+        },
+      },
+      {
+        // 会员制度
+        path: 'institution',
+        name: 'institution',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../../containers/Register/institution'));
+          });
         }
-      }),
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          const personreducer = require('../../containers/Register/reducer').personRegisterReducer;
-          const personalformreducer = require('../../containers/Register/reducer').personalForm;
-
-          injectReducer('personRegister', personreducer);
-          injectReducer('personalForm', personalformreducer);
-          loadModule(cb, require('../../containers/Register/Personal'));
-        });
       },
-    }, {
-      path: 'company',
-      name: 'companyRegister',
-      onEnter: requireAuth({
-        extra(nextState, replace, callback) {
-          const jump = function () {
-            const memberType = get(infoCache, 'userInfo.info.member_type');
-            const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
-            const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
-            console.log(memberType, memberStatus, identityType);
-            if(!memberType && memberStatus === 1 && identityType === 1) {
-              replace('/register/personalresult');
-            } else if(!memberType && memberStatus === 1 && identityType === 2) {
-              replace('/register/companyresult');
-            } else if (memberType) {
-              replace('/projects');
+      {
+        path: 'personal',
+        name: 'personalRegister',
+        onEnter: requireAuth({
+          extra(nextState, replace, callback) {
+            const jump = function () {
+              const memberType = get(infoCache, 'userInfo.info.member_type');
+              const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
+              const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
+
+              if(!memberType && memberStatus === 1 && identityType === 1) {
+                replace('/register/personalresult');
+              } else if(!memberType && memberStatus === 1 && identityType === 2) {
+                replace('/register/companyresult');
+              } else if (memberType) {
+                replace('/projects');
+              }
+              callback();
             }
-            callback();
+            getUserInfo(() => {
+              jump();
+            }, () => {}, true);
           }
-          getUserInfo(() => {
-            jump();
-          }, () => {}, true);
-        }
-      }),
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          const companyFormReducer = require('../../containers/Register/reducer').companyForm;
+        }),
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            const personreducer = require('../../containers/Register/reducer').personRegisterReducer;
+            const personalformreducer = require('../../containers/Register/reducer').personalForm;
 
-          injectReducer('companyForm', companyFormReducer);
-          loadModule(cb, require('../../containers/Register/Company'));
-        });
+            injectReducer('personRegister', personreducer);
+            injectReducer('personalForm', personalformreducer);
+            loadModule(cb, require('../../containers/Register/Personal'));
+          });
+        },
       },
-    }, {
-      path: 'companyresult',
-      name: 'companyResult',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          loadModule(cb, require('../../containers/Register/CompanyResult'));
-        });
+      {
+        path: 'company',
+        name: 'companyRegister',
+        onEnter: requireAuth({
+          extra(nextState, replace, callback) {
+            const jump = function () {
+              const memberType = get(infoCache, 'userInfo.info.member_type');
+              const memberStatus = get(infoCache, 'userInfo.info.operation_steps.member_status');
+              const identityType = get(infoCache, 'userInfo.info.operation_steps.identity_type');
+              console.log(memberType, memberStatus, identityType);
+              if(!memberType && memberStatus === 1 && identityType === 1) {
+                replace('/register/personalresult');
+              } else if(!memberType && memberStatus === 1 && identityType === 2) {
+                replace('/register/companyresult');
+              } else if (memberType) {
+                replace('/projects');
+              }
+              callback();
+            }
+            getUserInfo(() => {
+              jump();
+            }, () => {}, true);
+          }
+        }),
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            const companyFormReducer = require('../../containers/Register/reducer').companyForm;
+
+            injectReducer('companyForm', companyFormReducer);
+            loadModule(cb, require('../../containers/Register/Company'));
+          });
+        },
       },
-    }, {
-      path: 'personalresult',
-      name: 'personalResult',
-      getComponent(nextState, cb) {
-        require.ensure([], (require) => {
-          loadModule(cb, require('../../containers/Register/PersonalResult'));
-        });
+      {
+        path: 'companyresult',
+        name: 'companyResult',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../../containers/Register/CompanyResult'));
+          });
+        },
       },
-    }],
+      {
+        path: 'personalresult',
+        name: 'personalResult',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            loadModule(cb, require('../../containers/Register/PersonalResult'));
+          });
+        },
+      }
+    ],
   };
 };
