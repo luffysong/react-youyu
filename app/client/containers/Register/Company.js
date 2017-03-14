@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, change, touch } from 'redux-form'
 import { get } from 'lodash';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router';
 
 /**
  * Internal dependencies
@@ -227,7 +228,9 @@ export class Company extends PureComponent {
                   <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
                 </div>
                 <label htmlFor="agree">
-                  同意《会员合同》《XXXX协议》
+                  同意
+                  <Link to='/register/regprotocol'>《用户注册服务协议》</Link>
+                  <Link to='/register/institution'>《会员管理制度》</Link>
                 </label>
               </div>
             </div>

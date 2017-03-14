@@ -26,7 +26,6 @@ import React, { PureComponent } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import config from '../../config';
-import qs from 'query-string';
 
 /**
  * Internal dependencies
