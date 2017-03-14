@@ -4,7 +4,7 @@ import Tracker from '../../components/Tracker';
 
 function institution() {
   return (
-    <div className="institution">
+    <div className="container institution">
       <h2>
         北京有娱文化科技有限公司会员管理制度
       </h2>
