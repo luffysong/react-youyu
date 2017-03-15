@@ -229,8 +229,8 @@ export class Company extends PureComponent {
                 </div>
                 <label htmlFor="agree">
                   同意
-                  <Link to='/register/regprotocol'>《用户注册服务协议》</Link>
-                  <Link to='/register/institution'>《会员管理制度》</Link>
+                  <a className="link-a" href='/register/regprotocol' target="_blank">《用户注册服务协议》</a>
+                  <a className="link-a" href='/register/institution' target="_blank">《会员管理制度》</a>
                 </label>
               </div>
             </div>
