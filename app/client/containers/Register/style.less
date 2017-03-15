@@ -9,6 +9,12 @@
   a.link-a {
     color: #333;
 
+    &:link,
+    &:visited,
+    &:active {
+      color: #333;
+    }
+
     &:hover {
       text-decoration: underline;
     }
@@ -447,59 +453,5 @@
     text-align: center;
     font-weight: 600;
     cursor: auto;
-  }
-}
-
-// 会员制度
-.institution,
-.reg-protocol {
-  line-height: 2;
-  margin: 70px auto 116px;
-  background-color: @lightBg;
-
-  h2,
-  h4 {
-    text-align: center;
-  }
-
-  dt {
-    text-align: center;
-    font-size: 16px;
-    margin: 30px 0 10px;
-  }
-
-  dd {
-    margin: 10px 0;
-
-    p {
-      padding: 0 0 0 20px;
-      margin-top: 0;
-    }
-  }
-
-  blockquote {
-    padding: 6px 0 6px 55px;
-    position: relative;
-    margin: 30px 0;
-    color: #333;
-    border: 0;
-
-    &::before {
-      display: block;
-      width: 23px;
-      height: 17px;
-      background: url('https://pic.36krcnd.com/avatar/201610/09084833/pvg7ixf711zmv9bk.png') no-repeat 0 0;
-      background-size: contain;
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translate(0, -50%);
-      left: 15px;
-    }
-  }
-
-  blockquote p {
-    margin-bottom: 0;
-    padding: 6px 10px;
   }
 }

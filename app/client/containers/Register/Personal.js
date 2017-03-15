@@ -297,8 +297,8 @@ export class Personal extends PureComponent {
           </div>
           <label htmlFor="agree">
             同意
-            <a href='/register/regprotocol' target="_blank">《用户注册服务协议》</a>
-            <a href='/register/institution' target="_blank">《会员管理制度》</a>
+            <a className="link-a" href='/register/regprotocol' target="_blank">《用户注册服务协议》</a>
+            <a className="link-a" href='/register/institution' target="_blank">《会员管理制度》</a>
           </label>
         </div>
       )

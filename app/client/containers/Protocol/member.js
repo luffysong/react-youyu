@@ -1,10 +1,8 @@
-import React from 'react';
-import './style.less';
-import Tracker from '../../components/Tracker';
-
-function institution() {
-  return (
-    <div className="container institution">
+import React, { PureComponent } from 'react';
+export default class Member extends PureComponent {
+  render() {
+    return (
+      <div>
       <h2>
         北京有娱文化科技有限公司会员管理制度
       </h2>
@@ -347,8 +345,8 @@ function institution() {
 
 
       </ul>
-    </div>
-  )
-}
 
-export default Tracker(institution);
+      </div>
+    )
+  }
+}

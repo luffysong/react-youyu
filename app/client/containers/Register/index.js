@@ -15,7 +15,7 @@ import Helmet from 'react-helmet';
 import './style.less';
 import Tracker from '../../components/Tracker';
 
-export class Register extends PureComponent {
+class Register extends PureComponent {
   render() {
     const { children } = this.props;
 

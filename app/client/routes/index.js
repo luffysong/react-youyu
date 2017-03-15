@@ -23,6 +23,7 @@ import registerRoute from './pages/register';
 import ucRoute from './pages/uc';
 import projectsRoute from './pages/projects';
 import transferRoute from './pages/transfer';
+import protocolRoute from './pages/protocol';
 
 export const getClientHistory = (store) =>
   syncHistoryWithStore(browserHistory, store, {
@@ -102,7 +103,8 @@ const rootRoute = function(store) {
       registerRoute(loadModule, injectReducer),
       ucRoute(loadModule, injectReducer),
       projectsRoute(loadModule, injectReducer),
-      transferRoute(loadModule, injectReducer), {
+      transferRoute(loadModule, injectReducer),
+      protocolRoute(loadModule, injectReducer), {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

@@ -1,0 +1,70 @@
+/**
+ * container Protocol styles
+ */
+
+@import '../../styles/colors';
+
+.protocol-container {
+  color: #2d2f33;
+  min-height: 20rem;
+  line-height: 2;
+  background-color: @lightBg;
+
+  .protocol-wrap {
+    width: 1200px;
+    margin: 40px auto 80px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .title-offset {
+    padding-right: 55px;
+  }
+
+  dt {
+    text-align: center;
+    font-size: 16px;
+    margin: 30px 0 10px;
+  }
+
+  dd {
+    margin: 10px 0;
+
+    p {
+      padding: 0 0 0 20px;
+      margin-top: 0;
+    }
+  }
+
+  blockquote {
+    padding: 6px 0 6px 55px;
+    position: relative;
+    margin: 30px 0;
+    color: #333;
+    border: 0;
+
+    &::before {
+      display: block;
+      width: 23px;
+      height: 17px;
+      background: url('https://pic.36krcnd.com/avatar/201610/09084833/pvg7ixf711zmv9bk.png') no-repeat 0 0;
+      background-size: contain;
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      left: 15px;
+    }
+  }
+
+  blockquote p {
+    margin-bottom: 0;
+    padding: 6px 10px;
+  }
+}

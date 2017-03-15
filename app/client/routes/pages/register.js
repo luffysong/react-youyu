@@ -38,25 +38,6 @@ export default function registerRoute(loadModule, injectReducer) {
         },
       },
       {
-        path: 'regprotocol',
-        name: 'regProtocol',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../../containers/Register/regProtocol'));
-          })
-        },
-      },
-      {
-        // 会员制度
-        path: 'institution',
-        name: 'institution',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            loadModule(cb, require('../../containers/Register/institution'));
-          });
-        }
-      },
-      {
         path: 'personal',
         name: 'personalRegister',
         onEnter: requireAuth({
