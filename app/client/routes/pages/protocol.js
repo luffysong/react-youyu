@@ -41,10 +41,22 @@ export default function protocolRoute(loadModule, injectReducer) {
       {
         path: 'service',
         name: 'protocolService',
+        getComponent(nextState, cb) {
+          require.ensure(['../../containers/Protocol/service'], (require) => {
+            const component = require('../../containers/Protocol/service');
+            loadModule(cb, component);
+          })
+        }
       },
       {
         path: 'deposit',
         name: 'protocolDeposit',
+        getComponent(nextState, cb) {
+          require.ensure(['../../containers/Protocol/deposit'], (require) => {
+            const component = require('../../containers/Protocol/deposit');
+            loadModule(cb, component);
+          })
+        }
       }
     ]
   }
