@@ -69,7 +69,7 @@ class QuoteStepTwo extends PureComponent {
       }
     }
     this.setState({
-      submiting: true
+      allowSubmit: true
     });
     const {is_privacy, transferee_cert_type, transferee_lock_period} = this.state;
     this.props.data.is_privacy = is_privacy;
@@ -82,9 +82,9 @@ class QuoteStepTwo extends PureComponent {
       this.props.data.transferee_lock_period = moment(transferee_lock_period).format('YYYY-MM-DD');
     }
     this.props.submit(this.props.data, () => this.setState({
-      submiting: false
+      allowSubmit: false
     }), () => this.setState({
-      submiting: false
+      allowSubmit: false
     }));
   }
 
@@ -153,6 +153,13 @@ class QuoteStepTwo extends PureComponent {
       daysErr: ''
     });
     this.props.data.listing_days = event.target.value;
+  }
+
+  agree(event) {
+    this.setState({
+      agree: !this.state.agree,
+      allowSubmit: !this.state.allowSubmit,
+    });
   }
 
   render() {
@@ -322,7 +329,7 @@ class QuoteStepTwo extends PureComponent {
             }
           }
           </DatePicker>
-      
+
                   {/*<Calendar
                     dateFormat="YYYY-MM-DD"
                     selected={this.state.transferee_lock_period}
@@ -336,8 +343,18 @@ class QuoteStepTwo extends PureComponent {
               </div>
             </div> : null
         }
-
-        <div className={`next-btn ${this.state.submiting ? 'disabled' : ''}`} onClick={this.submit.bind(this)}>提交</div>
+        <div className="list-col">
+          <div className="col-attr"></div>
+          <div className="col-value">
+            <div className={this.state.agree ? 'quote-radio checked' : 'quote-radio'}>
+              <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
+            </div>
+            <label htmlFor="agree">
+              同意：<a className="link-a" href="/protocol/service" target="_blank">《服务协议》</a>
+            </label>
+          </div>
+        </div>
+        <div className={`next-btn ${this.state.allowSubmit ? '' : 'disabled'}`} onClick={this.submit.bind(this)}>提交</div>
       </div>
     );
   }

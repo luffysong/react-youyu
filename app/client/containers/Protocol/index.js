@@ -19,7 +19,7 @@ export class Protocol extends PureComponent {
     return (
       <div className="protocol-container">
         <Helmet
-          title="Protocol"
+          title="协议"
           meta={[
             { name: 'description', content: 'Description of Protocol' },
           ]}
