@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, change, touch } from 'redux-form'
 import { get } from 'lodash';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router';
 
 /**
  * Internal dependencies
