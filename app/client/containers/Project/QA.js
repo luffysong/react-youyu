@@ -25,26 +25,27 @@ export class QA extends PureComponent {
         <Helmet title="常见问题" />
         <div className="project-container-qa-tab-item">
           <div className="project-container-qa-tab-item-q">
-            Q: 投资流程是什么样的？
+            Q: 保证金交多少，如何缴纳？
           </div>
           <div className="project-container-qa-tab-item-a">
-            <span>A</span>: 应根据具体的收益权转让合同的条款判断。例如，是否在保持本企业对该项目主导权的前提下，引入财务投资者，在该合作项目中享有30％的权益？是否为该财务投资者提供保证本金安全和取得保底收益的保障？
+            <span>A</span>:交易保证金金额为挂牌价格的【5】%。意向受让方应当于申请认购后3个交易日内将保证金一次性交纳至平台指定的银行账户。
           </div>
         </div>
         <div className="project-container-qa-tab-item">
           <div className="project-container-qa-tab-item-q">
-            Q: 保证金是什么？
+            Q: 有娱是安全的投资交易平台吗？
           </div>
           <div className="project-container-qa-tab-item-a">
-            <span>A</span>: 应根据具体的收益权转让合同的条款判断。例如，是否在保持本企业对该项目主导权的前提下，引入财务投资者，在该合作项目中享有30％的权益？
+            <span>A</span>: 有娱与天金所、新片场以及世界500强万达集团强强合作，拥有严格的交易风险控制流程、合格的金融资产交易所资质，优质的投资标的以及规范的投资收益分配规则，为用户提供正规的投资交易流程以及项目风险控制管理服务。
           </div>
         </div>
         <div className="project-container-qa-tab-item">
           <div className="project-container-qa-tab-item-q">
-            Q: 权益可靠吗？
+            Q: 认购项目的流程是什么？
           </div>
           <div className="project-container-qa-tab-item-a">
-            <span>A</span>: 应根据具体的收益权转让合同的条款判断。例如，是否在保持本企业对该项目主导权的前提下，引入财务投资者，在该合作项目中享有30％的权益？是否为该财务投资者提供保证本金安全和取得保底收益的保障？
+            <span>A</span>: 认购流程分以下几个步骤：<br />
+            （1）选定收益权；（2）提交意向；（3）支付保证金；（4）双方达成意向；（5）协议签署；（6）协议备案；（7）尾款支付；（8）转让完成；（9）变更登记
           </div>
         </div>
         <div className="project-container-qa-tab-split"></div>
