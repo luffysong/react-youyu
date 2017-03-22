@@ -32,7 +32,7 @@ export class AcceptPay extends PureComponent {
             <img src={require('./imgs/icon_buy_payment.svg')} alt="支付保证金"/>
             <h2>支付保证金</h2>
             <p>
-              请尽快汇款到交易所银行账户，收到您的汇款后，我们会在3个工作日确认您的款项。
+              请在3个工作日内将保证金支付至如下银行账户，我们会在收到保证金后尽快与您确认。
             </p>
             <img src={require('./imgs/pic_line_payment.svg')} alt="border" className="accept-pay-part-border"/>
           </div>

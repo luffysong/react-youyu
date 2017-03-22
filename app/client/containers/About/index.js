@@ -28,7 +28,7 @@ export class About extends PureComponent {
         <div className="about-wrapper container">
           <h1 className="about-title">关于我们</h1>
           <div className="about-desc">
-            有娱是36氪金融与普思资本（万达集团旗下）共同成立的国内首家影视类项目投资收益权转让平台，依托天津金融资产交易所，提供规范和专业的文娱类项目可转让投资收益权交易服务。
+            有娱投资是36氪与普思资本、新片场、天津金融资产交易所共同成立的国内首家影视投资收益权交易支持平台，通过与天津金融资产交易所合作，为用户提供影视类项目的登记确权、挂牌摘牌、交易结算及收益分配等服务。
           </div>
           <div className="about-parts">
             <div className="about-parts-product">

@@ -6,6 +6,7 @@
  * External dependencies
  */
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router';
 import classnames from 'classnames';
 import { get } from 'lodash';
 
@@ -35,6 +36,14 @@ class UcListItem extends PureComponent {
         }) : null
       }
     </div>;
+  }
+
+  renderProjectLink (item) {
+    if (item.link) {
+      return (<Link to={`/project/${ item.link }/detail`}>{item.value}</Link>)
+    } else {
+      return item.value;
+    }
   }
 
   renderMiddle(type, data, extra) {
@@ -93,7 +102,7 @@ class UcListItem extends PureComponent {
           return [
             <div className={`uc-list-item-middle-item item-${index + 1}`} key={`uc-list-item-middle-item-${index}`}>
               <div className="uc-list-item-middle-item-value">
-                {item.value}
+                { this.renderProjectLink(item) }
               </div>
               <div className="uc-list-item-middle-item-name">
                 {item.name}
@@ -189,6 +198,7 @@ class UcListItem extends PureComponent {
           {
             name: '项目名称',
             value: get(data, 'movie.name'),
+            link: get(data, 'movie_id'),
           },
           {
             name: '制片方',

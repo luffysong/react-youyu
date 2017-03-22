@@ -17,6 +17,7 @@ import AcceptInfoBar from '../../components/AcceptInfoBar';
 import * as actions from './actions';
 import { get } from 'lodash';
 import { numComma } from '../../utils/utils';
+import { money_mul } from '../../utils/math';
 import Tracker from '../../components/Tracker';
 
 export class AcceptConfirm extends PureComponent {
@@ -57,7 +58,7 @@ export class AcceptConfirm extends PureComponent {
     return (
       <div className="accept-confirm-container">
         <Helmet
-          title="确认意向"
+          title="认购申请"
           meta={[
             { name: 'description', content: 'Description of AcceptConfirm' },
           ]}
@@ -75,7 +76,7 @@ export class AcceptConfirm extends PureComponent {
             </tr>
             <tr>
               <td className="left-column">意向保证金：</td>
-              <td><span className="color-orange">{ numComma(this.props.orderInfoData.price / 100) }元</span> = {numComma(this.props.orderInfoData.price)}元 * 1%</td>
+              <td><span className="color-orange">{ numComma(money_mul(this.props.orderInfoData.price, 0.05)) }元</span> = {numComma(this.props.orderInfoData.price)}元 * 5%</td>
             </tr>
             <tr>
               <td className="left-column">

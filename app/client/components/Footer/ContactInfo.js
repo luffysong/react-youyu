@@ -16,8 +16,8 @@ function ContactInfo(props) {
 
   return (
     <ul className={className}>
-      <li><span></span>客服电话：400-995-3636</li>
-      <li><span></span>客服邮箱：service_jr@36kr.com</li>
+      <li><span></span>客服电话：010-59974027</li>
+      <li><span></span>客服邮箱：youyutouzi@36kr.com</li>
       <li><span></span>工作时间：周一到周五 10:00 - 19:00</li>
     </ul>
   );

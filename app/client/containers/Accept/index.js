@@ -21,7 +21,7 @@ export class Accept extends PureComponent {
     const { children } = this.props;
     const steps = [
       {
-        name: '确认意向',
+        name: '认购申请',
         link: '/accept/confirm',
       },
       {

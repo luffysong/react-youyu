@@ -26,7 +26,7 @@ function PayFlowBar() {
               支付保证金
             </div>
             <div className="pay-flow-bar-progress-desc">
-              转让价格的 1%
+              转让价格的 5%
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ function PayFlowBar() {
         </div>
         <div className="pay-flow-bar-contact">
           <div className="pay-flow-bar-contact-phone">
-            400-995-3636
+            010-59974027
           </div>
           <div className="pay-flow-bar-contact-desc">
             客服电话

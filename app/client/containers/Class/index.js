@@ -31,7 +31,7 @@ export class Class extends PureComponent {
         <section className="class-section-1">
           <h1 className="class-section-1-title">有娱投资</h1>
           <div className="class-section-1-desc">
-            有娱投资是国内首家文娱交易所，主要为国内电影、电视剧、网剧、网大、网综、演唱会等文娱类项目提供资产交易平台。以文娱交易转让的核心业务为基础，为文娱产业链上优质内容制作者、产生者提供多方位的金融服务，从而满足企业的资金需求，保证企业资金流动性的合理充裕和融资总量的适度增长。
+            有娱投资是国内首家影视投资收益权交易支持平台，主要为国内电影、电视剧、电视综艺、网络剧、网络大电影、网络综艺等文娱类项目的影视投资收益权、应收账款等资产提供专业化交易支持服务，为文娱产业链上优质内容制作者、产生者提供多方位的服务，满足企业的资金需求，保证企业资金流动性的合理充裕和融资总量的适度增长。
           </div>
         </section>
         <section className="class-section-2">
@@ -39,11 +39,11 @@ export class Class extends PureComponent {
           <div className="class-section-2-desc">
             可转让电影收益权是指电影项目因票房、网络版权转让、赞助、贴片广告、品牌植入广告所产生收益的权利，不包括因电影项目补贴、获奖、衍生品开发等所产生的其他收益。电影项目投资协议对赞助收入、贴片广告收入、品牌植入广告收入的分配和使用存在其他约定的，电影投资收益为按照约定分配和使用之后的部分。
           </div>
-          <h2 className="class-section-2-title class-section-title title-2">为什么投资可转让电影收益权</h2>
+          <h2 className="class-section-2-title class-section-title title-2">为什么投资影视投资收益权</h2>
           <ReasonsBar />
         </section>
         <section className="class-section-3">
-          <h2 className="class-section-3-title class-section-title">谁适合投资电影收益权</h2>
+          <h2 className="class-section-3-title class-section-title">谁适合投资影视投资收益权</h2>
           <div className="class-section-3-desc">
             具有高风险承受能力，对电影投资有兴趣或者有一定行业经验的投资机构、个人投资者。
           </div>
