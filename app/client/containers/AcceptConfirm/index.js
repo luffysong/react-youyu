@@ -99,7 +99,10 @@ export class AcceptConfirm extends PureComponent {
                   <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
                 </div>
                 <label htmlFor="agree">
-                  同意：<a className="link-a" href="/protocol/deposit" target="_blank">《保证金管理制度》</a>
+                  同意：
+                  <a className="link-a" href="/protocol/deposit" target="_blank">《保证金管理制度》</a>
+                  <a className="link-a" href="/protocol/delist" target="_blank">《委托摘牌协议申请书》</a>
+                  <a className="link-a" href="/protocol/risk" target="_blank">《风险揭示书》</a>
                 </label>
               </td>
             </tr>
