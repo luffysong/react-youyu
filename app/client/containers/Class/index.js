@@ -6,6 +6,7 @@
  * External dependencies
  */
 import React, { PropTypes, PureComponent } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
@@ -35,9 +36,9 @@ export class Class extends PureComponent {
           </div>
         </section>
         <section className="class-section-2">
-          <h2 className="class-section-2-title class-section-title">什么是可转让电影收益权</h2>
+          <h2 className="class-section-2-title class-section-title">什么是影视投资收益权</h2>
           <div className="class-section-2-desc">
-            可转让电影收益权是指电影项目因票房、网络版权转让、赞助、贴片广告、品牌植入广告所产生收益的权利，不包括因电影项目补贴、获奖、衍生品开发等所产生的其他收益。电影项目投资协议对赞助收入、贴片广告收入、品牌植入广告收入的分配和使用存在其他约定的，电影投资收益为按照约定分配和使用之后的部分。
+            影视投资收益权是指因影视项目票房、网络版权转让或授权、赞助、贴片广告、品牌植入广告所产生的收益的权利和权益，但不包括因影视项目补贴、获奖、衍生品开发等所产生的其他收益的权利和权益。
           </div>
           <h2 className="class-section-2-title class-section-title title-2">为什么投资影视投资收益权</h2>
           <ReasonsBar />
@@ -109,7 +110,9 @@ export class Class extends PureComponent {
           </div>
         </section>
         <section className="class-section-8">
-          <h1 className="class-section-8-title class-section-title">投资风险</h1>
+          <h1 className="class-section-8-title class-section-title">
+            <Link to="/protocol/risk">投资风险</Link>
+          </h1>
           <div className="class-section-8-intro">
               受到娱乐行业投资风险较高的影响，电影项目可转让收益权投资是一种高风险投资项目，具体包括：<br />
               1、政策风险：电影行业受到国家有关法律、法规及政策的严格监督和管理，受到中宣部、文化部、国家新闻出版广电总局等部门的监管，政策的变化可能会影响项目投资收益，并可能导致投资亏损。<br />

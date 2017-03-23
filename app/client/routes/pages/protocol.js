@@ -57,7 +57,31 @@ export default function protocolRoute(loadModule, injectReducer) {
             loadModule(cb, component);
           })
         }
+      },
+      {
+        // 摘牌
+        path: 'delist',
+        name: 'protocolDelist',
+        getComponent(nextState, cb) {
+          require.ensure(['../../containers/Protocol/delist'], (require) => {
+            const component = require('../../containers/Protocol/delist');
+            loadModule(cb, component);
+          })
+        }
+      },
+      {
+        // 风险揭示
+        path: 'risk',
+        name: 'protocolRisk',
+        getComponent(nextState, cb) {
+          require.ensure(['../../containers/Protocol/risk'], (require) => {
+            const component = require('../../containers/Protocol/risk');
+            loadModule(cb, component);
+          })
+        }
       }
+
+
     ]
   }
 }

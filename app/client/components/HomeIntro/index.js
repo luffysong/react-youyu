@@ -77,7 +77,7 @@ function renderYouYuIntro(userInfo) {
         <li className="intro-item">
           <img src={require('./imgs/icon_advantage_index.svg')} alt="行业领先" />
           <div className="title">行业领先</div>
-          <div className="intro">与世界500强企业万达集团合作，打造影视行业一受收益权转让平台。</div>
+          <div className="intro">与新片场、普思资本等行业龙头合作，打造文娱资产交易服务平台。</div>
         </li>
         <li className="intro-item">
           <img src={require('./imgs/icon_first_index.svg')} alt="全国首创" />

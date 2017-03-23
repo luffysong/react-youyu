@@ -350,7 +350,7 @@ class QuoteStepTwo extends PureComponent {
               <input type="radio" name="memberType" onChange={this.agree.bind(this)} value="agree" id="agree" />
             </div>
             <label htmlFor="agree">
-              同意：<a className="link-a" href="/protocol/service" target="_blank">《服务协议》</a>
+              同意：<a className="link-a" href="/protocol/service" target="_blank">《挂牌服务规则》</a>
             </label>
           </div>
         </div>
