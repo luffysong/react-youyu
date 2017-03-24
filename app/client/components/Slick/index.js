@@ -17,8 +17,12 @@ import './style.less';
 class Slick extends PureComponent {
   render() {
     const { className, data } = this.props;
+    let dots = false;
+    if(data && data.length > 1) {
+      dots = true;
+    }
     const settings = {
-      dots: true,
+      dots: dots,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
