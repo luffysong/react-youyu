@@ -28,16 +28,16 @@ export class About extends PureComponent {
         <div className="about-wrapper container">
           <h1 className="about-title">关于我们</h1>
           <div className="about-desc">
-            有娱投资是36氪与普思资本、新片场、天津金融资产交易所共同成立的国内首家影视投资收益权交易支持平台，通过与天津金融资产交易所合作，为用户提供影视类项目的登记确权、挂牌摘牌、交易结算及收益分配等服务。
+            有娱投资是国内首家文娱金融交易支持中心，主要为国内电影、电视剧、网剧、网大、网综、舞台剧等文娱类项目提供资产交易平台。以文娱交易转让的核心业务为基础，为文娱产业链上优质内容生产者提供多方位的金融服务，从而满足项目的资金需求，保证项目资金流动性的合理充裕和融资总量的适度增长。
           </div>
           <div className="about-parts">
             <div className="about-parts-product">
               <img className="about-parts-img" src={require('./imgs/icon_ourproduct_about.svg')} alt="我们的产品" />
               <h2 className="about-parts-title">我们的产品</h2>
               <ul className="about-parts-list">
-                <li className="about-parts-list-item">电影投资收益权转让</li>
-                <li className="about-parts-list-item">电视剧应收账款收益权转让</li>
-                <li className="about-parts-list-item">影城项目投资收益权转让</li>
+                <li className="about-parts-list-item">文娱项目投资收益权转让</li>
+                <li className="about-parts-list-item">应收账款转让</li>
+                <li className="about-parts-list-item">影城交易</li>
               </ul>
             </div>
             <div className="about-parts-split"></div>
