@@ -102,8 +102,8 @@ export class Class extends PureComponent {
         <section className="class-section-7">
           <h1 className="class-section-7-title class-section-title">怎么收益</h1>
           <div className="class-section-7-ways">
-            <img className="class-section-7-way-1" src={require('./imgs/pic_how_2@2x.png')} alt="通过转让电影收益权获得转让价款收益"/>
-            <img className="class-section-7-way-2" src={require('./imgs/pic_how_1@2x.png')} alt="在电影投资盈利情况下，通过影片收入分配获得投资利益"/>
+            <img className="class-section-7-way-1" src={require('./imgs/pic_how_1@2x.png')} alt="通过转让影视收益权获得转让价款收益"/>
+            <img className="class-section-7-way-2" src={require('./imgs/pic_how_2@2x.png')} alt="在影视投资盈利情况下，通过影片收入分配获得投资利益"/>
           </div>
           <div className="class-section-7-intro">
             其中，转让价款收益为项目成交价格扣除掉平台手续费之后的价款；投资收益为影片公映或上线后，制片方根据电影投资收益登记册，按照投资比例通过天金所资金结算系统进行收益分配。
