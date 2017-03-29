@@ -36,7 +36,7 @@ export class QA extends PureComponent {
             Q: 有娱是安全的投资交易平台吗？
           </div>
           <div className="project-container-qa-tab-item-a">
-            <span>A</span>: 有娱与天金所、新片场以及世界500强万达集团强强合作，拥有严格的交易风险控制流程、合格的金融资产交易所资质，优质的投资标的以及规范的投资收益分配规则，为用户提供正规的投资交易流程以及项目风险控制管理服务。
+            <span>A</span>: 有娱与天金所、新片场以及普斯资本强强合作，拥有严格的交易风险控制流程、合格的金融资产交易所资质，优质的投资标的以及规范的投资收益分配规则，为用户提供正规的投资交易流程以及项目风险控制管理服务。
           </div>
         </div>
         <div className="project-container-qa-tab-item">

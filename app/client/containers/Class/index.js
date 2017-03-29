@@ -68,7 +68,7 @@ export class Class extends PureComponent {
                     支付保证金
                   </div>
                   <div className="class-section-6-progress-desc">
-                    转让价格的 1%
+                    转让价格的 5%
                   </div>
                 </div>
               </div>
@@ -111,14 +111,14 @@ export class Class extends PureComponent {
         </section>
         <section className="class-section-8">
           <h1 className="class-section-8-title class-section-title">
-            <Link to="/protocol/risk">投资风险</Link>
+            投资风险
           </h1>
           <div className="class-section-8-intro">
               受到娱乐行业投资风险较高的影响，电影项目可转让收益权投资是一种高风险投资项目，具体包括：<br />
               1、政策风险：电影行业受到国家有关法律、法规及政策的严格监督和管理，受到中宣部、文化部、国家新闻出版广电总局等部门的监管，政策的变化可能会影响项目投资收益，并可能导致投资亏损。<br />
               2、监管风险：从资格准入、内容审查到发行许可，行业严格监管贯穿于电影制作及发行全部业务流程。投资人投资电影，可能存在影片备案未获通过、拍摄完成未通过内容审查导致不能取得发行许可等风险。 <br />
               3、市场风险：电影票房会受到行业发展、政治经济、投资心理、市场预期等各种因素的影响而产生波动，从而导致投资收益水平发生变化，并可能引发亏损的风险。<br />
-              具体风险提示详见投资风险揭示书。
+              具体风险提示详见<Link to="/protocol/risk">投资风险揭示书</Link>。
           </div>
         </section>
       </div>
