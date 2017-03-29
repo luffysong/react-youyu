@@ -12,7 +12,7 @@
 import * as types from './constants';
 import { get } from '../../utils/request';
 
-export function loadProject(id) {
+export function loadProject(id, callback) {
   return (dispatch) => {
     dispatch({
       type: types.LOAD_PROJECT,
@@ -21,8 +21,10 @@ export function loadProject(id) {
 
     get(`/movie/project/${id}`).then(data => {
       dispatch(loadProjectSuc(id, data));
+      callback();
     }, err => {
       dispatch(loadProjectErr(id, err));
+      callback();
     });
   }
 }

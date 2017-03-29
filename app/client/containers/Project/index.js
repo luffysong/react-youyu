@@ -28,7 +28,12 @@ export class Project extends PureComponent {
     const { params } = this.props;
     const projectId = params.id ? params.id : 0;
 
-    this.props.loadProject(projectId);
+    this.props.loadProject(projectId, () => {
+      /*转让中的份额暂无数据*/
+      if ((!this.props.projectData.listing || !this.props.projectData.listing.length) && this.props.router.getCurrentLocation().pathname.indexOf('detail') < 0) {
+        this.props.router.push(`/project/${projectId}/detail`);
+      }
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -81,7 +86,7 @@ export class Project extends PureComponent {
   }
 
   render() {
-    const { children, params, projectData, projectLoading } = this.props;
+    const { children, params, projectData, projectLoading, router } = this.props;
 
     return (
       <div className="project-container">
@@ -90,7 +95,7 @@ export class Project extends PureComponent {
         <PayFlowBar />
         <div className="container project-wrapper">
           <div className="project-container-left">
-            <ProjectNav id={params.id} />
+            <ProjectNav id={params.id} data={projectData} />
             <RouteTransition>
               {children}
             </RouteTransition>
@@ -123,7 +128,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    loadProject: (id) => dispatch(actions.loadProject(id)),
+    loadProject: (id, callback) => dispatch(actions.loadProject(id, callback)),
   };
 }
 
