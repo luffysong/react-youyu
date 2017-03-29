@@ -86,7 +86,7 @@ function ProjectBanner(props) {
             <li>编剧: {get(data, 'basic.scriptwriter')}</li>
             <li>主演: {get(data, 'basic.protagonist')}</li>
             <li>类型: {get(data, 'basic.type')}</li>
-            <li>上映时间：{get(data, 'basic.release_date')}</li>
+            <li>上映时间：{get(data, 'basic.release_date') === '0000-00-00' ? '待定' : get(data, 'basic.release_date')}</li>
           </ul>
           <ProjectInfoBar data={projectInfo} className="project-banner-detail-info-bar" />
         </div>
