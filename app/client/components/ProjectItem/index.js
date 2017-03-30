@@ -34,7 +34,7 @@ class ProjectItem extends PureComponent {
 
   renderList(list, type) {
     if (!(list && list.length)) {
-      return <div className="list-empty">没有可转让的标的</div>;
+      return <div className="list-empty">投资爆款项目请用力猛戳</div>;
     }
 
     return <table className="transfer-info">

@@ -35,7 +35,7 @@ function Announcements(props) {
             return <div className="announcements-item" key={`item-${index}`}>
                       <span className="indicator"></span>
                       <Link to={`/news/detail/${item.id}`}>
-                        {item.title.substring(0, 8)}
+                        {item.title.substring(0, 18)}
                       </Link>
                     </div>;
           })
