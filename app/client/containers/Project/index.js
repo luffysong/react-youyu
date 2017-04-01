@@ -86,7 +86,7 @@ export class Project extends PureComponent {
   }
 
   render() {
-    const { children, params, projectData, projectLoading, router } = this.props;
+    const { children, params, projectData, projectLoading } = this.props;
 
     return (
       <div className="project-container">

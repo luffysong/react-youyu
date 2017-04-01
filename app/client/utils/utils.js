@@ -6,7 +6,8 @@ export function numComma(x, prefix, suffix) {
 }
 
 export function removeInlineStyle(str) {
-  const REGEX = /(?:\G(?!^)|\bstyle=")([^:]*):\s*([^;]*)[;"](?=[^>]*>)/g; // eslint-disable-line
+  //?:\G(?!^)|
+  const REGEX = /(\bstyle=")([^:]*):\s*([^;]*)[;"](?=[^>]*>)/g; // eslint-disable-line
   return str.replace(REGEX, '');
 }
 
