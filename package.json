@@ -62,7 +62,7 @@
     "stylelint-config-standard": "^15.0.1",
     "stylelint-webpack-plugin": "^0.5.1",
     "url-loader": "0.5.7",
-    "webpack": "1.14.0",
+    "webpack": "2.3.3",
     "webpack-dev-server": "1.16.2",
     "webpack-isomorphic-tools": "^2.6.5",
     "webpack-manifest-plugin": "1.1.0"
