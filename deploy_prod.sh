@@ -2,7 +2,7 @@
 
 npm run build:client
 
-cdnstr="/data/work/asset/youyu"
+cdnstr="/data/work/asset/krdatah5"
 ####### CDN
 #site1
 rsync -rvltOD ./build/client/* ali-rong-proxy-01:$cdnstr
@@ -13,7 +13,7 @@ rsync -rvltOD ./build/client/* ali-rong-proxy-02:$cdnstr
 rsync -rvltOD ./build/client/* ali-rong-api-02:$cdnstr
 
 ###### 业务逻辑
-pathstr="/data/work/frontend/prod/youyu/dist"
+pathstr="/data/work/frontend/prod/krdatah5/dist"
 if [ $1 = 'site3' ]; then
     ssh ali-rong-proxy-03 "mkdir -p $pathstr"
     rsync -rvltOD ./build/client/* ali-rong-proxy-01:$pathstr
